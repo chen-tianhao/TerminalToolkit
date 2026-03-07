@@ -463,6 +463,9 @@ class MainWindow(QMainWindow):
                         if update['has_depart_event']:
                             event['time'] = update['end_time']
 
+            # 按time升序排列
+            self.events.sort(key=lambda e: e.get('time', 0))
+
             # 保存到文件
             with open(self.json_file, 'w', encoding='utf-8') as f:
                 json.dump(self.events, f, indent=2, ensure_ascii=False)
