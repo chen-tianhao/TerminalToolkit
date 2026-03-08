@@ -3,7 +3,7 @@ from collections import defaultdict
 import plotly.graph_objects as go
 
 # Read data
-with open('temp_1.json', 'r', encoding='utf-8') as f:
+with open('layout_parallel.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Group points for horizontal lines (orange, green, purple_horizontal)
@@ -114,7 +114,7 @@ for ct in vertical_types:
 
 # Layout
 fig.update_layout(
-    title='Traffic Network Paths (temp_1.json)',
+    title='Traffic Network Paths (layout_parallel.json)',
     xaxis_title='X',
     yaxis_title='Y',
     yaxis=dict(autorange='reversed', range=[0, 300], scaleanchor='x', scaleratio=1),

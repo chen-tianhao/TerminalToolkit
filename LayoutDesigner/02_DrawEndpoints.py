@@ -2,7 +2,7 @@ import json
 import plotly.graph_objects as go
 
 # Read data
-with open('temp_1.json', 'r', encoding='utf-8') as f:
+with open('layout_parallel.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Color type mapping with display colors
@@ -61,7 +61,7 @@ for ct in color_types:
 
 # Layout (Y axis reversed: down is positive, equal aspect ratio)
 fig.update_layout(
-    title='Traffic Network Endpoints (temp_1.json)',
+    title='Traffic Network Endpoints (layout_parallel.json)',
     xaxis_title='X',
     yaxis_title='Y',
     yaxis=dict(autorange='reversed', scaleanchor='x', scaleratio=1),  # Down is positive Y

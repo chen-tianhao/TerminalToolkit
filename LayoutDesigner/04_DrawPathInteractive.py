@@ -7,7 +7,7 @@ from dash import Dash, html, dcc, Input, Output
 U_TO_M = 4
 
 # Read data and convert to meters
-with open('temp_1.json', 'r', encoding='utf-8') as f:
+with open('layout_parallel.json', 'r', encoding='utf-8') as f:
     raw_data = json.load(f)
 
 # Convert coordinates from U to meters
