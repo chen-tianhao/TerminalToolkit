@@ -3,14 +3,27 @@ from collections import defaultdict
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
 
-# Read data
-with open('temp_1.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
+# Unit conversion: 1U = 4 meters
+U_TO_M = 4
 
-# Group points for horizontal lines (orange, green, purple_horizontal)
-horizontal_types = ['orange', 'green', 'purple_horizontal']
-# Group points for vertical lines (vertical_purple, blue)
-vertical_types = ['vertical_purple', 'blue']
+# Read data and convert to meters
+with open('temp_1.json', 'r', encoding='utf-8') as f:
+    raw_data = json.load(f)
+
+# Convert coordinates from U to meters
+data = {}
+for color_type, points in raw_data.items():
+    data[color_type] = [
+        {
+            'id': p['id'],
+            'x': p['x'] * U_TO_M,
+            'y': p['y'] * U_TO_M,
+            'region': p['region'],
+            'kind': p['kind'],
+            'color_type': p['color_type']
+        }
+        for p in points
+    ]
 
 colors = {
     'purple_horizontal': 'purple',
@@ -28,8 +41,8 @@ display_names = {
     'blue': 'Blue'
 }
 
-def get_horizontal_data(ct, distance=23):
-    """Get horizontal line data with adjustable distance"""
+def get_horizontal_data(ct, distance=92):
+    """Get horizontal line data with adjustable distance (in meters)"""
     points_list = data.get(ct, [])
     if not points_list:
         return []
@@ -45,24 +58,23 @@ def get_horizontal_data(ct, distance=23):
     # Calculate new y positions
     # Group 1 stays at original position, Group 8 stays at original position
     # Groups 2,3,4 move down, groups 5,6,7 move up
+    # Original distance between groups: 23U = 92m
+    # Adjustable distance in meters
     if len(y_values) >= 8:
-        # Original y positions for groups (4 rows each)
+        # Original y positions for groups (4 rows each) in meters
         orig_group_starts = [
             y_values[0],   # Group 1 start
             y_values[4],   # Group 2 start
             y_values[8],   # Group 3 start
             y_values[12],  # Group 4 start
-            y_values[16], # Group 5 start
+            y_values[16],  # Group 5 start
             y_values[20],  # Group 6 start
             y_values[24],  # Group 7 start
             y_values[28],  # Group 8 start
         ]
 
-        # Calculate offsets
-        # Group 1: no change
-        # Group 2,3,4: move down by (distance - 23)
-        # Group 5,6,7: move up by (distance - 23)
-        offset = distance - 23
+        # Calculate offsets (distance - 92 meters)
+        offset = distance - 92
 
         new_y_positions = [
             orig_group_starts[0],                           # Group 1: fixed
@@ -79,8 +91,8 @@ def get_horizontal_data(ct, distance=23):
         y_offset_map = {}
         for i, orig_y in enumerate(orig_group_starts):
             for row in range(4):
-                orig = orig_y + row
-                new = new_y_positions[i] + row
+                orig = orig_y + row * U_TO_M
+                new = new_y_positions[i] + row * U_TO_M
                 y_offset_map[orig] = new
     else:
         y_offset_map = {y: y for y in y_values}
@@ -103,16 +115,16 @@ def get_horizontal_data(ct, distance=23):
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H3("Adjust Orange Line Distance"),
+    html.H3("Adjust Orange Line Distance (in meters)"),
     html.Div([
-        html.Label("Distance between groups:"),
+        html.Label("Distance between groups (m):"),
         dcc.Slider(
             id='distance-slider',
-            min=10,
-            max=40,
-            step=1,
-            value=23,
-            marks={10: '10', 15: '15', 20: '20', 23: '23', 30: '30', 35: '35', 40: '40'},
+            min=40,
+            max=160,
+            step=4,
+            value=92,
+            marks={40: '40', 60: '60', 80: '80', 92: '92', 120: '120', 140: '140', 160: '160'},
             tooltip={"placement": "bottom", "always_visible": True}
         ),
     ], style={'width': '50%', 'marginBottom': '20px'}),
@@ -153,7 +165,7 @@ def update_graph(distance):
     if len(y_values) >= 8:
         orig_group_starts = [y_values[0], y_values[4], y_values[8], y_values[12],
                             y_values[16], y_values[20], y_values[24], y_values[28]]
-        offset = distance - 23
+        offset = distance - 92
         new_y_positions = [
             orig_group_starts[0],
             orig_group_starts[1] + offset,
@@ -167,7 +179,7 @@ def update_graph(distance):
         y_offset_map = {}
         for i, orig_y in enumerate(orig_group_starts):
             for row in range(4):
-                y_offset_map[orig_y + row] = new_y_positions[i] + row
+                y_offset_map[orig_y + row * U_TO_M] = new_y_positions[i] + row * U_TO_M
     else:
         y_offset_map = {y: y for y in y_values}
 
@@ -184,11 +196,11 @@ def update_graph(distance):
         mode='markers',
         name=f"Orange ({len(orange_points)})",
         marker=dict(size=1, color='orange'),
-        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x}<br>Y: %{y}<extra></extra>',
+        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
         customdata=[[p['id']] for p in orange_points]
     ))
 
-    # Draw purple_horizontal lines (static, no position change)
+    # Draw other lines (static)
     for ct in ['purple_horizontal', 'green', 'blue']:
         points_list = data.get(ct, [])
         if not points_list:
@@ -197,9 +209,9 @@ def update_graph(distance):
         by_coord = defaultdict(list)
         for p in points_list:
             if ct in ['purple_horizontal', 'green']:
-                by_coord[p['y']].append(p)  # Horizontal: group by y
+                by_coord[p['y']].append(p)
             else:
-                by_coord[p['x']].append(p)  # Blue: group by x
+                by_coord[p['x']].append(p)
 
         # Draw lines
         for coord, pts in by_coord.items():
@@ -232,24 +244,24 @@ def update_graph(distance):
             mode='markers',
             name=f"{display_names[ct]} ({len(points_list)})",
             marker=dict(size=1, color=colors[ct]),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x}<br>Y: %{y}<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Layout
+    # Layout (ranges in meters)
     fig.update_layout(
-        title=f'Traffic Network Paths (distance={distance})',
-        xaxis_title='X',
-        yaxis_title='Y',
-        yaxis=dict(autorange='reversed', range=[0, 300], scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
+        title=f'Traffic Network Paths (distance={distance}m)',
+        xaxis_title='X (m)',
+        yaxis_title='Y (m)',
+        yaxis=dict(autorange='reversed', range=[0, 1200], scaleanchor='x', scaleratio=1),
+        xaxis=dict(range=[-200, 4000], scaleanchor='y', scaleratio=1),
         hovermode='closest',
         showlegend=True,
         width=1575,
         height=600
     )
 
-    display_text = f"Current distance: {distance} (Group 1 and 8 fixed, Groups 2-4 move down, Groups 5-7 move up)"
+    display_text = f"Current distance: {distance}m (Group 1 and 8 fixed, Groups 2-4 move down, Groups 5-7 move up)"
 
     return fig, display_text
 
