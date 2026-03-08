@@ -124,17 +124,20 @@ def get_vertical_data(ct, distance=92):
         # x_values[-1] is the last x value (rightmost column of last group)
         last_point_x = x_offset_map.get(x_values[-1], x_values[-1])
 
+        # Each group has 4 columns, spacing 1U = 4m between columns
+        # Group width = 3 * 4m = 12m (from column 0 to column 3)
+        group_width = 12
+
         # Get y values from the first column (same pattern for all columns)
         first_x = x_values[0]
         first_col_ys = sorted([p['y'] for p in by_x[first_x]])
 
         # Generate new groups
-        # Group 37 (first extra): starts at last_point_x + distance
-        # Group 38 (second extra): starts at last_point_x + 2*distance
+        # Group 37: starts at last_point_x + distance
+        # Group 38: starts at (last_point_x + distance + group_width) + distance = last_point_x + 2*distance + group_width
         for g in range(extra_groups):
-            # New group x position: last group last point + distance
-            # The first point (col 0) of new group is at: last_point_x + distance + g * distance
-            new_group_x = last_point_x + distance + g * distance
+            # New group x position: last group last point + group_width + distance for each previous extra group
+            new_group_x = last_point_x + distance + g * (distance + group_width)
 
             # Create 4 columns for this group at same y positions
             for col in range(4):
