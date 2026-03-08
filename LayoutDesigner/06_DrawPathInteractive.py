@@ -56,15 +56,15 @@ def get_vertical_data(ct, distance=92):
         return [], []
 
     # Determine number of groups based on distance
-    # 92m: 8 groups (original)
-    # 86m: 10 groups (8 original + 2 new)
-    # 80m: 13 groups (8 original + 5 new)
+    # 92m: 36 groups (original)
+    # 86m: 38 groups (36 + 2 new)
+    # 80m: 41 groups (36 + 5 new)
     if distance == 80:
-        num_groups = 13
+        num_groups = 41
     elif distance == 86:
-        num_groups = 10
+        num_groups = 38
     else:  # 92
-        num_groups = 8
+        num_groups = 36
 
     # Group by x
     by_x = defaultdict(list)
@@ -116,21 +116,25 @@ def get_vertical_data(ct, distance=92):
                     'id': p['id']
                 })
 
-    # Add extra groups if needed (beyond original 8)
-    if num_groups > 8:
-        extra_groups = num_groups - 8
+    # Add extra groups if needed (beyond original 36)
+    if num_groups > 36:
+        extra_groups = num_groups - 36
 
-        # Get the last original group's x position
-        last_group_x = x_offset_map.get(x_values[-4], x_values[-4])
+        # Get the last original group's last point x position (col 3)
+        # x_values[-1] is the last x value (rightmost column of last group)
+        last_point_x = x_offset_map.get(x_values[-1], x_values[-1])
 
         # Get y values from the first column (same pattern for all columns)
         first_x = x_values[0]
         first_col_ys = sorted([p['y'] for p in by_x[first_x]])
 
         # Generate new groups
+        # Group 37 (first extra): starts at last_point_x + distance
+        # Group 38 (second extra): starts at last_point_x + 2*distance
         for g in range(extra_groups):
-            # New group x position: last group + distance
-            new_group_x = last_group_x + (g + 1) * distance
+            # New group x position: last group last point + distance
+            # The first point (col 0) of new group is at: last_point_x + distance + g * distance
+            new_group_x = last_point_x + distance + g * distance
 
             # Create 4 columns for this group at same y positions
             for col in range(4):
