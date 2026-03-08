@@ -7,7 +7,7 @@ from dash import Dash, html, dcc, Input, Output
 U_TO_M = 4
 
 # Read data and convert to meters
-with open('layout_parallel.json', 'r', encoding='utf-8') as f:
+with open('layout_perpendicular.json', 'r', encoding='utf-8') as f:
     raw_data = json.load(f)
 
 # Convert coordinates from U to meters
@@ -28,7 +28,6 @@ for color_type, points in raw_data.items():
 colors = {
     'purple_horizontal': 'purple',
     'vertical_purple': 'darkviolet',
-    'orange': 'orange',
     'green': 'green',
     'blue': 'blue'
 }
@@ -36,7 +35,6 @@ colors = {
 display_names = {
     'purple_horizontal': 'Purple Horizontal',
     'vertical_purple': 'Vertical Purple',
-    'orange': 'Orange',
     'green': 'Green',
     'blue': 'Blue'
 }
@@ -57,12 +55,12 @@ def update_graph(_):
     fig = go.Figure()
 
     # Draw all lines (static, no adjustment)
-    for ct in ['orange', 'purple_horizontal', 'green', 'blue']:
+    for ct in ['purple_horizontal', 'green', 'blue']:
         points_list = data.get(ct, [])
         if not points_list:
             continue
 
-        if ct in ['orange', 'purple_horizontal', 'green']:
+        if ct in ['purple_horizontal', 'green']:
             # Horizontal lines - group by y
             by_coord = defaultdict(list)
             for p in points_list:
