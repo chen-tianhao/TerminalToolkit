@@ -128,8 +128,8 @@ fig.update_layout(
         xanchor='right',
         x=0.5
     ),
-    width=1050,
-    height=400
+    width=1575,
+    height=600
 )
 
 # Save to HTML
