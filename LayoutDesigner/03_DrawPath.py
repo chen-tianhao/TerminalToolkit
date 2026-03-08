@@ -117,12 +117,19 @@ fig.update_layout(
     title='Traffic Network Paths (temp_1.json)',
     xaxis_title='X',
     yaxis_title='Y',
-    yaxis=dict(autorange='reversed', scaleanchor='x', scaleratio=1),
-    xaxis=dict(scaleanchor='y', scaleratio=1),
+    yaxis=dict(autorange='reversed', range=[0, 300], scaleanchor='x', scaleratio=1),
+    xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
     hovermode='closest',
     showlegend=True,
-    width=1400,
-    height=900
+    legend=dict(
+        orientation='h',
+        yanchor='bottom',
+        y=1.02,
+        xanchor='right',
+        x=0.5
+    ),
+    width=1050,
+    height=400
 )
 
 # Save to HTML
