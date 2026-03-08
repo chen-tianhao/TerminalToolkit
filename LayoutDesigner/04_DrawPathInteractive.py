@@ -118,14 +118,16 @@ app.layout = html.Div([
     html.H3("Adjust Orange Line Distance (in meters)"),
     html.Div([
         html.Label("Distance between groups (m):"),
-        dcc.Slider(
+        dcc.RadioItems(
             id='distance-slider',
-            min=40,
-            max=160,
-            step=1,
+            options=[
+                {'label': ' 80m ', 'value': 80},
+                {'label': ' 86m ', 'value': 86},
+                {'label': ' 92m ', 'value': 92},
+            ],
             value=92,
-            marks={40: '40', 60: '60', 80: '80', 92: '92', 100: '100', 120: '120', 140: '140', 160: '160'},
-            tooltip={"placement": "bottom", "always_visible": True}
+            inline=True,
+            style={'marginTop': '10px'}
         ),
     ], style={'width': '50%', 'marginBottom': '20px'}),
 
