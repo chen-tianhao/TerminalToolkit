@@ -122,9 +122,9 @@ app.layout = html.Div([
             id='distance-slider',
             min=40,
             max=160,
-            step=4,
+            step=1,
             value=92,
-            marks={40: '40', 60: '60', 80: '80', 92: '92', 120: '120', 140: '140', 160: '160'},
+            marks={40: '40', 60: '60', 80: '80', 92: '92', 100: '100', 120: '120', 140: '140', 160: '160'},
             tooltip={"placement": "bottom", "always_visible": True}
         ),
     ], style={'width': '50%', 'marginBottom': '20px'}),
