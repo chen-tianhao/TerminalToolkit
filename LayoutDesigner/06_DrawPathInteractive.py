@@ -65,16 +65,20 @@ def get_vertical_data(ct, distance=92):
 
     # Calculate new x positions
     # First group stays fixed, all other groups adjust relative to it
+    # Original distance between adjacent group edges: 23U = 92m
+    # Adjustable distance in meters
     if len(x_values) >= 8:
-        # Original x positions for groups (4 columns each)
-        orig_first_group_x = x_values[0]  # First group fixed
+        # Calculate offsets (distance - 92 meters, original group edge spacing)
+        original_spacing = 23 * U_TO_M  # 23U = 92m
+        offset = distance - original_spacing
 
         # Create x offset mapping
-        # Each group i has offset = i * distance
+        # Group 0: fixed (offset=0)
+        # Group i: offset = i * (distance - original_spacing)
         x_offset_map = {}
         for i in range(len(x_values) // 4):
             orig_group_start = x_values[i * 4]
-            new_group_start = orig_first_group_x + i * distance
+            new_group_start = orig_group_start + i * offset
             for col in range(4):
                 orig = orig_group_start + col * 4
                 new = new_group_start + col * 4
