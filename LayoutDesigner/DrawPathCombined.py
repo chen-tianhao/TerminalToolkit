@@ -1,7 +1,11 @@
 import json
+import os
 from collections import defaultdict
 import plotly.graph_objects as go
 from dash import Dash, html, dcc, Input, Output
+
+# Get the directory where this script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Unit conversion: 1U = 4 meters
 U_TO_M = 4
@@ -24,7 +28,7 @@ display_names = {
 
 def load_data(layout_type):
     """Load and convert data based on layout type"""
-    filename = f'layout_{layout_type}.json'
+    filename = os.path.join(BASE_DIR, f'layout_{layout_type}.json')
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
@@ -239,6 +243,7 @@ data_perpendicular = load_data('perpendicular')
 
 # ============== Create Dash app ==============
 app = Dash(__name__, suppress_callback_exceptions=True)
+server = app.server  # For gunicorn
 
 # Navigation links
 nav_links = html.Div([
@@ -508,7 +513,8 @@ def update_perpendicular_graph(distance):
 
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8050))
     print("Starting Dash server...")
-    print("Open http://127.0.0.1:8050/parallel for Parallel Layout")
-    print("Open http://127.0.0.1:8050/perpendicular for Perpendicular Layout")
-    app.run(debug=True, port=8050)
+    print(f"Open http://127.0.0.1:{port}/parallel for Parallel Layout")
+    print(f"Open http://127.0.0.1:{port}/perpendicular for Perpendicular Layout")
+    app.run(debug=False, host='0.0.0.0', port=port)
