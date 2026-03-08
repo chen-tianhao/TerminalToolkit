@@ -55,6 +55,17 @@ def get_vertical_data(ct, distance=92):
     if not points_list:
         return [], []
 
+    # Determine number of groups based on distance
+    # 92m: 8 groups (original)
+    # 86m: 10 groups (8 original + 2 new)
+    # 80m: 13 groups (8 original + 5 new)
+    if distance == 80:
+        num_groups = 13
+    elif distance == 86:
+        num_groups = 10
+    else:  # 92
+        num_groups = 8
+
     # Group by x
     by_x = defaultdict(list)
     for p in points_list:
@@ -86,7 +97,7 @@ def get_vertical_data(ct, distance=92):
     else:
         x_offset_map = {x: x for x in x_values}
 
-    # Build line data
+    # Build line data from original groups
     lines = []
     markers = []
     for x, pts in by_x.items():
@@ -103,6 +114,42 @@ def get_vertical_data(ct, distance=92):
                     'x': x_offset_map.get(p['x'], p['x']),
                     'y': p['y'],
                     'id': p['id']
+                })
+
+    # Add extra groups if needed (beyond original 8)
+    if num_groups > 8:
+        extra_groups = num_groups - 8
+
+        # Get the last original group's x position
+        last_group_x = x_offset_map.get(x_values[-4], x_values[-4])
+
+        # Get y values from the first column (same pattern for all columns)
+        first_x = x_values[0]
+        first_col_ys = sorted([p['y'] for p in by_x[first_x]])
+
+        # Generate new groups
+        for g in range(extra_groups):
+            # New group x position: last group + distance
+            new_group_x = last_group_x + (g + 1) * distance
+
+            # Create 4 columns for this group at same y positions
+            for col in range(4):
+                new_x = new_group_x + col * 4
+
+                # Add markers at each y position
+                for y in first_col_ys:
+                    # Create unique id for new points
+                    new_id = f"extra_{g}_{col}_{y}"
+                    markers.append({
+                        'x': new_x,
+                        'y': y,
+                        'id': new_id
+                    })
+
+                # Add line for this column
+                lines.append({
+                    'x': [new_x] * len(first_col_ys),
+                    'y': first_col_ys,
                 })
 
     return lines, markers
