@@ -115,7 +115,7 @@ def get_horizontal_data(ct, distance=92):
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H3("Adjust Orange Line Distance (in meters)"),
+    html.H3("Parallel layout Settings (in meters)"),
     html.Div([
         html.Label("Distance between groups (m):"),
         dcc.RadioItems(
