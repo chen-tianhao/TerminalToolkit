@@ -203,7 +203,7 @@ def update_graph(distance):
     ))
 
     # Draw other lines (static)
-    for ct in ['purple_horizontal', 'green', 'blue']:
+    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
         points_list = data.get(ct, [])
         if not points_list:
             continue
@@ -212,7 +212,7 @@ def update_graph(distance):
         for p in points_list:
             if ct in ['purple_horizontal', 'green']:
                 by_coord[p['y']].append(p)
-            else:
+            else:  # blue, vertical_purple - vertical lines
                 by_coord[p['x']].append(p)
 
         # Draw lines
