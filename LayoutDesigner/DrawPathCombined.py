@@ -265,6 +265,39 @@ app.layout = html.Div([
 
     nav_links,
 
+    # Sliders for both layouts (visible based on current page)
+    html.Div([
+        html.Div([
+            html.Label("Orange distance between groups (m):"),
+            dcc.RadioItems(
+                id='parallel-distance-slider',
+                options=[
+                    {'label': ' 80m (10rows) ', 'value': 80},
+                    {'label': ' 86m (11rows) ', 'value': 86},
+                    {'label': ' 92m (12rows) ', 'value': 92},
+                ],
+                value=92,
+                inline=True,
+                style={'marginTop': '10px'}
+            ),
+        ], style={'width': '50%', 'marginBottom': '20px'}),
+
+        html.Div([
+            html.Label("Blue distance between groups (m):"),
+            dcc.RadioItems(
+                id='perpendicular-distance-slider',
+                options=[
+                    {'label': ' 80m (10rows) ', 'value': 80},
+                    {'label': ' 86m (11rows) ', 'value': 86},
+                    {'label': ' 92m (12rows) ', 'value': 92},
+                ],
+                value=92,
+                inline=True,
+                style={'marginTop': '10px'}
+            ),
+        ], style={'width': '50%', 'marginBottom': '20px'}),
+    ], style={'display': 'flex'}),
+
     html.Div(id='page-content')
 ])
 
@@ -283,42 +316,12 @@ def display_page(pathname):
 
 def render_parallel():
     return html.Div([
-        html.Div([
-            html.Label("Orange distance between groups (m):"),
-            dcc.RadioItems(
-                id='parallel-distance-slider',
-                options=[
-                    {'label': ' 80m (10rows) ', 'value': 80},
-                    {'label': ' 86m (11rows) ', 'value': 86},
-                    {'label': ' 92m (12rows) ', 'value': 92},
-                ],
-                value=92,
-                inline=True,
-                style={'marginTop': '10px'}
-            ),
-        ], style={'width': '50%', 'marginBottom': '20px'}),
-
         dcc.Graph(id='parallel-paths-graph')
     ])
 
 
 def render_perpendicular():
     return html.Div([
-        html.Div([
-            html.Label("Blue distance between groups (m):"),
-            dcc.RadioItems(
-                id='perpendicular-distance-slider',
-                options=[
-                    {'label': ' 80m (10rows) ', 'value': 80},
-                    {'label': ' 86m (11rows) ', 'value': 86},
-                    {'label': ' 92m (12rows) ', 'value': 92},
-                ],
-                value=92,
-                inline=True,
-                style={'marginTop': '10px'}
-            ),
-        ], style={'width': '50%', 'marginBottom': '20px'}),
-
         dcc.Graph(id='perpendicular-paths-graph')
     ])
 
@@ -365,7 +368,7 @@ def update_parallel_graph(distance):
     ))
 
     # Draw other lines (static)
-    for ct in ['purple_horizontal', 'green', 'blue']:
+    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
         points_list = data_parallel.get(ct, [])
         if not points_list:
             continue
@@ -374,7 +377,7 @@ def update_parallel_graph(distance):
         for p in points_list:
             if ct in ['purple_horizontal', 'green']:
                 by_coord[p['y']].append(p)
-            else:
+            else:  # blue, vertical_purple - vertical lines
                 by_coord[p['x']].append(p)
 
         # Draw lines
@@ -390,7 +393,7 @@ def update_parallel_graph(distance):
                         hoverinfo='skip',
                         showlegend=False
                     ))
-                else:  # blue - vertical
+                else:  # blue, vertical_purple - vertical
                     sorted_pts = sorted(pts, key=lambda p: p['y'])
                     fig.add_trace(go.Scatter(
                         x=[p['x'] for p in sorted_pts],
