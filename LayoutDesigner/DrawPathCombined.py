@@ -340,28 +340,28 @@ app.layout = html.Div([
     # Sliders for all layouts (visible based on current page)
     html.Div([
         html.Div([
-            html.Label("Orange distance between groups (m):"),
+            html.Label("Distance between orange path groups (total blocks / number of rows):"),
             dcc.RadioItems(
                 id='parallel-distance-slider',
                 options=[
-                    {'label': ' 80m (10rows) ', 'value': 80},
-                    {'label': ' 86m (11rows) ', 'value': 86},
-                    {'label': ' 92m (12rows) ', 'value': 92},
+                    {'label': ' 80m (176 blks/ 10 rows) ', 'value': 80},
+                    {'label': ' 86m (154 blks/ 11 rows) ', 'value': 86},
+                    {'label': ' 92m (154 blks / 12 rows) ', 'value': 92},
                 ],
                 value=92,
                 inline=True,
                 style={'marginTop': '10px'}
             ),
-        ], id='parallel-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
+        ], id='parallel-slider-container', style={'width': '50%', 'marginBottom': '20px', 'display': 'block'}),
 
         html.Div([
-            html.Label("Blue line distance (m):"),
+            html.Label("Distance between blue path groups (total blocks / 12 rows):"),
             dcc.RadioItems(
                 id='bay-distance-slider',
                 options=[
-                    {'label': ' 298.75m (13 groups) ', 'value': 298.75},
-                    {'label': ' 324m (12 groups) ',    'value': 324.0},
-                    {'label': ' 349.25m (11 groups) ', 'value': 349.25},
+                    {'label': ' 298.75m (168 blks) ', 'value': 298.75},
+                    {'label': ' 324m (154 blks) ',    'value': 324.0},
+                    {'label': ' 349.25m (140 blks) ', 'value': 349.25},
                 ],
                 value=324.0,
                 inline=True,
@@ -370,13 +370,13 @@ app.layout = html.Div([
         ], id='bay-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
 
         html.Div([
-            html.Label("Blue distance between groups (m):"),
+            html.Label("Distance between blue path groups (total blocks / number of rows):"),
             dcc.RadioItems(
                 id='perpendicular-distance-slider',
                 options=[
-                    {'label': ' 80m (10rows) ', 'value': 80},
-                    {'label': ' 86m (11rows) ', 'value': 86},
-                    {'label': ' 92m (12rows) ', 'value': 92},
+                    {'label': ' 80m ( / 10 rows) ', 'value': 80},
+                    {'label': ' 86m ( / 11 rows) ', 'value': 86},
+                    {'label': ' 92m ( / 12 rows) ', 'value': 92},
                 ],
                 value=92,
                 inline=True,
@@ -697,7 +697,7 @@ def update_bay_graph(distance):
 
     # ----- Layout -----
     fig.update_layout(
-        title=f'Parallel Layout - Bay (blue distance={distance}m, {n_groups} groups)',
+        title=f'Parallel Layout - Bay Adjustable ({(n_groups - 1) * 14} groups)',
         xaxis_title='X (m)',
         yaxis_title='Y (m)',
         yaxis=dict(autorange='reversed', range=[0, 1200],
