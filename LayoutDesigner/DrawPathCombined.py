@@ -312,30 +312,30 @@ data_perpendicular = load_data('perpendicular')
 app = Dash(__name__, suppress_callback_exceptions=True)
 server = app.server  # For gunicorn
 
-# Navigation links
-nav_links = html.Div([
-    html.A('Parallel Layout (Row Adjustable)', href='/parallel', style={
-        'marginRight': '20px',
-        'fontSize': '18px',
-        'fontWeight': 'bold'
+# Layout selector dropdown
+layout_dropdown = html.Div([
+    html.Label("Select Layout: ", style={
+        'fontSize': '16px',
+        'fontWeight': 'bold',
+        'marginRight': '10px'
     }),
-    html.A('Parallel Layout (Bay Adjustable)', href='/bay', style={
-        'marginRight': '20px',
-        'fontSize': '18px',
-        'fontWeight': 'bold'
-    }),
-    html.A('Perpendicular Layout', href='/perpendicular', style={
-        'fontSize': '18px',
-        'fontWeight': 'bold'
-    }),
-], style={'marginBottom': '20px'})
+    dcc.Dropdown(
+        id='layout-selector',
+        options=[
+            {'label': 'Parallel Layout (Row Adjustable)', 'value': 'parallel'},
+            {'label': 'Parallel Layout (Bay Adjustable)', 'value': 'bay'},
+            {'label': 'Perpendicular Layout', 'value': 'perpendicular'},
+        ],
+        value='parallel',
+        clearable=False,
+        style={'width': '400px'}
+    ),
+], style={'marginBottom': '20px', 'display': 'flex', 'alignItems': 'center'})
 
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-
     html.H3("Layout Settings (in meters)"),
 
-    nav_links,
+    layout_dropdown,
 
     # Sliders for all layouts (visible based on current page)
     html.Div([
@@ -391,42 +391,38 @@ app.layout = html.Div([
 
 @app.callback(
     Output('page-content', 'children'),
-    Input('url', 'pathname')
+    Input('layout-selector', 'value')
 )
-def display_page(pathname):
-    if pathname == '/perpendicular':
+def display_page(layout):
+    if layout == 'perpendicular':
         return render_perpendicular()
-    elif pathname == '/bay':
+    elif layout == 'bay':
         return render_bay()
     else:
-        # Default to parallel
         return render_parallel()
 
 
-# Callback to show/hide sliders based on current page
+# Callback to show/hide sliders based on selected layout
 @app.callback(
     Output('parallel-slider-container', 'style'),
     Output('bay-slider-container', 'style'),
     Output('perpendicular-slider-container', 'style'),
-    Input('url', 'pathname')
+    Input('layout-selector', 'value')
 )
-def update_slider_visibility(pathname):
-    if pathname == '/perpendicular':
-        # Perpendicular Layout: show Blue distance between groups
+def update_slider_visibility(layout):
+    if layout == 'perpendicular':
         return (
             {'display': 'none'},
             {'display': 'none'},
             {'width': '33%', 'marginBottom': '20px', 'display': 'block'}
         )
-    elif pathname == '/bay':
-        # Bay Adjustable: show Blue line distance
+    elif layout == 'bay':
         return (
             {'display': 'none'},
             {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
             {'display': 'none'}
         )
     else:
-        # Parallel Layout (Row Adjustable): show Orange distance between groups
         return (
             {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
             {'display': 'none'},
@@ -803,7 +799,5 @@ def update_perpendicular_graph(distance):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8050))
     print("Starting Dash server...")
-    print(f"Open http://127.0.0.1:{port}/parallel for Parallel Layout (Row Adjustable)")
-    print(f"Open http://127.0.0.1:{port}/bay for Parallel Layout (Bay Adjustable)")
-    print(f"Open http://127.0.0.1:{port}/perpendicular for Perpendicular Layout")
+    print(f"Open http://127.0.0.1:{port}/ to view layouts")
     app.run(debug=False, host='0.0.0.0', port=port)
