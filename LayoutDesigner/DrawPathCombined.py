@@ -314,12 +314,12 @@ server = app.server  # For gunicorn
 
 # Navigation links
 nav_links = html.Div([
-    html.A('Parallel Layout (Row)', href='/parallel', style={
+    html.A('Parallel Layout (Row Adjustable)', href='/parallel', style={
         'marginRight': '20px',
         'fontSize': '18px',
         'fontWeight': 'bold'
     }),
-    html.A('Parallel Layout (Bay)', href='/bay', style={
+    html.A('Parallel Layout (Bay Adjustable)', href='/bay', style={
         'marginRight': '20px',
         'fontSize': '18px',
         'fontWeight': 'bold'
@@ -352,7 +352,7 @@ app.layout = html.Div([
                 inline=True,
                 style={'marginTop': '10px'}
             ),
-        ], style={'width': '33%', 'marginBottom': '20px'}),
+        ], id='parallel-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
 
         html.Div([
             html.Label("Blue line distance (m):"),
@@ -367,7 +367,7 @@ app.layout = html.Div([
                 inline=True,
                 style={'marginTop': '10px'}
             ),
-        ], style={'width': '33%', 'marginBottom': '20px'}),
+        ], id='bay-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
 
         html.Div([
             html.Label("Blue distance between groups (m):"),
@@ -382,7 +382,7 @@ app.layout = html.Div([
                 inline=True,
                 style={'marginTop': '10px'}
             ),
-        ], style={'width': '33%', 'marginBottom': '20px'}),
+        ], id='perpendicular-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
     ], style={'display': 'flex'}),
 
     html.Div(id='page-content')
@@ -401,6 +401,37 @@ def display_page(pathname):
     else:
         # Default to parallel
         return render_parallel()
+
+
+# Callback to show/hide sliders based on current page
+@app.callback(
+    Output('parallel-slider-container', 'style'),
+    Output('bay-slider-container', 'style'),
+    Output('perpendicular-slider-container', 'style'),
+    Input('url', 'pathname')
+)
+def update_slider_visibility(pathname):
+    if pathname == '/perpendicular':
+        # Perpendicular Layout: show Blue distance between groups
+        return (
+            {'display': 'none'},
+            {'display': 'none'},
+            {'width': '33%', 'marginBottom': '20px', 'display': 'block'}
+        )
+    elif pathname == '/bay':
+        # Bay Adjustable: show Blue line distance
+        return (
+            {'display': 'none'},
+            {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
+            {'display': 'none'}
+        )
+    else:
+        # Parallel Layout (Row Adjustable): show Orange distance between groups
+        return (
+            {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
+            {'display': 'none'},
+            {'display': 'none'}
+        )
 
 
 def render_parallel():
@@ -772,7 +803,7 @@ def update_perpendicular_graph(distance):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8050))
     print("Starting Dash server...")
-    print(f"Open http://127.0.0.1:{port}/parallel for Parallel Layout (Row)")
-    print(f"Open http://127.0.0.1:{port}/bay for Parallel Layout (Bay)")
+    print(f"Open http://127.0.0.1:{port}/parallel for Parallel Layout (Row Adjustable)")
+    print(f"Open http://127.0.0.1:{port}/bay for Parallel Layout (Bay Adjustable)")
     print(f"Open http://127.0.0.1:{port}/perpendicular for Perpendicular Layout")
     app.run(debug=False, host='0.0.0.0', port=port)
