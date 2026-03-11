@@ -188,6 +188,28 @@ async def upload_files(
     }
 
 
+@app.get("/drawio/{session_id}")
+async def get_drawio_file(session_id: str):
+    """Serve the drawio file for a session"""
+    session_dir = DATA_DIR / session_id
+    if not session_dir.exists():
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    # Find drawio file in session directory
+    drawio_files = list(session_dir.glob("*.drawio"))
+    if not drawio_files:
+        raise HTTPException(status_code=404, detail="Drawio file not found")
+
+    drawio_path = drawio_files[0]
+
+    from fastapi.responses import FileResponse
+    return FileResponse(
+        path=str(drawio_path),
+        filename=drawio_path.name,
+        media_type="application/xml"
+    )
+
+
 @app.get("/viewer", response_class=HTMLResponse)
 async def viewer(session: str):
     """Viewer page with draw.io iframe"""

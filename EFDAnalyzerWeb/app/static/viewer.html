@@ -98,6 +98,66 @@
             text-align: center;
             padding: 40px;
         }
+        .diagram-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .diagram-info h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .diagram-help {
+            font-size: 14px;
+            color: #666;
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .drawio-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .drawio-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .manual-input {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .manual-input h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .manual-input input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .manual-input button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .manual-input button:hover {
+            background: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -107,11 +167,35 @@
     </div>
 
     <div class="container">
-        <iframe id="drawioFrame"></iframe>
+        <div id="drawioPanel" style="width: 60%; height: 100%; padding: 20px; overflow: auto; background: #f0f0f0;">
+            <div class="diagram-info">
+                <h2>Diagram</h2>
+                <p>Due to browser security restrictions, the diagram cannot be displayed directly in this page.</p>
+                <p>Please download the diagram file and open it in draw.io:</p>
+                <a id="openDrawioBtn" href="#" download class="drawio-link">
+                    Download Diagram
+                </a>
+                <p class="diagram-help">
+                    <strong>Instructions:</strong><br>
+                    1. Download the diagram file above<br>
+                    2. Go to <a href="https://app.diagrams.net/" target="_blank">draw.io</a><br>
+                    3. Open the downloaded file in draw.io<br>
+                    4. Click on a rectangle (shape) to select it<br>
+                    5. Copy the text from the selected shape<br>
+                    6. Paste it in the input box below to view the activity chart
+                </p>
+            </div>
+            <div class="manual-input">
+                <h3>View Activity Data</h3>
+                <p>Enter the activity name from the diagram:</p>
+                <input type="text" id="activityInput" placeholder="e.g., Arrive At Passenger Terminal" />
+                <button id="viewChartBtn">View Chart</button>
+            </div>
+        </div>
         <div id="chartPanel">
             <h2>Activity Chart</h2>
             <div id="chartContent">
-                <p class="no-data">Click on a shape (rectangle) in the diagram to view its activity data.</p>
+                <p class="no-data">Click on a shape in the diagram to view its activity data, or enter an activity name above.</p>
             </div>
         </div>
     </div>
@@ -124,17 +208,31 @@
         if (!sessionId) {
             document.getElementById('chartContent').innerHTML =
                 '<div class="error">No session found. Please <a href="/">upload files</a> first.</div>';
+        } else {
+            // Set up the draw.io download/open link
+            const openDrawioBtn = document.getElementById('openDrawioBtn');
+            openDrawioBtn.href = '/drawio/' + sessionId;
+
+            // Manual input button
+            document.getElementById('viewChartBtn').addEventListener('click', function() {
+                const activityName = document.getElementById('activityInput').value.trim();
+                if (activityName) {
+                    fetchActivityData(activityName);
+                }
+            });
+
+            // Allow Enter key in input field
+            document.getElementById('activityInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const activityName = this.value.trim();
+                    if (activityName) {
+                        fetchActivityData(activityName);
+                    }
+                }
+            });
         }
 
-        // Draw.io configuration
-        const drawioUrl = 'https://app.diagrams.net/';
-
-        // Load draw.io with configuration
-        // Note: In production, we would serve the uploaded file via an endpoint
-        const iframe = document.getElementById('drawioFrame');
-        iframe.src = drawioUrl;
-
-        // Listen for messages from draw.io
+        // Listen for messages from draw.io (if embedding works in the future)
         window.addEventListener('message', function(event) {
             // Safety check for origin
             if (!event.data) return;
@@ -152,9 +250,6 @@
                 }
             }
         });
-
-        // Alternative: poll for selection changes (if postMessage doesn't work)
-        let lastSelectedCell = null;
 
         // Function to fetch activity data from backend
         async function fetchActivityData(label) {
@@ -202,16 +297,9 @@
             }
         }
 
-        // Method to load a draw.io file into the iframe
-        function loadDrawioFile(fileUrl) {
-            // This would be used if we serve the file via an endpoint
-            iframe.src = drawioUrl + '?file=' + encodeURIComponent(fileUrl);
-        }
-
         // Export functions for external use
         window.EFDAnalyzer = {
-            fetchActivityData: fetchActivityData,
-            loadDrawioFile: loadDrawioFile
+            fetchActivityData: fetchActivityData
         };
     </script>
 </body>
