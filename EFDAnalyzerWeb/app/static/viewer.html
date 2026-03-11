@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFDAnalyzer Viewer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 50px);
+        }
+        #drawioFrame {
+            width: 60%;
+            height: 100%;
+            border: none;
+        }
+        #chartPanel {
+            width: 40%;
+            height: 100%;
+            padding: 20px;
+            overflow: auto;
+            background: #f5f5f5;
+            border-left: 2px solid #ddd;
+        }
+        #chartPanel h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .chart-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .chart-info h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        .chart-container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            color: #388e3c;
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .no-data {
+            color: #888;
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EFDAnalyzer - Activity Visualization</h1>
+        <a href="/">Upload New Files</a>
+    </div>
+
+    <div class="container">
+        <iframe id="drawioFrame"></iframe>
+        <div id="chartPanel">
+            <h2>Activity Chart</h2>
+            <div id="chartContent">
+                <p class="no-data">Click on a shape (rectangle) in the diagram to view its activity data.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session');
+
+        if (!sessionId) {
+            document.getElementById('chartContent').innerHTML =
+                '<div class="error">No session found. Please <a href="/">upload files</a> first.</div>';
+        }
+
+        // Draw.io configuration
+        const drawioUrl = 'https://app.diagrams.net/';
+
+        // Load draw.io with configuration
+        // Note: In production, we would serve the uploaded file via an endpoint
+        const iframe = document.getElementById('drawioFrame');
+        iframe.src = drawioUrl;
+
+        // Listen for messages from draw.io
+        window.addEventListener('message', function(event) {
+            // Safety check for origin
+            if (!event.data) return;
+
+            console.log('Received message from draw.io:', event.data);
+
+            // Check if it's a click event
+            if (event.data.event === 'click' || event.data.event === 'cellClick') {
+                const cell = event.data.cell || {};
+                const label = cell.value || cell.label || '';
+
+                if (label) {
+                    console.log('Clicked element label:', label);
+                    fetchActivityData(label);
+                }
+            }
+        });
+
+        // Alternative: poll for selection changes (if postMessage doesn't work)
+        let lastSelectedCell = null;
+
+        // Function to fetch activity data from backend
+        async function fetchActivityData(label) {
+            const chartContent = document.getElementById('chartContent');
+            chartContent.innerHTML = '<p class="loading">Processing: "' + label + '"...</p>';
+
+            try {
+                const response = await fetch('/process-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        session_id: sessionId,
+                        label: label
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    let html = '<div class="chart-info">';
+                    html += '<h3>Selected: ' + data.label + '</h3>';
+                    html += '<p><strong>Activity:</strong> ' + data.activity_name + '</p>';
+                    html += '</div>';
+
+                    if (data.chart_image) {
+                        html += '<div class="chart-container">';
+                        html += '<img src="' + data.chart_image + '" alt="Activity Chart">';
+                        html += '</div>';
+                    }
+
+                    if (data.chart_html) {
+                        html += '<div class="chart-container">';
+                        html += data.chart_html;
+                        html += '</div>';
+                    }
+
+                    chartContent.innerHTML = html;
+                } else {
+                    chartContent.innerHTML = '<div class="error">' + data.message + '</div>';
+                }
+            } catch (error) {
+                chartContent.innerHTML = '<div class="error">Error: ' + error.message + '</div>';
+            }
+        }
+
+        // Method to load a draw.io file into the iframe
+        function loadDrawioFile(fileUrl) {
+            // This would be used if we serve the file via an endpoint
+            iframe.src = drawioUrl + '?file=' + encodeURIComponent(fileUrl);
+        }
+
+        // Export functions for external use
+        window.EFDAnalyzer = {
+            fetchActivityData: fetchActivityData,
+            loadDrawioFile: loadDrawioFile
+        };
+    </script>
+</body>
+</html>
