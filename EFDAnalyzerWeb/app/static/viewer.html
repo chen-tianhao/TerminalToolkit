@@ -40,8 +40,18 @@
             flex: 1;
             height: calc(100vh - 50px);
         }
-        #drawioFrame {
+        #drawioContainer {
             width: 60%;
+            height: 100%;
+            position: relative;
+        }
+        #diagramDiv {
+            width: 100%;
+            height: 100%;
+            background: white;
+        }
+        #diagramDiv iframe {
+            width: 100%;
             height: 100%;
             border: none;
         }
@@ -167,38 +177,24 @@
     </div>
 
     <div class="container">
-        <div id="drawioPanel" style="width: 60%; height: 100%; padding: 20px; overflow: auto; background: #f0f0f0;">
-            <div class="diagram-info">
-                <h2>Diagram</h2>
-                <p>Due to browser security restrictions, the diagram cannot be displayed directly in this page.</p>
-                <p>Please download the diagram file and open it in draw.io:</p>
-                <a id="openDrawioBtn" href="#" download class="drawio-link">
-                    Download Diagram
-                </a>
-                <p class="diagram-help">
-                    <strong>Instructions:</strong><br>
-                    1. Download the diagram file above<br>
-                    2. Go to <a href="https://app.diagrams.net/" target="_blank">draw.io</a><br>
-                    3. Open the downloaded file in draw.io<br>
-                    4. Click on a rectangle (shape) to select it<br>
-                    5. Copy the text from the selected shape<br>
-                    6. Paste it in the input box below to view the activity chart
-                </p>
-            </div>
-            <div class="manual-input">
-                <h3>View Activity Data</h3>
-                <p>Enter the activity name from the diagram:</p>
-                <input type="text" id="activityInput" placeholder="e.g., Arrive At Passenger Terminal" />
-                <button id="viewChartBtn">View Chart</button>
-            </div>
+        <div id="drawioContainer">
+            <div id="diagramDiv" style="width: 100%; height: 100%;"></div>
         </div>
         <div id="chartPanel">
             <h2>Activity Chart</h2>
+            <div class="manual-input" style="margin-bottom: 20px;">
+                <p>Select a shape in the diagram, or enter activity name:</p>
+                <input type="text" id="activityInput" placeholder="e.g., Arrive At Passenger Terminal" style="width: 65%;" />
+                <button id="viewChartBtn">View Chart</button>
+            </div>
             <div id="chartContent">
-                <p class="no-data">Click on a shape in the diagram to view its activity data, or enter an activity name above.</p>
+                <p class="no-data">Click on a shape in the diagram to view its activity data.</p>
             </div>
         </div>
     </div>
+
+    <!-- Load mxgraph from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mxgraph@4.2.2/dist/mxClient.min.js"></script>
 
     <script>
         // Get session ID from URL
@@ -209,10 +205,6 @@
             document.getElementById('chartContent').innerHTML =
                 '<div class="error">No session found. Please <a href="/">upload files</a> first.</div>';
         } else {
-            // Set up the draw.io download/open link
-            const openDrawioBtn = document.getElementById('openDrawioBtn');
-            openDrawioBtn.href = '/drawio/' + sessionId;
-
             // Manual input button
             document.getElementById('viewChartBtn').addEventListener('click', function() {
                 const activityName = document.getElementById('activityInput').value.trim();
@@ -230,26 +222,87 @@
                     }
                 }
             });
+
+            // Load diagram in iframe using draw.io viewer
+            loadDiagram();
         }
 
-        // Listen for messages from draw.io (if embedding works in the future)
-        window.addEventListener('message', function(event) {
-            // Safety check for origin
-            if (!event.data) return;
+        function loadDiagram() {
+            const diagramDiv = document.getElementById('diagramDiv');
+            const drawioUrl = window.location.origin + '/drawio/' + sessionId;
 
-            console.log('Received message from draw.io:', event.data);
+            // Use official viewer.diagrams.net
+            diagramDiv.innerHTML = '<iframe id="drawioFrame" style="width:100%;height:100%;border:none;"></iframe>';
+            const iframe = document.getElementById('drawioFrame');
 
-            // Check if it's a click event
-            if (event.data.event === 'click' || event.data.event === 'cellClick') {
-                const cell = event.data.cell || {};
-                const label = cell.value || cell.label || '';
+            // Load with URL parameter
+            iframe.src = 'https://viewer.diagrams.net/?embed=1&proto=json&spin=1&noExit=1&noSave=1&url=' + encodeURIComponent(drawioUrl);
 
-                if (label) {
-                    console.log('Clicked element label:', label);
-                    fetchActivityData(label);
+            // Listen for messages from draw.io
+            window.addEventListener('message', function(event) {
+                try {
+                    const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+
+                    if (data && data.event) {
+                        console.log('Draw.io event:', data.event);
+
+                        // Check for selection events
+                        if (data.event === 'select' || data.event === 'cellClick') {
+                            const cell = data.cell;
+                            let label = '';
+
+                            if (cell) {
+                                if (typeof cell.value === 'string') {
+                                    label = cell.value;
+                                } else if (cell.value && cell.value.getAttribute) {
+                                    label = cell.value.getAttribute('label') || '';
+                                } else if (cell.getAttribute) {
+                                    label = cell.getAttribute('label') || '';
+                                }
+                            }
+
+                            if (label) {
+                                console.log('Selected cell:', label);
+                                document.getElementById('activityInput').value = label;
+                                fetchActivityData(label);
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // Ignore parse errors
                 }
-            }
-        });
+            });
+
+            // Fallback after timeout
+            setTimeout(function() {
+                try {
+                    // Check if iframe loaded properly
+                    if (!iframe.contentWindow || iframe.contentWindow === null) {
+                        showManualInstructions();
+                    }
+                } catch(e) {
+                    showManualInstructions();
+                }
+            }, 8000);
+        }
+
+        function showManualInstructions() {
+            const diagramDiv = document.getElementById('diagramDiv');
+            diagramDiv.innerHTML = '<div style="padding: 30px; text-align: center; background: #f9f9f9; height: 100%;">' +
+                '<div style="background: white; padding: 25px; border-radius: 10px; display: inline-block; text-align: left; max-width: 500px;">' +
+                '<h2 style="margin-top:0;color:#333;">Open Diagram</h2>' +
+                '<p>Due to browser security restrictions, the diagram cannot be displayed here.</p>' +
+                '<p><strong>Please follow these steps:</strong></p>' +
+                '<ol style="line-height:1.8;">' +
+                '<li>Download the diagram file below</li>' +
+                '<li>Go to <a href="https://app.diagrams.net/" target="_blank">draw.io</a></li>' +
+                '<li>Open the downloaded file in draw.io</li>' +
+                '<li>Click on a rectangle (shape) to select it</li>' +
+                '<li>Copy the text and paste in the input box on the right</li>' +
+                '</ol>' +
+                '<a href="/drawio/' + sessionId + '" download class="drawio-link" style="display:inline-block;margin-top:15px;">Download Diagram</a>' +
+                '</div></div>';
+        }
 
         // Function to fetch activity data from backend
         async function fetchActivityData(label) {
