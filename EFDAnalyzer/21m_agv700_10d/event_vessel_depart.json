@@ -1,0 +1,8016 @@
+[
+  {
+    "time": 0.005,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0001",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 153.4921854683056,
+    "LOA": 123.49218546830558,
+    "discharging": 206,
+    "loading": 2320,
+    "qcDetails": {
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 100.5214943,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0003",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 281.27778560113256,
+    "LOA": 251.27778560113256,
+    "discharging": 124,
+    "loading": 1090,
+    "qcDetails": {
+      "2": "DTQC02",
+      "3": "DTQC03",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 255.7885567,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0002",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3400.0861015354935,
+    "wharfmark_end": 3764,
+    "LOA": 333.9138984645065,
+    "discharging": 4674,
+    "loading": 475,
+    "qcDetails": {
+      "5": "DTQC05",
+      "6": "DTQC06",
+      "7": "DTQC07",
+      "8": "DTQC08",
+      "9": "DTQC09",
+      "10": "DTQC10"
+    }
+  },
+  {
+    "time": 4501.2742926,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0006",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3652.8133563348324,
+    "wharfmark_end": 3764,
+    "LOA": 81.18664366516778,
+    "discharging": 43,
+    "loading": 1877,
+    "qcDetails": {
+      "11": "DTQC11",
+      "12": "DTQC12",
+      "13": "DTQC13"
+    }
+  },
+  {
+    "time": 6945.7579825,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0005",
+    "wharf": "wharf_S",
+    "wharfmark_start": 281.27778560113256,
+    "wharfmark_end": 474.8408110825881,
+    "LOA": 163.56302548145555,
+    "discharging": 918,
+    "loading": 544,
+    "qcDetails": {
+      "14": "DTQC14"
+    }
+  },
+  {
+    "time": 12588.7258547,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0008",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3104.297398329285,
+    "wharfmark_end": 3400.086101535494,
+    "LOA": 265.78870320620877,
+    "discharging": 480,
+    "loading": 807,
+    "qcDetails": {
+      "3": "DTQC03",
+      "12": "DTQC12"
+    }
+  },
+  {
+    "time": 16511.3558919,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0007",
+    "wharf": "wharf_S",
+    "wharfmark_start": 474.8408110825881,
+    "wharfmark_end": 847.1594402801929,
+    "LOA": 342.3186291976048,
+    "discharging": 1830,
+    "loading": 575,
+    "qcDetails": {
+      "2": "DTQC02",
+      "11": "DTQC11",
+      "15": "DTQC15",
+      "16": "DTQC16",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 16990.7294882,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0003"
+  },
+  {
+    "time": 17778.4975666,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0011",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2810.812492666429,
+    "wharfmark_end": 3104.297398329285,
+    "LOA": 263.4849056628561,
+    "discharging": 831,
+    "loading": 361,
+    "qcDetails": {
+      "4": "DTQC04",
+      "18": "DTQC18",
+      "19": "DTQC19"
+    }
+  },
+  {
+    "time": 26150.8827298,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0009",
+    "wharf": "wharf_S",
+    "wharfmark_start": 847.1594402801929,
+    "wharfmark_end": 979.6922403062067,
+    "LOA": 102.53280002601372,
+    "discharging": 128,
+    "loading": 291,
+    "qcDetails": {
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 26675.4266802,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0006"
+  },
+  {
+    "time": 30373.7391068,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0012",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3622.375103426435,
+    "wharfmark_end": 3764,
+    "LOA": 111.62489657356474,
+    "discharging": 153,
+    "loading": 589,
+    "qcDetails": {
+      "13": "DTQC13"
+    }
+  },
+  {
+    "time": 42882.0780133,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0004",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2445.492836982383,
+    "wharfmark_end": 2810.812492666429,
+    "LOA": 335.3196556840463,
+    "discharging": 1408,
+    "loading": 549,
+    "qcDetails": {
+      "21": "DTQC21",
+      "22": "DTQC22",
+      "23": "DTQC23",
+      "24": "DTQC24"
+    }
+  },
+  {
+    "time": 50081.9783803,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0010",
+    "wharf": "wharf_S",
+    "wharfmark_start": 979.6922403062067,
+    "wharfmark_end": 1353.245563854306,
+    "LOA": 343.55332354809946,
+    "discharging": 745,
+    "loading": 2756,
+    "qcDetails": {
+      "25": "DTQC25",
+      "26": "DTQC26",
+      "27": "DTQC27",
+      "28": "DTQC28",
+      "29": "DTQC29",
+      "30": "DTQC30"
+    }
+  },
+  {
+    "time": 50197.066244,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0019",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2047.117533000194,
+    "wharfmark_end": 2445.492836982383,
+    "LOA": 368.3753039821888,
+    "discharging": 501,
+    "loading": 608,
+    "qcDetails": {
+      "31": "DTQC31",
+      "32": "DTQC32",
+      "33": "DTQC33",
+      "34": "DTQC34",
+      "35": "DTQC35"
+    }
+  },
+  {
+    "time": 55425.471676,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0015",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1353.245563854306,
+    "wharfmark_end": 1606.2768408605086,
+    "LOA": 223.03127700620263,
+    "discharging": 509,
+    "loading": 3725,
+    "qcDetails": {
+      "36": "DTQC36",
+      "37": "DTQC37",
+      "38": "DTQC38",
+      "39": "DTQC39"
+    }
+  },
+  {
+    "time": 55774.058978,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0013",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1606.2768408605086,
+    "wharfmark_end": 1954.731018428925,
+    "LOA": 318.4541775684164,
+    "discharging": 842,
+    "loading": 161,
+    "qcDetails": {
+      "40": "DTQC40",
+      "41": "DTQC41",
+      "42": "DTQC42",
+      "43": "DTQC43"
+    }
+  },
+  {
+    "time": 64765.7204756,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0014",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1852.635315402797,
+    "wharfmark_end": 2047.1175330001938,
+    "LOA": 164.48221759739693,
+    "discharging": 1233,
+    "loading": 207,
+    "qcDetails": {
+      "44": "DTQC44",
+      "45": "DTQC45"
+    }
+  },
+  {
+    "time": 69177.121419,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0017",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1594.410470744984,
+    "wharfmark_end": 1852.635315402797,
+    "LOA": 228.224844657813,
+    "discharging": 1036,
+    "loading": 2568,
+    "qcDetails": {
+      "46": "DTQC46",
+      "47": "DTQC47",
+      "48": "DTQC48",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 69566.1153128,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0016",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1954.731018428925,
+    "wharfmark_end": 2289.137543627241,
+    "LOA": 304.40652519831593,
+    "discharging": 2197,
+    "loading": 373,
+    "qcDetails": {
+      "50": "DTQC50",
+      "51": "DTQC51",
+      "52": "DTQC52",
+      "53": "DTQC53",
+      "54": "DTQC54",
+      "55": "DTQC55",
+      "56": "DTQC56"
+    }
+  },
+  {
+    "time": 76401.7519021,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0020",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1307.2853197320394,
+    "wharfmark_end": 1594.410470744984,
+    "LOA": 257.1251510129445,
+    "discharging": 1652,
+    "loading": 458,
+    "qcDetails": {
+      "57": "DTQC57",
+      "58": "DTQC58",
+      "59": "DTQC59",
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 76573.8476038,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0021",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2289.137543627241,
+    "wharfmark_end": 2509.762367575938,
+    "LOA": 190.62482394869676,
+    "discharging": 472,
+    "loading": 295,
+    "qcDetails": {
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 87314.4702689,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0018",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1218.3175604973,
+    "wharfmark_end": 1307.2853197320394,
+    "LOA": 58.96775923473933,
+    "discharging": 87,
+    "loading": 976,
+    "qcDetails": {
+      "31": "DTQC31",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 87831.1515701,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0009"
+  },
+  {
+    "time": 97299.3255327,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0019"
+  },
+  {
+    "time": 102569.9068267,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0025",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2509.762367575938,
+    "wharfmark_end": 2648.9214851275797,
+    "LOA": 109.15911755164203,
+    "discharging": 240,
+    "loading": 26,
+    "qcDetails": {
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 102806.8701465,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0011"
+  },
+  {
+    "time": 105623.4500641,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0022",
+    "wharf": "wharf_N",
+    "wharfmark_start": 857.1043835833118,
+    "wharfmark_end": 1218.3175604973,
+    "LOA": 331.21317691398826,
+    "discharging": 1671,
+    "loading": 1760,
+    "qcDetails": {
+      "18": "DTQC18",
+      "19": "DTQC19",
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 106129.7528871,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0024",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 193.13314188533036,
+    "LOA": 163.13314188533036,
+    "discharging": 372,
+    "loading": 414,
+    "qcDetails": {
+      "32": "DTQC32",
+      "33": "DTQC33",
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 110337.0139,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0023",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2648.9214851275797,
+    "wharfmark_end": 2922.2155139064826,
+    "LOA": 243.29402877890283,
+    "discharging": 1593,
+    "loading": 187,
+    "qcDetails": {
+      "35": "DTQC35",
+      "63": "DTQC63",
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 110764.5886991,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0008"
+  },
+  {
+    "time": 119313.3806735,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0027",
+    "wharf": "wharf_E",
+    "wharfmark_start": 879.3203604072983,
+    "wharfmark_end": 976,
+    "LOA": 66.67963959270168,
+    "discharging": 248,
+    "loading": 1473,
+    "qcDetails": {
+      "3": "DTQC03",
+      "12": "DTQC12",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 120137.0457588,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0012"
+  },
+  {
+    "time": 122890.2229474,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0010"
+  },
+  {
+    "time": 125909.5608193,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0028",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3465.152745577245,
+    "wharfmark_end": 3764,
+    "LOA": 268.84725442275504,
+    "discharging": 1247,
+    "loading": 824,
+    "qcDetails": {
+      "2": "DTQC02",
+      "11": "DTQC11",
+      "13": "DTQC13",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 126195.1680121,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0013"
+  },
+  {
+    "time": 127070.3049702,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0007"
+  },
+  {
+    "time": 134836.7183625,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0029",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1152.6561649761077,
+    "wharfmark_end": 1353.245563854306,
+    "LOA": 170.58939887819838,
+    "discharging": 667,
+    "loading": 3443,
+    "qcDetails": {
+      "15": "DTQC15",
+      "16": "DTQC16",
+      "26": "DTQC26"
+    }
+  },
+  {
+    "time": 135269.7147854,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0030",
+    "wharf": "wharf_N",
+    "wharfmark_start": 503.4174048325191,
+    "wharfmark_end": 857.1043835833118,
+    "LOA": 323.6869787507927,
+    "discharging": 394,
+    "loading": 876,
+    "qcDetails": {
+      "27": "DTQC27",
+      "28": "DTQC28",
+      "29": "DTQC29",
+      "30": "DTQC30",
+      "38": "DTQC38"
+    }
+  },
+  {
+    "time": 136788.8705945,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0026",
+    "wharf": "wharf_E",
+    "wharfmark_start": 193.13314188533036,
+    "wharfmark_end": 547.6652258143238,
+    "LOA": 324.5320839289935,
+    "discharging": 518,
+    "loading": 369,
+    "qcDetails": {
+      "40": "DTQC40"
+    }
+  },
+  {
+    "time": 142240.5317953,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0018"
+  },
+  {
+    "time": 148794.5113166,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0031",
+    "wharf": "wharf_S",
+    "wharfmark_start": 898.7609123913456,
+    "wharfmark_end": 1152.6561649761077,
+    "LOA": 223.89525258476206,
+    "discharging": 268,
+    "loading": 9860,
+    "qcDetails": {
+      "21": "DTQC21",
+      "24": "DTQC24",
+      "31": "DTQC31",
+      "41": "DTQC41"
+    }
+  },
+  {
+    "time": 149330.5054171,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0032",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2810.812492666429,
+    "wharfmark_end": 3215.7731479587915,
+    "LOA": 374.9606552923624,
+    "discharging": 2428,
+    "loading": 533,
+    "qcDetails": {
+      "23": "DTQC23",
+      "42": "DTQC42",
+      "43": "DTQC43",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 150385.2568345,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0004"
+  },
+  {
+    "time": 155747.4734966,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0033",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2047.1175330001938,
+    "wharfmark_end": 2278.397606217375,
+    "LOA": 201.2800732171812,
+    "discharging": 540,
+    "loading": 859,
+    "qcDetails": {
+      "22": "DTQC22",
+      "32": "DTQC32",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 158253.5273201,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0024"
+  },
+  {
+    "time": 166000.1830955,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0036",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2922.2155139064826,
+    "wharfmark_end": 3211.3539532036757,
+    "LOA": 259.13843929719303,
+    "discharging": 1353,
+    "loading": 281,
+    "qcDetails": {
+      "33": "DTQC33",
+      "34": "DTQC34",
+      "55": "DTQC55",
+      "66": "DTQC66"
+    }
+  },
+  {
+    "time": 171040.9840753,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0034",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2278.397606217375,
+    "wharfmark_end": 2634.8015968464765,
+    "LOA": 326.4039906291012,
+    "discharging": 1410,
+    "loading": 2777,
+    "qcDetails": {
+      "29": "DTQC29",
+      "36": "DTQC36",
+      "50": "DTQC50",
+      "52": "DTQC52",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 173353.3938647,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0025"
+  },
+  {
+    "time": 174096.5808841,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0030"
+  },
+  {
+    "time": 176302.7211029,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0015"
+  },
+  {
+    "time": 177190.8310167,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0016"
+  },
+  {
+    "time": 178811.184896,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0037",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1353.245563854306,
+    "wharfmark_end": 1696.7390725743248,
+    "LOA": 313.49350872001867,
+    "discharging": 887,
+    "loading": 2605,
+    "qcDetails": {
+      "4": "DTQC04",
+      "27": "DTQC27",
+      "28": "DTQC28",
+      "30": "DTQC30"
+    }
+  },
+  {
+    "time": 184843.8239839,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0027"
+  },
+  {
+    "time": 187907.1577502,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0039",
+    "wharf": "wharf_N",
+    "wharfmark_start": 632.1007225988678,
+    "wharfmark_end": 857.1043835833118,
+    "LOA": 195.00366098444397,
+    "discharging": 1212,
+    "loading": 437,
+    "qcDetails": {
+      "3": "DTQC03",
+      "12": "DTQC12",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 188228.8917306,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0035",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1696.7390725743248,
+    "wharfmark_end": 1828.9287487491745,
+    "LOA": 102.18967617484957,
+    "discharging": 79,
+    "loading": 851,
+    "qcDetails": {
+      "37": "DTQC37",
+      "38": "DTQC38"
+    }
+  },
+  {
+    "time": 191337.6910936,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0040",
+    "wharf": "wharf_N",
+    "wharfmark_start": 367.21376722447314,
+    "wharfmark_end": 632.1007225988678,
+    "LOA": 234.8869553743947,
+    "discharging": 690,
+    "loading": 267,
+    "qcDetails": {
+      "39": "DTQC39",
+      "41": "DTQC41",
+      "51": "DTQC51"
+    }
+  },
+  {
+    "time": 191535.3628354,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0038",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1828.9287487491745,
+    "wharfmark_end": 2228.9140674759356,
+    "LOA": 369.9853187267613,
+    "discharging": 734,
+    "loading": 355,
+    "qcDetails": {
+      "54": "DTQC54",
+      "56": "DTQC56",
+      "67": "DTQC67"
+    }
+  },
+  {
+    "time": 206570.2193201,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0041",
+    "wharf": "wharf_E",
+    "wharfmark_start": 604.0631406890468,
+    "wharfmark_end": 976,
+    "LOA": 341.9368593109532,
+    "discharging": 2210,
+    "loading": 2075,
+    "qcDetails": {
+      "8": "DTQC08",
+      "9": "DTQC09",
+      "10": "DTQC10",
+      "24": "DTQC24",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 210946.4216511,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0044",
+    "wharf": "wharf_S",
+    "wharfmark_start": 688.6230807688665,
+    "wharfmark_end": 898.7609123913456,
+    "LOA": 180.13783162247913,
+    "discharging": 507,
+    "loading": 488,
+    "qcDetails": {
+      "47": "DTQC47",
+      "49": "DTQC49",
+      "59": "DTQC59",
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 211479.208347,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0017"
+  },
+  {
+    "time": 216351.746795,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0020"
+  },
+  {
+    "time": 216351.750795,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0043",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1218.3175604973,
+    "wharfmark_end": 1578.7775267343636,
+    "LOA": 330.45996623706344,
+    "discharging": 559,
+    "loading": 215,
+    "qcDetails": {
+      "7": "DTQC07",
+      "48": "DTQC48",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 219468.6786999,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0042",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 272.6560759812767,
+    "LOA": 242.65607598127664,
+    "discharging": 721,
+    "loading": 2040,
+    "qcDetails": {
+      "69": "DTQC69",
+      "70": "DTQC70",
+      "71": "DTQC71",
+      "72": "DTQC72",
+      "73": "DTQC73"
+    }
+  },
+  {
+    "time": 225076.065079,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0002"
+  },
+  {
+    "time": 225076.069079,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0045",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3459.5428811151096,
+    "wharfmark_end": 3764,
+    "LOA": 274.45711888489035,
+    "discharging": 402,
+    "loading": 450,
+    "qcDetails": {
+      "57": "DTQC57",
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 231066.683165,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0028"
+  },
+  {
+    "time": 231066.687165,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0047",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3386.78899917699,
+    "wharfmark_end": 3764,
+    "LOA": 347.2110008230102,
+    "discharging": 1678,
+    "loading": 269,
+    "qcDetails": {
+      "5": "DTQC05",
+      "6": "DTQC06",
+      "25": "DTQC25",
+      "74": "DTQC74",
+      "75": "DTQC75",
+      "76": "DTQC76",
+      "13": "DTQC13"
+    }
+  },
+  {
+    "time": 234140.6913169,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0046",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1578.7775267343636,
+    "wharfmark_end": 1726.2114869648274,
+    "LOA": 117.43396023046384,
+    "discharging": 131,
+    "loading": 968,
+    "qcDetails": {
+      "2": "DTQC02",
+      "11": "DTQC11",
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 236521.559967,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0033"
+  },
+  {
+    "time": 236628.9631052,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0021"
+  },
+  {
+    "time": 236630.9106836,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0035"
+  },
+  {
+    "time": 241502.1025807,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0048",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2425.884180906072,
+    "wharfmark_end": 2648.9214851275797,
+    "LOA": 193.03730422150767,
+    "discharging": 408,
+    "loading": 453,
+    "qcDetails": {
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 242052.5435546,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0001"
+  },
+  {
+    "time": 260571.0351126,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0051",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 284.57033760590605,
+    "LOA": 254.57033760590608,
+    "discharging": 1040,
+    "loading": 734,
+    "qcDetails": {
+      "37": "DTQC37",
+      "38": "DTQC38"
+    }
+  },
+  {
+    "time": 262323.3697548,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0044"
+  },
+  {
+    "time": 262323.3737548,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0050",
+    "wharf": "wharf_S",
+    "wharfmark_start": 531.1716293685361,
+    "wharfmark_end": 898.7609123913456,
+    "LOA": 337.5892830228096,
+    "discharging": 500,
+    "loading": 245,
+    "qcDetails": {
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 264807.543206,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0005"
+  },
+  {
+    "time": 271108.0532349,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0055",
+    "wharf": "wharf_S",
+    "wharfmark_start": 394.7100295000563,
+    "wharfmark_end": 531.1716293685361,
+    "LOA": 106.46159986847975,
+    "discharging": 104,
+    "loading": 2089,
+    "qcDetails": {
+      "7": "DTQC07",
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 271703.4329354,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0023"
+  },
+  {
+    "time": 272287.9313397,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0040"
+  },
+  {
+    "time": 272287.9353397,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0049",
+    "wharf": "wharf_N",
+    "wharfmark_start": 343.7174084544213,
+    "wharfmark_end": 632.1007225988678,
+    "LOA": 258.38331414444656,
+    "discharging": 2011,
+    "loading": 353,
+    "qcDetails": {
+      "14": "DTQC14",
+      "21": "DTQC21",
+      "41": "DTQC41",
+      "45": "DTQC45",
+      "47": "DTQC47"
+    }
+  },
+  {
+    "time": 273093.6971419,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0014"
+  },
+  {
+    "time": 276543.3607502,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0038"
+  },
+  {
+    "time": 277214.2184656,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0052",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1696.7390725743248,
+    "wharfmark_end": 1906.8692327323658,
+    "LOA": 180.13016015804106,
+    "discharging": 316,
+    "loading": 329,
+    "qcDetails": {
+      "11": "DTQC11",
+      "35": "DTQC35",
+      "36": "DTQC36"
+    }
+  },
+  {
+    "time": 278355.3189333,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0046"
+  },
+  {
+    "time": 278667.5956034,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0043"
+  },
+  {
+    "time": 279206.5633921,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0036"
+  },
+  {
+    "time": 281063.5916308,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0056",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1218.3175604973,
+    "wharfmark_end": 1604.110750770715,
+    "LOA": 355.79319027341495,
+    "discharging": 1685,
+    "loading": 2432,
+    "qcDetails": {
+      "2": "DTQC02",
+      "33": "DTQC33",
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 281727.9620552,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0059",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3120.41356699041,
+    "wharfmark_end": 3386.78899917699,
+    "LOA": 236.37543218657967,
+    "discharging": 852,
+    "loading": 920,
+    "qcDetails": {
+      "39": "DTQC39",
+      "44": "DTQC44",
+      "48": "DTQC48"
+    }
+  },
+  {
+    "time": 285391.1428653,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0054",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1604.110750770715,
+    "wharfmark_end": 1905.2617613380446,
+    "LOA": 271.1510105673297,
+    "discharging": 357,
+    "loading": 266,
+    "qcDetails": {
+      "49": "DTQC49",
+      "51": "DTQC51",
+      "52": "DTQC52"
+    }
+  },
+  {
+    "time": 286283.9729431,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0053",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1906.8692327323658,
+    "wharfmark_end": 2282.9753371003017,
+    "LOA": 346.1061043679358,
+    "discharging": 1658,
+    "loading": 2570,
+    "qcDetails": {
+      "30": "DTQC30",
+      "54": "DTQC54",
+      "55": "DTQC55",
+      "56": "DTQC56"
+    }
+  },
+  {
+    "time": 286320.304057,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0042"
+  },
+  {
+    "time": 290888.1307862,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0029"
+  },
+  {
+    "time": 293923.1347065,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0057",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2726.370937594295,
+    "wharfmark_end": 3120.41356699041,
+    "LOA": 364.04262939611493,
+    "discharging": 676,
+    "loading": 117,
+    "qcDetails": {
+      "15": "DTQC15",
+      "16": "DTQC16",
+      "20": "DTQC20",
+      "26": "DTQC26"
+    }
+  },
+  {
+    "time": 294786.0718232,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0037"
+  },
+  {
+    "time": 295939.8512336,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0061",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1152.6561649761077,
+    "wharfmark_end": 1499.3099243056492,
+    "LOA": 316.6537593295415,
+    "discharging": 1073,
+    "loading": 295,
+    "qcDetails": {
+      "4": "DTQC04",
+      "6": "DTQC06",
+      "27": "DTQC27"
+    }
+  },
+  {
+    "time": 295999.8881267,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0045"
+  },
+  {
+    "time": 297142.9921532,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0058",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3556.284990027965,
+    "wharfmark_end": 3764,
+    "LOA": 177.71500997203512,
+    "discharging": 886,
+    "loading": 505,
+    "qcDetails": {
+      "13": "DTQC13",
+      "28": "DTQC28",
+      "29": "DTQC29"
+    }
+  },
+  {
+    "time": 299201.5752746,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0034"
+  },
+  {
+    "time": 304142.573468,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0060",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1905.2617613380446,
+    "wharfmark_end": 2263.210405100249,
+    "LOA": 327.9486437622045,
+    "discharging": 989,
+    "loading": 526,
+    "qcDetails": {
+      "19": "DTQC19"
+    }
+  },
+  {
+    "time": 305264.3606632,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0022"
+  },
+  {
+    "time": 306642.3137033,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0047"
+  },
+  {
+    "time": 307483.2758234,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0062",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2263.210405100249,
+    "wharfmark_end": 2479.6326174956685,
+    "LOA": 186.42221239541954,
+    "discharging": 620,
+    "loading": 175,
+    "qcDetails": {
+      "5": "DTQC05",
+      "18": "DTQC18",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 318406.6224598,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0052"
+  },
+  {
+    "time": 319110.2287289,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0039"
+  },
+  {
+    "time": 319812.1410419,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0026"
+  },
+  {
+    "time": 331225.1683258,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0054"
+  },
+  {
+    "time": 337583.7695676,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0064",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 358.568738103892,
+    "LOA": 328.568738103892,
+    "discharging": 1249,
+    "loading": 1137,
+    "qcDetails": {
+      "3": "DTQC03",
+      "11": "DTQC11",
+      "12": "DTQC12",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 341795.8707652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0063",
+    "wharf": "wharf_N",
+    "wharfmark_start": 936.4279831361646,
+    "wharfmark_end": 1218.3175604973,
+    "LOA": 251.88957736113548,
+    "discharging": 193,
+    "loading": 1364,
+    "qcDetails": {
+      "20": "DTQC20",
+      "23": "DTQC23",
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 342508.0699768,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0032"
+  },
+  {
+    "time": 344006.1037273,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0057"
+  },
+  {
+    "time": 348180.7393356,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0066",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2479.6326174956685,
+    "wharfmark_end": 2836.0652751348175,
+    "LOA": 326.432657639149,
+    "discharging": 9823,
+    "loading": 1305,
+    "qcDetails": {
+      "15": "DTQC15",
+      "16": "DTQC16",
+      "26": "DTQC26",
+      "35": "DTQC35",
+      "36": "DTQC36",
+      "40": "DTQC40"
+    }
+  },
+  {
+    "time": 349605.9306877,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0067",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2836.0652751348175,
+    "wharfmark_end": 3029.46796325525,
+    "LOA": 163.4026881204326,
+    "discharging": 148,
+    "loading": 633,
+    "qcDetails": {
+      "42": "DTQC42",
+      "43": "DTQC43",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 351379.1096889,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0065",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3029.46796325525,
+    "wharfmark_end": 3316.1256440754364,
+    "LOA": 256.6576808201861,
+    "discharging": 591,
+    "loading": 266,
+    "qcDetails": {
+      "50": "DTQC50",
+      "51": "DTQC51",
+      "52": "DTQC52"
+    }
+  },
+  {
+    "time": 358879.5869264,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0068",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2869.2671174251946,
+    "wharfmark_end": 3120.41356699041,
+    "LOA": 221.14644956521528,
+    "discharging": 394,
+    "loading": 376,
+    "qcDetails": {
+      "8": "DTQC08",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 361793.9083116,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0070",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1499.3099243056492,
+    "wharfmark_end": 1837.0582901724154,
+    "LOA": 307.74836586676605,
+    "discharging": 921,
+    "loading": 716,
+    "qcDetails": {
+      "9": "DTQC09"
+    }
+  },
+  {
+    "time": 362474.1083361,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0031"
+  },
+  {
+    "time": 365064.4126184,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0041"
+  },
+  {
+    "time": 369160.7104213,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0055"
+  },
+  {
+    "time": 371518.433129,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0069",
+    "wharf": "wharf_E",
+    "wharfmark_start": 857.046379969038,
+    "wharfmark_end": 976,
+    "LOA": 88.95362003096209,
+    "discharging": 180,
+    "loading": 1252,
+    "qcDetails": {
+      "5": "DTQC05",
+      "7": "DTQC07"
+    }
+  },
+  {
+    "time": 371956.6619566,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0062"
+  },
+  {
+    "time": 374514.9158483,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0073",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 221.49459466021628,
+    "LOA": 191.49459466021628,
+    "discharging": 1087,
+    "loading": 659,
+    "qcDetails": {
+      "10": "DTQC10",
+      "18": "DTQC18",
+      "24": "DTQC24",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 374785.6298621,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0072",
+    "wharf": "wharf_E",
+    "wharfmark_start": 358.568738103892,
+    "wharfmark_end": 710.6621946463173,
+    "LOA": 322.0934565424253,
+    "discharging": 1440,
+    "loading": 2716,
+    "qcDetails": {
+      "31": "DTQC31",
+      "46": "DTQC46",
+      "57": "DTQC57",
+      "58": "DTQC58",
+      "59": "DTQC59"
+    }
+  },
+  {
+    "time": 381315.2792229,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0071",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3470.857346206144,
+    "wharfmark_end": 3764,
+    "LOA": 263.1426537938561,
+    "discharging": 641,
+    "loading": 915,
+    "qcDetails": {
+      "21": "DTQC21",
+      "43": "DTQC43",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 382597.6947205,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0076",
+    "wharf": "wharf_S",
+    "wharfmark_start": 318.7950953152331,
+    "wharfmark_end": 531.1716293685361,
+    "LOA": 182.37653405330295,
+    "discharging": 313,
+    "loading": 1134,
+    "qcDetails": {
+      "60": "DTQC60",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 383320.2207499,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0067"
+  },
+  {
+    "time": 385298.6835826,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0074",
+    "wharf": "wharf_N",
+    "wharfmark_start": 644.2028438760435,
+    "wharfmark_end": 936.4279831361646,
+    "LOA": 262.22513926012107,
+    "discharging": 1090,
+    "loading": 1086,
+    "qcDetails": {
+      "42": "DTQC42",
+      "45": "DTQC45"
+    }
+  },
+  {
+    "time": 385444.1705133,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0048"
+  },
+  {
+    "time": 385444.1745133,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0075",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2513.676509639867,
+    "wharfmark_end": 2869.2671174251946,
+    "LOA": 325.5906077853274,
+    "discharging": 939,
+    "loading": 672,
+    "qcDetails": {
+      "14": "DTQC14",
+      "62": "DTQC62",
+      "63": "DTQC63"
+    }
+  },
+  {
+    "time": 393886.1898499,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0049"
+  },
+  {
+    "time": 395280.0416828,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0050"
+  },
+  {
+    "time": 398509.808394,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0059"
+  },
+  {
+    "time": 398985.7408859,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0077",
+    "wharf": "wharf_S",
+    "wharfmark_start": 864.9868598669364,
+    "wharfmark_end": 1152.6561649761077,
+    "LOA": 257.66930510917126,
+    "discharging": 492,
+    "loading": 1549,
+    "qcDetails": {
+      "1": "DTQC01",
+      "6": "DTQC06",
+      "22": "DTQC22",
+      "23": "DTQC23",
+      "27": "DTQC27"
+    }
+  },
+  {
+    "time": 400660.9890972,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0058"
+  },
+  {
+    "time": 403403.6204097,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0063"
+  },
+  {
+    "time": 405136.9206381,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0061"
+  },
+  {
+    "time": 417322.4560044,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0079",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3477.2589886048445,
+    "wharfmark_end": 3764,
+    "LOA": 256.74101139515545,
+    "discharging": 1235,
+    "loading": 369,
+    "qcDetails": {
+      "4": "DTQC04",
+      "13": "DTQC13",
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 418707.5311304,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0082",
+    "wharf": "wharf_N",
+    "wharfmark_start": 292.7605591750833,
+    "wharfmark_end": 644.2028438760435,
+    "LOA": 321.4422847009602,
+    "discharging": 2008,
+    "loading": 803,
+    "qcDetails": {
+      "28": "DTQC28",
+      "29": "DTQC29",
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 423714.0593,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0080",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3120.41356699041,
+    "wharfmark_end": 3312.209508957544,
+    "LOA": 161.7959419671344,
+    "discharging": 395,
+    "loading": 457,
+    "qcDetails": {
+      "39": "DTQC39",
+      "41": "DTQC41"
+    }
+  },
+  {
+    "time": 426155.6617508,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0065"
+  },
+  {
+    "time": 426945.8761393,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0083",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2836.0652751348175,
+    "wharfmark_end": 3109.554742988886,
+    "LOA": 243.48946785406858,
+    "discharging": 769,
+    "loading": 405,
+    "qcDetails": {
+      "44": "DTQC44",
+      "47": "DTQC47"
+    }
+  },
+  {
+    "time": 432130.280589,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0068"
+  },
+  {
+    "time": 435009.173771,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0078",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3109.554742988886,
+    "wharfmark_end": 3475.0098942979303,
+    "LOA": 335.45515130904437,
+    "discharging": 830,
+    "loading": 541,
+    "qcDetails": {
+      "8": "DTQC08",
+      "48": "DTQC48",
+      "50": "DTQC50",
+      "51": "DTQC51",
+      "52": "DTQC52"
+    }
+  },
+  {
+    "time": 437815.2912318,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0081",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1341.375255123634,
+    "wharfmark_end": 1499.309924305649,
+    "LOA": 127.93466918201523,
+    "discharging": 112,
+    "loading": 950,
+    "qcDetails": {
+      "53": "DTQC53",
+      "64": "DTQC64",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 440468.6521003,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0085",
+    "wharf": "wharf_S",
+    "wharfmark_start": 668.7080392263138,
+    "wharfmark_end": 864.9868598669364,
+    "LOA": 166.27882064062254,
+    "discharging": 532,
+    "loading": 320,
+    "qcDetails": {
+      "17": "DTQC17",
+      "66": "DTQC66",
+      "67": "DTQC67",
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 448888.8640087,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0051"
+  },
+  {
+    "time": 449636.6505109,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0064"
+  },
+  {
+    "time": 452865.4405808,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0069"
+  },
+  {
+    "time": 453228.889839,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0087",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 129.15010417887487,
+    "LOA": 99.15010417887487,
+    "discharging": 110,
+    "loading": 960,
+    "qcDetails": {
+      "3": "DTQC03",
+      "5": "DTQC05"
+    }
+  },
+  {
+    "time": 453396.0253707,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0086",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1604.110750770715,
+    "wharfmark_end": 1857.318203130153,
+    "LOA": 223.207452359438,
+    "discharging": 2016,
+    "loading": 455,
+    "qcDetails": {
+      "7": "DTQC07",
+      "11": "DTQC11"
+    }
+  },
+  {
+    "time": 453839.1779156,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0077"
+  },
+  {
+    "time": 454026.1573051,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0084",
+    "wharf": "wharf_S",
+    "wharfmark_start": 864.9868598669364,
+    "wharfmark_end": 1269.0299425046755,
+    "LOA": 374.04308263773925,
+    "discharging": 615,
+    "loading": 206,
+    "qcDetails": {
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 463445.0544761,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0090",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 201.32756496092378,
+    "LOA": 171.32756496092378,
+    "discharging": 1089,
+    "loading": 629,
+    "qcDetails": {
+      "24": "DTQC24"
+    }
+  },
+  {
+    "time": 464445.6957615,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0089",
+    "wharf": "wharf_N",
+    "wharfmark_start": 936.4279831361646,
+    "wharfmark_end": 1208.6678432340614,
+    "LOA": 242.2398600978969,
+    "discharging": 709,
+    "loading": 1051,
+    "qcDetails": {
+      "27": "DTQC27"
+    }
+  },
+  {
+    "time": 468084.7177065,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0053"
+  },
+  {
+    "time": 468084.7217065,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0088",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2131.231905668003,
+    "wharfmark_end": 2513.676509639867,
+    "LOA": 352.44460397186424,
+    "discharging": 4364,
+    "loading": 1455,
+    "qcDetails": {
+      "6": "DTQC06",
+      "12": "DTQC12",
+      "21": "DTQC21",
+      "22": "DTQC22",
+      "23": "DTQC23"
+    }
+  },
+  {
+    "time": 469568.2366911,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0073"
+  },
+  {
+    "time": 472933.1884462,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0096",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 249.73792610311654,
+    "LOA": 219.73792610311654,
+    "discharging": 469,
+    "loading": 906,
+    "qcDetails": {
+      "10": "DTQC10",
+      "18": "DTQC18",
+      "25": "DTQC25",
+      "30": "DTQC30"
+    }
+  },
+  {
+    "time": 476336.0959617,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0071"
+  },
+  {
+    "time": 477376.2448754,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0091",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3414.824013944994,
+    "wharfmark_end": 3764,
+    "LOA": 319.17598605500615,
+    "discharging": 1781,
+    "loading": 1123,
+    "qcDetails": {
+      "37": "DTQC37",
+      "38": "DTQC38",
+      "43": "DTQC43",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 478214.17524,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0092",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1863.1650823722628,
+    "wharfmark_end": 2131.231905668003,
+    "LOA": 238.06682329574025,
+    "discharging": 686,
+    "loading": 277,
+    "qcDetails": {
+      "54": "DTQC54",
+      "55": "DTQC55"
+    }
+  },
+  {
+    "time": 479349.8273899,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0093",
+    "wharf": "wharf_E",
+    "wharfmark_start": 806.5469773621063,
+    "wharfmark_end": 976,
+    "LOA": 139.4530226378937,
+    "discharging": 152,
+    "loading": 310,
+    "qcDetails": {
+      "14": "DTQC14"
+    }
+  },
+  {
+    "time": 479365.1342451,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0081"
+  },
+  {
+    "time": 484568.7589386,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0076"
+  },
+  {
+    "time": 487844.8623696,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0094",
+    "wharf": "wharf_S",
+    "wharfmark_start": 327.3428694984952,
+    "wharfmark_end": 668.7080392263138,
+    "LOA": 311.36516972781857,
+    "discharging": 712,
+    "loading": 2187,
+    "qcDetails": {
+      "8": "DTQC08",
+      "17": "DTQC17",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 490469.3299243,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0095",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2869.2671174251946,
+    "wharfmark_end": 3092.1304819825264,
+    "LOA": 192.86336455733158,
+    "discharging": 725,
+    "loading": 2730,
+    "qcDetails": {
+      "56": "DTQC56",
+      "60": "DTQC60",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 492209.7864021,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0085"
+  },
+  {
+    "time": 495499.1732217,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0078"
+  },
+  {
+    "time": 495499.1772217,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0098",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3109.554742988886,
+    "wharfmark_end": 3446.404780045052,
+    "LOA": 306.85003705616583,
+    "discharging": 1025,
+    "loading": 2733,
+    "qcDetails": {
+      "51": "DTQC51",
+      "52": "DTQC52",
+      "63": "DTQC63"
+    }
+  },
+  {
+    "time": 499247.2452702,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0097",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1269.0299425046755,
+    "wharfmark_end": 1361.0290374498056,
+    "LOA": 61.99909494512998,
+    "discharging": 103,
+    "loading": 339,
+    "qcDetails": {
+      "50": "DTQC50",
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 500912.8955646,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0075"
+  },
+  {
+    "time": 500912.8995646,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0099",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2513.676509639867,
+    "wharfmark_end": 2853.9683756815552,
+    "LOA": 310.291866041688,
+    "discharging": 601,
+    "loading": 1370,
+    "qcDetails": {
+      "48": "DTQC48",
+      "64": "DTQC64",
+      "65": "DTQC65",
+      "66": "DTQC66",
+      "67": "DTQC67",
+      "68": "DTQC68",
+      "69": "DTQC69"
+    }
+  },
+  {
+    "time": 509212.30647,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0102",
+    "wharf": "wharf_E",
+    "wharfmark_start": 277.7601908912487,
+    "wharfmark_end": 358.568738103892,
+    "LOA": 50.80854721264328,
+    "discharging": 121,
+    "loading": 279,
+    "qcDetails": {
+      "2": "DTQC02"
+    }
+  },
+  {
+    "time": 509559.8649051,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0087"
+  },
+  {
+    "time": 509559.8689051,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0100",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 253.16337742763292,
+    "LOA": 223.16337742763292,
+    "discharging": 508,
+    "loading": 727,
+    "qcDetails": {
+      "62": "DTQC62",
+      "71": "DTQC71",
+      "72": "DTQC72"
+    }
+  },
+  {
+    "time": 510562.4587675,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0080"
+  },
+  {
+    "time": 512480.2959881,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0072"
+  },
+  {
+    "time": 523044.8946452,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0108",
+    "wharf": "wharf_E",
+    "wharfmark_start": 421.29033754371306,
+    "wharfmark_end": 806.5469773621063,
+    "LOA": 355.25663981839324,
+    "discharging": 738,
+    "loading": 667,
+    "qcDetails": {
+      "3": "DTQC03",
+      "5": "DTQC05",
+      "30": "DTQC30",
+      "31": "DTQC31"
+    }
+  },
+  {
+    "time": 523587.6758248,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0056"
+  },
+  {
+    "time": 530686.9193551,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0105",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1208.6678432340614,
+    "wharfmark_end": 1507.9663287869075,
+    "LOA": 269.29848555284616,
+    "discharging": 512,
+    "loading": 4664,
+    "qcDetails": {
+      "25": "DTQC25",
+      "41": "DTQC41",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 531094.5710068,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0096"
+  },
+  {
+    "time": 532297.3364811,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0097"
+  },
+  {
+    "time": 534323.6249284,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0101",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 191.06616775127003,
+    "LOA": 161.06616775127003,
+    "discharging": 256,
+    "loading": 313,
+    "qcDetails": {
+      "20": "DTQC20",
+      "69": "DTQC69",
+      "70": "DTQC70",
+      "73": "DTQC73"
+    }
+  },
+  {
+    "time": 539254.5837775,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0099"
+  },
+  {
+    "time": 545569.8792466,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0107",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2513.676509639867,
+    "wharfmark_end": 2703.076891686297,
+    "LOA": 159.4003820464301,
+    "discharging": 1167,
+    "loading": 2622,
+    "qcDetails": {
+      "13": "DTQC13",
+      "48": "DTQC48"
+    }
+  },
+  {
+    "time": 550807.2999777,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0079"
+  },
+  {
+    "time": 552426.1956781,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0093"
+  },
+  {
+    "time": 560295.1499244,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0109",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3105.561727167356,
+    "wharfmark_end": 3414.824013944994,
+    "LOA": 279.26228677763817,
+    "discharging": 1313,
+    "loading": 1683,
+    "qcDetails": {
+      "4": "DTQC04",
+      "14": "DTQC14",
+      "20": "DTQC20",
+      "47": "DTQC47"
+    }
+  },
+  {
+    "time": 562221.9699129,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0106",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3660.4350081758935,
+    "wharfmark_end": 3764,
+    "LOA": 73.56499182410674,
+    "discharging": 299,
+    "loading": 331,
+    "qcDetails": {
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 562938.8111239,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0083"
+  },
+  {
+    "time": 563187.6749199,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0101"
+  },
+  {
+    "time": 564823.6385781,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0110",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 119.16949711930533,
+    "LOA": 89.16949711930533,
+    "discharging": 260,
+    "loading": 2194,
+    "qcDetails": {
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 567601.5957616,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0102"
+  },
+  {
+    "time": 579228.7876552,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0112",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2836.0652751348175,
+    "wharfmark_end": 3046.340004585653,
+    "LOA": 180.27472945083525,
+    "discharging": 392,
+    "loading": 3841,
+    "qcDetails": {
+      "62": "DTQC62",
+      "69": "DTQC69",
+      "70": "DTQC70",
+      "72": "DTQC72",
+      "73": "DTQC73"
+    }
+  },
+  {
+    "time": 581148.1053148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0100"
+  },
+  {
+    "time": 581148.1093148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0103",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 408.89801962064826,
+    "LOA": 378.89801962064826,
+    "discharging": 1452,
+    "loading": 8231,
+    "qcDetails": {
+      "18": "DTQC18",
+      "33": "DTQC33",
+      "34": "DTQC34",
+      "39": "DTQC39"
+    }
+  },
+  {
+    "time": 593296.4831202,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0092"
+  },
+  {
+    "time": 593296.4871202,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0113",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1868.5118997230702,
+    "wharfmark_end": 2131.231905668003,
+    "LOA": 232.72000594493275,
+    "discharging": 3552,
+    "loading": 2051,
+    "qcDetails": {
+      "31": "DTQC31",
+      "71": "DTQC71",
+      "74": "DTQC74"
+    }
+  },
+  {
+    "time": 594686.8689402,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0108"
+  },
+  {
+    "time": 594686.8729402,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0104",
+    "wharf": "wharf_E",
+    "wharfmark_start": 594.4059216406458,
+    "wharfmark_end": 976,
+    "LOA": 351.59407835935417,
+    "discharging": 2399,
+    "loading": 568,
+    "qcDetails": {
+      "10": "DTQC10",
+      "50": "DTQC50",
+      "57": "DTQC57",
+      "58": "DTQC58",
+      "59": "DTQC59",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 596779.1384248,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0074"
+  },
+  {
+    "time": 596779.1424248,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0120",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1269.0299425046755,
+    "wharfmark_end": 1365.02114211438,
+    "LOA": 65.99119960970435,
+    "discharging": 200,
+    "loading": 157,
+    "qcDetails": {
+      "45": "DTQC45"
+    }
+  },
+  {
+    "time": 610946.0937064,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0115",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2385.1264839772343,
+    "wharfmark_end": 2479.6326174956685,
+    "LOA": 64.50613351843393,
+    "discharging": 79,
+    "loading": 439,
+    "qcDetails": {
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 616557.0875995,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0060"
+  },
+  {
+    "time": 616557.0915995,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0111",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1990.3677948125849,
+    "wharfmark_end": 2385.1264839772343,
+    "LOA": 364.75868916464947,
+    "discharging": 2775,
+    "loading": 1090,
+    "qcDetails": {
+      "2": "DTQC02",
+      "66": "DTQC66",
+      "67": "DTQC67",
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 621594.3806007,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0094"
+  },
+  {
+    "time": 621594.3846007,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0118",
+    "wharf": "wharf_S",
+    "wharfmark_start": 562.8528526765606,
+    "wharfmark_end": 864.9868598669364,
+    "LOA": 272.13400719037577,
+    "discharging": 505,
+    "loading": 341,
+    "qcDetails": {
+      "75": "DTQC75",
+      "76": "DTQC76",
+      "55": "DTQC55"
+    }
+  },
+  {
+    "time": 621594.3886007,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0114",
+    "wharf": "wharf_S",
+    "wharfmark_start": 196.01263258548028,
+    "wharfmark_end": 562.8528526765606,
+    "LOA": 336.8402200910803,
+    "discharging": 30345,
+    "loading": 1556,
+    "qcDetails": {
+      "5": "DTQC05",
+      "42": "DTQC42",
+      "30": "DTQC30",
+      "54": "DTQC54",
+      "3": "DTQC03"
+    }
+  },
+  {
+    "time": 635383.2405257,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0091"
+  },
+  {
+    "time": 635383.2445257,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0116",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3425.0145657017333,
+    "wharfmark_end": 3764,
+    "LOA": 308.9854342982666,
+    "discharging": 2930,
+    "loading": 552,
+    "qcDetails": {
+      "17": "DTQC17",
+      "38": "DTQC38",
+      "29": "DTQC29",
+      "19": "DTQC19",
+      "8": "DTQC08"
+    }
+  },
+  {
+    "time": 640201.8459652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0124",
+    "wharf": "wharf_N",
+    "wharfmark_start": 742.8649576547091,
+    "wharfmark_end": 936.4279831361646,
+    "LOA": 163.56302548145555,
+    "discharging": 817,
+    "loading": 568,
+    "qcDetails": {
+      "61": "DTQC61",
+      "37": "DTQC37",
+      "56": "DTQC56",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 644865.9436783,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0084"
+  },
+  {
+    "time": 644865.9476783,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0119",
+    "wharf": "wharf_S",
+    "wharfmark_start": 864.9868598669364,
+    "wharfmark_end": 1187.5812613683365,
+    "LOA": 292.59440150140017,
+    "discharging": 1174,
+    "loading": 1565,
+    "qcDetails": {
+      "49": "DTQC49",
+      "32": "DTQC32",
+      "43": "DTQC43"
+    }
+  },
+  {
+    "time": 645644.261675,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0095"
+  },
+  {
+    "time": 646686.6148325,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0082"
+  },
+  {
+    "time": 646686.6188325,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0117",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2835.609691712311,
+    "wharfmark_end": 3069.002429359736,
+    "LOA": 203.39273764742524,
+    "discharging": 285,
+    "loading": 1173,
+    "qcDetails": {
+      "1": "DTQC01",
+      "60": "DTQC60",
+      "28": "DTQC28"
+    }
+  },
+  {
+    "time": 647698.8755109,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0121",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3446.404780045052,
+    "wharfmark_end": 3599.896965513358,
+    "LOA": 123.49218546830558,
+    "discharging": 191,
+    "loading": 2981,
+    "qcDetails": {
+      "55": "DTQC55"
+    }
+  },
+  {
+    "time": 648616.5138348,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0118"
+  },
+  {
+    "time": 658767.3316788,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0129",
+    "wharf": "wharf_N",
+    "wharfmark_start": 377.54530197066276,
+    "wharfmark_end": 742.8649576547091,
+    "LOA": 335.3196556840463,
+    "discharging": 1625,
+    "loading": 688,
+    "qcDetails": {
+      "57": "DTQC57",
+      "75": "DTQC75",
+      "59": "DTQC59",
+      "65": "DTQC65",
+      "39": "DTQC39",
+      "70": "DTQC70",
+      "10": "DTQC10"
+    }
+  },
+  {
+    "time": 663230.0121456,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0104"
+  },
+  {
+    "time": 663660.8454927,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0122",
+    "wharf": "wharf_S",
+    "wharfmark_start": 562.8528526765606,
+    "wharfmark_end": 844.1306382776932,
+    "LOA": 251.27778560113256,
+    "discharging": 197,
+    "loading": 997,
+    "qcDetails": {
+      "58": "DTQC58",
+      "50": "DTQC50",
+      "51": "DTQC51",
+      "52": "DTQC52"
+    }
+  },
+  {
+    "time": 665209.5019383,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0098"
+  },
+  {
+    "time": 671215.7441976,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0120"
+  },
+  {
+    "time": 671801.3224476,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0115"
+  },
+  {
+    "time": 671801.3264476,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0123",
+    "wharf": "wharf_E",
+    "wharfmark_start": 612.0861015354935,
+    "wharfmark_end": 976,
+    "LOA": 333.9138984645065,
+    "discharging": 4423,
+    "loading": 384,
+    "qcDetails": {
+      "72": "DTQC72",
+      "63": "DTQC63",
+      "69": "DTQC69",
+      "73": "DTQC73",
+      "45": "DTQC45",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 672030.8461188,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0112"
+  },
+  {
+    "time": 675486.7163017,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0106"
+  },
+  {
+    "time": 682161.711522,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0070"
+  },
+  {
+    "time": 686030.272302,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0125",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3046.340004585653,
+    "wharfmark_end": 3418.6586337832578,
+    "LOA": 342.3186291976048,
+    "discharging": 1778,
+    "loading": 617,
+    "qcDetails": {
+      "62": "DTQC62",
+      "64": "DTQC64",
+      "47": "DTQC47",
+      "9": "DTQC09",
+      "14": "DTQC14"
+    }
+  },
+  {
+    "time": 691562.7038504,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0126",
+    "wharf": "wharf_E",
+    "wharfmark_start": 408.89801962064826,
+    "wharfmark_end": 520.0846632858161,
+    "LOA": 81.18664366516778,
+    "discharging": 51,
+    "loading": 2065,
+    "qcDetails": {
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 693541.0102758,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0109"
+  },
+  {
+    "time": 693541.0142758,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0128",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2703.076891686297,
+    "wharfmark_end": 2835.609691712311,
+    "LOA": 102.53280002601372,
+    "discharging": 144,
+    "loading": 312,
+    "qcDetails": {
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 694268.0616389,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0110"
+  },
+  {
+    "time": 698409.8421813,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0127",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1203.5212210994405,
+    "wharfmark_end": 1499.3099243056492,
+    "LOA": 265.78870320620877,
+    "discharging": 422,
+    "loading": 762,
+    "qcDetails": {
+      "44": "DTQC44",
+      "52": "DTQC52",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 705539.6557896,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0122"
+  },
+  {
+    "time": 705805.2769554,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0135",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2851.857786988256,
+    "wharfmark_end": 3046.340004585653,
+    "LOA": 164.48221759739693,
+    "discharging": 1045,
+    "loading": 155,
+    "qcDetails": {
+      "51": "DTQC51",
+      "34": "DTQC34",
+      "50": "DTQC50",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 709476.4522326,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0136",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1610.2870550652572,
+    "wharfmark_end": 1868.5118997230702,
+    "LOA": 228.224844657813,
+    "discharging": 1017,
+    "loading": 2793,
+    "qcDetails": {
+      "1": "DTQC01",
+      "37": "DTQC37",
+      "46": "DTQC46",
+      "28": "DTQC28",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 711288.6857813,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0117"
+  },
+  {
+    "time": 711607.8276396,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0124"
+  },
+  {
+    "time": 713185.9354767,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0105"
+  },
+  {
+    "time": 713185.9394767,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0130",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3069.002429359736,
+    "wharfmark_end": 3362.487335022592,
+    "LOA": 263.4849056628561,
+    "discharging": 899,
+    "loading": 353,
+    "qcDetails": {
+      "60": "DTQC60",
+      "56": "DTQC56",
+      "41": "DTQC41",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 724903.620038,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0132",
+    "wharf": "wharf_S",
+    "wharfmark_start": 562.8528526765606,
+    "wharfmark_end": 815.8841296827632,
+    "LOA": 223.03127700620263,
+    "discharging": 320,
+    "loading": 3183,
+    "qcDetails": {
+      "33": "DTQC33",
+      "75": "DTQC75",
+      "59": "DTQC59",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 725763.9883989,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0131",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1208.6678432340614,
+    "wharfmark_end": 1582.2211667821607,
+    "LOA": 343.55332354809946,
+    "discharging": 633,
+    "loading": 3124,
+    "qcDetails": {
+      "65": "DTQC65",
+      "23": "DTQC23"
+    }
+  },
+  {
+    "time": 731248.7100448,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0140",
+    "wharf": "wharf_N",
+    "wharfmark_start": 288.57754273592343,
+    "wharfmark_end": 377.54530197066276,
+    "LOA": 58.96775923473933,
+    "discharging": 74,
+    "loading": 1085,
+    "qcDetails": {
+      "57": "DTQC57",
+      "10": "DTQC10",
+      "39": "DTQC39"
+    }
+  },
+  {
+    "time": 731271.3504328,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0129"
+  },
+  {
+    "time": 731271.3544328,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0133",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3622.375103426435,
+    "wharfmark_end": 3764,
+    "LOA": 111.62489657356474,
+    "discharging": 182,
+    "loading": 440,
+    "qcDetails": {
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 742237.2871523,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0088"
+  },
+  {
+    "time": 748202.7342272,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0134",
+    "wharf": "wharf_N",
+    "wharfmark_start": 394.8406636824178,
+    "wharfmark_end": 743.2948412508342,
+    "LOA": 318.4541775684164,
+    "discharging": 849,
+    "loading": 310,
+    "qcDetails": {
+      "21": "DTQC21",
+      "12": "DTQC12",
+      "6": "DTQC06",
+      "11": "DTQC11",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 758634.3577222,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0089"
+  },
+  {
+    "time": 758634.3617222,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0138",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2835.609691712311,
+    "wharfmark_end": 3056.2345156610077,
+    "LOA": 190.62482394869676,
+    "discharging": 537,
+    "loading": 172,
+    "qcDetails": {
+      "22": "DTQC22",
+      "58": "DTQC58",
+      "52": "DTQC52",
+      "27": "DTQC27"
+    }
+  },
+  {
+    "time": 759685.8851825,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0127"
+  },
+  {
+    "time": 759761.6970282,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0128"
+  },
+  {
+    "time": 764233.7580182,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0086"
+  },
+  {
+    "time": 766077.5890947,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0137",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1211.9117510830683,
+    "wharfmark_end": 1610.2870550652572,
+    "LOA": 368.3753039821888,
+    "discharging": 640,
+    "loading": 622,
+    "qcDetails": {
+      "44": "DTQC44",
+      "20": "DTQC20",
+      "7": "DTQC07",
+      "57": "DTQC57"
+    }
+  },
+  {
+    "time": 768148.816274,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0140"
+  },
+  {
+    "time": 778848.2103315,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0139",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2179.269984441551,
+    "wharfmark_end": 2513.676509639867,
+    "LOA": 304.40652519831593,
+    "discharging": 2337,
+    "loading": 383,
+    "qcDetails": {
+      "10": "DTQC10",
+      "39": "DTQC39",
+      "75": "DTQC75",
+      "32": "DTQC32",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 780766.0418644,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0119"
+  },
+  {
+    "time": 782572.3080059,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0132"
+  },
+  {
+    "time": 783411.5416854,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0141",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1606.5630042069386,
+    "wharfmark_end": 1893.6881552198831,
+    "LOA": 257.1251510129445,
+    "discharging": 1728,
+    "loading": 367,
+    "qcDetails": {
+      "50": "DTQC50",
+      "43": "DTQC43",
+      "33": "DTQC33",
+      "59": "DTQC59",
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 784908.1482428,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0135"
+  },
+  {
+    "time": 784908.1522428,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0143",
+    "wharf": "wharf_S",
+    "wharfmark_start": 850.6985741690801,
+    "wharfmark_end": 1211.9117510830683,
+    "LOA": 331.21317691398826,
+    "discharging": 1271,
+    "loading": 1585,
+    "qcDetails": {
+      "76": "DTQC76",
+      "56": "DTQC56",
+      "19": "DTQC19",
+      "51": "DTQC51"
+    }
+  },
+  {
+    "time": 785796.9069389,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0142",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 139.15911755164203,
+    "LOA": 109.15911755164203,
+    "discharging": 239,
+    "loading": 25,
+    "qcDetails": {
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 789705.1446963,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0144",
+    "wharf": "wharf_S",
+    "wharfmark_start": 577.4045453901772,
+    "wharfmark_end": 850.6985741690801,
+    "LOA": 243.29402877890283,
+    "discharging": 1509,
+    "loading": 118,
+    "qcDetails": {
+      "41": "DTQC41",
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 790160.529256,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0130"
+  },
+  {
+    "time": 790160.533256,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0148",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3070.48248177274,
+    "wharfmark_end": 3425.0145657017333,
+    "LOA": 324.5320839289935,
+    "discharging": 451,
+    "loading": 415,
+    "qcDetails": {
+      "9": "DTQC09",
+      "62": "DTQC62",
+      "14": "DTQC14"
+    }
+  },
+  {
+    "time": 790160.533256,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0145",
+    "wharf": "wharf_N",
+    "wharfmark_start": 743.2948412508342,
+    "wharfmark_end": 936.4279831361646,
+    "LOA": 163.13314188533036,
+    "discharging": 384,
+    "loading": 434,
+    "qcDetails": {
+      "8": "DTQC08",
+      "21": "DTQC21",
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 790456.009146,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0146",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1893.6881552198831,
+    "wharfmark_end": 1990.3677948125849,
+    "LOA": 66.67963959270168,
+    "discharging": 270,
+    "loading": 1461,
+    "qcDetails": {
+      "67": "DTQC67"
+    }
+  },
+  {
+    "time": 792258.5512652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0125"
+  },
+  {
+    "time": 794217.7577916,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0147",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2836.0652751348175,
+    "wharfmark_end": 3134.9125295575727,
+    "LOA": 268.84725442275504,
+    "discharging": 1210,
+    "loading": 710,
+    "qcDetails": {
+      "47": "DTQC47",
+      "29": "DTQC29",
+      "66": "DTQC66"
+    }
+  },
+  {
+    "time": 794573.8654857,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0103"
+  },
+  {
+    "time": 798793.004078,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0149",
+    "wharf": "wharf_N",
+    "wharfmark_start": 936.4279831361646,
+    "wharfmark_end": 1137.017382014363,
+    "LOA": 170.58939887819838,
+    "discharging": 620,
+    "loading": 3503,
+    "qcDetails": {
+      "18": "DTQC18",
+      "6": "DTQC06",
+      "12": "DTQC12",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 799145.5685902,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0116"
+  },
+  {
+    "time": 801572.773912,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0138"
+  },
+  {
+    "time": 802432.4973403,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0134"
+  },
+  {
+    "time": 802432.5013403,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0150",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 404.9606552923624,
+    "LOA": 374.9606552923624,
+    "discharging": 2406,
+    "loading": 543,
+    "qcDetails": {
+      "52": "DTQC52",
+      "17": "DTQC17",
+      "38": "DTQC38",
+      "27": "DTQC27",
+      "22": "DTQC22",
+      "49": "DTQC49",
+      "11": "DTQC11"
+    }
+  },
+  {
+    "time": 803155.904464,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0111"
+  },
+  {
+    "time": 812957.1962936,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0151",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2703.076891686297,
+    "wharfmark_end": 3056.7638704370897,
+    "LOA": 323.6869787507927,
+    "discharging": 369,
+    "loading": 867,
+    "qcDetails": {
+      "2": "DTQC02",
+      "1": "DTQC01",
+      "26": "DTQC26",
+      "28": "DTQC28",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 813500.1543539,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0152",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3134.9125295575727,
+    "wharfmark_end": 3366.192602774754,
+    "LOA": 201.2800732171812,
+    "discharging": 606,
+    "loading": 901,
+    "qcDetails": {
+      "7": "DTQC07",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 821313.3991455,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0136"
+  },
+  {
+    "time": 822885.6209731,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0137"
+  },
+  {
+    "time": 822885.6249731,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0153",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3510.104747415238,
+    "wharfmark_end": 3764,
+    "LOA": 223.89525258476206,
+    "discharging": 244,
+    "loading": 11952,
+    "qcDetails": {
+      "20": "DTQC20",
+      "16": "DTQC16",
+      "44": "DTQC44",
+      "37": "DTQC37",
+      "57": "DTQC57"
+    }
+  },
+  {
+    "time": 825377.2803433,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0090"
+  },
+  {
+    "time": 825382.3195414,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0133"
+  },
+  {
+    "time": 829145.8252573,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0154",
+    "wharf": "wharf_N",
+    "wharfmark_start": 454.1564019536412,
+    "wharfmark_end": 743.2948412508342,
+    "LOA": 259.13843929719303,
+    "discharging": 1169,
+    "loading": 270,
+    "qcDetails": {
+      "48": "DTQC48",
+      "24": "DTQC24",
+      "70": "DTQC70",
+      "15": "DTQC15"
+    }
+  },
+  {
+    "time": 831827.6144871,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0107"
+  },
+  {
+    "time": 832816.9329659,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0157",
+    "wharf": "wharf_N",
+    "wharfmark_start": 262.65098750756823,
+    "wharfmark_end": 394.8406636824178,
+    "LOA": 102.18967617484957,
+    "discharging": 77,
+    "loading": 738,
+    "qcDetails": {
+      "13": "DTQC13",
+      "21": "DTQC21"
+    }
+  },
+  {
+    "time": 833355.9142763,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0155",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2123.228626866567,
+    "wharfmark_end": 2479.6326174956685,
+    "LOA": 326.4039906291012,
+    "discharging": 1386,
+    "loading": 2662,
+    "qcDetails": {
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 837422.6979467,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0145"
+  },
+  {
+    "time": 839489.4406074,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0156",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1211.9117510830683,
+    "wharfmark_end": 1555.4052598030871,
+    "LOA": 313.49350872001867,
+    "discharging": 1028,
+    "loading": 2537,
+    "qcDetails": {
+      "14": "DTQC14",
+      "1": "DTQC01",
+      "8": "DTQC08",
+      "37": "DTQC37",
+      "9": "DTQC09",
+      "2": "DTQC02"
+    }
+  },
+  {
+    "time": 846610.9091733,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0151"
+  },
+  {
+    "time": 847280.7906077,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0148"
+  },
+  {
+    "time": 847280.7946077,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0158",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2670.4971630459786,
+    "wharfmark_end": 3070.48248177274,
+    "LOA": 369.9853187267613,
+    "discharging": 812,
+    "loading": 268,
+    "qcDetails": {
+      "26": "DTQC26",
+      "6": "DTQC06",
+      "28": "DTQC28",
+      "46": "DTQC46",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 848582.3809958,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0159",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1610.2870550652572,
+    "wharfmark_end": 1835.2907160497011,
+    "LOA": 195.00366098444397,
+    "discharging": 1220,
+    "loading": 376,
+    "qcDetails": {
+      "36": "DTQC36",
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 849692.3883699,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0160",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3070.48248177274,
+    "wharfmark_end": 3335.3694371471347,
+    "LOA": 234.8869553743947,
+    "discharging": 718,
+    "loading": 212,
+    "qcDetails": {
+      "21": "DTQC21",
+      "35": "DTQC35"
+    }
+  },
+  {
+    "time": 850150.9677092,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0066"
+  },
+  {
+    "time": 865228.599281,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0142"
+  },
+  {
+    "time": 874820.8609541,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0126"
+  },
+  {
+    "time": 874820.8649541,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0164",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2563.4091991535406,
+    "wharfmark_end": 2836.065275134817,
+    "LOA": 242.65607598127664,
+    "discharging": 642,
+    "loading": 2060,
+    "qcDetails": {
+      "18": "DTQC18",
+      "73": "DTQC73",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 876969.9981519,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0157"
+  },
+  {
+    "time": 888626.0506712,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0162",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 210.13783162247913,
+    "LOA": 180.13783162247913,
+    "discharging": 511,
+    "loading": 516,
+    "qcDetails": {
+      "53": "DTQC53",
+      "13": "DTQC13",
+      "43": "DTQC43",
+      "69": "DTQC69"
+    }
+  },
+  {
+    "time": 898270.1348015,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0168",
+    "wharf": "wharf_N",
+    "wharfmark_start": 231.11909773213353,
+    "wharfmark_end": 454.1564019536412,
+    "LOA": 193.03730422150767,
+    "discharging": 457,
+    "loading": 477,
+    "qcDetails": {
+      "6": "DTQC06",
+      "26": "DTQC26"
+    }
+  },
+  {
+    "time": 898666.3856705,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0167",
+    "wharf": "wharf_N",
+    "wharfmark_start": 743.2948412508342,
+    "wharfmark_end": 890.7288014812981,
+    "LOA": 117.43396023046384,
+    "discharging": 167,
+    "loading": 817,
+    "qcDetails": {
+      "28": "DTQC28"
+    }
+  },
+  {
+    "time": 900884.0091752,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0123"
+  },
+  {
+    "time": 900884.0131752,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0161",
+    "wharf": "wharf_E",
+    "wharfmark_start": 604.0631406890468,
+    "wharfmark_end": 976,
+    "LOA": 341.9368593109532,
+    "discharging": 2295,
+    "loading": 2040,
+    "qcDetails": {
+      "40": "DTQC40",
+      "57": "DTQC57",
+      "12": "DTQC12",
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 901010.2957278,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0158"
+  },
+  {
+    "time": 901010.2997278,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0163",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2513.676509639867,
+    "wharfmark_end": 2874.1364758769305,
+    "LOA": 330.45996623706344,
+    "discharging": 625,
+    "loading": 267,
+    "qcDetails": {
+      "34": "DTQC34",
+      "33": "DTQC33",
+      "45": "DTQC45",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 903172.8221986,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0141"
+  },
+  {
+    "time": 903172.8261986,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0166",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1582.2211667821607,
+    "wharfmark_end": 1886.6782856670511,
+    "LOA": 274.45711888489035,
+    "discharging": 352,
+    "loading": 489,
+    "qcDetails": {
+      "11": "DTQC11",
+      "17": "DTQC17",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 910441.873323,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0149"
+  },
+  {
+    "time": 910441.877323,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0170",
+    "wharf": "wharf_N",
+    "wharfmark_start": 924.0975056281553,
+    "wharfmark_end": 1208.6678432340614,
+    "LOA": 254.57033760590608,
+    "discharging": 1022,
+    "loading": 814,
+    "qcDetails": {
+      "27": "DTQC27",
+      "63": "DTQC63",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 913807.9795148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0150"
+  },
+  {
+    "time": 913807.9835148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0165",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 377.2110008230102,
+    "LOA": 347.2110008230102,
+    "discharging": 1514,
+    "loading": 193,
+    "qcDetails": {
+      "72": "DTQC72",
+      "50": "DTQC50"
+    }
+  },
+  {
+    "time": 915350.0234989,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0139"
+  },
+  {
+    "time": 915350.0274989,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0169",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2146.0872266170577,
+    "wharfmark_end": 2513.676509639867,
+    "LOA": 337.5892830228096,
+    "discharging": 359,
+    "loading": 189,
+    "qcDetails": {
+      "25": "DTQC25",
+      "51": "DTQC51"
+    }
+  },
+  {
+    "time": 920402.4183111,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0143"
+  },
+  {
+    "time": 920402.4223111,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0171",
+    "wharf": "wharf_S",
+    "wharfmark_start": 923.5284369386218,
+    "wharfmark_end": 1211.9117510830683,
+    "LOA": 258.38331414444656,
+    "discharging": 1867,
+    "loading": 435,
+    "qcDetails": {
+      "59": "DTQC59",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 925743.7686358,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0154"
+  },
+  {
+    "time": 925743.7726358,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0172",
+    "wharf": "wharf_N",
+    "wharfmark_start": 454.1564019536412,
+    "wharfmark_end": 664.2865621116823,
+    "LOA": 180.13016015804106,
+    "discharging": 301,
+    "loading": 265,
+    "qcDetails": {
+      "10": "DTQC10",
+      "19": "DTQC19",
+      "38": "DTQC38",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 925743.7726358,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0176",
+    "wharf": "wharf_E",
+    "wharfmark_start": 404.9606552923624,
+    "wharfmark_end": 541.4222551608422,
+    "LOA": 106.46159986847975,
+    "discharging": 94,
+    "loading": 1360,
+    "qcDetails": {
+      "37": "DTQC37",
+      "13": "DTQC13",
+      "48": "DTQC48"
+    }
+  },
+  {
+    "time": 929081.8420954,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0156"
+  },
+  {
+    "time": 929081.8460954,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0174",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1211.9117510830683,
+    "wharfmark_end": 1588.0178554510042,
+    "LOA": 346.1061043679358,
+    "discharging": 2014,
+    "loading": 1748,
+    "qcDetails": {
+      "24": "DTQC24",
+      "32": "DTQC32",
+      "39": "DTQC39"
+    }
+  },
+  {
+    "time": 937852.8303722,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0162"
+  },
+  {
+    "time": 937852.8343722,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0178",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 207.71500997203512,
+    "LOA": 177.71500997203512,
+    "discharging": 1061,
+    "loading": 444,
+    "qcDetails": {
+      "53": "DTQC53",
+      "66": "DTQC66",
+      "14": "DTQC14",
+      "7": "DTQC07"
+    }
+  },
+  {
+    "time": 938292.3190567,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0172"
+  },
+  {
+    "time": 939291.5561586,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0152"
+  },
+  {
+    "time": 939291.5601586,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0175",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3134.9125295575727,
+    "wharfmark_end": 3436.0635401249024,
+    "LOA": 271.1510105673297,
+    "discharging": 290,
+    "loading": 233,
+    "qcDetails": {
+      "56": "DTQC56",
+      "29": "DTQC29",
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 939291.5601586,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0180",
+    "wharf": "wharf_N",
+    "wharfmark_start": 454.1564019536412,
+    "wharfmark_end": 670.5786143490607,
+    "LOA": 186.42221239541954,
+    "discharging": 530,
+    "loading": 186,
+    "qcDetails": {
+      "38": "DTQC38",
+      "58": "DTQC58",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 942951.3331021,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0147"
+  },
+  {
+    "time": 944094.6389465,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0166"
+  },
+  {
+    "time": 944725.1354631,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0182",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2868.5370973709933,
+    "wharfmark_end": 3134.912529557573,
+    "LOA": 236.37543218657967,
+    "discharging": 931,
+    "loading": 1031,
+    "qcDetails": {
+      "17": "DTQC17",
+      "11": "DTQC11",
+      "23": "DTQC23"
+    }
+  },
+  {
+    "time": 945831.8544369,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0163"
+  },
+  {
+    "time": 945831.8584369,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0177",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2513.676509639867,
+    "wharfmark_end": 2907.719139035982,
+    "LOA": 364.04262939611493,
+    "discharging": 865,
+    "loading": 115,
+    "qcDetails": {
+      "52": "DTQC52"
+    }
+  },
+  {
+    "time": 955861.998137,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0131"
+  },
+  {
+    "time": 955862.002137,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0179",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1224.2725230199562,
+    "wharfmark_end": 1582.2211667821607,
+    "LOA": 327.9486437622045,
+    "discharging": 1096,
+    "loading": 730,
+    "qcDetails": {
+      "69": "DTQC69",
+      "10": "DTQC10",
+      "19": "DTQC19",
+      "43": "DTQC43"
+    }
+  },
+  {
+    "time": 955862.002137,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0186",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1582.2211667821607,
+    "wharfmark_end": 1868.878847602347,
+    "LOA": 256.6576808201861,
+    "discharging": 519,
+    "loading": 288,
+    "qcDetails": {
+      "29": "DTQC29",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 958782.2010828,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0121"
+  },
+  {
+    "time": 959173.1850537,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0175"
+  },
+  {
+    "time": 959173.1890537,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0181",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3135.4566633093227,
+    "wharfmark_end": 3482.1104226388643,
+    "LOA": 316.6537593295415,
+    "discharging": 975,
+    "loading": 235,
+    "qcDetails": {
+      "34": "DTQC34",
+      "33": "DTQC33",
+      "22": "DTQC22",
+      "47": "DTQC47",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 961140.057443,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0169"
+  },
+  {
+    "time": 961140.061443,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0183",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2155.107771535975,
+    "wharfmark_end": 2513.676509639867,
+    "LOA": 328.568738103892,
+    "discharging": 1188,
+    "loading": 1098,
+    "qcDetails": {
+      "45": "DTQC45",
+      "25": "DTQC25",
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 961140.061443,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0184",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3482.1104226388643,
+    "wharfmark_end": 3764,
+    "LOA": 251.88957736113548,
+    "discharging": 220,
+    "loading": 1235,
+    "qcDetails": {
+      "55": "DTQC55",
+      "56": "DTQC56",
+      "51": "DTQC51"
+    }
+  },
+  {
+    "time": 974431.0785796,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0176"
+  },
+  {
+    "time": 974561.5889516,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0160"
+  },
+  {
+    "time": 974561.5929516,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0173",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2907.719139035982,
+    "wharfmark_end": 3293.512329309397,
+    "LOA": 355.79319027341495,
+    "discharging": 1793,
+    "loading": 2453,
+    "qcDetails": {
+      "75": "DTQC75",
+      "2": "DTQC02",
+      "8": "DTQC08",
+      "9": "DTQC09",
+      "70": "DTQC70",
+      "15": "DTQC15",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 980083.3744352,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0168"
+  },
+  {
+    "time": 990059.0022066,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0113"
+  },
+  {
+    "time": 990089.0242245,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0164"
+  },
+  {
+    "time": 990089.0282245,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0191",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2479.6326174956685,
+    "wharfmark_end": 2831.726074038094,
+    "LOA": 322.0934565424253,
+    "discharging": 1330,
+    "loading": 2651,
+    "qcDetails": {
+      "21": "DTQC21",
+      "13": "DTQC13",
+      "31": "DTQC31",
+      "37": "DTQC37",
+      "48": "DTQC48",
+      "35": "DTQC35"
+    }
+  },
+  {
+    "time": 990089.0282245,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0187",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 193.4026881204326,
+    "LOA": 163.4026881204326,
+    "discharging": 125,
+    "loading": 722,
+    "qcDetails": {
+      "74": "DTQC74",
+      "71": "DTQC71",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 998581.097299,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0188",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1903.9613219707599,
+    "wharfmark_end": 2155.107771535975,
+    "LOA": 221.14644956521528,
+    "discharging": 444,
+    "loading": 374,
+    "qcDetails": {
+      "38": "DTQC38",
+      "47": "DTQC47"
+    }
+  },
+  {
+    "time": 1002520.8233681,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0190",
+    "wharf": "wharf_E",
+    "wharfmark_start": 377.2110008230102,
+    "wharfmark_end": 598.7055954832265,
+    "LOA": 191.49459466021628,
+    "discharging": 1099,
+    "loading": 663,
+    "qcDetails": {
+      "61": "DTQC61",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 1003487.3081547,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0146"
+  },
+  {
+    "time": 1005237.4537453,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0180"
+  },
+  {
+    "time": 1006274.5419509,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0181"
+  },
+  {
+    "time": 1006274.5459509,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0192",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3188.9677688450083,
+    "wharfmark_end": 3482.1104226388643,
+    "LOA": 263.1426537938561,
+    "discharging": 699,
+    "loading": 931,
+    "qcDetails": {
+      "67": "DTQC67",
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 1009978.1822458,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0193",
+    "wharf": "wharf_N",
+    "wharfmark_start": 335.2027819226791,
+    "wharfmark_end": 454.1564019536412,
+    "LOA": 88.95362003096209,
+    "discharging": 168,
+    "loading": 1123,
+    "qcDetails": {
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 1014244.5300485,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0167"
+  },
+  {
+    "time": 1015347.3404373,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0197",
+    "wharf": "wharf_N",
+    "wharfmark_start": 455.62553614166296,
+    "wharfmark_end": 743.2948412508342,
+    "LOA": 257.66930510917126,
+    "discharging": 573,
+    "loading": 1670,
+    "qcDetails": {
+      "16": "DTQC16",
+      "56": "DTQC56",
+      "27": "DTQC27",
+      "28": "DTQC28",
+      "2": "DTQC02"
+    }
+  },
+  {
+    "time": 1016694.1614876,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0144"
+  },
+  {
+    "time": 1016694.1654876,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0185",
+    "wharf": "wharf_S",
+    "wharfmark_start": 567.0957792994727,
+    "wharfmark_end": 923.5284369386218,
+    "LOA": 326.432657639149,
+    "discharging": 7750,
+    "loading": 1348,
+    "qcDetails": {
+      "26": "DTQC26",
+      "6": "DTQC06",
+      "18": "DTQC18",
+      "73": "DTQC73"
+    }
+  },
+  {
+    "time": 1017915.5587715,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0178"
+  },
+  {
+    "time": 1017915.5627715,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0194",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 292.22513926012107,
+    "LOA": 262.22513926012107,
+    "discharging": 967,
+    "loading": 1038,
+    "qcDetails": {
+      "34": "DTQC34",
+      "33": "DTQC33",
+      "14": "DTQC14"
+    }
+  },
+  {
+    "time": 1017915.5627715,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0196",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3293.512329309397,
+    "wharfmark_end": 3505.8888633627,
+    "LOA": 182.37653405330295,
+    "discharging": 350,
+    "loading": 1501,
+    "qcDetails": {
+      "4": "DTQC04",
+      "51": "DTQC51",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 1018777.3583346,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0184"
+  },
+  {
+    "time": 1020752.8506622,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0200",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3490.5105321459314,
+    "wharfmark_end": 3764,
+    "LOA": 243.48946785406858,
+    "discharging": 677,
+    "loading": 436,
+    "qcDetails": {
+      "55": "DTQC55",
+      "70": "DTQC70",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 1022122.4181279,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0187"
+  },
+  {
+    "time": 1022122.4221279,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0199",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1931.4326848994326,
+    "wharfmark_end": 2123.228626866567,
+    "LOA": 161.7959419671344,
+    "discharging": 436,
+    "loading": 483,
+    "qcDetails": {
+      "74": "DTQC74"
+    }
+  },
+  {
+    "time": 1023793.7522731,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0173"
+  },
+  {
+    "time": 1023793.7562731,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0189",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2907.719139035982,
+    "wharfmark_end": 3245.4675049027483,
+    "LOA": 307.74836586676605,
+    "discharging": 1127,
+    "loading": 759,
+    "qcDetails": {
+      "58": "DTQC58",
+      "7": "DTQC07"
+    }
+  },
+  {
+    "time": 1024969.0089809,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0153"
+  },
+  {
+    "time": 1027019.7334197,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0170"
+  },
+  {
+    "time": 1027019.7374197,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0195",
+    "wharf": "wharf_N",
+    "wharfmark_start": 868.6819152346288,
+    "wharfmark_end": 1224.2725230199562,
+    "LOA": 325.5906077853274,
+    "discharging": 1000,
+    "loading": 597,
+    "qcDetails": {
+      "9": "DTQC09",
+      "41": "DTQC41",
+      "66": "DTQC66"
+    }
+  },
+  {
+    "time": 1030993.6106364,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0202",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3606.065330817985,
+    "wharfmark_end": 3764,
+    "LOA": 127.93466918201523,
+    "discharging": 117,
+    "loading": 874,
+    "qcDetails": {
+      "10": "DTQC10"
+    }
+  },
+  {
+    "time": 1031976.3505231,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0179"
+  },
+  {
+    "time": 1031976.3545231,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0198",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1224.2725230199562,
+    "wharfmark_end": 1511.0135344151117,
+    "LOA": 256.74101139515545,
+    "discharging": 1128,
+    "loading": 259,
+    "qcDetails": {
+      "15": "DTQC15",
+      "71": "DTQC71"
+    }
+  },
+  {
+    "time": 1041001.2937619,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0159"
+  },
+  {
+    "time": 1042620.5365331,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0203",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1707.6825013301373,
+    "wharfmark_end": 1903.9613219707599,
+    "LOA": 166.27882064062254,
+    "discharging": 488,
+    "loading": 371,
+    "qcDetails": {
+      "29": "DTQC29",
+      "36": "DTQC36",
+      "43": "DTQC43",
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 1044300.7984004,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0186"
+  },
+  {
+    "time": 1044300.8024004,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0201",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1565.9775335903882,
+    "wharfmark_end": 1931.4326848994326,
+    "LOA": 335.45515130904437,
+    "discharging": 688,
+    "loading": 742,
+    "qcDetails": {
+      "8": "DTQC08",
+      "75": "DTQC75",
+      "76": "DTQC76",
+      "19": "DTQC19"
+    }
+  },
+  {
+    "time": 1066519.0958307,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0182"
+  },
+  {
+    "time": 1066701.204793,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0204",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2831.726074038094,
+    "wharfmark_end": 3183.168358739054,
+    "LOA": 321.4422847009602,
+    "discharging": 2084,
+    "loading": 890,
+    "qcDetails": {
+      "23": "DTQC23",
+      "57": "DTQC57",
+      "11": "DTQC11",
+      "21": "DTQC21",
+      "17": "DTQC17",
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 1068068.7751073,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0161"
+  },
+  {
+    "time": 1069833.5288423,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0210",
+    "wharf": "wharf_E",
+    "wharfmark_start": 703.7601399021031,
+    "wharfmark_end": 976,
+    "LOA": 242.2398600978969,
+    "discharging": 684,
+    "loading": 1017,
+    "qcDetails": {
+      "40": "DTQC40",
+      "37": "DTQC37"
+    }
+  },
+  {
+    "time": 1076587.4040064,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0197"
+  },
+  {
+    "time": 1076587.4080064,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0206",
+    "wharf": "wharf_N",
+    "wharfmark_start": 464.6388325968896,
+    "wharfmark_end": 868.6819152346288,
+    "LOA": 374.04308263773925,
+    "discharging": 702,
+    "loading": 225,
+    "qcDetails": {
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 1076587.4080064,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0205",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 129.15010417887487,
+    "LOA": 99.15010417887487,
+    "discharging": 88,
+    "loading": 922,
+    "qcDetails": {
+      "2": "DTQC02",
+      "28": "DTQC28"
+    }
+  },
+  {
+    "time": 1078425.928265,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0191"
+  },
+  {
+    "time": 1078425.932265,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0212",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2479.6326174956685,
+    "wharfmark_end": 2828.8086035506744,
+    "LOA": 319.17598605500615,
+    "discharging": 1660,
+    "loading": 1064,
+    "qcDetails": {
+      "16": "DTQC16",
+      "48": "DTQC48",
+      "31": "DTQC31",
+      "27": "DTQC27",
+      "56": "DTQC56"
+    }
+  },
+  {
+    "time": 1079508.8469323,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0188"
+  },
+  {
+    "time": 1084047.2510148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0214",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1985.6547488980814,
+    "wharfmark_end": 2155.107771535975,
+    "LOA": 139.4530226378937,
+    "discharging": 150,
+    "loading": 332,
+    "qcDetails": {
+      "19": "DTQC19"
+    }
+  },
+  {
+    "time": 1092042.0494589,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0203"
+  },
+  {
+    "time": 1092042.0534589,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0208",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1603.2101449262173,
+    "wharfmark_end": 1985.6547488980814,
+    "LOA": 352.44460397186424,
+    "discharging": 4257,
+    "loading": 1476,
+    "qcDetails": {
+      "63": "DTQC63",
+      "69": "DTQC69",
+      "65": "DTQC65",
+      "12": "DTQC12"
+    }
+  },
+  {
+    "time": 1095013.5462516,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0201"
+  },
+  {
+    "time": 1095013.5502516,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0207",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1511.0135344151117,
+    "wharfmark_end": 1764.2209867745498,
+    "LOA": 223.207452359438,
+    "discharging": 2180,
+    "loading": 483,
+    "qcDetails": {
+      "35": "DTQC35",
+      "13": "DTQC13",
+      "38": "DTQC38",
+      "47": "DTQC47",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 1096430.6862511,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0196"
+  },
+  {
+    "time": 1096430.6902511,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0209",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3245.4675049027483,
+    "wharfmark_end": 3446.795069863672,
+    "LOA": 171.32756496092378,
+    "discharging": 1037,
+    "loading": 591,
+    "qcDetails": {
+      "8": "DTQC08"
+    }
+  },
+  {
+    "time": 1101594.0689614,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0183"
+  },
+  {
+    "time": 1101594.0729614,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0213",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2245.609686344127,
+    "wharfmark_end": 2513.6765096398676,
+    "LOA": 238.06682329574025,
+    "discharging": 713,
+    "loading": 314,
+    "qcDetails": {
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 1103990.3584988,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0200"
+  },
+  {
+    "time": 1103990.3624988,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0211",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3514.2620738968835,
+    "wharfmark_end": 3764,
+    "LOA": 219.73792610311654,
+    "discharging": 475,
+    "loading": 913,
+    "qcDetails": {
+      "29": "DTQC29",
+      "1": "DTQC01",
+      "36": "DTQC36"
+    }
+  },
+  {
+    "time": 1127367.864786,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0202"
+  },
+  {
+    "time": 1127367.868786,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0216",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3541.136635442668,
+    "wharfmark_end": 3764,
+    "LOA": 192.86336455733158,
+    "discharging": 636,
+    "loading": 4590,
+    "qcDetails": {
+      "75": "DTQC75",
+      "51": "DTQC51",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 1128311.3700987,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0218",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1764.2209867745498,
+    "wharfmark_end": 1856.22008171968,
+    "LOA": 61.99909494512998,
+    "discharging": 90,
+    "loading": 323,
+    "qcDetails": {
+      "9": "DTQC09"
+    }
+  },
+  {
+    "time": 1128686.038829,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0205"
+  },
+  {
+    "time": 1131505.6616326,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0195"
+  },
+  {
+    "time": 1131505.6656326,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0215",
+    "wharf": "wharf_N",
+    "wharfmark_start": 882.9073532921377,
+    "wharfmark_end": 1224.2725230199562,
+    "LOA": 311.36516972781857,
+    "discharging": 769,
+    "loading": 2054,
+    "qcDetails": {
+      "4": "DTQC04",
+      "76": "DTQC76",
+      "43": "DTQC43",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 1136324.8718514,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0165"
+  },
+  {
+    "time": 1136324.8758514,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0217",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 336.85003705616583,
+    "LOA": 306.85003705616583,
+    "discharging": 1148,
+    "loading": 2569,
+    "qcDetails": {
+      "55": "DTQC55",
+      "45": "DTQC45",
+      "70": "DTQC70",
+      "50": "DTQC50",
+      "14": "DTQC14",
+      "28": "DTQC28",
+      "10": "DTQC10"
+    }
+  },
+  {
+    "time": 1136324.8758514,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0223",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 191.06616775127003,
+    "LOA": 161.06616775127003,
+    "discharging": 266,
+    "loading": 412,
+    "qcDetails": {
+      "41": "DTQC41",
+      "72": "DTQC72"
+    }
+  },
+  {
+    "time": 1139071.1028379,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0220",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3446.795069863672,
+    "wharfmark_end": 3527.603617076315,
+    "LOA": 50.80854721264328,
+    "discharging": 113,
+    "loading": 280,
+    "qcDetails": {
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 1139708.2488471,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0194"
+  },
+  {
+    "time": 1140658.4351898,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0192"
+  },
+  {
+    "time": 1149608.6150652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0174"
+  },
+  {
+    "time": 1149608.6190652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0219",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1211.9117510830683,
+    "wharfmark_end": 1552.2036171247564,
+    "LOA": 310.291866041688,
+    "discharging": 394,
+    "loading": 1436,
+    "qcDetails": {
+      "2": "DTQC02",
+      "66": "DTQC66",
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 1155795.4637604,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0214"
+  },
+  {
+    "time": 1158997.0132969,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0193"
+  },
+  {
+    "time": 1162298.591859,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0211"
+  },
+  {
+    "time": 1162298.595859,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0222",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 253.16337742763292,
+    "LOA": 223.16337742763292,
+    "discharging": 543,
+    "loading": 907,
+    "qcDetails": {
+      "19": "DTQC19",
+      "64": "DTQC64",
+      "36": "DTQC36",
+      "29": "DTQC29"
+    }
+  },
+  {
+    "time": 1164887.2200526,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0177"
+  },
+  {
+    "time": 1165567.4165515,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0224",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3183.168358739054,
+    "wharfmark_end": 3482.4668442919,
+    "LOA": 269.29848555284616,
+    "discharging": 398,
+    "loading": 4488,
+    "qcDetails": {
+      "11": "DTQC11",
+      "21": "DTQC21",
+      "52": "DTQC52",
+      "23": "DTQC23"
+    }
+  },
+  {
+    "time": 1179531.6364094,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0204"
+  },
+  {
+    "time": 1181095.5749861,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0218"
+  },
+  {
+    "time": 1181095.5789861,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0225",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2526.125060676628,
+    "wharfmark_end": 2907.719139035982,
+    "LOA": 351.59407835935417,
+    "discharging": 2170,
+    "loading": 571,
+    "qcDetails": {
+      "57": "DTQC57",
+      "17": "DTQC17",
+      "68": "DTQC68",
+      "16": "DTQC16",
+      "9": "DTQC09"
+    }
+  },
+  {
+    "time": 1183874.6655542,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0226",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2828.8086035506744,
+    "wharfmark_end": 3138.0708903283125,
+    "LOA": 279.26228677763817,
+    "discharging": 1230,
+    "loading": 1589,
+    "qcDetails": {
+      "71": "DTQC71",
+      "22": "DTQC22",
+      "55": "DTQC55"
+    }
+  },
+  {
+    "time": 1184598.4257734,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0228",
+    "wharf": "wharf_E",
+    "wharfmark_start": 600.1951480779964,
+    "wharfmark_end": 703.7601399021031,
+    "LOA": 73.56499182410674,
+    "discharging": 347,
+    "loading": 352,
+    "qcDetails": {
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 1185577.4347081,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0227",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3574.59961795357,
+    "wharfmark_end": 3764,
+    "LOA": 159.4003820464301,
+    "discharging": 1159,
+    "loading": 3059,
+    "qcDetails": {
+      "27": "DTQC27",
+      "45": "DTQC45"
+    }
+  },
+  {
+    "time": 1190719.9226724,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0212"
+  },
+  {
+    "time": 1192858.9071855,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0232",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1985.6547488980814,
+    "wharfmark_end": 2195.9294783489167,
+    "LOA": 180.27472945083525,
+    "discharging": 436,
+    "loading": 5005,
+    "qcDetails": {
+      "31": "DTQC31",
+      "50": "DTQC50",
+      "4": "DTQC04",
+      "53": "DTQC53"
+    }
+  },
+  {
+    "time": 1193490.7970207,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0230",
+    "wharf": "wharf_N",
+    "wharfmark_start": 345.46933547758425,
+    "wharfmark_end": 464.6388325968896,
+    "LOA": 89.16949711930533,
+    "discharging": 321,
+    "loading": 3049,
+    "qcDetails": {
+      "7": "DTQC07"
+    }
+  },
+  {
+    "time": 1194514.1776629,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0223"
+  },
+  {
+    "time": 1196175.2965109,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0198"
+  },
+  {
+    "time": 1196474.7288965,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0215"
+  },
+  {
+    "time": 1199315.2174313,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0190"
+  },
+  {
+    "time": 1199577.0369963,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0199"
+  },
+  {
+    "time": 1199691.9815844,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0217"
+  },
+  {
+    "time": 1199691.9855844,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0221",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 408.89801962064826,
+    "LOA": 378.89801962064826,
+    "discharging": 1424,
+    "loading": 8572,
+    "qcDetails": {
+      "46": "DTQC46",
+      "33": "DTQC33",
+      "67": "DTQC67",
+      "24": "DTQC24",
+      "39": "DTQC39",
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 1199691.9855844,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0235",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1836.9265513809987,
+    "wharfmark_end": 1931.4326848994326,
+    "LOA": 64.50613351843393,
+    "discharging": 83,
+    "loading": 456,
+    "qcDetails": {
+      "61": "DTQC61",
+      "74": "DTQC74",
+      "28": "DTQC28"
+    }
+  },
+  {
+    "time": 1201122.9894471,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0220"
+  },
+  {
+    "time": 1204836.9137405,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0171"
+  },
+  {
+    "time": 1210315.7636993,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0189"
+  },
+  {
+    "time": 1210315.7676993,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0233",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2479.6326174956685,
+    "wharfmark_end": 2742.3526234406013,
+    "LOA": 232.72000594493275,
+    "discharging": 4312,
+    "loading": 2314,
+    "qcDetails": {
+      "49": "DTQC49",
+      "32": "DTQC32",
+      "2": "DTQC02",
+      "59": "DTQC59",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 1211788.8880189,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0238",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1224.2725230199562,
+    "wharfmark_end": 1457.6652606673815,
+    "LOA": 203.39273764742524,
+    "discharging": 315,
+    "loading": 1500,
+    "qcDetails": {
+      "19": "DTQC19",
+      "13": "DTQC13"
+    }
+  },
+  {
+    "time": 1213957.2893967,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0219"
+  },
+  {
+    "time": 1213957.2933967,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0229",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1204.8062225397543,
+    "wharfmark_end": 1590.0628623581476,
+    "LOA": 355.25663981839324,
+    "discharging": 963,
+    "loading": 689,
+    "qcDetails": {
+      "41": "DTQC41",
+      "48": "DTQC48",
+      "56": "DTQC56"
+    }
+  },
+  {
+    "time": 1216303.1040682,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0236",
+    "wharf": "wharf_N",
+    "wharfmark_start": 868.6819152346288,
+    "wharfmark_end": 1191.276316736029,
+    "LOA": 292.59440150140017,
+    "discharging": 1136,
+    "loading": 1639,
+    "qcDetails": {
+      "66": "DTQC66",
+      "25": "DTQC25",
+      "47": "DTQC47",
+      "34": "DTQC34",
+      "40": "DTQC40",
+      "64": "DTQC64",
+      "38": "DTQC38"
+    }
+  },
+  {
+    "time": 1219270.0749109,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0207"
+  },
+  {
+    "time": 1219270.0789109,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0234",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1457.6652606673815,
+    "wharfmark_end": 1824.5054807584618,
+    "LOA": 336.8402200910803,
+    "discharging": 28771,
+    "loading": 1345,
+    "qcDetails": {
+      "14": "DTQC14",
+      "15": "DTQC15",
+      "43": "DTQC43",
+      "10": "DTQC10"
+    }
+  },
+  {
+    "time": 1221177.5048279,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0210"
+  },
+  {
+    "time": 1223095.1457384,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0235"
+  },
+  {
+    "time": 1224101.4537571,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0222"
+  },
+  {
+    "time": 1224101.4577571,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0237",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 338.9854342982666,
+    "LOA": 308.9854342982666,
+    "discharging": 3145,
+    "loading": 588,
+    "qcDetails": {
+      "28": "DTQC28",
+      "35": "DTQC35",
+      "74": "DTQC74",
+      "29": "DTQC29",
+      "37": "DTQC37",
+      "61": "DTQC61",
+      "36": "DTQC36"
+    }
+  },
+  {
+    "time": 1251604.213788,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0206"
+  },
+  {
+    "time": 1251604.217788,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0231",
+    "wharf": "wharf_N",
+    "wharfmark_start": 473.92322606997936,
+    "wharfmark_end": 868.6819152346288,
+    "LOA": 364.75868916464947,
+    "discharging": 2349,
+    "loading": 1178,
+    "qcDetails": {
+      "72": "DTQC72",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 1251604.217788,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0242",
+    "wharf": "wharf_S",
+    "wharfmark_start": 923.5284369386218,
+    "wharfmark_end": 1204.8062225397543,
+    "LOA": 251.27778560113256,
+    "discharging": 184,
+    "loading": 1035,
+    "qcDetails": {
+      "53": "DTQC53",
+      "4": "DTQC04",
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 1251899.9559186,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0239",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2907.719139035982,
+    "wharfmark_end": 3209.853146226358,
+    "LOA": 272.13400719037577,
+    "discharging": 611,
+    "loading": 226,
+    "qcDetails": {
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 1263256.2722307,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0240",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 95.99119960970435,
+    "LOA": 65.99119960970435,
+    "discharging": 206,
+    "loading": 151,
+    "qcDetails": {
+      "50": "DTQC50"
+    }
+  },
+  {
+    "time": 1271999.5858359,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0232"
+  },
+  {
+    "time": 1271999.5898359,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0241",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1969.7364413982614,
+    "wharfmark_end": 2123.228626866567,
+    "LOA": 123.49218546830558,
+    "discharging": 181,
+    "loading": 2434,
+    "qcDetails": {
+      "31": "DTQC31"
+    }
+  },
+  {
+    "time": 1279388.470164,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0246",
+    "wharf": "wharf_E",
+    "wharfmark_start": 408.89801962064826,
+    "wharfmark_end": 520.0846632858161,
+    "LOA": 81.18664366516778,
+    "discharging": 44,
+    "loading": 2109,
+    "qcDetails": {
+      "66": "DTQC66",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 1281813.6945726,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0243",
+    "wharf": "wharf_E",
+    "wharfmark_start": 782.4369745185445,
+    "wharfmark_end": 976,
+    "LOA": 163.56302548145555,
+    "discharging": 876,
+    "loading": 628,
+    "qcDetails": {
+      "39": "DTQC39",
+      "47": "DTQC47",
+      "38": "DTQC38"
+    }
+  },
+  {
+    "time": 1288453.2458041,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0248",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1837.2036413722476,
+    "wharfmark_end": 1969.7364413982614,
+    "LOA": 102.53280002601372,
+    "discharging": 130,
+    "loading": 284,
+    "qcDetails": {
+      "11": "DTQC11"
+    }
+  },
+  {
+    "time": 1288557.01725,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0236"
+  },
+  {
+    "time": 1292784.9660996,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0216"
+  },
+  {
+    "time": 1292837.4149098,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0224"
+  },
+  {
+    "time": 1292837.4189098,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0244",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3138.0708903283125,
+    "wharfmark_end": 3503.3905460123588,
+    "LOA": 335.3196556840463,
+    "discharging": 1439,
+    "loading": 583,
+    "qcDetails": {
+      "34": "DTQC34",
+      "64": "DTQC64",
+      "23": "DTQC23",
+      "21": "DTQC21"
+    }
+  },
+  {
+    "time": 1296012.0128801,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0242"
+  },
+  {
+    "time": 1303664.3474189,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0229"
+  },
+  {
+    "time": 1303664.3514189,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0245",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1230.8915157286124,
+    "wharfmark_end": 1603.2101449262173,
+    "LOA": 342.3186291976048,
+    "discharging": 1733,
+    "loading": 673,
+    "qcDetails": {
+      "40": "DTQC40",
+      "51": "DTQC51",
+      "75": "DTQC75"
+    }
+  },
+  {
+    "time": 1307379.3269751,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0249",
+    "wharf": "wharf_N",
+    "wharfmark_start": 928.4838198137475,
+    "wharfmark_end": 1224.2725230199562,
+    "LOA": 265.78870320620877,
+    "discharging": 407,
+    "loading": 828,
+    "qcDetails": {
+      "41": "DTQC41",
+      "48": "DTQC48",
+      "17": "DTQC17",
+      "16": "DTQC16"
+    }
+  },
+  {
+    "time": 1308439.281245,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0250",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1985.6547488980814,
+    "wharfmark_end": 2180.136966495478,
+    "LOA": 164.48221759739693,
+    "discharging": 1157,
+    "loading": 233,
+    "qcDetails": {
+      "13": "DTQC13"
+    }
+  },
+  {
+    "time": 1313160.0818987,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0225"
+  },
+  {
+    "time": 1313160.0858987,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0247",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2543.8052405714757,
+    "wharfmark_end": 2907.719139035982,
+    "LOA": 333.9138984645065,
+    "discharging": 4931,
+    "loading": 522,
+    "qcDetails": {
+      "62": "DTQC62",
+      "52": "DTQC52",
+      "20": "DTQC20",
+      "53": "DTQC53",
+      "4": "DTQC04",
+      "56": "DTQC56",
+      "9": "DTQC09"
+    }
+  },
+  {
+    "time": 1315341.6010903,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0238"
+  },
+  {
+    "time": 1315473.4675036,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0251",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3470.515094337144,
+    "wharfmark_end": 3764,
+    "LOA": 263.4849056628561,
+    "discharging": 812,
+    "loading": 329,
+    "qcDetails": {
+      "57": "DTQC57",
+      "68": "DTQC68",
+      "19": "DTQC19",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 1317248.839161,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0213"
+  },
+  {
+    "time": 1317248.843161,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0253",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1063.1813259661897,
+    "wharfmark_end": 1204.8062225397543,
+    "LOA": 111.62489657356474,
+    "discharging": 138,
+    "loading": 506,
+    "qcDetails": {
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 1320744.7189238,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0228"
+  },
+  {
+    "time": 1334579.7953678,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0155"
+  },
+  {
+    "time": 1334579.7993678,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0254",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2180.136966495478,
+    "wharfmark_end": 2528.5911440638947,
+    "LOA": 318.4541775684164,
+    "discharging": 942,
+    "loading": 152,
+    "qcDetails": {
+      "70": "DTQC70",
+      "24": "DTQC24",
+      "67": "DTQC67",
+      "46": "DTQC46",
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 1336299.938961,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0240"
+  },
+  {
+    "time": 1339855.9870182,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0221"
+  },
+  {
+    "time": 1349372.7866929,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0252",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 373.55332354809946,
+    "LOA": 343.55332354809946,
+    "discharging": 645,
+    "loading": 2438,
+    "qcDetails": {
+      "50": "DTQC50",
+      "33": "DTQC33",
+      "55": "DTQC55",
+      "22": "DTQC22",
+      "48": "DTQC48",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 1350197.686027,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0255",
+    "wharf": "wharf_S",
+    "wharfmark_start": 107.04487335074094,
+    "wharfmark_end": 196.01263258548028,
+    "LOA": 58.96775923473933,
+    "discharging": 64,
+    "loading": 1051,
+    "qcDetails": {
+      "16": "DTQC16"
+    }
+  },
+  {
+    "time": 1351134.1348949,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0249"
+  },
+  {
+    "time": 1351136.438323,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0256",
+    "wharf": "wharf_E",
+    "wharfmark_start": 520.0846632858161,
+    "wharfmark_end": 773.1159402920186,
+    "LOA": 223.03127700620263,
+    "discharging": 323,
+    "loading": 3405,
+    "qcDetails": {
+      "41": "DTQC41",
+      "28": "DTQC28"
+    }
+  },
+  {
+    "time": 1354200.5011505,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0248"
+  },
+  {
+    "time": 1357043.5035087,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0226"
+  },
+  {
+    "time": 1360086.6921829,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0258",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2123.228626866567,
+    "wharfmark_end": 2457.635152064883,
+    "LOA": 304.40652519831593,
+    "discharging": 2148,
+    "loading": 333,
+    "qcDetails": {
+      "11": "DTQC11",
+      "12": "DTQC12",
+      "29": "DTQC29",
+      "71": "DTQC71",
+      "61": "DTQC61",
+      "37": "DTQC37"
+    }
+  },
+  {
+    "time": 1372634.1544525,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0237"
+  },
+  {
+    "time": 1374935.4892927,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0246"
+  },
+  {
+    "time": 1377932.1541878,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0259",
+    "wharf": "wharf_N",
+    "wharfmark_start": 978.8155920608717,
+    "wharfmark_end": 1237.0404367186848,
+    "LOA": 228.224844657813,
+    "discharging": 1026,
+    "loading": 2616,
+    "qcDetails": {
+      "66": "DTQC66",
+      "19": "DTQC19",
+      "63": "DTQC63",
+      "65": "DTQC65",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 1380164.0688306,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0260",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1237.0404367186848,
+    "wharfmark_end": 1457.6652606673815,
+    "LOA": 190.62482394869676,
+    "discharging": 526,
+    "loading": 191,
+    "qcDetails": {
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 1381620.5665545,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0251"
+  },
+  {
+    "time": 1384639.0006357,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0264",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2864.7768615494097,
+    "wharfmark_end": 3138.0708903283125,
+    "LOA": 243.29402877890283,
+    "discharging": 1642,
+    "loading": 157,
+    "qcDetails": {
+      "68": "DTQC68",
+      "57": "DTQC57",
+      "47": "DTQC47",
+      "24": "DTQC24"
+    }
+  },
+  {
+    "time": 1388374.6615856,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0208"
+  },
+  {
+    "time": 1388606.748148,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0243"
+  },
+  {
+    "time": 1388983.6892511,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0261",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 287.1251510129445,
+    "LOA": 257.1251510129445,
+    "discharging": 1813,
+    "loading": 360,
+    "qcDetails": {
+      "46": "DTQC46",
+      "39": "DTQC39",
+      "69": "DTQC69",
+      "38": "DTQC38",
+      "60": "DTQC60"
+    }
+  },
+  {
+    "time": 1391432.7637356,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0254"
+  },
+  {
+    "time": 1397564.24714,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0265",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3570.8668581146694,
+    "wharfmark_end": 3764,
+    "LOA": 163.13314188533036,
+    "discharging": 414,
+    "loading": 398,
+    "qcDetails": {
+      "23": "DTQC23",
+      "67": "DTQC67",
+      "21": "DTQC21",
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 1401097.5709494,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0253"
+  },
+  {
+    "time": 1405628.1733807,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0244"
+  },
+  {
+    "time": 1405628.1773807,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0257",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3138.0708903283125,
+    "wharfmark_end": 3536.4461943105016,
+    "LOA": 368.3753039821888,
+    "discharging": 540,
+    "loading": 644,
+    "qcDetails": {
+      "36": "DTQC36",
+      "35": "DTQC35",
+      "74": "DTQC74"
+    }
+  },
+  {
+    "time": 1405628.1773807,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0263",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1631.122664969088,
+    "wharfmark_end": 1985.6547488980814,
+    "LOA": 324.5320839289935,
+    "discharging": 401,
+    "loading": 699,
+    "qcDetails": {
+      "44": "DTQC44",
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 1406697.6334261,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0262",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2182.5920636574874,
+    "wharfmark_end": 2543.8052405714757,
+    "LOA": 331.21317691398826,
+    "discharging": 1228,
+    "loading": 1660,
+    "qcDetails": {
+      "50": "DTQC50"
+    }
+  },
+  {
+    "time": 1408841.7683947,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0267",
+    "wharf": "wharf_S",
+    "wharfmark_start": 923.5284369386218,
+    "wharfmark_end": 1020.2080765313235,
+    "LOA": 66.67963959270168,
+    "discharging": 295,
+    "loading": 1526,
+    "qcDetails": {
+      "55": "DTQC55",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 1409663.5968718,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0266",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1824.5054807584618,
+    "wharfmark_end": 1963.6645983101039,
+    "LOA": 109.15911755164203,
+    "discharging": 261,
+    "loading": 27,
+    "qcDetails": {
+      "33": "DTQC33"
+    }
+  },
+  {
+    "time": 1412379.6479098,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0252"
+  },
+  {
+    "time": 1430148.2913115,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0269",
+    "wharf": "wharf_E",
+    "wharfmark_start": 775.4106011218016,
+    "wharfmark_end": 976,
+    "LOA": 170.58939887819838,
+    "discharging": 651,
+    "loading": 3264,
+    "qcDetails": {
+      "17": "DTQC17",
+      "48": "DTQC48",
+      "67": "DTQC67",
+      "21": "DTQC21"
+    }
+  },
+  {
+    "time": 1431199.6434041,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0209"
+  },
+  {
+    "time": 1437818.617161,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0265"
+  },
+  {
+    "time": 1438164.0118249,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0270",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 353.6869787507927,
+    "LOA": 323.6869787507927,
+    "discharging": 356,
+    "loading": 934,
+    "qcDetails": {
+      "8": "DTQC08",
+      "23": "DTQC23",
+      "35": "DTQC35",
+      "64": "DTQC64",
+      "36": "DTQC36"
+    }
+  },
+  {
+    "time": 1439732.4120167,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0257"
+  },
+  {
+    "time": 1446631.836087,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0239"
+  },
+  {
+    "time": 1462959.2886599,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0255"
+  },
+  {
+    "time": 1463857.7862235,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0268",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3209.853146226358,
+    "wharfmark_end": 3508.7004006491134,
+    "LOA": 268.84725442275504,
+    "discharging": 1236,
+    "loading": 843,
+    "qcDetails": {
+      "74": "DTQC74",
+      "1": "DTQC01",
+      "12": "DTQC12",
+      "16": "DTQC16",
+      "71": "DTQC71"
+    }
+  },
+  {
+    "time": 1469796.2503066,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0271",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3510.104747415238,
+    "wharfmark_end": 3764,
+    "LOA": 223.89525258476206,
+    "discharging": 238,
+    "loading": 12210,
+    "qcDetails": {
+      "11": "DTQC11",
+      "8": "DTQC08",
+      "37": "DTQC37",
+      "29": "DTQC29",
+      "75": "DTQC75"
+    }
+  },
+  {
+    "time": 1469978.604586,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0258"
+  },
+  {
+    "time": 1476631.0660044,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0273",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3138.0708903283125,
+    "wharfmark_end": 3494.474880957414,
+    "LOA": 326.4039906291012,
+    "discharging": 1378,
+    "loading": 2912,
+    "qcDetails": {
+      "61": "DTQC61",
+      "23": "DTQC23",
+      "25": "DTQC25",
+      "36": "DTQC36",
+      "40": "DTQC40",
+      "64": "DTQC64"
+    }
+  },
+  {
+    "time": 1477196.1386862,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0270"
+  },
+  {
+    "time": 1485609.3907029,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0245"
+  },
+  {
+    "time": 1489781.1978987,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0274",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2907.719139035982,
+    "wharfmark_end": 3138.9992122531635,
+    "LOA": 201.2800732171812,
+    "discharging": 666,
+    "loading": 879,
+    "qcDetails": {
+      "4": "DTQC04",
+      "27": "DTQC27",
+      "56": "DTQC56"
+    }
+  },
+  {
+    "time": 1490583.7248096,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0275",
+    "wharf": "wharf_E",
+    "wharfmark_start": 373.55332354809946,
+    "wharfmark_end": 505.74299972294904,
+    "LOA": 102.18967617484957,
+    "discharging": 74,
+    "loading": 843,
+    "qcDetails": {
+      "65": "DTQC65",
+      "9": "DTQC09",
+      "58": "DTQC58"
+    }
+  },
+  {
+    "time": 1491529.3792804,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0259"
+  },
+  {
+    "time": 1491699.4912305,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0266"
+  },
+  {
+    "time": 1491842.1805862,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0278",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1230.3459081538026,
+    "wharfmark_end": 1630.331226880564,
+    "LOA": 369.9853187267613,
+    "discharging": 823,
+    "loading": 233,
+    "qcDetails": {
+      "63": "DTQC63",
+      "33": "DTQC33",
+      "39": "DTQC39"
+    }
+  },
+  {
+    "time": 1492772.4606245,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0227"
+  },
+  {
+    "time": 1495258.2021923,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0263"
+  },
+  {
+    "time": 1497076.3972062,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0276",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2136.1391087756497,
+    "wharfmark_end": 2479.6326174956685,
+    "LOA": 313.49350872001867,
+    "discharging": 1078,
+    "loading": 2628,
+    "qcDetails": {
+      "45": "DTQC45",
+      "34": "DTQC34",
+      "53": "DTQC53",
+      "60": "DTQC60",
+      "44": "DTQC44",
+      "38": "DTQC38",
+      "24": "DTQC24"
+    }
+  },
+  {
+    "time": 1498922.2384418,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0277",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 289.13843929719303,
+    "LOA": 259.13843929719303,
+    "discharging": 1352,
+    "loading": 311,
+    "qcDetails": {
+      "59": "DTQC59",
+      "20": "DTQC20"
+    }
+  },
+  {
+    "time": 1501467.0317868,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0279",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1012.0367757342408,
+    "wharfmark_end": 1237.0404367186848,
+    "LOA": 195.00366098444397,
+    "discharging": 1218,
+    "loading": 470,
+    "qcDetails": {
+      "37": "DTQC37",
+      "46": "DTQC46",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 1502577.6159616,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0261"
+  },
+  {
+    "time": 1503326.5236947,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0233"
+  },
+  {
+    "time": 1503326.5276947,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0283",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2504.3168953123463,
+    "wharfmark_end": 2864.7768615494097,
+    "LOA": 330.45996623706344,
+    "discharging": 648,
+    "loading": 224,
+    "qcDetails": {
+      "47": "DTQC47"
+    }
+  },
+  {
+    "time": 1503326.5276947,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0282",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1020.2080765313235,
+    "wharfmark_end": 1230.3459081538026,
+    "LOA": 180.13783162247913,
+    "discharging": 464,
+    "loading": 549,
+    "qcDetails": {
+      "69": "DTQC69",
+      "49": "DTQC49"
+    }
+  },
+  {
+    "time": 1510608.4761215,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0247"
+  },
+  {
+    "time": 1513744.9411575,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0280",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1630.331226880564,
+    "wharfmark_end": 1902.9873028618406,
+    "LOA": 242.65607598127664,
+    "discharging": 739,
+    "loading": 2172,
+    "qcDetails": {
+      "68": "DTQC68",
+      "18": "DTQC18",
+      "75": "DTQC75",
+      "52": "DTQC52",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 1516104.5960789,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0264"
+  },
+  {
+    "time": 1521350.436494,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0285",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 304.45711888489035,
+    "LOA": 274.45711888489035,
+    "discharging": 453,
+    "loading": 482,
+    "qcDetails": {
+      "57": "DTQC57",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 1524462.5740648,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0275"
+  },
+  {
+    "time": 1524462.5780648,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0281",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3499.113044625605,
+    "wharfmark_end": 3764,
+    "LOA": 234.8869553743947,
+    "discharging": 817,
+    "loading": 221,
+    "qcDetails": {
+      "58": "DTQC58",
+      "9": "DTQC09"
+    }
+  },
+  {
+    "time": 1525641.2719751,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0241"
+  },
+  {
+    "time": 1525943.1653961,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0267"
+  },
+  {
+    "time": 1529285.0652803,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0230"
+  },
+  {
+    "time": 1539856.140686,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0286",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 147.43396023046384,
+    "LOA": 117.43396023046384,
+    "discharging": 138,
+    "loading": 869,
+    "qcDetails": {
+      "74": "DTQC74",
+      "48": "DTQC48",
+      "73": "DTQC73"
+    }
+  },
+  {
+    "time": 1544439.6508861,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0256"
+  },
+  {
+    "time": 1544439.6548861,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0290",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2543.8052405714757,
+    "wharfmark_end": 2832.1885547159222,
+    "LOA": 258.38331414444656,
+    "discharging": 2140,
+    "loading": 369,
+    "qcDetails": {
+      "6": "DTQC06",
+      "21": "DTQC21",
+      "12": "DTQC12",
+      "41": "DTQC41"
+    }
+  },
+  {
+    "time": 1545104.4116399,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0287",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2864.7768615494097,
+    "wharfmark_end": 3087.8141657709175,
+    "LOA": 193.03730422150767,
+    "discharging": 428,
+    "loading": 536,
+    "qcDetails": {
+      "16": "DTQC16"
+    }
+  },
+  {
+    "time": 1545808.8356199,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0268"
+  },
+  {
+    "time": 1547508.2936521,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0185"
+  },
+  {
+    "time": 1547508.2976521,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0272",
+    "wharf": "wharf_S",
+    "wharfmark_start": 615.2474212389611,
+    "wharfmark_end": 1020.2080765313235,
+    "LOA": 374.9606552923624,
+    "discharging": 2393,
+    "loading": 676,
+    "qcDetails": {
+      "35": "DTQC35",
+      "66": "DTQC66",
+      "2": "DTQC02",
+      "19": "DTQC19",
+      "51": "DTQC51",
+      "32": "DTQC32"
+    }
+  },
+  {
+    "time": 1549052.9994404,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0260"
+  },
+  {
+    "time": 1549528.2349399,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0269"
+  },
+  {
+    "time": 1561762.4670812,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0289",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3142.5154643924284,
+    "wharfmark_end": 3510.104747415238,
+    "LOA": 337.5892830228096,
+    "discharging": 542,
+    "loading": 247,
+    "qcDetails": {
+      "67": "DTQC67",
+      "52": "DTQC52",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 1568798.9678801,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0292",
+    "wharf": "wharf_E",
+    "wharfmark_start": 289.13843929719303,
+    "wharfmark_end": 499.2685994552341,
+    "LOA": 180.13016015804106,
+    "discharging": 286,
+    "loading": 264,
+    "qcDetails": {
+      "45": "DTQC45",
+      "22": "DTQC22"
+    }
+  },
+  {
+    "time": 1570538.7859911,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0295",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1824.5054807584618,
+    "wharfmark_end": 1960.9670806269414,
+    "LOA": 106.46159986847975,
+    "discharging": 141,
+    "loading": 2002,
+    "qcDetails": {
+      "34": "DTQC34"
+    }
+  },
+  {
+    "time": 1575981.8734609,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0276"
+  },
+  {
+    "time": 1575981.8774609,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0284",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2079.9207006579036,
+    "wharfmark_end": 2451.8575599688565,
+    "LOA": 341.9368593109532,
+    "discharging": 2551,
+    "loading": 1958,
+    "qcDetails": {
+      "31": "DTQC31",
+      "55": "DTQC55",
+      "28": "DTQC28",
+      "17": "DTQC17",
+      "7": "DTQC07",
+      "1": "DTQC01"
+    }
+  },
+  {
+    "time": 1579371.1302157,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0286"
+  },
+  {
+    "time": 1579527.9887732,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0274"
+  },
+  {
+    "time": 1579527.9927732,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0291",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2832.1885547159222,
+    "wharfmark_end": 3116.758892321828,
+    "LOA": 254.57033760590608,
+    "discharging": 947,
+    "loading": 701,
+    "qcDetails": {
+      "74": "DTQC74",
+      "60": "DTQC60",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 1582592.8451274,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0278"
+  },
+  {
+    "time": 1582592.8491274,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0288",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1230.3459081538026,
+    "wharfmark_end": 1607.5569089768128,
+    "LOA": 347.2110008230102,
+    "discharging": 1523,
+    "loading": 137,
+    "qcDetails": {
+      "71": "DTQC71",
+      "26": "DTQC26",
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 1584531.31077,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0273"
+  },
+  {
+    "time": 1584531.31477,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0293",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3087.8141657709175,
+    "wharfmark_end": 3463.920270138853,
+    "LOA": 346.1061043679358,
+    "discharging": 1451,
+    "loading": 2567,
+    "qcDetails": {
+      "27": "DTQC27",
+      "38": "DTQC38",
+      "24": "DTQC24",
+      "53": "DTQC53",
+      "75": "DTQC75"
+    }
+  },
+  {
+    "time": 1585630.730446,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0280"
+  },
+  {
+    "time": 1585630.734446,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0294",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1607.5569089768128,
+    "wharfmark_end": 1908.7079195441424,
+    "LOA": 271.1510105673297,
+    "discharging": 388,
+    "loading": 277,
+    "qcDetails": {
+      "44": "DTQC44",
+      "25": "DTQC25"
+    }
+  },
+  {
+    "time": 1585630.734446,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0298",
+    "wharf": "wharf_E",
+    "wharfmark_start": 499.2685994552341,
+    "wharfmark_end": 706.9836094272692,
+    "LOA": 177.71500997203512,
+    "discharging": 973,
+    "loading": 551,
+    "qcDetails": {
+      "39": "DTQC39",
+      "68": "DTQC68",
+      "40": "DTQC40",
+      "18": "DTQC18"
+    }
+  },
+  {
+    "time": 1587662.7828158,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0231"
+  },
+  {
+    "time": 1587662.7868158,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0296",
+    "wharf": "wharf_N",
+    "wharfmark_start": 304.45711888489035,
+    "wharfmark_end": 690.2503091583053,
+    "LOA": 355.79319027341495,
+    "discharging": 1667,
+    "loading": 2213,
+    "qcDetails": {
+      "48": "DTQC48",
+      "23": "DTQC23",
+      "73": "DTQC73",
+      "56": "DTQC56",
+      "64": "DTQC64",
+      "63": "DTQC63"
+    }
+  },
+  {
+    "time": 1593407.9455652,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0282"
+  },
+  {
+    "time": 1602039.4735145,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0301",
+    "wharf": "wharf_E",
+    "wharfmark_start": 709.6245678134203,
+    "wharfmark_end": 976,
+    "LOA": 236.37543218657967,
+    "discharging": 845,
+    "loading": 986,
+    "qcDetails": {
+      "35": "DTQC35",
+      "2": "DTQC02"
+    }
+  },
+  {
+    "time": 1602551.5322546,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0300",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1241.243048271962,
+    "wharfmark_end": 1457.6652606673815,
+    "LOA": 186.42221239541954,
+    "discharging": 487,
+    "loading": 162,
+    "qcDetails": {
+      "66": "DTQC66"
+    }
+  },
+  {
+    "time": 1603249.6522693,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0285"
+  },
+  {
+    "time": 1605594.233275,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0303",
+    "wharf": "wharf_N",
+    "wharfmark_start": 690.2503091583053,
+    "wharfmark_end": 972.1398865194408,
+    "LOA": 251.88957736113548,
+    "discharging": 273,
+    "loading": 1187,
+    "qcDetails": {
+      "65": "DTQC65",
+      "57": "DTQC57",
+      "51": "DTQC51",
+      "67": "DTQC67"
+    }
+  },
+  {
+    "time": 1607927.1138692,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0272"
+  },
+  {
+    "time": 1607927.1178692,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0297",
+    "wharf": "wharf_S",
+    "wharfmark_start": 836.3032787576876,
+    "wharfmark_end": 1230.3459081538026,
+    "LOA": 364.04262939611493,
+    "discharging": 484,
+    "loading": 123,
+    "qcDetails": {
+      "36": "DTQC36",
+      "33": "DTQC33",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 1617043.8448749,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0289"
+  },
+  {
+    "time": 1617043.8488749,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0299",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3116.758892321828,
+    "wharfmark_end": 3474.7075360840327,
+    "LOA": 327.9486437622045,
+    "discharging": 949,
+    "loading": 554,
+    "qcDetails": {
+      "72": "DTQC72",
+      "49": "DTQC49",
+      "69": "DTQC69"
+    }
+  },
+  {
+    "time": 1625629.8668911,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0292"
+  },
+  {
+    "time": 1631417.5665993,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0297"
+  },
+  {
+    "time": 1631417.5705993,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0302",
+    "wharf": "wharf_S",
+    "wharfmark_start": 883.692148824261,
+    "wharfmark_end": 1230.3459081538026,
+    "LOA": 316.6537593295415,
+    "discharging": 1139,
+    "loading": 236,
+    "qcDetails": {
+      "32": "DTQC32",
+      "19": "DTQC19",
+      "52": "DTQC52",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 1633164.7718532,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0306",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 193.4026881204326,
+    "LOA": 163.4026881204326,
+    "discharging": 152,
+    "loading": 703,
+    "qcDetails": {
+      "33": "DTQC33",
+      "61": "DTQC61",
+      "37": "DTQC37",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 1633890.1643504,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0279"
+  },
+  {
+    "time": 1633890.1683504,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0305",
+    "wharf": "wharf_N",
+    "wharfmark_start": 0,
+    "wharfmark_end": 286.6576808201861,
+    "LOA": 256.6576808201861,
+    "discharging": 588,
+    "loading": 250,
+    "qcDetails": {
+      "46": "DTQC46"
+    }
+  },
+  {
+    "time": 1649821.1432935,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0303"
+  },
+  {
+    "time": 1651815.9129031,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0294"
+  },
+  {
+    "time": 1651815.9169031,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0304",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1607.5569089768128,
+    "wharfmark_end": 1966.1256470807048,
+    "LOA": 328.568738103892,
+    "discharging": 1164,
+    "loading": 1147,
+    "qcDetails": {
+      "45": "DTQC45",
+      "22": "DTQC22",
+      "36": "DTQC36"
+    }
+  },
+  {
+    "time": 1651815.9169031,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0314",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1960.9670806269414,
+    "wharfmark_end": 2079.9207006579036,
+    "LOA": 88.95362003096209,
+    "discharging": 210,
+    "loading": 1155,
+    "qcDetails": {
+      "51": "DTQC51",
+      "65": "DTQC65",
+      "44": "DTQC44"
+    }
+  },
+  {
+    "time": 1652106.9916237,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0281"
+  },
+  {
+    "time": 1653251.3495217,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0250"
+  },
+  {
+    "time": 1662276.7117037,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0306"
+  },
+  {
+    "time": 1662276.7157037,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0308",
+    "wharf": "wharf_S",
+    "wharfmark_start": 585.1568291924723,
+    "wharfmark_end": 836.3032787576876,
+    "LOA": 221.14644956521528,
+    "discharging": 402,
+    "loading": 401,
+    "qcDetails": {
+      "33": "DTQC33",
+      "62": "DTQC62",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 1664134.7206747,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0309",
+    "wharf": "wharf_N",
+    "wharfmark_start": 726.6057998178895,
+    "wharfmark_end": 1019.7484536117456,
+    "LOA": 263.1426537938561,
+    "discharging": 716,
+    "loading": 977,
+    "qcDetails": {
+      "68": "DTQC68"
+    }
+  },
+  {
+    "time": 1669279.1088609,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0298"
+  },
+  {
+    "time": 1669454.7109193,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0313",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3471.774860739879,
+    "wharfmark_end": 3764,
+    "LOA": 262.22513926012107,
+    "discharging": 1214,
+    "loading": 1050,
+    "qcDetails": {
+      "39": "DTQC39",
+      "18": "DTQC18",
+      "40": "DTQC40",
+      "76": "DTQC76"
+    }
+  },
+  {
+    "time": 1673485.4290018,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0311",
+    "wharf": "wharf_N",
+    "wharfmark_start": 1019.7484536117456,
+    "wharfmark_end": 1241.243048271962,
+    "LOA": 191.49459466021628,
+    "discharging": 1094,
+    "loading": 727,
+    "qcDetails": {
+      "74": "DTQC74",
+      "29": "DTQC29",
+      "55": "DTQC55"
+    }
+  },
+  {
+    "time": 1678296.9974365,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0271"
+  },
+  {
+    "time": 1683817.1182287,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0291"
+  },
+  {
+    "time": 1687304.0584538,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0284"
+  },
+  {
+    "time": 1687304.0624538,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0307",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2079.9207006579036,
+    "wharfmark_end": 2436.3533582970526,
+    "LOA": 326.432657639149,
+    "discharging": 8390,
+    "loading": 1463,
+    "qcDetails": {
+      "25": "DTQC25",
+      "9": "DTQC09",
+      "57": "DTQC57",
+      "67": "DTQC67"
+    }
+  },
+  {
+    "time": 1687304.0624538,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0316",
+    "wharf": "wharf_S",
+    "wharfmark_start": 1970.2155296041844,
+    "wharfmark_end": 2182.5920636574874,
+    "LOA": 182.37653405330295,
+    "discharging": 301,
+    "loading": 1345,
+    "qcDetails": {
+      "60": "DTQC60",
+      "63": "DTQC63",
+      "73": "DTQC73",
+      "31": "DTQC31"
+    }
+  },
+  {
+    "time": 1690780.4021123,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0318",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3477.2589886048445,
+    "wharfmark_end": 3764,
+    "LOA": 256.74101139515545,
+    "discharging": 1359,
+    "loading": 318,
+    "qcDetails": {
+      "56": "DTQC56",
+      "23": "DTQC23",
+      "32": "DTQC32",
+      "70": "DTQC70"
+    }
+  },
+  {
+    "time": 1695899.0249505,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0319",
+    "wharf": "wharf_E",
+    "wharfmark_start": 289.13843929719303,
+    "wharfmark_end": 480.93438126432744,
+    "LOA": 161.7959419671344,
+    "discharging": 446,
+    "loading": 520,
+    "qcDetails": {
+      "53": "DTQC53",
+      "49": "DTQC49",
+      "6": "DTQC06"
+    }
+  },
+  {
+    "time": 1696442.7993674,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0299"
+  },
+  {
+    "time": 1696442.8033674,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0310",
+    "wharf": "wharf_S",
+    "wharfmark_start": 3105.678022569991,
+    "wharfmark_end": 3443.426388436757,
+    "LOA": 307.74836586676605,
+    "discharging": 1161,
+    "loading": 716,
+    "qcDetails": {
+      "58": "DTQC58",
+      "13": "DTQC13",
+      "37": "DTQC37"
+    }
+  },
+  {
+    "time": 1697139.3213639,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0296"
+  },
+  {
+    "time": 1697139.3253639,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0312",
+    "wharf": "wharf_N",
+    "wharfmark_start": 374.5123432754642,
+    "wharfmark_end": 726.6057998178895,
+    "LOA": 322.0934565424253,
+    "discharging": 1302,
+    "loading": 2588,
+    "qcDetails": {
+      "1": "DTQC01",
+      "7": "DTQC07"
+    }
+  },
+  {
+    "time": 1699549.0219074,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0302"
+  },
+  {
+    "time": 1699549.0259074,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0315",
+    "wharf": "wharf_S",
+    "wharfmark_start": 874.7553003684752,
+    "wharfmark_end": 1230.3459081538026,
+    "LOA": 325.5906077853274,
+    "discharging": 1010,
+    "loading": 620,
+    "qcDetails": {
+      "8": "DTQC08",
+      "28": "DTQC28",
+      "11": "DTQC11",
+      "17": "DTQC17"
+    }
+  },
+  {
+    "time": 1703062.7130856,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0321",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2832.1885547159222,
+    "wharfmark_end": 3105.678022569991,
+    "LOA": 243.48946785406858,
+    "discharging": 710,
+    "loading": 366,
+    "qcDetails": {
+      "52": "DTQC52",
+      "38": "DTQC38",
+      "51": "DTQC51",
+      "41": "DTQC41"
+    }
+  },
+  {
+    "time": 1703858.556678,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0290"
+  },
+  {
+    "time": 1703858.560678,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0317",
+    "wharf": "wharf_S",
+    "wharfmark_start": 2544.519249606751,
+    "wharfmark_end": 2832.1885547159222,
+    "LOA": 257.66930510917126,
+    "discharging": 477,
+    "loading": 1371,
+    "qcDetails": {
+      "64": "DTQC64",
+      "72": "DTQC72",
+      "75": "DTQC75"
+    }
+  },
+  {
+    "time": 1704015.8124314,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0293"
+  },
+  {
+    "time": 1704015.8164314,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0320",
+    "wharf": "wharf_N",
+    "wharfmark_start": 3087.8141657709175,
+    "wharfmark_end": 3453.269317079962,
+    "LOA": 335.45515130904437,
+    "discharging": 674,
+    "loading": 721,
+    "qcDetails": {
+      "26": "DTQC26",
+      "19": "DTQC19",
+      "69": "DTQC69"
+    }
+  },
+  {
+    "time": 1704834.3887687,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0283"
+  },
+  {
+    "time": 1704834.3927687,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0324",
+    "wharf": "wharf_N",
+    "wharfmark_start": 2436.3533582970526,
+    "wharfmark_end": 2787.7956429980127,
+    "LOA": 321.4422847009602,
+    "discharging": 1944,
+    "loading": 1101,
+    "qcDetails": {
+      "24": "DTQC24",
+      "48": "DTQC48",
+      "20": "DTQC20",
+      "4": "DTQC04"
+    }
+  },
+  {
+    "time": 1709276.8236697,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0314"
+  },
+  {
+    "time": 1709994.0071478,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0323",
+    "wharf": "wharf_E",
+    "wharfmark_start": 480.93438126432744,
+    "wharfmark_end": 677.21320190495,
+    "LOA": 166.27882064062254,
+    "discharging": 502,
+    "loading": 367,
+    "qcDetails": {
+      "47": "DTQC47",
+      "44": "DTQC44",
+      "33": "DTQC33",
+      "61": "DTQC61"
+    }
+  },
+  {
+    "time": 1712535.018391,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0277"
+  },
+  {
+    "time": 1712535.022391,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0327",
+    "wharf": "wharf_E",
+    "wharfmark_start": 0,
+    "wharfmark_end": 253.207452359438,
+    "LOA": 223.207452359438,
+    "discharging": 1846,
+    "loading": 483,
+    "qcDetails": {
+      "12": "DTQC12",
+      "21": "DTQC21",
+      "27": "DTQC27",
+      "65": "DTQC65"
+    }
+  },
+  {
+    "time": 1712658.9069187,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0308"
+  },
+  {
+    "time": 1712658.9109187,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnStart",
+    "vesselId": "V0322",
+    "wharf": "wharf_S",
+    "wharfmark_start": 0,
+    "wharfmark_end": 157.93466918201523,
+    "LOA": 127.93466918201523,
+    "discharging": 132,
+    "loading": 954,
+    "qcDetails": {
+      "59": "DTQC59",
+      "62": "DTQC62"
+    }
+  },
+  {
+    "time": 1713618.3956682,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0288"
+  },
+  {
+    "time": 1721559.5381355,
+    "pipeline": "Wharf",
+    "activity": "Berthing",
+    "eventName": "OnReadyToDepart",
+    "vesselId": "V0287"
+  }
+]

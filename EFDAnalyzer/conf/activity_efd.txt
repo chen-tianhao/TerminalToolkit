@@ -1,0 +1,49 @@
+# Activity Mapping - 从 SingaPort_20260226.drawio 提取
+# 格式: 序号 | 活动标签
+==================================================
+
+  1 | Pending
+  2 | Berthing
+  3 | Being Idle
+  4 | Discharging
+  5 | Being Occupied
+  6 | Pending to be Discharged
+  7 | Being Discharged
+  8 | Pending to be Mounted at Quay
+  9 | Being Mounted <br>at Quay
+ 10 | Being Transported to Yard
+ 11 | Pending to be Dismounted at Yard
+ 12 | Being Dismounted at Yard
+ 13 | Being Stacked
+ 14 | Dwelling
+ 15 | Pending to be Unstacked
+ 16 | Being <br>Unstacked
+ 17 | Pending to be Mounted at Yard
+ 18 | Being Mounted <br>at Yard
+ 19 | Being Transported to Quay
+ 20 | Pending to be Dismounted at Quay
+ 21 | Restoring to Discharge
+ 22 | Lifting &amp;Transporting to Discharge
+ 23 | Repositioning
+ 24 | Pending to Drop
+ 25 | Picking <br>from Quay
+ 26 | Delivering to Yard
+ 27 | Pending to be Idle at Yard
+ 28 | Dropping to Mount
+ 29 | Pending to Deliver <br>to Yard
+ 30 | Restoring <br>to Stack
+ 31 | Lifting <br>to Stack
+ 32 | Transporting <br>&amp; Stacking
+ 33 | Being Loaded
+ 34 | Restoring&nbsp;&amp; Reshuffling&nbsp;<br>to Unstack
+ 35 | Lifting &amp; Transporting <br>to Unstack
+ 36 | Dropping <br>to Mount
+ 37 | Restoring <br>to Load
+ 38 | Lifting to Load
+ 39 | Transporting <br>&amp; Loading
+ 40 | Loading
+ 41 | Picking <br>from Yard
+ 42 | Delivering to Quay
+ 43 | Pending to be Idle at Quay
+ 44 | Pending to Deliver <br>to Quay
+ 45 | Pending to Assign Yard Crane

@@ -5,62 +5,48 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-library(jsonlite)
 library(ggplot2)
 library(dplyr)
 library(readr)
 ```
 
-## Load data and set global parameter
+## 1. Set global parameter
 
 ```{r}
 # Set total wharf length
 WHARF_LENGTH <- 3764
-DATA_FILE <- "vessel_event_40.csv"
 ```
 
-## 辅助函数
+## 2. Define help function
 
 ```{r}
-load_csv_data <- function(filename) {
-  read_csv(filename, show_col_types = FALSE)
-}
-
-build_vessel_wharf_map <- function(events) {
-  # 建立vesselId到wharf的映射（从OnStart事件中获取）
-  on_start <- events %>% filter(eventName == "OnStart")
-  setNames(on_start$wharf, on_start$vesselId)
-}
-
 get_vessel_intervals <- function(events, wharf_name) {
-  # 获取指定码头的船只停泊区间
-
-  # 排序事件
   events_sorted <- events %>% arrange(time)
 
-  # 建立vesselId到wharf的映射
-  vessel_wharf_map <- build_vessel_wharf_map(events_sorted)
+  # Build a vessel -> wharf map
+  on_start <- events_sorted %>% filter(eventName == "OnStart")
+  vessel_wharf_map <- setNames(on_start$wharf, on_start$vesselId)
 
-  # 为缺少wharf字段的事件补全wharf信息
+  # Complete wharf information
   events_sorted <- events_sorted %>%
     mutate(wharf = ifelse(is.na(wharf) & vesselId %in% names(vessel_wharf_map),
                           vessel_wharf_map[vesselId],
                           wharf))
 
-  # 只保留目标wharf的事件
+  # Keep wharf related events
   events_filtered <- events_sorted %>% filter(wharf == wharf_name)
 
-  # 收集OnStart事件
+  # Collect OnStart event
   starts <- events_filtered %>%
     filter(eventName == "OnStart") %>%
     select(vesselId, start_time = time, wharfmark_start, wharfmark_end)
 
-  # 收集OnReadyToDepart事件
+  # Collect OnReadyToDepart event
   departs <- events_filtered %>%
     filter(eventName == "OnReadyToDepart") %>%
     select(vesselId, end_time = time)
 
-  # 合并
+  # pair depart with start
   intervals <- starts %>%
     left_join(departs, by = "vesselId")
 
@@ -68,12 +54,12 @@ get_vessel_intervals <- function(events, wharf_name) {
 }
 ```
 
-## 读取数据
+## 3. Loading data
 
 ```{r}
-events <- load_csv_data(DATA_FILE)
+events <- read_csv("vessel_event_40.csv", show_col_types = FALSE)
 
-# 确保关键列存在（OnReadyToDepart事件可能缺少wharf等字段，fromJSON会自动填NA）
+# Double check wharf field exists
 if (!"wharf" %in% names(events)) {
   events$wharf <- NA_character_
 }
@@ -85,14 +71,14 @@ if (!"wharfmark_end" %in% names(events)) {
 }
 ```
 
-## wharf_N 占用图
+## 4-1. Plot chart for utilization of wharf_N
 
 ```{r fig.width=12, fig.height=10}
 intervals_N <- get_vessel_intervals(events, "wharf_N")
 cat(sprintf("wharf_N: %d vessels\n", nrow(intervals_N)))
 
 if (nrow(intervals_N) > 0) {
-  # 未离开的船，使用最大时间
+  # Use end time for those vessels haven't departed
   all_times <- c(intervals_N$start_time, na.omit(intervals_N$end_time))
   time_max <- max(all_times)
 
@@ -110,20 +96,19 @@ if (nrow(intervals_N) > 0) {
     scale_y_reverse() +
     scale_x_continuous(limits = c(0, WHARF_LENGTH)) +
     labs(title = "wharf_N Occupancy Chart",
-         x = "Position along wharf (wharfmark)",
-         y = "Time") +
-    theme_minimal() +
-    theme(legend.position = "none")
+         x = "wharfmark",
+         y = "Time")
 }
 ```
 
-## wharf_S 占用图
+## 4-2. lot chart for utilization of wharf_S
 
 ```{r fig.width=12, fig.height=10}
 intervals_S <- get_vessel_intervals(events, "wharf_S")
 cat(sprintf("wharf_S: %d vessels\n", nrow(intervals_S)))
 
 if (nrow(intervals_S) > 0) {
+  # Use end time for those vessels haven't departed
   all_times <- c(intervals_S$start_time, na.omit(intervals_S$end_time))
   time_max <- max(all_times)
 
@@ -141,69 +126,7 @@ if (nrow(intervals_S) > 0) {
     scale_y_reverse() +
     scale_x_continuous(limits = c(0, WHARF_LENGTH)) +
     labs(title = "wharf_S Occupancy Chart",
-         x = "Position along wharf (wharfmark)",
-         y = "Time") +
-    theme_minimal() +
-    theme(legend.position = "none")
+         x = "wharfmark",
+         y = "Time")
 }
-```
-
-## 导出PNG图片
-
-```{r}
-if (nrow(intervals_N) > 0) {
-  all_times <- c(intervals_N$start_time, na.omit(intervals_N$end_time))
-  time_max <- max(all_times)
-
-  plot_data_N <- intervals_N %>%
-    mutate(end_time = ifelse(is.na(end_time), time_max, end_time))
-
-  p_N <- ggplot(plot_data_N) +
-    geom_rect(aes(xmin = wharfmark_start, xmax = wharfmark_end,
-                  ymin = start_time, ymax = end_time, fill = vesselId),
-              color = "black", linewidth = 0.3, alpha = 0.7) +
-    geom_text(aes(x = (wharfmark_start + wharfmark_end) / 2,
-                  y = (start_time + end_time) / 2,
-                  label = vesselId),
-              size = 2, fontface = "bold") +
-    scale_y_reverse() +
-    scale_x_continuous(limits = c(0, WHARF_LENGTH)) +
-    labs(title = "wharf_N Occupancy Chart",
-         x = "Position along wharf (wharfmark)",
-         y = "Time") +
-    theme_minimal() +
-    theme(legend.position = "none")
-
-  ggsave("wharf_N_chart_R.png", plot = p_N, width = 12, height = 10, dpi = 150)
-  cat("Saved wharf_N_chart_R.png\n")
-}
-
-if (nrow(intervals_S) > 0) {
-  all_times <- c(intervals_S$start_time, na.omit(intervals_S$end_time))
-  time_max <- max(all_times)
-
-  plot_data_S <- intervals_S %>%
-    mutate(end_time = ifelse(is.na(end_time), time_max, end_time))
-
-  p_S <- ggplot(plot_data_S) +
-    geom_rect(aes(xmin = wharfmark_start, xmax = wharfmark_end,
-                  ymin = start_time, ymax = end_time, fill = vesselId),
-              color = "black", linewidth = 0.3, alpha = 0.7) +
-    geom_text(aes(x = (wharfmark_start + wharfmark_end) / 2,
-                  y = (start_time + end_time) / 2,
-                  label = vesselId),
-              size = 2, fontface = "bold") +
-    scale_y_reverse() +
-    scale_x_continuous(limits = c(0, WHARF_LENGTH)) +
-    labs(title = "wharf_S Occupancy Chart",
-         x = "Position along wharf (wharfmark)",
-         y = "Time") +
-    theme_minimal() +
-    theme(legend.position = "none")
-
-  ggsave("wharf_S_chart_R.png", plot = p_S, width = 12, height = 10, dpi = 150)
-  cat("Saved wharf_S_chart_R.png\n")
-}
-
-cat("Done!\n")
 ```

@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python activity_allocator.py)",
+      "Bash(python activity_collector.py)"
+    ]
+  }
+}

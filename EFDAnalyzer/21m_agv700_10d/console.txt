@@ -1,0 +1,38 @@
+Console output will be logged to: C:\Users\admin\OneDrive - National University of Singapore\Files\C4NGP\projects\SolarCanopy\GradualPortModeler\GradualPortModeler\outputs\console.txt
+
+[YardBlockConfig] Total BlockUnits: 308, Total YardAllocation slots: 389580
+[TrafficNetwork] QC: work points: 1480
+[TrafficNetwork] YC: work points: 2618 (in 14 segments)
+[TrafficNetwork] Parking lots: 920
+[TrafficNetwork] BayToControlPointMapping.json: C:\Users\admin\OneDrive - National University of Singapore\Files\C4NGP\projects\SolarCanopy\GradualPortModeler\GradualPortModeler\bin\Debug\net9.0\config\BayToControlPointMapping.json
+[TrafficNetwork] Bay mappings loaded: 154 blocks
+Activity rates will be logged to:
+  - IncreaseRate: activity_increase_rates.csv
+  - DecreaseRate: activity_decrease_rates.csv
+  - ActiveAverageCount: activity_active_average_counts.csv
+  - PassiveAverageCount: activity_passive_average_counts.csv
+  - AverageCount: activity_average_counts.csv
+  - AverageDuration: activity_average_durations.csv
+
+Enter the number of days to simulate (or -1 to exit): Starting simulation for 30 day(s)...
+
+[AGV Stats @ 1/2/0001 12:00:00 AM] Total: 700 | Idling: 542 | Working: 82 | Waiting: 76 | Stuck (>12hr): 0
+Completed Day 1 (batch 1/30) - Simulation Time: 0001-01-02 00:00:00 - Run Time: 00:00:52.5087680
+[AGV Stats @ 1/3/0001 12:00:00 AM] Total: 700 | Idling: 410 | Working: 172 | Waiting: 118 | Stuck (>12hr): 0
+Completed Day 2 (batch 2/30) - Simulation Time: 0001-01-03 00:00:00 - Run Time: 00:02:43.2135791
+[AGV Stats @ 1/4/0001 12:00:00 AM] Total: 700 | Idling: 471 | Working: 122 | Waiting: 107 | Stuck (>12hr): 0
+Completed Day 3 (batch 3/30) - Simulation Time: 0001-01-04 00:00:00 - Run Time: 00:04:40.2875517
+[AGV Stats @ 1/5/0001 12:00:00 AM] Total: 700 | Idling: 357 | Working: 218 | Waiting: 125 | Stuck (>12hr): 0
+Completed Day 4 (batch 4/30) - Simulation Time: 0001-01-05 00:00:00 - Run Time: 00:08:21.8996404
+[AGV Stats @ 1/6/0001 12:00:00 AM] Total: 700 | Idling: 373 | Working: 181 | Waiting: 146 | Stuck (>12hr): 0
+Completed Day 5 (batch 5/30) - Simulation Time: 0001-01-06 00:00:00 - Run Time: 00:13:36.9080619
+[AGV Stats @ 1/7/0001 12:00:00 AM] Total: 700 | Idling: 544 | Working: 93 | Waiting: 63 | Stuck (>12hr): 0
+Completed Day 6 (batch 6/30) - Simulation Time: 0001-01-07 00:00:00 - Run Time: 00:15:20.5390315
+[AGV Stats @ 1/8/0001 12:00:00 AM] Total: 700 | Idling: 500 | Working: 93 | Waiting: 107 | Stuck (>12hr): 0
+Completed Day 7 (batch 7/30) - Simulation Time: 0001-01-08 00:00:00 - Run Time: 00:16:26.3293901
+[AGV Stats @ 1/9/0001 12:00:00 AM] Total: 700 | Idling: 332 | Working: 186 | Waiting: 182 | Stuck (>12hr): 0
+Completed Day 8 (batch 8/30) - Simulation Time: 0001-01-09 00:00:00 - Run Time: 00:19:53.9563848
+[AGV Stats @ 1/10/0001 12:00:00 AM] Total: 700 | Idling: 374 | Working: 195 | Waiting: 131 | Stuck (>12hr): 0
+Completed Day 9 (batch 9/30) - Simulation Time: 0001-01-10 00:00:00 - Run Time: 00:24:03.3398964
+[AGV Stats @ 1/11/0001 12:00:00 AM] Total: 700 | Idling: 528 | Working: 97 | Waiting: 75 | Stuck (>12hr): 0
+Completed Day 10 (batch 10/30) - Simulation Time: 0001-01-11 00:00:00 - Run Time: 00:29:01.6504095
