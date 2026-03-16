@@ -238,11 +238,11 @@ def proxy_request(target_port, path, base_path=''):
         if 'text/html' in content_type:
             # 重写响应中的路径
             content = resp.text
-            # 替换 /_dash -> /{base_path}/_dash
             if base_path:
-                content = content.replace('/_dash', f'{base_path}/_dash')
+                # 仅替换 URL 路径中的 /_dash（带前导斜杠），不动 HTML 属性中的 _dash
                 content = content.replace('"/_dash', f'"{base_path}/_dash')
                 content = content.replace("'/_dash", f"'{base_path}/_dash")
+                content = content.replace('href="/_favicon', f'href="{base_path}/_favicon')
             # 替换 /upload -> /{base_path}/upload
             if base_path:
                 content = content.replace("'/upload'", f"'{base_path}/upload'")
@@ -255,6 +255,13 @@ def proxy_request(target_port, path, base_path=''):
             if base_path:
                 content = content.replace("'/api/", f"'{base_path}/api/")
                 content = content.replace('"/api/', f'"{base_path}/api/')
+            # 替换 _dash-config 中的 url_base_pathname 和 requests_pathname_prefix
+            if base_path:
+                content = content.replace('"url_base_pathname":null', f'"url_base_pathname":"{base_path}/"')
+                content = content.replace('"url_base_pathname":"/"', f'"url_base_pathname":"{base_path}/"')
+                # 处理 requests_pathname_prefix（兼容 unicode 转义和非转义两种格式）
+                content = content.replace('"requests_pathname_prefix":"\\u002f"', f'"requests_pathname_prefix":"{base_path}/"')
+                content = content.replace('"requests_pathname_prefix":"/"', f'"requests_pathname_prefix":"{base_path}/"')
             resp._content = content.encode('utf-8')
 
         # 过滤代理服务器的响应头
@@ -449,7 +456,18 @@ def start_backend_services():
     # 启动 LayoutDesigner (Dash)
     dash_script = LAYOUT_DESIGNER_DIR / "DrawPathCombined.py"
     if dash_script.exists():
-        start_subprocess(dash_script, DASH_PORT, "LayoutDesigner", LAYOUT_DESIGNER_DIR)
+        # Dash 运行在 / ，由代理负责路径前缀重写
+        dash_env = {**os.environ, 'PORT': str(DASH_PORT)}
+        proc = subprocess.Popen(
+            [sys.executable, str(dash_script)],
+            env=dash_env,
+            cwd=str(LAYOUT_DESIGNER_DIR),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            start_new_session=True
+        )
+        subprocesses.append(proc)
+        print(f"[LayoutDesigner] Started on port {DASH_PORT}, PID: {proc.pid}")
     else:
         print(f"[LayoutDesigner] Script not found: {dash_script}")
 

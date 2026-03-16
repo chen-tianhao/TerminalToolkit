@@ -309,7 +309,9 @@ data_perpendicular = load_data('perpendicular')
 
 
 # ============== Create Dash app ==============
-app = Dash(__name__, suppress_callback_exceptions=True)
+# Support URL path prefix for reverse proxy
+requests_pathname_prefix = os.environ.get('DASH_PATH_PREFIX', '/')
+app = Dash(__name__, suppress_callback_exceptions=True, requests_pathname_prefix=requests_pathname_prefix)
 server = app.server  # For gunicorn
 
 # Layout selector dropdown
