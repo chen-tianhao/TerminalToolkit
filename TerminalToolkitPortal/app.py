@@ -48,6 +48,24 @@ subprocesses = []
 
 app = Flask(__name__)
 
+# ==================== 访问计数器 ====================
+visit_counts = {
+    'layout-designer': 0,
+    'efd-analyzer': 0,
+    'wharf-util': 0
+}
+
+def get_total_visits():
+    """获取所有子应用的访问次数总和"""
+    return sum(visit_counts.values())
+
+def get_visit_info(app_name):
+    """获取单个应用的访问信息"""
+    return {
+        'app_visit': visit_counts[app_name],
+        'total_visits': get_total_visits()
+    }
+
 # ==================== 首页 ====================
 
 HTML_TEMPLATE = '''
@@ -120,11 +138,17 @@ HTML_TEMPLATE = '''
             background: #667eea;
             color: white;
         }
+        .visit-counter {
+            color: #ccc;
+            font-size: 14px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Terminal Toolkit</h1>
+        <p class="visit-counter">This is the {{ total_visits }}th visit in total.</p>
         <div class="card">
             <a href="/layout-designer" target="_blank">Layout Designer</a>
         </div>
@@ -192,10 +216,17 @@ WHARF_TEMPLATE = '''
             color: #666;
             padding: 40px;
         }
+        .visit-counter {
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Wharf Utilization 分析</h1>
+    <p class="visit-counter">This is the {{ app_visit }}th visit for current function. ({{ total_visits }} visits in total)</p>
     <div style="text-align: center;">
         <a href="/" class="nav-link">Back To Home</a>
     </div>
@@ -214,7 +245,7 @@ WHARF_TEMPLATE = '''
 
 # ==================== 代理转发 ====================
 
-def proxy_request(target_port, path, base_path=''):
+def proxy_request(target_port, path, base_path='', app_name=''):
     """代理请求到内部服务"""
     import requests
 
@@ -276,6 +307,17 @@ def proxy_request(target_port, path, base_path=''):
                 # 处理 requests_pathname_prefix（兼容 unicode 转义和非转义两种格式）
                 content = content.replace('"requests_pathname_prefix":"\\u002f"', f'"requests_pathname_prefix":"{base_path}/"')
                 content = content.replace('"requests_pathname_prefix":"/"', f'"requests_pathname_prefix":"{base_path}/"')
+
+            # 注入访问计数器
+            if app_name and app_name in visit_counts:
+                visit_info = get_visit_info(app_name)
+                counter_html = f'<p style="color:#999;font-size:14px;text-align:center;margin-top:10px;position:fixed;bottom:10px;left:0;right:0;z-index:9999;background:rgba(255,255,255,0.8);padding:5px;">This is the {visit_info["app_visit"]}th visit for current function. ({visit_info["total_visits"]} visits in total)</p>'
+                # 注入到 </body> 之前
+                if '</body>' in content:
+                    content = content.replace('</body>', counter_html + '</body>')
+                elif '</html>' in content:
+                    content = content.replace('</html>', counter_html + '</html>')
+
             resp._content = content.encode('utf-8')
 
         # 过滤代理服务器的响应头
@@ -297,19 +339,23 @@ def proxy_request(target_port, path, base_path=''):
 
 @app.route('/')
 def index():
-    return render_template_string(HTML_TEMPLATE)
+    # 增加首页访问计数
+    total = get_total_visits()
+    return render_template_string(HTML_TEMPLATE, total_visits=total)
 
 
 @app.route('/layout-designer/', defaults={'path': ''}, methods=['GET', 'POST'])
 @app.route('/layout-designer/<path:path>', methods=['GET', 'POST'])
 def layout_designer(path):
-    return proxy_request(DASH_PORT, path, '/layout-designer')
+    visit_counts['layout-designer'] += 1
+    return proxy_request(DASH_PORT, path, '/layout-designer', 'layout-designer')
 
 
 @app.route('/efd-analyzer/', defaults={'path': ''}, methods=['GET', 'POST'])
 @app.route('/efd-analyzer/<path:path>', methods=['GET', 'POST'])
 def efd_analyzer(path):
-    return proxy_request(FASTAPI_PORT, path, '/efd-analyzer')
+    visit_counts['efd-analyzer'] += 1
+    return proxy_request(FASTAPI_PORT, path, '/efd-analyzer', 'efd-analyzer')
 
 
 # ==================== WharfUtil 路由 ====================
@@ -317,7 +363,9 @@ def efd_analyzer(path):
 @app.route('/wharf-util')
 def wharf_util():
     """Wharf Utilization 主页"""
-    return WHARF_TEMPLATE
+    visit_counts['wharf-util'] += 1
+    visit_info = get_visit_info('wharf-util')
+    return render_template_string(WHARF_TEMPLATE, **visit_info)
 
 
 @app.route('/wharf-util/chart/<chart_name>')
