@@ -108,18 +108,13 @@ HTML_TEMPLATE = '''
         <h1>Terminal Toolkit</h1>
         <div class="card">
             <a href="/layout-designer" target="_blank">Layout Designer</a>
-            <p>设计终端布局</p>
         </div>
         <div class="card">
             <a href="/efd-analyzer" target="_blank">EFD Analyzer</a>
-            <p>分析事件流数据</p>
         </div>
         <div class="card">
             <a href="/wharf-util" target="_blank">Wharf Utilization</a>
-            <p>码头利用率分析</p>
         </div>
-        <div style="margin-top: 40px;">
-            <a href="/" class="nav-link">首页</a>
         </div>
     </div>
 </body>
@@ -183,7 +178,7 @@ WHARF_TEMPLATE = '''
 <body>
     <h1>Wharf Utilization 分析</h1>
     <div style="text-align: center;">
-        <a href="/" class="nav-link">返回首页</a>
+        <a href="/" class="nav-link">Back To Home</a>
     </div>
     <div class="chart-container">
         <h2>Wharf N</h2>

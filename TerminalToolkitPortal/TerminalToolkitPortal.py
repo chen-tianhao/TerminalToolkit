@@ -64,11 +64,9 @@ HTML_TEMPLATE = '''
         <h1>Terminal Toolkit</h1>
         <div class="card">
             <a href="https://layout.render.com" target="_blank">Layout Designer</a>
-            <p>设计终端布局</p>
         </div>
         <div class="card">
             <a href="https://efd.render.com" target="_blank">EFD Analyzer</a>
-            <p>分析事件流数据</p>
         </div>
     </div>
 </body>
