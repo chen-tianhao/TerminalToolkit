@@ -15,7 +15,26 @@ from pathlib import Path
 from flask import Flask, render_template_string, Response, request, send_file
 
 # 添加项目路径
-BASE_DIR = Path(__file__).resolve().parent.parent
+# 尝试多个可能的路径结构
+app_dir = Path(__file__).resolve().parent
+possible_bases = [
+    app_dir.parent,                          # TerminalToolkitPortal/ 的父目录
+    Path(__file__).resolve(),               # 当前文件目录
+]
+
+# 找到正确的项目根目录（包含 LayoutDesigner, EFD-Analyzer 等）
+BASE_DIR = None
+for base in possible_bases:
+    if (base / "LayoutDesigner").exists() and (base / "EFD-Analyzer").exists():
+        BASE_DIR = base
+        break
+
+if BASE_DIR is None:
+    # 默认使用父目录
+    BASE_DIR = app_dir.parent
+
+print(f"BASE_DIR: {BASE_DIR}")
+
 LAYOUT_DESIGNER_DIR = BASE_DIR / "LayoutDesigner"
 EFD_ANALYZER_DIR = BASE_DIR / "EFD-Analyzer"
 WHARF_TOOLKIT_DIR = BASE_DIR / "WharfToolkit"
@@ -430,23 +449,34 @@ def start_subprocess(script_path, port, name, cwd=None):
     env = os.environ.copy()
     env['PORT'] = str(port)
 
-    # 确保不继承父进程的信号处理
     proc = subprocess.Popen(
         [sys.executable, str(script_path)],
         env=env,
         cwd=str(cwd) if cwd else None,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        start_new_session=True
+        stdout=sys.stdout,
+        stderr=sys.stderr,
     )
     subprocesses.append(proc)
-    print(f"[{name}] Started on port {port}, PID: {proc.pid}")
+    print(f"[{name}] Started on port {port}, PID: {proc.pid}", flush=True)
     return proc
+
+
+def _wait_for_port(port, timeout=30):
+    """轮询等待端口就绪"""
+    import socket
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            with socket.create_connection(('127.0.0.1', port), timeout=1):
+                return True
+        except OSError:
+            time.sleep(0.5)
+    return False
 
 
 def start_backend_services():
     """启动后端服务"""
-    print("Starting backend services...")
+    print("Starting backend services...", flush=True)
 
     # 启动 LayoutDesigner (Dash)
     dash_script = LAYOUT_DESIGNER_DIR / "DrawPathCombined.py"
@@ -457,14 +487,13 @@ def start_backend_services():
             [sys.executable, str(dash_script)],
             env=dash_env,
             cwd=str(LAYOUT_DESIGNER_DIR),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            start_new_session=True
+            stdout=sys.stdout,
+            stderr=sys.stderr,
         )
         subprocesses.append(proc)
-        print(f"[LayoutDesigner] Started on port {DASH_PORT}, PID: {proc.pid}")
+        print(f"[LayoutDesigner] Started on port {DASH_PORT}, PID: {proc.pid}", flush=True)
     else:
-        print(f"[LayoutDesigner] Script not found: {dash_script}")
+        print(f"[LayoutDesigner] Script not found: {dash_script}", flush=True)
 
     # 启动 EFD-Analyzer (FastAPI) - 需要使用 -m 模块方式运行
     if (EFD_ANALYZER_DIR / "app").exists():
@@ -473,18 +502,22 @@ def start_backend_services():
             [sys.executable, "-m", "app.main"],
             env={**os.environ, 'PORT': str(FASTAPI_PORT)},
             cwd=str(EFD_ANALYZER_DIR),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            start_new_session=True
+            stdout=sys.stdout,
+            stderr=sys.stderr,
         )
         subprocesses.append(proc)
-        print(f"[EFD-Analyzer] Started on port {FASTAPI_PORT}, PID: {proc.pid}")
+        print(f"[EFD-Analyzer] Started on port {FASTAPI_PORT}, PID: {proc.pid}", flush=True)
     else:
-        print(f"[EFD-Analyzer] Directory not found: {EFD_ANALYZER_DIR / 'app'}")
+        print(f"[EFD-Analyzer] Directory not found: {EFD_ANALYZER_DIR / 'app'}", flush=True)
 
-    # 等待服务启动
-    time.sleep(5)
-    print("Backend services started.")
+    # 轮询等待服务就绪（最长30秒）
+    for name, port in [("LayoutDesigner", DASH_PORT), ("EFD-Analyzer", FASTAPI_PORT)]:
+        if _wait_for_port(port):
+            print(f"[{name}] Ready on port {port}", flush=True)
+        else:
+            print(f"[{name}] WARNING: not ready after 30s on port {port}", flush=True)
+
+    print("Backend services started.", flush=True)
 
 
 def stop_subprocesses():
@@ -504,9 +537,22 @@ def stop_subprocesses():
 
 # ==================== 启动 ====================
 
-if __name__ == '__main__':
-    import signal
+# gunicorn 用 `gunicorn app:app` 导入时也需要启动子进程
+# 用 _services_started 标志防止重复启动（gunicorn 多 worker 场景由 --preload 控制）
+_services_started = False
 
+def _ensure_backend_services():
+    global _services_started
+    if not _services_started:
+        _services_started = True
+        start_backend_services()
+        import atexit
+        atexit.register(stop_subprocesses)
+
+# 模块被导入时即启动后端服务（兼容 gunicorn）
+_ensure_backend_services()
+
+if __name__ == '__main__':
     # 注册信号处理
     def signal_handler(sig, frame):
         stop_subprocesses()
@@ -514,9 +560,6 @@ if __name__ == '__main__':
 
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
-
-    # 启动后端服务
-    start_backend_services()
 
     # 启动 Flask 应用
     port = int(os.environ.get('PORT', 5000))

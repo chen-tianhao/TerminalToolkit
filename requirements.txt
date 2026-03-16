@@ -1,13 +1,24 @@
-dash
-plotly
-gunicorn
-requests
+# TerminalToolkit Portal - 统一入口
+# 整合 LayoutDesigner、EFD-Analyzer、WharfToolkit
 
-# EFD-Analyzer Application Dependencies
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-pandas>=2.0.0
-matplotlib>=3.8.0
-python-multipart>=0.0.6
-aiofiles>=23.2.0
-jinja2>=3.1.0
+# Flask 主框架
+flask>=2.0
+gunicorn>=21.0
+
+# LayoutDesigner (Dash)
+dash>=2.17
+plotly>=5.22
+
+# EFD-Analyzer (FastAPI)
+fastapi>=0.104
+uvicorn[standard]>=0.24
+pandas>=2.0
+python-multipart>=0.0
+aiofiles>=23.2
+jinja2>=3.1
+
+# WharfToolkit (Matplotlib)
+matplotlib>=3.8
+
+# 工具
+requests>=2.31
