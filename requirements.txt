@@ -3,7 +3,7 @@ plotly
 gunicorn
 requests
 
-# EFDAnalyzer Web Application Dependencies
+# EFD-Analyzer Application Dependencies
 fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 pandas>=2.0.0

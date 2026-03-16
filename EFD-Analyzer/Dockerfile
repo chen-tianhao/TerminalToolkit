@@ -1,4 +1,4 @@
-# EFDAnalyzer Web Application Dockerfile
+# EFD-Analyzer Application Dockerfile
 FROM python:3.11-slim
 
 # Set working directory

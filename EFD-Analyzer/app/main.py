@@ -1,5 +1,5 @@
 """
-EFDAnalyzer Web Application
+EFD-Analyzer Application
 Main FastAPI application for file upload and visualization
 """
 import os
@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Create app instance
 app = FastAPI(
-    title="EFDAnalyzer Web",
+    title="EFD-Analyzer",
     description="Event-Flow Data Analyzer with SVG visualization",
     version="1.0.0"
 )
@@ -69,7 +69,7 @@ async def index():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>EFDAnalyzer Web</title>
+        <title>EFD-Analyzer</title>
         <style>
             body { font-family: Arial, sans-serif; margin: 40px; }
             .container { max-width: 800px; margin: 0 auto; }
@@ -84,7 +84,7 @@ async def index():
     </head>
     <body>
         <div class="container">
-            <h1>EFDAnalyzer Web</h1>
+            <h1>EFD-Analyzer</h1>
             <p>Upload your draw.io file and CSV data files to visualize activity rates.</p>
 
             <form id="uploadForm" enctype="multipart/form-data">
@@ -278,7 +278,7 @@ async def chrome_devtools():
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    return {"status": "healthy", "service": "EFDAnalyzer Web"}
+    return {"status": "healthy", "service": "EFD-Analyzer"}
 
 
 if __name__ == "__main__":

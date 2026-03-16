@@ -1,9 +1,9 @@
 #!/bin/bash
-# Run EFDAnalyzer Web application locally
+# Run EFD-Analyzer application locally
 
 cd "$(dirname "$0")"
 
-echo "Starting EFDAnalyzer Web Application..."
+echo "Starting EFD-Analyzer Application..."
 echo "========================================"
 
 # Install dependencies if needed
