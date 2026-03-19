@@ -229,6 +229,7 @@ WHARF_TEMPLATE = '''
     <p class="visit-counter">This is the {{ app_visit }}th visit for current function. ({{ total_visits }} visits in total)</p>
     <div style="text-align: center;">
         <a href="/" class="nav-link">Back To Home</a>
+        <a href="/wharf-util/download" class="nav-link" download>Download Example Data</a>
     </div>
     <div class="chart-container">
         <h2>Wharf N</h2>
@@ -488,6 +489,15 @@ def wharf_util_chart(chart_name):
     buf.seek(0)
 
     return send_file(buf, mimetype='image/png')
+
+
+@app.route('/wharf-util/download')
+def wharf_util_download():
+    """下载示例数据文件"""
+    json_file = WHARF_TOOLKIT_DIR / "event_vessel_depart_40_hm.json"
+    if not json_file.exists():
+        return "Example data file not found", 404
+    return send_file(json_file, as_attachment=True, download_name='event_vessel_depart_40_hm.json')
 
 
 # ==================== 子进程管理 ====================
