@@ -12,7 +12,7 @@ import time
 import signal
 from pathlib import Path
 
-from flask import Flask, render_template_string, Response, request, send_file
+from flask import Flask, render_template_string, Response, request, send_file, session, redirect
 
 # 添加项目路径
 # 尝试多个可能的路径结构
@@ -47,6 +47,7 @@ FASTAPI_PORT = 8000
 subprocesses = []
 
 app = Flask(__name__)
+app.secret_key = 'wharf-util-secret-key'  # 用于 session
 
 # ==================== 访问计数器 ====================
 visit_counts = {
@@ -231,6 +232,20 @@ WHARF_TEMPLATE = '''
         <a href="/" class="nav-link">Back To Home</a>
         <a href="/wharf-util/download" class="nav-link" download>Download Example Data</a>
     </div>
+    <div class="chart-container" style="text-align: center;">
+        <h2>Upload Data File</h2>
+        <form action="/wharf-util/upload" method="post" enctype="multipart/form-data" style="display: inline-block;">
+            <input type="file" name="file" accept=".json" required style="margin: 10px 0;">
+            <br>
+            <button type="submit" class="nav-link">Upload & Visualize</button>
+        </form>
+        {% if uploaded_file %}
+        <p style="color: green; margin-top: 10px;">Current file: {{ uploaded_file }}</p>
+        {% else %}
+        <p style="color: red; margin-top: 10px;">Please upload a JSON file to view the chart</p>
+        {% endif %}
+    </div>
+    {% if uploaded_file %}
     <div class="chart-container">
         <h2>Wharf N</h2>
         <img src="/wharf-util/chart/n" alt="Wharf N Chart" />
@@ -239,6 +254,7 @@ WHARF_TEMPLATE = '''
         <h2>Wharf S</h2>
         <img src="/wharf-util/chart/s" alt="Wharf S Chart" />
     </div>
+    {% endif %}
 </body>
 </html>
 '''
@@ -366,7 +382,38 @@ def wharf_util():
     """Wharf Utilization 主页"""
     visit_counts['wharf-util'] += 1
     visit_info = get_visit_info('wharf-util')
-    return render_template_string(WHARF_TEMPLATE, **visit_info)
+    uploaded_file = session.get('uploaded_filename', '')
+    return render_template_string(WHARF_TEMPLATE, uploaded_file=uploaded_file, **visit_info)
+
+
+@app.route('/wharf-util/upload', methods=['POST'])
+def wharf_util_upload():
+    """处理文件上传"""
+    import uuid
+    import shutil
+
+    if 'file' not in request.files:
+        return "No file uploaded", 400
+
+    file = request.files['file']
+    if file.filename == '':
+        return "No file selected", 400
+
+    if file and file.filename.endswith('.json'):
+        # 保存上传的文件到临时目录
+        temp_dir = WHARF_TOOLKIT_DIR / 'temp_uploads'
+        temp_dir.mkdir(exist_ok=True)
+
+        # 生成唯一文件名
+        unique_filename = f"{uuid.uuid4().hex}_{file.filename}"
+        temp_path = temp_dir / unique_filename
+        file.save(temp_path)
+
+        # 保存文件名到 session
+        session['uploaded_filepath'] = str(temp_path)
+        session['uploaded_filename'] = file.filename
+
+    return redirect('/wharf-util')
 
 
 @app.route('/wharf-util/chart/<chart_name>')
@@ -380,14 +427,18 @@ def wharf_util_chart(chart_name):
 
     WHARF_LENGTH = 3764
 
-    # 确定 JSON 文件
-    json_file = WHARF_TOOLKIT_DIR / "event_vessel_depart_40_hm.json"
-    if not json_file.exists():
-        # 尝试使用 LT 版本
-        json_file = WHARF_TOOLKIT_DIR / "event_vessel_depart_40_hm_LT.json"
+    # 必须使用上传的文件
+    json_file = None
 
-    if not json_file.exists():
-        return "Data file not found", 404
+    # 检查是否有上传的文件
+    uploaded_path = session.get('uploaded_filepath')
+    if uploaded_path:
+        json_file = Path(uploaded_path)
+        if not json_file.exists():
+            json_file = None
+
+    if json_file is None:
+        return "Please upload a JSON data file first", 404
 
     # 加载数据
     with open(json_file, 'r', encoding='utf-8') as f:
