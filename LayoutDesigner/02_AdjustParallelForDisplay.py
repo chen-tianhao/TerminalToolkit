@@ -59,6 +59,16 @@ for color_type in horizontal_types:
 
     result[color_type] = new_points
 
+    # Step 4: For each horizontal line (same y), increase right endpoint x by 1
+    by_y = defaultdict(list)
+    for p in result[color_type]:
+        by_y[p['y']].append(p)
+
+    for y, pts in by_y.items():
+        if len(pts) >= 2:
+            rightmost = max(pts, key=lambda p: p['x'])
+            rightmost['x'] = rightmost['x'] + 1.0
+
 # ========== Vertical Lines Processing ==========
 for color_type in vertical_types:
     if color_type not in data:
@@ -104,6 +114,16 @@ for color_type in vertical_types:
                 new_points.append(new_point)
 
     result[color_type] = new_points
+
+    # Step 4: For each vertical line (same x), increase bottom endpoint y by 1
+    by_x = defaultdict(list)
+    for p in result[color_type]:
+        by_x[p['x']].append(p)
+
+    for x, pts in by_x.items():
+        if len(pts) >= 2:
+            bottommost = max(pts, key=lambda p: p['y'])
+            bottommost['y'] = bottommost['y'] + 1.0
 
 # Copy other color types unchanged (grey, vertical_grey)
 for color_type in data:
