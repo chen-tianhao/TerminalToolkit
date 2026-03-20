@@ -67,12 +67,16 @@ for color_type in vertical_types:
 
     points = data[color_type]
 
-    # Step 1: Group points by same y value
+    # Step 1: Move all endpoints up by 0.5U (y = y - 0.5)
+    for p in points:
+        p['y'] = p['y'] - 0.5
+
+    # Step 2: Group points by same y value
     by_y = defaultdict(list)
     for p in points:
         by_y[p['y']].append(p)
 
-    # Step 2: For each y group, sort by x and process groups of 4
+    # Step 3: For each y group, sort by x and process groups of 4
     new_points = []
     for y, pts in by_y.items():
         # Sort by x (left to right)
