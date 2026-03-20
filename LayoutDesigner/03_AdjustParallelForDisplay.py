@@ -2,7 +2,7 @@ import json
 from collections import defaultdict
 
 # Read data
-with open('layout_parallel_0.json', 'r', encoding='utf-8') as f:
+with open('layout_parallel.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Horizontal line types: purple_horizontal, orange, green
@@ -130,8 +130,8 @@ for color_type in data:
     if color_type not in horizontal_types and color_type not in vertical_types:
         result[color_type] = data[color_type]
 
-# Save to layout_parallel.json
-with open('layout_parallel.json', 'w', encoding='utf-8') as f:
+# Save to layout_parallel_disp.json
+with open('layout_parallel_disp.json', 'w', encoding='utf-8') as f:
     json.dump(result, f, indent=2, ensure_ascii=False)
 
 print("Processing complete!")
@@ -139,4 +139,4 @@ print("\nPoint counts:")
 for ct in result:
     print(f"  {ct}: {len(result[ct])}")
 
-print("\nSaved to layout_parallel.json")
+print("\nSaved to layout_parallel_disp.json")

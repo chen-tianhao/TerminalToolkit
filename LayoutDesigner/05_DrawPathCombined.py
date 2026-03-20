@@ -41,7 +41,7 @@ DISTANCE_TO_GROUPS = {
 
 def load_data(layout_type):
     """Load and convert data based on layout type"""
-    filename = os.path.join(BASE_DIR, f'layout_{layout_type}.json')
+    filename = os.path.join(BASE_DIR, f'layout_{layout_type}_disp.json')
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 

@@ -143,8 +143,8 @@ print("\nEndpoint counts:")
 for ct, pts in endpoints.items():
     print(f"  {ct}: {len(pts)}")
 
-# Save to layout_parallel_0.json
-with open('layout_parallel_0.json', 'w', encoding='utf-8') as f:
+# Save to layout_parallel.json
+with open('layout_parallel.json', 'w', encoding='utf-8') as f:
     json.dump(endpoints, f, indent=2, ensure_ascii=False)
 
-print("\nSaved to layout_parallel_0.json")
+print("\nSaved to layout_parallel.json")
