@@ -2,7 +2,8 @@ import json
 import os
 from collections import defaultdict
 import plotly.graph_objects as go
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, callback, State
+import io
 
 # Get the directory where this script is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -387,7 +388,44 @@ app.layout = html.Div([
         ], id='perpendicular-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
     ], style={'display': 'flex'}),
 
-    html.Div(id='page-content')
+    # Download controls
+    html.Div([
+        html.H4("Download Settings"),
+        html.Div([
+            html.Label("Resolution (width x height, aspect ratio locked):"),
+            dcc.Dropdown(
+                id='resolution-dropdown',
+                options=[
+                    {'label': '800 x 306', 'value': '800'},
+                    {'label': '1200 x 459', 'value': '1200'},
+                    {'label': '1600 x 612', 'value': '1600'},
+                    {'label': '2000 x 765', 'value': '2000'},
+                    {'label': '2400 x 918', 'value': '2400'},
+                    {'label': '3200 x 1224', 'value': '3200'},
+                    {'label': '4000 x 1531', 'value': '4000'},
+                    {'label': '4800 x 1834', 'value': '4800'},
+                    {'label': '5600 x 2139', 'value': '5600'},
+                    {'label': '6400 x 2446', 'value': '6400'},
+                    {'label': '7200 x 2750', 'value': '7200'},
+                    {'label': '8000 x 3057', 'value': '8000'},
+                    {'label': '8800 x 3363', 'value': '8800'},
+                    {'label': '9600 x 3669', 'value': '9600'},
+                    {'label': '10752 x 4096', 'value': '10752'},
+                ],
+                value='1600',
+                clearable=False,
+                style={'width': '150px', 'display': 'inline-block', 'verticalAlign': 'middle'}
+            ),
+            html.Button('Download PNG', id='download-btn', n_clicks=0,
+                       style={'marginLeft': '15px', 'padding': '8px 16px', 'fontSize': '14px'}),
+        ], style={'display': 'flex', 'alignItems': 'center', 'marginBottom': '20px'}),
+        dcc.Download(id='download-image'),
+    ]),
+
+    html.Div(id='page-content'),
+
+    # Store for current figure data
+    dcc.Store(id='current-figure-store', data=None),
 ])
 
 
@@ -402,6 +440,27 @@ def display_page(layout):
         return render_bay()
     else:
         return render_parallel()
+
+
+# Callback to store current figure data
+@app.callback(
+    Output('current-figure-store', 'data'),
+    Input('layout-selector', 'value'),
+    Input('parallel-distance-slider', 'value'),
+    Input('bay-distance-slider', 'value'),
+    Input('perpendicular-distance-slider', 'value'),
+)
+def store_current_figure(layout, parallel_dist, bay_dist, perp_dist):
+    """Generate and store the current figure for download"""
+    if layout == 'perpendicular':
+        fig = update_perpendicular_graph(perp_dist)
+    elif layout == 'bay':
+        fig = update_bay_graph(bay_dist)
+    else:
+        fig = update_parallel_graph(parallel_dist)
+
+    # Return figure as dict (Dash can serialize it)
+    return fig.to_dict()
 
 
 # Callback to show/hide sliders based on selected layout
@@ -796,6 +855,40 @@ def update_perpendicular_graph(distance):
     )
 
     return fig
+
+
+# Download callback
+@callback(
+    Output('download-image', 'data'),
+    Input('download-btn', 'n_clicks'),
+    Input('layout-selector', 'value'),
+    Input('parallel-distance-slider', 'value'),
+    Input('bay-distance-slider', 'value'),
+    Input('perpendicular-distance-slider', 'value'),
+    State('resolution-dropdown', 'value'),
+    State('current-figure-store', 'data'),
+    prevent_initial_call=True,
+)
+def download_image(n_clicks, layout, parallel_dist, bay_dist, perp_dist, resolution, figure_data):
+    """Download the current figure as PNG with selected resolution"""
+    if n_clicks is None or n_clicks == 0 or figure_data is None:
+        return None
+
+    # Get current figure
+    fig = go.Figure(figure_data)
+
+    # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1 ≈ 800:306)
+    width = int(resolution)
+    height = int(width * 600 / 1575)
+
+    # Generate PNG
+    try:
+        img_bytes = fig.to_image(format='png', width=width, height=height, scale=2)
+    except Exception as e:
+        # Fallback: try without scale
+        img_bytes = fig.to_image(format='png', width=width, height=height)
+
+    return dcc.send_bytes(img_bytes, f'layout_{layout}_{width}x{height}.png')
 
 
 if __name__ == '__main__':
