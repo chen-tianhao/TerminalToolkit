@@ -1,42 +1,38 @@
 import json
 import sys
 
-# NoC (Number of Columns) options for blue lines
-# NoC = number of non-fixed groups in the middle
-# Total groups = 1 (left fixed) + NoC + 2 (right fixed)
-NOC_OPTIONS = [32, 34, 36]
+# NoC (Number of Columns) 选项，表示中间非固定组的数量
+# 总组数 = 1 (左侧固定组) + NoC (中间组) + 2 (右侧固定组)
+NOC_OPTIONS = [32, 12, 36]
 
-# Fixed groups configuration
-LEFT_FIXED_GROUPS = 1   # Left side: 1 group (4 lines)
-RIGHT_FIXED_GROUPS = 2  # Right side: 2 groups (8 lines)
-
-# Group internal spacing (1U = 4m)
-U_TO_M = 4  # meters per U
-
+# 固定组配置
+LEFT_FIXED_GROUPS = 1   # 左侧：1个组 (4条线)
+RIGHT_FIXED_GROUPS = 2  # 右侧：2个组 (8条线)
 
 def get_blue_group_starts(points):
     """
-    Identify blue line group starts by clustering x values.
-    Points within 1U distance belong to the same group (1U = 4m).
-    Each group has 4 lines (4 consecutive x values).
-    Returns list of group start x positions.
+    通过x值聚类识别蓝色线的组起始位置。
+    间距在1U以内的点属于同一组 (1U = 4m)。
+    每组有4条线 (4个连续的x值)。
+    返回组起始x位置的列表。
     """
     if not points:
         return []
 
-    # Get all unique x values and sort them
+    # 获取所有唯一的x值并排序
     x_values = sorted({p['x'] for p in points})
 
     if len(x_values) < 4:
         return x_values
 
-    # Cluster x values into groups (within-group gap <= 1U)
+    # 将x值聚类成组（组内间距 <= 1U）
     group_starts = []
     i = 0
     while i < len(x_values):
         group_starts.append(x_values[i])
-        # Skip all x values within this group
-        while i < len(x_values) and x_values[i] - group_starts[-1] <= 1:
+        # 跳过同一组内的所有x值（与前一个x比较）
+        i += 1
+        while i < len(x_values) and x_values[i] - x_values[i-1] <= 1:
             i += 1
 
     return group_starts
@@ -44,101 +40,87 @@ def get_blue_group_starts(points):
 
 def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     """
-    Convert blue vertical lines spacing with fixed ends and average-distributed middle.
+    转换蓝色垂直线间距，两端固定，中间均匀分布。
 
-    Algorithm:
-    1. Group points by x coordinate (clustering within 1U)
-    2. Identify left_fixed groups (fixed), right_fixed groups (fixed), and noc groups (to redistribute)
-    3. Calculate new spacing: total_span / (noc + 1) for the gaps between noc groups
-    4. Recompute all group x positions
+    算法说明：
+    1. 从输入数据获取固定组位置（左侧固定在x=0，右侧固定在x=922, x=928）
+    2. 计算间距：中间组应填充在左侧固定组和第一个右侧固定组之间
+    3. 重新生成所有点：左侧固定组 + noc个中间组 + 右侧固定组
 
-    Args:
-        points: Blue line points list
-        noc: Number of Columns (middle groups to redistribute)
-        left_fixed: Number of fixed groups on left (default 1)
-        right_fixed: Number of fixed groups on right (default 2)
+    参数说明：
+        points: 蓝色线点列表
+        noc: 中间非固定组数量
+        left_fixed: 左侧固定组数量（默认1）
+        right_fixed: 右侧固定组数量（默认2）
 
-    Returns:
-        Converted points list
+    返回：
+        转换后的点列表
     """
     if not points:
         return points
 
-    # Find group starts using clustering
-    orig_group_starts = get_blue_group_starts(points)
-
-    if len(orig_group_starts) < left_fixed + right_fixed + noc:
-        print(f"Warning: Not enough groups. Found {len(orig_group_starts)}, need at least {left_fixed + right_fixed + noc}")
+    # 从输入数据获取y值（保留垂直线位置）
+    y_values = sorted({p['y'] for p in points})
+    if not y_values:
         return points
 
-    # Get first and last fixed group positions
-    first_fixed_x = orig_group_starts[0]
-    last_fixed_x = orig_group_starts[left_fixed + noc - 1]  # Last of the right-fixed groups
+    # 使用修正后的聚类算法从输入数据获取固定组x位置
+    orig_group_starts = get_blue_group_starts(points)
 
-    # Calculate original span between first fixed and last fixed group
-    orig_span = last_fixed_x - first_fixed_x
+    if len(orig_group_starts) < left_fixed + right_fixed:
+        print(f"Error: Need at least {left_fixed + right_fixed} groups for fixed positions")
+        return points
 
-    # Calculate fixed groups width (each group is 3U = 12m wide: 4 lines with 3 gaps)
-    fixed_groups_width = (left_fixed + right_fixed) * 3
+    # 从输入数据获取固定组位置
+    first_fixed_x = orig_group_starts[0]  # 应该是0
+    # 右侧固定组：排序后的最后两个
+    right_fixed_x = [orig_group_starts[-2], orig_group_starts[-1]]  # 应该是 [922, 928]
 
-    # Calculate available span for noc groups
-    # The span should distribute: left_fixed gap, (noc-1) middle gaps, right_fixed gap
-    # But we simplify: total span / (noc + 1) gives the average gap
-    available_span = orig_span - fixed_groups_width
+    # 计算中间组的间距
+    # 中间组应该结束在 right_fixed_x[0] (922) 之前
+    # 公式: right_fixed_x[0] = first_fixed_x + 4 + noc * (4 + new_gap)
+    # 因此: new_gap = (right_fixed_x[0] - first_fixed_x - 4) / noc - 4
+    new_gap = (right_fixed_x[0] - first_fixed_x - 4) / noc - 4
 
-    # New gap between each group
-    if noc > 0:
-        new_gap = available_span / (noc + 1)
-    else:
-        new_gap = available_span
+    # 按正确的x顺序构建所有组的x位置
+    # 顺序：左侧固定组、中间组、右侧固定组（按x排序）
+    group_x_starts = []
 
-    # Build x offset mapping
-    x_offset_map = {}
+    # 左侧固定组
+    group_x_starts.append(first_fixed_x)  # x=0
 
-    # Position for left-fixed groups (at original positions)
-    current_x = first_fixed_x
-    for i in range(left_fixed):
-        for col in range(4):
-            orig_x = orig_group_starts[i] + col
-            new_x = current_x + col
-            x_offset_map[orig_x] = new_x
-        current_x += 4  # Move past this group's 4 lines (4U)
-
-    # Position for noc groups with new average gap
+    # 中间组（noc个组，每组4U宽，带间距）
     for i in range(noc):
-        for col in range(4):
-            orig_x = orig_group_starts[left_fixed + i] + col
-            new_x = current_x + col
-            x_offset_map[orig_x] = new_x
-        current_x += 4 + new_gap  # Group width (4U) + gap
+        group_x_starts.append(first_fixed_x + 4 + (i + 1) * (4 + new_gap))
 
-    # Position for right-fixed groups (at original positions)
-    # Right fixed groups stay at their original positions
-    for i in range(right_fixed):
-        group_idx = left_fixed + noc + i
-        for col in range(4):
-            orig_x = orig_group_starts[group_idx] + col
-            # Right fixed groups stay at their original positions
-            x_offset_map[orig_x] = orig_x
+    # 右侧固定组（位于原始x位置）
+    group_x_starts.extend(right_fixed_x)
 
-    # Apply offset to points
+    # 按x排序确保正确顺序
+    group_x_starts.sort()
+
+    # 重新生成所有点
     converted = []
-    for p in points:
-        new_x = x_offset_map.get(p['x'], p['x'])
-        converted.append({
-            'id': p['id'],
-            'x': new_x,
-            'y': p['y'],
-            'region': p['region'],
-            'kind': p['kind'],
-            'color_type': p['color_type']
-        })
+    group_idx = 0
+
+    for y in y_values:
+        for group_x in group_x_starts:
+            for col in range(4):
+                converted.append({
+                    'id': f'BLU_R{group_idx:03d}_{int(y):04d}',
+                    'x': group_x + col,
+                    'y': y,
+                    'region': 'blue',
+                    'kind': 'v',
+                    'color_type': 'blue'
+                })
+            group_idx += 1
 
     return converted
 
 
 def main():
-    # Get NoC from command line argument or use default
+    # 从命令行参数获取NoC，若无则使用默认值
     if len(sys.argv) > 1:
         try:
             noc = int(sys.argv[1])
@@ -149,27 +131,27 @@ def main():
             print(f"Invalid NoC argument: {sys.argv[1]}. Must be an integer.")
             sys.exit(1)
     else:
-        noc = NOC_OPTIONS[1]  # Default to 34
+        noc = NOC_OPTIONS[1]  # 默认为34
         print(f"No NoC specified, using default: {noc}")
 
-    # Read data
-    with open('layout_parallel.json', 'r', encoding='utf-8') as f:
+    # 读取数据
+    with open('LayoutDesigner\layout_parallel.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # Process each color type
+    # 处理每种颜色类型
     result = {}
 
-    # Keep purple_horizontal, vertical_purple, green unchanged
+    # 保留 purple_horizontal, vertical_purple, green 不变
     for ct in ['purple_horizontal', 'vertical_purple', 'green']:
         if ct in data:
             result[ct] = data[ct]
 
-    # Grey types - keep as is
+    # 灰色类型保持不变
     for ct in ['grey', 'vertical_grey']:
         if ct in data:
             result[ct] = data[ct]
 
-    # Blue lines - new algorithm with NoC
+    # 蓝色线 - 使用NoC的新算法
     if 'blue' in data:
         result['blue'] = convert_blue_vertical_spacing(
             data['blue'],
@@ -178,10 +160,10 @@ def main():
             right_fixed=RIGHT_FIXED_GROUPS
         )
 
-    # Orange is removed (not rendered in perpendicular layout)
+    # 橙色线被移除（不在垂直布局中渲染）
 
-    # Save to file with U values rounded to 2 decimal places
-    output_file = 'layout_perpendicular.json'
+    # 保存到文件，U值保留2位小数
+    output_file = 'LayoutDesigner\layout_perpendicular.json'
 
     def format_point(p):
         return {
