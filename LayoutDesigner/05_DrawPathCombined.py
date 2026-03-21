@@ -41,7 +41,7 @@ DISTANCE_TO_GROUPS = {
 
 def load_data(layout_type):
     """Load and convert data based on layout type"""
-    filename = os.path.join(BASE_DIR, f'layout_{layout_type}_disp.json')
+    filename = os.path.join(BASE_DIR, f'layout_{layout_type}.json')
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
@@ -190,23 +190,52 @@ def get_horizontal_data(data, ct, distance=92):
 
 
 # ============== Perpendicular Layout Functions ==============
-def get_vertical_data(data, ct, distance=92):
-    """Get vertical line data with adjustable distance (in meters)"""
+
+# Fixed groups configuration for perpendicular layout
+PERP_LEFT_FIXED_GROUPS = 1   # Left side: 1 group (4 lines)
+PERP_RIGHT_FIXED_GROUPS = 2  # Right side: 2 groups (8 lines)
+
+
+def get_blue_group_starts_vertical(x_values):
+    """
+    Identify blue line group starts by clustering x values.
+    Points within U_TO_M distance belong to the same group.
+    Each group has 4 lines (4 consecutive x values).
+    """
+    if len(x_values) < 4:
+        return x_values
+
+    group_starts = []
+    i = 0
+    while i < len(x_values):
+        group_starts.append(x_values[i])
+        while i < len(x_values) and x_values[i] - group_starts[-1] <= U_TO_M:
+            i += 1
+    return group_starts
+
+
+def get_vertical_data(data, ct, noc=34):
+    """
+    Get vertical line data with NoC (Number of Columns) based spacing.
+
+    Algorithm:
+    - Left fixed groups: 1 group (4 lines)
+    - Right fixed groups: 2 groups (8 lines)
+    - Middle groups: NoC groups, redistributed with average spacing
+    - Total groups = 1 + NoC + 2 = NoC + 3
+
+    Args:
+        data: Data dictionary containing points
+        ct: Color type (e.g., 'blue')
+        noc: Number of Columns (middle groups count), supports 32, 34, 36
+
+    Returns:
+        lines, markers
+    """
     points_list = data.get(ct, [])
 
     if not points_list:
         return [], []
-
-    # Determine number of groups based on distance
-    # 92m: 36 groups (original)
-    # 86m: 38 groups (36 + 2 new)
-    # 80m: 41 groups (36 + 5 new)
-    if distance == 80:
-        num_groups = 41
-    elif distance == 86:
-        num_groups = 38
-    else:  # 92
-        num_groups = 36
 
     # Group by x
     by_x = defaultdict(list)
@@ -216,30 +245,70 @@ def get_vertical_data(data, ct, distance=92):
     # Get unique x values sorted
     x_values = sorted(by_x.keys())
 
-    # Calculate new x positions
-    # First group stays fixed, all other groups adjust relative to it
-    # Original distance between adjacent group edges: 23U = 92m
-    # Adjustable distance in meters
-    if len(x_values) >= 8:
-        # Calculate offsets (distance - 92 meters, original group edge spacing)
-        original_spacing = 23 * U_TO_M  # 23U = 92m
-        offset = distance - original_spacing
+    if len(x_values) < 4:
+        return [], points_list
 
-        # Create x offset mapping
-        # Group 0: fixed (offset=0)
-        # Group i: offset = i * (distance - original_spacing)
-        x_offset_map = {}
-        for i in range(len(x_values) // 4):
-            orig_group_start = x_values[i * 4]
-            new_group_start = orig_group_start + i * offset
-            for col in range(4):
-                orig = orig_group_start + col * 4
-                new = new_group_start + col * 4
-                x_offset_map[orig] = new
-    else:
+    # Find original group starts using clustering
+    orig_group_starts = get_blue_group_starts_vertical(x_values)
+
+    left_fixed = PERP_LEFT_FIXED_GROUPS
+    right_fixed = PERP_RIGHT_FIXED_GROUPS
+
+    # Total groups should match: left + noc + right
+    total_groups = left_fixed + noc + right_fixed
+
+    if len(orig_group_starts) < total_groups:
+        # Not enough groups in original data, return as is
         x_offset_map = {x: x for x in x_values}
+    else:
+        # Get first and last fixed group positions
+        first_fixed_x = orig_group_starts[0]
+        last_fixed_x = orig_group_starts[left_fixed + noc - 1]  # Last of right-fixed groups
 
-    # Build line data from original groups
+        # Calculate original span between first and last fixed groups
+        orig_span = last_fixed_x - first_fixed_x
+
+        # Fixed groups width (each group is 3U = 12m wide)
+        fixed_groups_width = (left_fixed + right_fixed) * 3 * U_TO_M
+
+        # Available span for noc groups
+        available_span = orig_span - fixed_groups_width
+
+        # New average gap between groups
+        if noc > 0:
+            new_gap = available_span / (noc + 1)
+        else:
+            new_gap = available_span
+
+        # Build x offset mapping
+        x_offset_map = {}
+
+        # Left fixed groups at original positions
+        for i in range(left_fixed):
+            orig_start = orig_group_starts[i]
+            for col in range(4):
+                orig_x = orig_start + col * U_TO_M
+                x_offset_map[orig_x] = orig_x
+
+        # NoC middle groups with new average gap
+        current_x = first_fixed_x
+        for i in range(noc):
+            orig_start = orig_group_starts[left_fixed + i]
+            for col in range(4):
+                orig_x = orig_start + col * U_TO_M
+                new_x = current_x + col * U_TO_M
+                x_offset_map[orig_x] = new_x
+            current_x += 4 * U_TO_M + new_gap
+
+        # Right fixed groups at original positions
+        for i in range(right_fixed):
+            group_idx = left_fixed + noc + i
+            orig_start = orig_group_starts[group_idx]
+            for col in range(4):
+                orig_x = orig_start + col * U_TO_M
+                x_offset_map[orig_x] = orig_x
+
+    # Build line data from groups
     lines = []
     markers = []
     for x, pts in by_x.items():
@@ -256,49 +325,6 @@ def get_vertical_data(data, ct, distance=92):
                     'x': x_offset_map.get(p['x'], p['x']),
                     'y': p['y'],
                     'id': p['id']
-                })
-
-    # Add extra groups if needed (beyond original 36)
-    if num_groups > 36:
-        extra_groups = num_groups - 36
-
-        # Get the last original group's last point x position (col 3)
-        # x_values[-1] is the last x value (rightmost column of last group)
-        last_point_x = x_offset_map.get(x_values[-1], x_values[-1])
-
-        # Each group has 4 columns, spacing 1U = 4m between columns
-        # Group width = 3 * 4m = 12m (from column 0 to column 3)
-        group_width = 12
-
-        # Get y values from the first column (same pattern for all columns)
-        first_x = x_values[0]
-        first_col_ys = sorted([p['y'] for p in by_x[first_x]])
-
-        # Generate new groups
-        # Group 37: starts at last_point_x + distance
-        # Group 38: starts at (last_point_x + distance + group_width) + distance = last_point_x + 2*distance + group_width
-        for g in range(extra_groups):
-            # New group x position: last group last point + group_width + distance for each previous extra group
-            new_group_x = last_point_x + distance + g * (distance + group_width)
-
-            # Create 4 columns for this group at same y positions
-            for col in range(4):
-                new_x = new_group_x + col * 4
-
-                # Add markers at each y position
-                for y in first_col_ys:
-                    # Create unique id for new points
-                    new_id = f"extra_{g}_{col}_{y}"
-                    markers.append({
-                        'x': new_x,
-                        'y': y,
-                        'id': new_id
-                    })
-
-                # Add line for this column
-                lines.append({
-                    'x': [new_x] * len(first_col_ys),
-                    'y': first_col_ys,
                 })
 
     return lines, markers
@@ -373,15 +399,15 @@ app.layout = html.Div([
         ], id='bay-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
 
         html.Div([
-            html.Label("Distance between blue path groups (total blocks / number of rows):"),
+            html.Label("Number of columns (NoC):"),
             dcc.RadioItems(
                 id='perpendicular-distance-slider',
                 options=[
-                    {'label': ' 80m ( / 10 rows) ', 'value': 80},
-                    {'label': ' 86m ( / 11 rows) ', 'value': 86},
-                    {'label': ' 92m ( / 12 rows) ', 'value': 92},
+                    {'label': ' 32 (35 groups) ', 'value': 32},
+                    {'label': ' 34 (37 groups) ', 'value': 34},
+                    {'label': ' 36 (39 groups) ', 'value': 36},
                 ],
-                value=92,
+                value=34,
                 inline=True,
                 style={'marginTop': '10px'}
             ),
@@ -779,7 +805,7 @@ def update_bay_graph(distance):
     Output('perpendicular-paths-graph', 'figure'),
     Input('perpendicular-distance-slider', 'value')
 )
-def update_perpendicular_graph(distance):
+def update_perpendicular_graph(noc):
     fig = go.Figure()
 
     # Draw purple_horizontal (static)
@@ -815,8 +841,8 @@ def update_perpendicular_graph(distance):
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Draw blue with adjustable distance
-    blue_lines, blue_markers = get_vertical_data(data_perpendicular, 'blue', distance)
+    # Draw blue with NoC-based spacing
+    blue_lines, blue_markers = get_vertical_data(data_perpendicular, 'blue', noc)
 
     for line in blue_lines:
         fig.add_trace(go.Scatter(
@@ -842,7 +868,7 @@ def update_perpendicular_graph(distance):
 
     # Layout
     fig.update_layout(
-        title=f'Perpendicular Layout (distance={distance}m)',
+        title=f'Perpendicular Layout (NoC={noc})',
         xaxis_title='X (m)',
         yaxis_title='Y (m)',
         yaxis=dict(autorange='reversed', range=[0, 1200], scaleanchor='x', scaleratio=1),

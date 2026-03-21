@@ -1,129 +1,125 @@
 import json
-from collections import defaultdict
+import sys
 
-# Read data
-with open('layout_parallel.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
+# NoC (Number of Columns) options for blue lines
+# NoC = number of non-fixed groups in the middle
+# Total groups = 1 (left fixed) + NoC + 2 (right fixed)
+NOC_OPTIONS = [32, 34, 36]
 
-# Current spacing values in U
-ORANGE_CURRENT_GAP = 26  # U (between orange groups)
-BLUE_CURRENT_GAP = 82   # U (between blue groups)
+# Fixed groups configuration
+LEFT_FIXED_GROUPS = 1   # Left side: 1 group (4 lines)
+RIGHT_FIXED_GROUPS = 2  # Right side: 2 groups (8 lines)
 
-# Target spacing - swap them
-ORANGE_NEW_GAP = BLUE_CURRENT_GAP    # 82U
-BLUE_NEW_GAP = ORANGE_CURRENT_GAP   # 26U
+# Group internal spacing (1U = 4m)
+U_TO_M = 4  # meters per U
 
-def convert_horizontal_spacing(points, current_gap, new_gap):
+
+def get_blue_group_starts(points):
     """
-    Convert horizontal lines spacing.
-    Groups 1 and 8 stay at their original positions.
-    Groups 2-7 are shifted to achieve new_gap between all groups.
+    Identify blue line group starts by clustering x values.
+    Points within U_TO_M distance belong to the same group.
+    Each group has 4 lines (4 consecutive x values).
+    Returns list of group start x positions.
     """
-    # Group by y
-    by_y = defaultdict(list)
-    for p in points:
-        by_y[p['y']].append(p)
+    if not points:
+        return []
 
-    y_values = sorted(by_y.keys())
+    # Get all unique x values and sort them
+    x_values = sorted({p['x'] for p in points})
 
-    if len(y_values) < 8:
+    if len(x_values) < 4:
+        return x_values
+
+    # Cluster x values into groups (within-group gap <= U_TO_M)
+    group_starts = []
+    i = 0
+    while i < len(x_values):
+        group_starts.append(x_values[i])
+        # Skip all x values within this group
+        while i < len(x_values) and x_values[i] - group_starts[-1] <= U_TO_M:
+            i += 1
+
+    return group_starts
+
+
+def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
+    """
+    Convert blue vertical lines spacing with fixed ends and average-distributed middle.
+
+    Algorithm:
+    1. Group points by x coordinate (clustering within U_TO_M)
+    2. Identify left_fixed groups (fixed), right_fixed groups (fixed), and noc groups (to redistribute)
+    3. Calculate new spacing: total_span / (noc + 1) for the gaps between noc groups
+    4. Recompute all group x positions
+
+    Args:
+        points: Blue line points list
+        noc: Number of Columns (middle groups to redistribute)
+        left_fixed: Number of fixed groups on left (default 1)
+        right_fixed: Number of fixed groups on right (default 2)
+
+    Returns:
+        Converted points list
+    """
+    if not points:
         return points
 
-    # Get original group start positions (every 4 rows)
-    n_groups = len(y_values) // 4
-    orig_group_starts = [y_values[i * 4] for i in range(n_groups)]
+    # Find group starts using clustering
+    orig_group_starts = get_blue_group_starts(points)
 
-    # Calculate the shift needed for each group
-    # Group 1 (index 0) stays at original position
-    # Group 8 (index 7) stays at original position
-    # Groups 2-7 are distributed evenly between them
-
-    # First, calculate the total span with new gap
-    # new_span = (n_groups - 1) * new_gap
-    new_span = (n_groups - 1) * new_gap
-    orig_span = orig_group_starts[-1] - orig_group_starts[0]
-
-    # Calculate new positions proportionally
-    new_group_starts = []
-    for i in range(n_groups):
-        if i == 0:
-            # Group 1: fixed at original position
-            new_group_starts.append(orig_group_starts[0])
-        elif i == n_groups - 1:
-            # Group 8: fixed at original position
-            new_group_starts.append(orig_group_starts[-1])
-        else:
-            # Groups 2-7: proportional distribution
-            ratio = i / (n_groups - 1)
-            new_pos = orig_group_starts[0] + ratio * new_span
-            new_group_starts.append(new_pos)
-
-    # Create y offset mapping
-    y_offset_map = {}
-    for gi, orig_start in enumerate(orig_group_starts):
-        new_start = new_group_starts[gi]
-        for row in range(4):
-            orig_y = orig_start + row
-            new_y = new_start + row
-            y_offset_map[orig_y] = new_y
-
-    # Apply offset to points
-    converted = []
-    for p in points:
-        new_y = y_offset_map.get(p['y'], p['y'])
-        converted.append({
-            'id': p['id'],
-            'x': p['x'],
-            'y': new_y,
-            'region': p['region'],
-            'kind': p['kind'],
-            'color_type': p['color_type']
-        })
-
-    return converted
-
-def convert_vertical_spacing(points, current_gap, new_gap):
-    """
-    Convert vertical lines spacing.
-    First and last groups stay at their original positions.
-    Middle groups are shifted to achieve new_gap between all groups.
-    """
-    # Group by x
-    by_x = defaultdict(list)
-    for p in points:
-        by_x[p['x']].append(p)
-
-    x_values = sorted(by_x.keys())
-
-    if len(x_values) < 8:
+    if len(orig_group_starts) < left_fixed + right_fixed + noc:
+        print(f"Warning: Not enough groups. Found {len(orig_group_starts)}, need at least {left_fixed + right_fixed + noc}")
         return points
 
-    # Get original group start positions (every 4 columns)
-    n_groups = len(x_values) // 4
-    orig_group_starts = [x_values[i * 4] for i in range(n_groups)]
+    # Get first and last fixed group positions
+    first_fixed_x = orig_group_starts[0]
+    last_fixed_x = orig_group_starts[left_fixed + noc - 1]  # Last of the right-fixed groups
 
-    # Calculate new positions
-    new_span = (n_groups - 1) * new_gap
+    # Calculate original span between first fixed and last fixed group
+    orig_span = last_fixed_x - first_fixed_x
 
-    new_group_starts = []
-    for i in range(n_groups):
-        if i == 0:
-            new_group_starts.append(orig_group_starts[0])
-        elif i == n_groups - 1:
-            new_group_starts.append(orig_group_starts[-1])
-        else:
-            ratio = i / (n_groups - 1)
-            new_pos = orig_group_starts[0] + ratio * new_span
-            new_group_starts.append(new_pos)
+    # Calculate fixed groups width (each group is 3U = 12m wide: 4 lines with 3 gaps)
+    fixed_groups_width = (left_fixed + right_fixed) * 3 * U_TO_M
 
-    # Create x offset mapping
+    # Calculate available span for noc groups
+    # The span should distribute: left_fixed gap, (noc-1) middle gaps, right_fixed gap
+    # But we simplify: total span / (noc + 1) gives the average gap
+    available_span = orig_span - fixed_groups_width
+
+    # New gap between each group
+    if noc > 0:
+        new_gap = available_span / (noc + 1)
+    else:
+        new_gap = available_span
+
+    # Build x offset mapping
     x_offset_map = {}
-    for gi, orig_start in enumerate(orig_group_starts):
-        new_start = new_group_starts[gi]
+
+    # Position for left-fixed groups (at original positions)
+    current_x = first_fixed_x
+    for i in range(left_fixed):
         for col in range(4):
-            orig_x = orig_start + col
-            new_x = new_start + col
+            orig_x = orig_group_starts[i] + col * U_TO_M
+            new_x = current_x + col * U_TO_M
             x_offset_map[orig_x] = new_x
+        current_x += 4 * U_TO_M  # Move past this group's 4 lines
+
+    # Position for noc groups with new average gap
+    for i in range(noc):
+        for col in range(4):
+            orig_x = orig_group_starts[left_fixed + i] + col * U_TO_M
+            new_x = current_x + col * U_TO_M
+            x_offset_map[orig_x] = new_x
+        current_x += 4 * U_TO_M + new_gap  # Group width + gap
+
+    # Position for right-fixed groups (at original positions)
+    # Right fixed groups stay at their original positions
+    for i in range(right_fixed):
+        group_idx = left_fixed + noc + i
+        for col in range(4):
+            orig_x = orig_group_starts[group_idx] + col * U_TO_M
+            # Right fixed groups stay at their original positions
+            x_offset_map[orig_x] = orig_x
 
     # Apply offset to points
     converted = []
@@ -140,34 +136,61 @@ def convert_vertical_spacing(points, current_gap, new_gap):
 
     return converted
 
-# Process each color type
-result = {}
 
-# Horizontal types - swap to blue spacing
-for ct in ['orange', 'green', 'purple_horizontal']:
-    points = data.get(ct, [])
-    if ct == 'orange':
-        result[ct] = convert_horizontal_spacing(points, ORANGE_CURRENT_GAP, ORANGE_NEW_GAP)
+def main():
+    # Get NoC from command line argument or use default
+    if len(sys.argv) > 1:
+        try:
+            noc = int(sys.argv[1])
+            if noc not in NOC_OPTIONS:
+                print(f"Invalid NoC value: {noc}. Valid options: {NOC_OPTIONS}")
+                sys.exit(1)
+        except ValueError:
+            print(f"Invalid NoC argument: {sys.argv[1]}. Must be an integer.")
+            sys.exit(1)
     else:
-        result[ct] = points
+        noc = NOC_OPTIONS[1]  # Default to 34
+        print(f"No NoC specified, using default: {noc}")
 
-# Vertical types - swap to orange spacing
-for ct in ['blue', 'vertical_purple']:
-    points = data.get(ct, [])
-    if ct == 'blue':
-        result[ct] = convert_vertical_spacing(points, BLUE_CURRENT_GAP, BLUE_NEW_GAP)
-    else:
-        result[ct] = points
+    # Read data
+    with open('layout_parallel.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-# Grey types (keep as is)
-for ct in ['grey', 'vertical_grey']:
-    if ct in data:
-        result[ct] = data[ct]
+    # Process each color type
+    result = {}
 
-# Save to file
-with open('layout_perpendicular.json', 'w', encoding='utf-8') as f:
-    json.dump(result, f, indent=2, ensure_ascii=False)
+    # Keep purple_horizontal, vertical_purple, green unchanged
+    for ct in ['purple_horizontal', 'vertical_purple', 'green']:
+        if ct in data:
+            result[ct] = data[ct]
 
-print("Saved to layout_perpendicular.json")
-print(f"Orange spacing: {ORANGE_CURRENT_GAP}U -> {ORANGE_NEW_GAP}U")
-print(f"Blue spacing: {BLUE_CURRENT_GAP}U -> {BLUE_NEW_GAP}U")
+    # Grey types - keep as is
+    for ct in ['grey', 'vertical_grey']:
+        if ct in data:
+            result[ct] = data[ct]
+
+    # Blue lines - new algorithm with NoC
+    if 'blue' in data:
+        result['blue'] = convert_blue_vertical_spacing(
+            data['blue'],
+            noc=noc,
+            left_fixed=LEFT_FIXED_GROUPS,
+            right_fixed=RIGHT_FIXED_GROUPS
+        )
+
+    # Orange is removed (not rendered in perpendicular layout)
+
+    # Save to file
+    output_file = 'layout_perpendicular.json'
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+
+    print(f"Saved to {output_file}")
+    print(f"NoC: {noc}")
+    print(f"Left fixed groups: {LEFT_FIXED_GROUPS}")
+    print(f"Right fixed groups: {RIGHT_FIXED_GROUPS}")
+    print(f"Total blue groups: {LEFT_FIXED_GROUPS + noc + RIGHT_FIXED_GROUPS}")
+
+
+if __name__ == '__main__':
+    main()
