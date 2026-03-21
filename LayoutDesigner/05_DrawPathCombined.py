@@ -362,7 +362,7 @@ layout_dropdown = html.Div([
 ], style={'marginBottom': '20px', 'display': 'flex', 'alignItems': 'center'})
 
 app.layout = html.Div([
-    html.H3("Layout Settings (in meters)"),
+    html.H3("Layout Settings (in U, 1U = 4m)"),
 
     layout_dropdown,
 
@@ -572,7 +572,7 @@ def update_parallel_graph(distance):
         mode='markers',
         name=f"Orange ({len(orange_points)})",
         marker=dict(size=1, color='orange'),
-        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
         customdata=[[p['id']] for p in orange_points]
     ))
 
@@ -620,17 +620,17 @@ def update_parallel_graph(distance):
             mode='markers',
             name=f"{display_names[ct]} ({len(points_list)})",
             marker=dict(size=1, color=colors[ct]),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
             customdata=[[p['id']] for p in points_list]
         ))
 
     # Layout (ranges in meters)
     fig.update_layout(
         title=f'Parallel Layout (distance={distance}m)',
-        xaxis_title='X (m)',
-        yaxis_title='Y (m)',
-        yaxis=dict(autorange='reversed', range=[0, 1200], scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-200, 4000], scaleanchor='y', scaleratio=1),
+        xaxis_title='X (U)',
+        yaxis_title='Y (U)',
+        yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
+        xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
         hovermode='closest',
         showlegend=True,
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
@@ -674,7 +674,7 @@ def update_bay_graph(distance):
         mode='markers',
         name=f"Orange ({len(orange_points)})",
         marker=dict(size=1, color='orange'),
-        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
         customdata=[[p['id']] for p in orange_points]
     ))
 
@@ -706,7 +706,7 @@ def update_bay_graph(distance):
         mode='markers',
         name=f"Blue long ({len(blue_marker_x)})",
         marker=dict(size=1, color='blue'),
-        hovertemplate='X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+        hovertemplate='X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
     ))
 
     # ----- Blue short lines (Y=112↔892, always fixed) -----
@@ -739,7 +739,7 @@ def update_bay_graph(distance):
             mode='markers',
             name=f"Blue short ({len(short_blue)})",
             marker=dict(size=1, color='blue'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
             customdata=[[p['id']] for p in short_blue]
         ))
 
@@ -778,18 +778,18 @@ def update_bay_graph(distance):
             mode='markers',
             name=f"{display_names[ct]} ({len(points_list)})",
             marker=dict(size=1, color=colors[ct]),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
             customdata=[[p['id']] for p in points_list]
         ))
 
     # ----- Layout -----
     fig.update_layout(
         title=f'Parallel Layout - Bay Adjustable ({(n_groups - 1) * 14} groups)',
-        xaxis_title='X (m)',
-        yaxis_title='Y (m)',
-        yaxis=dict(autorange='reversed', range=[0, 1200],
+        xaxis_title='X (U)',
+        yaxis_title='Y (U)',
+        yaxis=dict(autorange='reversed', range=[0, 250],
                    scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-200, 4000],
+        xaxis=dict(range=[-50, 1000],
                    scaleanchor='y', scaleratio=1),
         hovermode='closest',
         showlegend=True,
@@ -837,7 +837,7 @@ def update_perpendicular_graph(noc):
             mode='markers',
             name=f"{display_names[ct]} ({len(points_list)})",
             marker=dict(size=1, color=colors[ct]),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
             customdata=[[p['id']] for p in points_list]
         ))
 
@@ -862,17 +862,17 @@ def update_perpendicular_graph(noc):
             mode='markers',
             name=f"Blue ({len(blue_markers)})",
             marker=dict(size=1, color='blue'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.1f}m<br>Y: %{y:.1f}m<extra></extra>',
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
             customdata=[[m['id']] for m in blue_markers]
         ))
 
     # Layout
     fig.update_layout(
         title=f'Perpendicular Layout (NoC={noc})',
-        xaxis_title='X (m)',
-        yaxis_title='Y (m)',
-        yaxis=dict(autorange='reversed', range=[0, 1200], scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-200, 4000], scaleanchor='y', scaleratio=1),
+        xaxis_title='X (U)',
+        yaxis_title='Y (U)',
+        yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
+        xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
         hovermode='closest',
         showlegend=True,
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
