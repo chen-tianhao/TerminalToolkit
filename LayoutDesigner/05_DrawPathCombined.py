@@ -45,14 +45,14 @@ def load_data(layout_type):
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
-    # Convert coordinates from U to meters
+    # Coordinates are in U (1U = 4m), keep as is
     data = {}
     for color_type, points in raw_data.items():
         data[color_type] = [
             {
                 'id': p['id'],
-                'x': p['x'] * U_TO_M,
-                'y': p['y'] * U_TO_M,
+                'x': round(p['x'], 2),
+                'y': round(p['y'], 2),
                 'region': p['region'],
                 'kind': p['kind'],
                 'color_type': p['color_type']
@@ -69,14 +69,14 @@ def _get_orig_blue_long_group_starts(data):
     blue_points = data.get('blue', [])
     long_blue_xs = sorted({p['x'] for p in blue_points if p['y'] in BLUE_Y_LONG})
 
-    # Cluster consecutive x values (within-group gap = U_TO_M = 4m)
+    # Cluster consecutive x values (within-group gap = 1U, where 1U = 4m)
     group_starts = []
     i = 0
     while i < len(long_blue_xs):
         group_starts.append(long_blue_xs[i])
         # skip remaining members of this group
         while (i + 1 < len(long_blue_xs)
-               and long_blue_xs[i + 1] - long_blue_xs[i] <= U_TO_M):
+               and long_blue_xs[i + 1] - long_blue_xs[i] <= 1):
             i += 1
         i += 1
     return group_starts
@@ -168,8 +168,8 @@ def get_horizontal_data(data, ct, distance=92):
         y_offset_map = {}
         for i, orig_y in enumerate(orig_group_starts):
             for row in range(4):
-                orig = orig_y + row * U_TO_M
-                new = new_y_positions[i] + row * U_TO_M
+                orig = orig_y + row
+                new = new_y_positions[i] + row
                 y_offset_map[orig] = new
     else:
         y_offset_map = {y: y for y in y_values}
@@ -199,7 +199,7 @@ PERP_RIGHT_FIXED_GROUPS = 2  # Right side: 2 groups (8 lines)
 def get_blue_group_starts_vertical(x_values):
     """
     Identify blue line group starts by clustering x values.
-    Points within U_TO_M distance belong to the same group.
+    Points within 1U distance belong to the same group (1U = 4m).
     Each group has 4 lines (4 consecutive x values).
     """
     if len(x_values) < 4:
@@ -209,7 +209,7 @@ def get_blue_group_starts_vertical(x_values):
     i = 0
     while i < len(x_values):
         group_starts.append(x_values[i])
-        while i < len(x_values) and x_values[i] - group_starts[-1] <= U_TO_M:
+        while i < len(x_values) and x_values[i] - group_starts[-1] <= 1:
             i += 1
     return group_starts
 
@@ -268,8 +268,8 @@ def get_vertical_data(data, ct, noc=34):
         # Calculate original span between first and last fixed groups
         orig_span = last_fixed_x - first_fixed_x
 
-        # Fixed groups width (each group is 3U = 12m wide)
-        fixed_groups_width = (left_fixed + right_fixed) * 3 * U_TO_M
+        # Fixed groups width (each group is 3U = 12m wide) - in U
+        fixed_groups_width = (left_fixed + right_fixed) * 3
 
         # Available span for noc groups
         available_span = orig_span - fixed_groups_width
@@ -287,7 +287,7 @@ def get_vertical_data(data, ct, noc=34):
         for i in range(left_fixed):
             orig_start = orig_group_starts[i]
             for col in range(4):
-                orig_x = orig_start + col * U_TO_M
+                orig_x = orig_start + col
                 x_offset_map[orig_x] = orig_x
 
         # NoC middle groups with new average gap
@@ -295,17 +295,17 @@ def get_vertical_data(data, ct, noc=34):
         for i in range(noc):
             orig_start = orig_group_starts[left_fixed + i]
             for col in range(4):
-                orig_x = orig_start + col * U_TO_M
-                new_x = current_x + col * U_TO_M
+                orig_x = orig_start + col
+                new_x = current_x + col
                 x_offset_map[orig_x] = new_x
-            current_x += 4 * U_TO_M + new_gap
+            current_x += 4 + new_gap
 
         # Right fixed groups at original positions
         for i in range(right_fixed):
             group_idx = left_fixed + noc + i
             orig_start = orig_group_starts[group_idx]
             for col in range(4):
-                orig_x = orig_start + col * U_TO_M
+                orig_x = orig_start + col
                 x_offset_map[orig_x] = orig_x
 
     # Build line data from groups
@@ -686,7 +686,7 @@ def update_bay_graph(distance):
     blue_marker_x, blue_marker_y = [], []
     for gs in group_starts:
         for col in range(4):
-            x = gs + col * U_TO_M
+            x = gs + col
             bl_xs.extend([x, x, None])
             bl_ys.extend([88.0, 916.0, None])
             blue_marker_x.extend([x, x])

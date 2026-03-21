@@ -17,7 +17,7 @@ U_TO_M = 4  # meters per U
 def get_blue_group_starts(points):
     """
     Identify blue line group starts by clustering x values.
-    Points within U_TO_M distance belong to the same group.
+    Points within 1U distance belong to the same group (1U = 4m).
     Each group has 4 lines (4 consecutive x values).
     Returns list of group start x positions.
     """
@@ -30,13 +30,13 @@ def get_blue_group_starts(points):
     if len(x_values) < 4:
         return x_values
 
-    # Cluster x values into groups (within-group gap <= U_TO_M)
+    # Cluster x values into groups (within-group gap <= 1U)
     group_starts = []
     i = 0
     while i < len(x_values):
         group_starts.append(x_values[i])
         # Skip all x values within this group
-        while i < len(x_values) and x_values[i] - group_starts[-1] <= U_TO_M:
+        while i < len(x_values) and x_values[i] - group_starts[-1] <= 1:
             i += 1
 
     return group_starts
@@ -47,7 +47,7 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     Convert blue vertical lines spacing with fixed ends and average-distributed middle.
 
     Algorithm:
-    1. Group points by x coordinate (clustering within U_TO_M)
+    1. Group points by x coordinate (clustering within 1U)
     2. Identify left_fixed groups (fixed), right_fixed groups (fixed), and noc groups (to redistribute)
     3. Calculate new spacing: total_span / (noc + 1) for the gaps between noc groups
     4. Recompute all group x positions
@@ -79,7 +79,7 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     orig_span = last_fixed_x - first_fixed_x
 
     # Calculate fixed groups width (each group is 3U = 12m wide: 4 lines with 3 gaps)
-    fixed_groups_width = (left_fixed + right_fixed) * 3 * U_TO_M
+    fixed_groups_width = (left_fixed + right_fixed) * 3
 
     # Calculate available span for noc groups
     # The span should distribute: left_fixed gap, (noc-1) middle gaps, right_fixed gap
@@ -99,25 +99,25 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     current_x = first_fixed_x
     for i in range(left_fixed):
         for col in range(4):
-            orig_x = orig_group_starts[i] + col * U_TO_M
-            new_x = current_x + col * U_TO_M
+            orig_x = orig_group_starts[i] + col
+            new_x = current_x + col
             x_offset_map[orig_x] = new_x
-        current_x += 4 * U_TO_M  # Move past this group's 4 lines
+        current_x += 4  # Move past this group's 4 lines (4U)
 
     # Position for noc groups with new average gap
     for i in range(noc):
         for col in range(4):
-            orig_x = orig_group_starts[left_fixed + i] + col * U_TO_M
-            new_x = current_x + col * U_TO_M
+            orig_x = orig_group_starts[left_fixed + i] + col
+            new_x = current_x + col
             x_offset_map[orig_x] = new_x
-        current_x += 4 * U_TO_M + new_gap  # Group width + gap
+        current_x += 4 + new_gap  # Group width (4U) + gap
 
     # Position for right-fixed groups (at original positions)
     # Right fixed groups stay at their original positions
     for i in range(right_fixed):
         group_idx = left_fixed + noc + i
         for col in range(4):
-            orig_x = orig_group_starts[group_idx] + col * U_TO_M
+            orig_x = orig_group_starts[group_idx] + col
             # Right fixed groups stay at their original positions
             x_offset_map[orig_x] = orig_x
 
@@ -180,10 +180,22 @@ def main():
 
     # Orange is removed (not rendered in perpendicular layout)
 
-    # Save to file
+    # Save to file with U values rounded to 2 decimal places
     output_file = 'layout_perpendicular.json'
+
+    def format_point(p):
+        return {
+            'id': p['id'],
+            'x': round(p['x'], 2),
+            'y': round(p['y'], 2),
+            'region': p['region'],
+            'kind': p['kind'],
+            'color_type': p['color_type']
+        }
+
+    formatted_result = {ct: [format_point(p) for p in points] for ct, points in result.items()}
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(result, f, indent=2, ensure_ascii=False)
+        json.dump(formatted_result, f, indent=2, ensure_ascii=False)
 
     print(f"Saved to {output_file}")
     print(f"NoC: {noc}")
