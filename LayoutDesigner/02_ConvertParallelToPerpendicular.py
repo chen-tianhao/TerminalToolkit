@@ -3,7 +3,7 @@ import sys
 
 # NoC (Number of Columns) 选项，表示中间非固定组的数量
 # 总组数 = 1 (左侧固定组) + NoC (中间组) + 2 (右侧固定组)
-NOC_OPTIONS = [32, 12, 36]
+NOC_OPTIONS = [32, 10, 36]
 
 # 固定组配置
 LEFT_FIXED_GROUPS = 1   # 左侧：1个组 (4条线)
@@ -59,8 +59,11 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     if not points:
         return points
 
-    # 从输入数据获取y值（保留垂直线位置）
-    y_values = sorted({p['y'] for p in points})
+    # 从输入数据获取y值（只取最大和最小）
+    all_y = {p['y'] for p in points}
+    if not all_y:
+        return points
+    y_values = sorted([min(all_y), max(all_y)])
     if not y_values:
         return points
 
@@ -80,7 +83,7 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
     # 中间组应该结束在 right_fixed_x[0] (922) 之前
     # 公式: right_fixed_x[0] = first_fixed_x + 4 + noc * (4 + new_gap)
     # 因此: new_gap = (right_fixed_x[0] - first_fixed_x - 4) / noc - 4
-    new_gap = (right_fixed_x[0] - first_fixed_x - 4) / noc - 4
+    new_gap = (right_fixed_x[0] - first_fixed_x - 4 - noc * 4) / (noc + 1)
 
     # 按正确的x顺序构建所有组的x位置
     # 顺序：左侧固定组、中间组、右侧固定组（按x排序）
@@ -184,7 +187,6 @@ def main():
     print(f"Left fixed groups: {LEFT_FIXED_GROUPS}")
     print(f"Right fixed groups: {RIGHT_FIXED_GROUPS}")
     print(f"Total blue groups: {LEFT_FIXED_GROUPS + noc + RIGHT_FIXED_GROUPS}")
-
 
 if __name__ == '__main__':
     main()
