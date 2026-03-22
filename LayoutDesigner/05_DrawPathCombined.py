@@ -2,14 +2,10 @@ import json
 import os
 from collections import defaultdict
 import plotly.graph_objects as go
-from dash import Dash, html, dcc, Input, Output, callback, State
-import io
+from dash import Dash, html, dcc, Input, Output, State
 
 # Get the directory where this script is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Unit conversion: 1U = 4 meters
-U_TO_M = 4
 
 colors = {
     'purple_horizontal': 'purple',
@@ -27,25 +23,13 @@ display_names = {
     'blue': 'Blue'
 }
 
-# ============== Bay Layout Constants ==============
-# Blue line classification (in meters after U->m conversion)
-BLUE_Y_LONG = {88.0, 916.0}
-BLUE_Y_SHORT = {112.0, 892.0}
-
-# Distance options -> number of blue-line groups
-DISTANCE_TO_GROUPS = {
-    298.75: 13,   # 39 bays – one more group than 324m
-    324.0:  12,   # 43 bays – original layout
-    349.25: 11,   # 47 bays – one fewer group than 324m
-}
 
 def load_data(layout_type):
-    """Load and convert data based on layout type"""
+    """Load layout data from JSON file"""
     filename = os.path.join(BASE_DIR, f'layout_{layout_type}.json')
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
-    # Coordinates are in U (1U = 4m), keep as is
     data = {}
     for color_type, points in raw_data.items():
         data[color_type] = [
@@ -62,284 +46,16 @@ def load_data(layout_type):
     return data
 
 
-# ============== Bay Layout Functions ==============
-def _get_orig_blue_long_group_starts(data):
-    """Return the original group-start x positions (meters) for the 12 long
-    blue-line groups, extracted from the JSON data."""
-    blue_points = data.get('blue', [])
-    long_blue_xs = sorted({p['x'] for p in blue_points if p['y'] in BLUE_Y_LONG})
-
-    # Cluster consecutive x values (within-group gap = 1U, where 1U = 4m)
-    group_starts = []
-    i = 0
-    while i < len(long_blue_xs):
-        group_starts.append(long_blue_xs[i])
-        # skip remaining members of this group
-        while (i + 1 < len(long_blue_xs)
-               and long_blue_xs[i + 1] - long_blue_xs[i] <= 1):
-            i += 1
-        i += 1
-    return group_starts
-
-
-ORIG_BLUE_GROUP_STARTS = None  # Will be initialized after data loading
-
-
-def compute_blue_group_starts(distance):
-    """Compute blue-line group start x-positions for the chosen distance.
-
-    * 324m  → 12 groups, **original** positions from JSON (matches 04)
-    * 298.75m → 13 groups, first & last fixed, middle groups evenly distributed
-    * 349.25m → 11 groups, first & last fixed, middle groups evenly distributed
-    """
-    global ORIG_BLUE_GROUP_STARTS
-    if ORIG_BLUE_GROUP_STARTS is None:
-        ORIG_BLUE_GROUP_STARTS = _get_orig_blue_long_group_starts(data_parallel)
-
-    n_groups = DISTANCE_TO_GROUPS[distance]
-
-    if distance == 324.0:
-        # Keep original 12-group positions exactly (hint 1)
-        return list(ORIG_BLUE_GROUP_STARTS)
-
-    first = ORIG_BLUE_GROUP_STARTS[0]       # 0 m
-    last  = ORIG_BLUE_GROUP_STARTS[-1]      # 3688 m
-    total_span = last - first               # 3688 m
-
-    starts = []
-    for i in range(n_groups):
-        if i == 0:
-            starts.append(first)
-        elif i == n_groups - 1:
-            starts.append(last)
-        else:
-            starts.append(first + i * total_span / (n_groups - 1))
-    return starts
-
-
-# ============== Parallel Layout Functions ==============
-def get_horizontal_data(data, ct, distance=92):
-    """Get horizontal line data with adjustable distance (in meters)"""
-    points_list = data.get(ct, [])
-    if not points_list:
-        return []
-
-    # Group by y
-    by_y = defaultdict(list)
-    for p in points_list:
-        by_y[p['y']].append(p)
-
-    # Get unique y values sorted
-    y_values = sorted(by_y.keys())
-
-    # Calculate new y positions
-    # Group 1 stays at original position, Group 8 stays at original position
-    # Groups 2,3,4 move down, groups 5,6,7 move up
-    # Original distance between groups: 23U = 92m
-    # Adjustable distance in meters
-    if len(y_values) >= 8:
-        # Original y positions for groups (4 rows each) in meters
-        orig_group_starts = [
-            y_values[0],   # Group 1 start
-            y_values[4],   # Group 2 start
-            y_values[8],   # Group 3 start
-            y_values[12],  # Group 4 start
-            y_values[16],  # Group 5 start
-            y_values[20],  # Group 6 start
-            y_values[24],  # Group 7 start
-            y_values[28],  # Group 8 start
-        ]
-
-        # Calculate offsets (distance - 92 meters)
-        offset = distance - 92
-
-        new_y_positions = [
-            orig_group_starts[0],                           # Group 1: fixed
-            orig_group_starts[1] + offset,                  # Group 2: down
-            orig_group_starts[2] + offset * 2,             # Group 3: down more
-            orig_group_starts[3] + offset * 3,             # Group 4: down most
-            orig_group_starts[4] - offset * 3,             # Group 5: up most
-            orig_group_starts[5] - offset * 2,             # Group 6: up more
-            orig_group_starts[6] - offset,                 # Group 7: up
-            orig_group_starts[7],                           # Group 8: fixed
-        ]
-
-        # Create y offset mapping
-        y_offset_map = {}
-        for i, orig_y in enumerate(orig_group_starts):
-            for row in range(4):
-                orig = orig_y + row
-                new = new_y_positions[i] + row
-                y_offset_map[orig] = new
-    else:
-        y_offset_map = {y: y for y in y_values}
-
-    # Build line data
-    lines = []
-    for y, pts in by_y.items():
-        if len(pts) >= 2:
-            new_y = y_offset_map.get(y, y)
-            sorted_pts = sorted(pts, key=lambda p: p['x'])
-            lines.append({
-                'x': [p['x'] for p in sorted_pts],
-                'y': [new_y] * len(sorted_pts),
-                'name': f"y={new_y}"
-            })
-
-    return lines, y_offset_map
-
-
-# ============== Perpendicular Layout Functions ==============
-
-# Fixed groups configuration for perpendicular layout
-PERP_LEFT_FIXED_GROUPS = 1   # Left side: 1 group (4 lines)
-PERP_RIGHT_FIXED_GROUPS = 2  # Right side: 2 groups (8 lines)
-
-
-def get_blue_group_starts_vertical(x_values):
-    """
-    Identify blue line group starts by clustering x values.
-    Points within 1U distance belong to the same group (1U = 4m).
-    Each group has 4 lines (4 consecutive x values).
-    """
-    if len(x_values) < 4:
-        return x_values
-
-    group_starts = []
-    i = 0
-    while i < len(x_values):
-        group_starts.append(x_values[i])
-        while i < len(x_values) and x_values[i] - group_starts[-1] <= 1:
-            i += 1
-    return group_starts
-
-
-def get_vertical_data(data, ct, noc=34):
-    """
-    Get vertical line data with NoC (Number of Columns) based spacing.
-
-    Algorithm:
-    - Left fixed groups: 1 group (4 lines)
-    - Right fixed groups: 2 groups (8 lines)
-    - Middle groups: NoC groups, redistributed with average spacing
-    - Total groups = 1 + NoC + 2 = NoC + 3
-
-    Args:
-        data: Data dictionary containing points
-        ct: Color type (e.g., 'blue')
-        noc: Number of Columns (middle groups count), supports 32, 34, 36
-
-    Returns:
-        lines, markers
-    """
-    points_list = data.get(ct, [])
-
-    if not points_list:
-        return [], []
-
-    # Group by x
-    by_x = defaultdict(list)
-    for p in points_list:
-        by_x[p['x']].append(p)
-
-    # Get unique x values sorted
-    x_values = sorted(by_x.keys())
-
-    if len(x_values) < 4:
-        return [], points_list
-
-    # Find original group starts using clustering
-    orig_group_starts = get_blue_group_starts_vertical(x_values)
-
-    left_fixed = PERP_LEFT_FIXED_GROUPS
-    right_fixed = PERP_RIGHT_FIXED_GROUPS
-
-    # Total groups should match: left + noc + right
-    total_groups = left_fixed + noc + right_fixed
-
-    if len(orig_group_starts) < total_groups:
-        # Not enough groups in original data, return as is
-        x_offset_map = {x: x for x in x_values}
-    else:
-        # Get first and last fixed group positions
-        first_fixed_x = orig_group_starts[0]
-        last_fixed_x = orig_group_starts[left_fixed + noc - 1]  # Last of right-fixed groups
-
-        # Calculate original span between first and last fixed groups
-        orig_span = last_fixed_x - first_fixed_x
-
-        # Fixed groups width (each group is 3U = 12m wide) - in U
-        fixed_groups_width = (left_fixed + right_fixed) * 3
-
-        # Available span for noc groups
-        available_span = orig_span - fixed_groups_width
-
-        # New average gap between groups
-        if noc > 0:
-            new_gap = available_span / (noc + 1)
-        else:
-            new_gap = available_span
-
-        # Build x offset mapping
-        x_offset_map = {}
-
-        # Left fixed groups at original positions
-        for i in range(left_fixed):
-            orig_start = orig_group_starts[i]
-            for col in range(4):
-                orig_x = orig_start + col
-                x_offset_map[orig_x] = orig_x
-
-        # NoC middle groups with new average gap
-        current_x = first_fixed_x
-        for i in range(noc):
-            orig_start = orig_group_starts[left_fixed + i]
-            for col in range(4):
-                orig_x = orig_start + col
-                new_x = current_x + col
-                x_offset_map[orig_x] = new_x
-            current_x += 4 + new_gap
-
-        # Right fixed groups at original positions
-        for i in range(right_fixed):
-            group_idx = left_fixed + noc + i
-            orig_start = orig_group_starts[group_idx]
-            for col in range(4):
-                orig_x = orig_start + col
-                x_offset_map[orig_x] = orig_x
-
-    # Build line data from groups
-    lines = []
-    markers = []
-    for x, pts in by_x.items():
-        if len(pts) >= 2:
-            new_x = x_offset_map.get(x, x)
-            sorted_pts = sorted(pts, key=lambda p: p['y'])
-            lines.append({
-                'x': [new_x] * len(sorted_pts),
-                'y': [p['y'] for p in sorted_pts],
-            })
-            # Add markers with adjusted x
-            for p in pts:
-                markers.append({
-                    'x': x_offset_map.get(p['x'], p['x']),
-                    'y': p['y'],
-                    'id': p['id']
-                })
-
-    return lines, markers
-
-
 # ============== Load Data ==============
 data_parallel = load_data('parallel')
 data_perpendicular = load_data('perpendicular')
 
 
 # ============== Create Dash app ==============
-# Support URL path prefix for reverse proxy
 requests_pathname_prefix = os.environ.get('DASH_PATH_PREFIX', '/')
 app = Dash(__name__, suppress_callback_exceptions=True, requests_pathname_prefix=requests_pathname_prefix)
-server = app.server  # For gunicorn
+server = app.server
+
 
 # Layout selector dropdown
 layout_dropdown = html.Div([
@@ -351,8 +67,7 @@ layout_dropdown = html.Div([
     dcc.Dropdown(
         id='layout-selector',
         options=[
-            {'label': 'Parallel Layout (Row Adjustable)', 'value': 'parallel'},
-            {'label': 'Parallel Layout (Bay Adjustable)', 'value': 'bay'},
+            {'label': 'Parallel Layout', 'value': 'parallel'},
             {'label': 'Perpendicular Layout', 'value': 'perpendicular'},
         ],
         value='parallel',
@@ -361,58 +76,11 @@ layout_dropdown = html.Div([
     ),
 ], style={'marginBottom': '20px', 'display': 'flex', 'alignItems': 'center'})
 
+
 app.layout = html.Div([
     html.H3("Layout Settings (in U, 1U = 4m)"),
 
     layout_dropdown,
-
-    # Sliders for all layouts (visible based on current page)
-    html.Div([
-        html.Div([
-            html.Label("Distance between orange path groups (total blocks / number of rows):"),
-            dcc.RadioItems(
-                id='parallel-distance-slider',
-                options=[
-                    {'label': ' 80m (176 blks/ 10 rows) ', 'value': 80},
-                    {'label': ' 86m (154 blks/ 11 rows) ', 'value': 86},
-                    {'label': ' 92m (154 blks / 12 rows) ', 'value': 92},
-                ],
-                value=92,
-                inline=True,
-                style={'marginTop': '10px'}
-            ),
-        ], id='parallel-slider-container', style={'width': '50%', 'marginBottom': '20px', 'display': 'block'}),
-
-        html.Div([
-            html.Label("Distance between blue path groups (total blocks / 12 rows):"),
-            dcc.RadioItems(
-                id='bay-distance-slider',
-                options=[
-                    {'label': ' 298.75m (168 blks) ', 'value': 298.75},
-                    {'label': ' 324m (154 blks) ',    'value': 324.0},
-                    {'label': ' 349.25m (140 blks) ', 'value': 349.25},
-                ],
-                value=324.0,
-                inline=True,
-                style={'marginTop': '10px'}
-            ),
-        ], id='bay-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
-
-        html.Div([
-            html.Label("Number of columns (NoC):"),
-            dcc.RadioItems(
-                id='perpendicular-distance-slider',
-                options=[
-                    {'label': ' 32 (35 groups) ', 'value': 32},
-                    {'label': ' 34 (37 groups) ', 'value': 34},
-                    {'label': ' 36 (39 groups) ', 'value': 36},
-                ],
-                value=34,
-                inline=True,
-                style={'marginTop': '10px'}
-            ),
-        ], id='perpendicular-slider-container', style={'width': '33%', 'marginBottom': '20px', 'display': 'block'}),
-    ], style={'display': 'flex'}),
 
     # Download controls
     html.Div([
@@ -449,9 +117,6 @@ app.layout = html.Div([
     ]),
 
     html.Div(id='page-content'),
-
-    # Store for current figure data
-    dcc.Store(id='current-figure-store', data=None),
 ])
 
 
@@ -462,70 +127,13 @@ app.layout = html.Div([
 def display_page(layout):
     if layout == 'perpendicular':
         return render_perpendicular()
-    elif layout == 'bay':
-        return render_bay()
     else:
         return render_parallel()
-
-
-# Callback to store current figure data
-@app.callback(
-    Output('current-figure-store', 'data'),
-    Input('layout-selector', 'value'),
-    Input('parallel-distance-slider', 'value'),
-    Input('bay-distance-slider', 'value'),
-    Input('perpendicular-distance-slider', 'value'),
-)
-def store_current_figure(layout, parallel_dist, bay_dist, perp_dist):
-    """Generate and store the current figure for download"""
-    if layout == 'perpendicular':
-        fig = update_perpendicular_graph(perp_dist)
-    elif layout == 'bay':
-        fig = update_bay_graph(bay_dist)
-    else:
-        fig = update_parallel_graph(parallel_dist)
-
-    # Return figure as dict (Dash can serialize it)
-    return fig.to_dict()
-
-
-# Callback to show/hide sliders based on selected layout
-@app.callback(
-    Output('parallel-slider-container', 'style'),
-    Output('bay-slider-container', 'style'),
-    Output('perpendicular-slider-container', 'style'),
-    Input('layout-selector', 'value')
-)
-def update_slider_visibility(layout):
-    if layout == 'perpendicular':
-        return (
-            {'display': 'none'},
-            {'display': 'none'},
-            {'width': '33%', 'marginBottom': '20px', 'display': 'block'}
-        )
-    elif layout == 'bay':
-        return (
-            {'display': 'none'},
-            {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
-            {'display': 'none'}
-        )
-    else:
-        return (
-            {'width': '33%', 'marginBottom': '20px', 'display': 'block'},
-            {'display': 'none'},
-            {'display': 'none'}
-        )
 
 
 def render_parallel():
     return html.Div([
         dcc.Graph(id='parallel-paths-graph')
-    ])
-
-
-def render_bay():
-    return html.Div([
-        dcc.Graph(id='bay-paths-graph')
     ])
 
 
@@ -535,64 +143,27 @@ def render_perpendicular():
     ])
 
 
-# Parallel layout callbacks
 @app.callback(
     Output('parallel-paths-graph', 'figure'),
-    Input('parallel-distance-slider', 'value')
+    Input('layout-selector', 'value')
 )
-def update_parallel_graph(distance):
+def update_parallel_graph(_layout):
     fig = go.Figure()
 
-    # Draw orange lines with adjusted distance
-    orange_lines, y_offset_map = get_horizontal_data(data_parallel, 'orange', distance)
-
-    for line in orange_lines:
-        fig.add_trace(go.Scatter(
-            x=line['x'],
-            y=line['y'],
-            mode='lines',
-            line=dict(color='orange', width=0.5),
-            hoverinfo='skip',
-            showlegend=False
-        ))
-
-    # Add orange markers
-    orange_points = data_parallel.get('orange', [])
-
-    marker_x = []
-    marker_y = []
-    for p in orange_points:
-        new_y = y_offset_map.get(p['y'], p['y'])
-        marker_x.append(p['x'])
-        marker_y.append(new_y)
-
-    fig.add_trace(go.Scatter(
-        x=marker_x,
-        y=marker_y,
-        mode='markers',
-        name=f"Orange ({len(orange_points)})",
-        marker=dict(size=1, color='orange'),
-        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-        customdata=[[p['id']] for p in orange_points]
-    ))
-
-    # Draw other lines (static)
-    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
+    # Draw all color types from parallel layout as-is
+    for ct in ['orange', 'purple_horizontal', 'green', 'blue', 'vertical_purple']:
         points_list = data_parallel.get(ct, [])
         if not points_list:
             continue
 
-        by_coord = defaultdict(list)
-        for p in points_list:
-            if ct in ['purple_horizontal', 'green']:
+        if ct in ['orange', 'purple_horizontal', 'green']:
+            # Horizontal lines - group by y
+            by_coord = defaultdict(list)
+            for p in points_list:
                 by_coord[p['y']].append(p)
-            else:  # blue, vertical_purple - vertical lines
-                by_coord[p['x']].append(p)
 
-        # Draw lines
-        for coord, pts in by_coord.items():
-            if len(pts) >= 2:
-                if ct in ['purple_horizontal', 'green']:
+            for _, pts in by_coord.items():
+                if len(pts) >= 2:
                     sorted_pts = sorted(pts, key=lambda p: p['x'])
                     fig.add_trace(go.Scatter(
                         x=[p['x'] for p in sorted_pts],
@@ -602,7 +173,14 @@ def update_parallel_graph(distance):
                         hoverinfo='skip',
                         showlegend=False
                     ))
-                else:  # blue, vertical_purple - vertical
+        else:
+            # Vertical lines - group by x
+            by_coord = defaultdict(list)
+            for p in points_list:
+                by_coord[p['x']].append(p)
+
+            for _, pts in by_coord.items():
+                if len(pts) >= 2:
                     sorted_pts = sorted(pts, key=lambda p: p['y'])
                     fig.add_trace(go.Scatter(
                         x=[p['x'] for p in sorted_pts],
@@ -624,9 +202,8 @@ def update_parallel_graph(distance):
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Layout (ranges in meters)
     fig.update_layout(
-        title=f'Parallel Layout (distance={distance}m)',
+        title='Parallel Layout',
         xaxis_title='X (U)',
         yaxis_title='Y (U)',
         yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
@@ -641,194 +218,53 @@ def update_parallel_graph(distance):
     return fig
 
 
-# ============== Bay layout callbacks ==============
-@app.callback(
-    Output('bay-paths-graph', 'figure'),
-    Input('bay-distance-slider', 'value')
-)
-def update_bay_graph(distance):
-    fig = go.Figure()
-    n_groups = DISTANCE_TO_GROUPS[distance]
-
-    # ----- Orange lines (fixed at 92m, no distance adjustment) -----
-    orange_points = data_parallel.get('orange', [])
-    by_y = defaultdict(list)
-    for p in orange_points:
-        by_y[p['y']].append(p)
-
-    for y, pts in by_y.items():
-        if len(pts) >= 2:
-            sorted_pts = sorted(pts, key=lambda p: p['x'])
-            fig.add_trace(go.Scatter(
-                x=[p['x'] for p in sorted_pts],
-                y=[y] * len(sorted_pts),
-                mode='lines',
-                line=dict(color='orange', width=0.5),
-                hoverinfo='skip',
-                showlegend=False
-            ))
-
-    fig.add_trace(go.Scatter(
-        x=[p['x'] for p in orange_points],
-        y=[p['y'] for p in orange_points],
-        mode='markers',
-        name=f"Orange ({len(orange_points)})",
-        marker=dict(size=1, color='orange'),
-        hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-        customdata=[[p['id']] for p in orange_points]
-    ))
-
-    # ----- Blue long lines (Y=88↔916, adjusted by distance) -----
-    group_starts = compute_blue_group_starts(distance)
-
-    # batch all long-blue lines into one trace (using None separators)
-    bl_xs, bl_ys = [], []
-    blue_marker_x, blue_marker_y = [], []
-    for gs in group_starts:
-        for col in range(4):
-            x = gs + col
-            bl_xs.extend([x, x, None])
-            bl_ys.extend([88.0, 916.0, None])
-            blue_marker_x.extend([x, x])
-            blue_marker_y.extend([88.0, 916.0])
-
-    fig.add_trace(go.Scatter(
-        x=bl_xs, y=bl_ys,
-        mode='lines',
-        line=dict(color='blue', width=0.5),
-        hoverinfo='skip',
-        showlegend=False
-    ))
-
-    fig.add_trace(go.Scatter(
-        x=blue_marker_x,
-        y=blue_marker_y,
-        mode='markers',
-        name=f"Blue long ({len(blue_marker_x)})",
-        marker=dict(size=1, color='blue'),
-        hovertemplate='X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-    ))
-
-    # ----- Blue short lines (Y=112↔892, always fixed) -----
-    blue_points = data_parallel.get('blue', [])
-    short_blue = [p for p in blue_points if p['y'] in BLUE_Y_SHORT]
-
-    if short_blue:
-        sb_xs, sb_ys = [], []
-        by_x = defaultdict(list)
-        for p in short_blue:
-            by_x[p['x']].append(p)
-        for x_val in sorted(by_x):
-            pts = by_x[x_val]
-            if len(pts) >= 2:
-                sorted_pts = sorted(pts, key=lambda p: p['y'])
-                sb_xs.extend([sp['x'] for sp in sorted_pts] + [None])
-                sb_ys.extend([sp['y'] for sp in sorted_pts] + [None])
-
-        fig.add_trace(go.Scatter(
-            x=sb_xs, y=sb_ys,
-            mode='lines',
-            line=dict(color='blue', width=0.5),
-            hoverinfo='skip',
-            showlegend=False
-        ))
-
-        fig.add_trace(go.Scatter(
-            x=[p['x'] for p in short_blue],
-            y=[p['y'] for p in short_blue],
-            mode='markers',
-            name=f"Blue short ({len(short_blue)})",
-            marker=dict(size=1, color='blue'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-            customdata=[[p['id']] for p in short_blue]
-        ))
-
-    # ----- Other static lines (purple, green, vertical purple) -----
-    # NOTE: 'blue' is NOT in this list – it is handled above
-    for ct in ['purple_horizontal', 'green', 'vertical_purple']:
-        points_list = data_parallel.get(ct, [])
-        if not points_list:
-            continue
-
-        by_coord = defaultdict(list)
-        for p in points_list:
-            if ct in ['purple_horizontal', 'green']:
-                by_coord[p['y']].append(p)
-            else:   # vertical_purple
-                by_coord[p['x']].append(p)
-
-        for _, pts in by_coord.items():
-            if len(pts) >= 2:
-                if ct in ['purple_horizontal', 'green']:
-                    sorted_pts = sorted(pts, key=lambda p: p['x'])
-                else:
-                    sorted_pts = sorted(pts, key=lambda p: p['y'])
-                fig.add_trace(go.Scatter(
-                    x=[p['x'] for p in sorted_pts],
-                    y=[p['y'] for p in sorted_pts],
-                    mode='lines',
-                    line=dict(color=colors[ct], width=0.5),
-                    hoverinfo='skip',
-                    showlegend=False
-                ))
-
-        fig.add_trace(go.Scatter(
-            x=[p['x'] for p in points_list],
-            y=[p['y'] for p in points_list],
-            mode='markers',
-            name=f"{display_names[ct]} ({len(points_list)})",
-            marker=dict(size=1, color=colors[ct]),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-            customdata=[[p['id']] for p in points_list]
-        ))
-
-    # ----- Layout -----
-    fig.update_layout(
-        title=f'Parallel Layout - Bay Adjustable ({(n_groups - 1) * 14} groups)',
-        xaxis_title='X (U)',
-        yaxis_title='Y (U)',
-        yaxis=dict(autorange='reversed', range=[0, 250],
-                   scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-50, 1000],
-                   scaleanchor='y', scaleratio=1),
-        hovermode='closest',
-        showlegend=True,
-        width=1575,
-        height=600
-    )
-
-    return fig
-
-
-# Perpendicular layout callbacks
 @app.callback(
     Output('perpendicular-paths-graph', 'figure'),
-    Input('perpendicular-distance-slider', 'value')
+    Input('layout-selector', 'value')
 )
-def update_perpendicular_graph(noc):
+def update_perpendicular_graph(layout):
     fig = go.Figure()
 
-    # Draw purple_horizontal (static)
-    for ct in ['purple_horizontal', 'green']:
+    # Draw all color types from perpendicular layout as-is
+    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
         points_list = data_perpendicular.get(ct, [])
         if not points_list:
             continue
 
-        by_coord = defaultdict(list)
-        for p in points_list:
-            by_coord[p['y']].append(p)
+        if ct in ['purple_horizontal', 'green']:
+            # Horizontal lines - group by y
+            by_coord = defaultdict(list)
+            for p in points_list:
+                by_coord[p['y']].append(p)
 
-        for _, pts in by_coord.items():
-            if len(pts) >= 2:
-                sorted_pts = sorted(pts, key=lambda p: p['x'])
-                fig.add_trace(go.Scatter(
-                    x=[p['x'] for p in sorted_pts],
-                    y=[p['y'] for p in sorted_pts],
-                    mode='lines',
-                    line=dict(color=colors[ct], width=0.5),
-                    hoverinfo='skip',
-                    showlegend=False
-                ))
+            for _, pts in by_coord.items():
+                if len(pts) >= 2:
+                    sorted_pts = sorted(pts, key=lambda p: p['x'])
+                    fig.add_trace(go.Scatter(
+                        x=[p['x'] for p in sorted_pts],
+                        y=[p['y'] for p in sorted_pts],
+                        mode='lines',
+                        line=dict(color=colors[ct], width=0.5),
+                        hoverinfo='skip',
+                        showlegend=False
+                    ))
+        else:
+            # Vertical lines - group by x
+            by_coord = defaultdict(list)
+            for p in points_list:
+                by_coord[p['x']].append(p)
+
+            for _, pts in by_coord.items():
+                if len(pts) >= 2:
+                    sorted_pts = sorted(pts, key=lambda p: p['y'])
+                    fig.add_trace(go.Scatter(
+                        x=[p['x'] for p in sorted_pts],
+                        y=[p['y'] for p in sorted_pts],
+                        mode='lines',
+                        line=dict(color=colors[ct], width=0.5),
+                        hoverinfo='skip',
+                        showlegend=False
+                    ))
 
         # Add markers
         fig.add_trace(go.Scatter(
@@ -841,34 +277,8 @@ def update_perpendicular_graph(noc):
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Draw blue with NoC-based spacing
-    blue_lines, blue_markers = get_vertical_data(data_perpendicular, 'blue', noc)
-
-    for line in blue_lines:
-        fig.add_trace(go.Scatter(
-            x=line['x'],
-            y=line['y'],
-            mode='lines',
-            line=dict(color='blue', width=0.5),
-            hoverinfo='skip',
-            showlegend=False
-        ))
-
-    # Add blue markers
-    if blue_markers:
-        fig.add_trace(go.Scatter(
-            x=[m['x'] for m in blue_markers],
-            y=[m['y'] for m in blue_markers],
-            mode='markers',
-            name=f"Blue ({len(blue_markers)})",
-            marker=dict(size=1, color='blue'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-            customdata=[[m['id']] for m in blue_markers]
-        ))
-
-    # Layout
     fig.update_layout(
-        title=f'Perpendicular Layout (NoC={noc})',
+        title='Perpendicular Layout',
         xaxis_title='X (U)',
         yaxis_title='Y (U)',
         yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
@@ -884,26 +294,29 @@ def update_perpendicular_graph(noc):
 
 
 # Download callback
-@callback(
+@app.callback(
     Output('download-image', 'data'),
     Input('download-btn', 'n_clicks'),
     Input('layout-selector', 'value'),
-    Input('parallel-distance-slider', 'value'),
-    Input('bay-distance-slider', 'value'),
-    Input('perpendicular-distance-slider', 'value'),
+    Input('parallel-paths-graph', 'figure'),
+    Input('perpendicular-paths-graph', 'figure'),
     State('resolution-dropdown', 'value'),
-    State('current-figure-store', 'data'),
     prevent_initial_call=True,
 )
-def download_image(n_clicks, layout, parallel_dist, bay_dist, perp_dist, resolution, figure_data):
+def download_image(n_clicks, layout, parallel_fig, perp_fig, resolution):
     """Download the current figure as PNG with selected resolution"""
-    if n_clicks is None or n_clicks == 0 or figure_data is None:
+    if n_clicks is None or n_clicks == 0:
         return None
 
-    # Get current figure
-    fig = go.Figure(figure_data)
+    # Get current figure based on layout
+    if layout == 'perpendicular' and perp_fig:
+        fig = go.Figure(perp_fig)
+    elif parallel_fig:
+        fig = go.Figure(parallel_fig)
+    else:
+        return None
 
-    # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1 ≈ 800:306)
+    # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
     height = int(width * 600 / 1575)
 
