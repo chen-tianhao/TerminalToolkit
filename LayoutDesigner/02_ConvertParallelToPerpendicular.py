@@ -3,7 +3,7 @@ import sys
 
 # NoC (Number of Columns) 选项，表示中间非固定组的数量
 # 总组数 = 1 (左侧固定组) + NoC (中间组) + 2 (右侧固定组)
-NOC_OPTIONS = [32, 10, 36]
+NOC_OPTIONS = [32, 34, 36]
 
 # 固定组配置
 LEFT_FIXED_GROUPS = 1   # 左侧：1个组 (4条线)
@@ -94,7 +94,7 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
 
     # 中间组（noc个组，每组4U宽，带间距）
     for i in range(noc):
-        group_x_starts.append(first_fixed_x + 4 + (i + 1) * (4 + new_gap))
+        group_x_starts.append(first_fixed_x + 4 + new_gap + i * (4 + new_gap))
 
     # 右侧固定组（位于原始x位置）
     group_x_starts.extend(right_fixed_x)
@@ -166,7 +166,7 @@ def main():
     # 橙色线被移除（不在垂直布局中渲染）
 
     # 保存到文件，U值保留2位小数
-    output_file = 'LayoutDesigner\layout_perpendicular.json'
+    output_file = f'LayoutDesigner\layout_perpendicular_{noc}.json'
 
     def format_point(p):
         return {
