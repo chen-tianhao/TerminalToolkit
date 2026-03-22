@@ -588,7 +588,7 @@ def start_backend_services():
     print("Starting backend services...", flush=True)
 
     # 启动 LayoutDesigner (Dash)
-    dash_script = LAYOUT_DESIGNER_DIR / "03_DrawPathCombined.py"
+    dash_script = LAYOUT_DESIGNER_DIR / "DrawPathCombined.py"
     if dash_script.exists():
         # Dash 运行在 / ，由代理负责路径前缀重写
         dash_env = {**os.environ, 'PORT': str(DASH_PORT)}
