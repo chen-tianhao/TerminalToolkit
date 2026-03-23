@@ -99,6 +99,35 @@ app.layout = html.Div([
 
     layout_dropdown,
 
+    # Block selectors (always in DOM, visibility toggled by callback)
+    html.Div([
+        html.Label("Number of Blocks:", style={'fontSize': '14px', 'marginRight': '10px'}),
+        html.Div([
+            dcc.RadioItems(
+                id='parallel-blocks-selector',
+                options=[
+                    {'label': '126', 'value': '126'},
+                    {'label': '140', 'value': '140'},
+                    {'label': '154', 'value': '154'},
+                ],
+                value='154',
+                inline=True,
+            ),
+        ], id='parallel-blocks-container', style={'display': 'inline-block'}),
+        html.Div([
+            dcc.RadioItems(
+                id='blocks-selector',
+                options=[
+                    {'label': '132', 'value': '132'},
+                    {'label': '140', 'value': '140'},
+                    {'label': '148', 'value': '148'},
+                ],
+                value='132',
+                inline=True,
+            ),
+        ], id='perp-blocks-container', style={'display': 'none'}),
+    ], style={'marginBottom': '15px', 'display': 'flex', 'alignItems': 'center'}),
+
     # Download controls
     html.Div([
         html.H4("Download Settings"),
@@ -139,57 +168,27 @@ app.layout = html.Div([
 
 @app.callback(
     Output('page-content', 'children'),
+    Output('parallel-blocks-container', 'style'),
+    Output('perp-blocks-container', 'style'),
     Input('layout-selector', 'value')
 )
 def display_page(layout):
     if layout == 'perpendicular':
-        return render_perpendicular()
+        return (
+            html.Div([dcc.Graph(id='perpendicular-paths-graph')]),
+            {'display': 'none'},
+            {'display': 'inline-block'},
+        )
     else:
-        return render_parallel()
+        return (
+            html.Div([dcc.Graph(id='parallel-paths-graph')]),
+            {'display': 'inline-block'},
+            {'display': 'none'},
+        )
 
 
-def render_parallel():
-    return html.Div([
-        html.Label("Number of Blocks:", style={'fontSize': '14px', 'marginRight': '10px'}),
-        dcc.RadioItems(
-            id='parallel-blocks-selector',
-            options=[
-                {'label': '126', 'value': '126'},
-                {'label': '140', 'value': '140'},
-                {'label': '154', 'value': '154'},
-            ],
-            value='154',
-            inline=True,
-            style={'marginBottom': '15px'}
-        ),
-        dcc.Graph(id='parallel-paths-graph')
-    ])
-
-
-def render_perpendicular():
-    return html.Div([
-        html.Label("Number of Blocks:", style={'fontSize': '14px', 'marginRight': '10px'}),
-        dcc.RadioItems(
-            id='blocks-selector',
-            options=[
-                {'label': '132', 'value': '132'},
-                {'label': '140', 'value': '140'},
-                {'label': '148', 'value': '148'},
-            ],
-            value='132',
-            inline=True,
-            style={'marginBottom': '15px'}
-        ),
-        dcc.Graph(id='perpendicular-paths-graph')
-    ])
-
-
-@app.callback(
-    Output('parallel-paths-graph', 'figure'),
-    Input('layout-selector', 'value'),
-    Input('parallel-blocks-selector', 'value')
-)
-def update_parallel_graph(_layout, blocks):
+def create_parallel_figure(blocks):
+    """Create a parallel layout figure for the given block count."""
     fig = go.Figure()
 
     parallel_data = parallel_data_map.get(blocks, data_parallel)
@@ -263,11 +262,16 @@ def update_parallel_graph(_layout, blocks):
 
 
 @app.callback(
-    Output('perpendicular-paths-graph', 'figure'),
+    Output('parallel-paths-graph', 'figure'),
     Input('layout-selector', 'value'),
-    Input('blocks-selector', 'value')
+    Input('parallel-blocks-selector', 'value')
 )
-def update_perpendicular_graph(layout, blocks):
+def update_parallel_graph(_layout, blocks):
+    return create_parallel_figure(blocks)
+
+
+def create_perpendicular_figure(blocks):
+    """Create a perpendicular layout figure for the given block count."""
     fig = go.Figure()
 
     perp_data = perp_data_map.get(blocks, data_perpendicular_34)
@@ -340,30 +344,35 @@ def update_perpendicular_graph(layout, blocks):
     return fig
 
 
+@app.callback(
+    Output('perpendicular-paths-graph', 'figure'),
+    Input('layout-selector', 'value'),
+    Input('blocks-selector', 'value')
+)
+def update_perpendicular_graph(_layout, blocks):
+    return create_perpendicular_figure(blocks)
+
+
 # Download callback
 @app.callback(
     Output('download-image', 'data'),
     Input('download-btn', 'n_clicks'),
-    Input('layout-selector', 'value'),
-    Input('blocks-selector', 'value'),
-    Input('parallel-blocks-selector', 'value'),
-    Input('parallel-paths-graph', 'figure'),
-    Input('perpendicular-paths-graph', 'figure'),
+    State('layout-selector', 'value'),
+    State('blocks-selector', 'value'),
+    State('parallel-blocks-selector', 'value'),
     State('resolution-dropdown', 'value'),
     prevent_initial_call=True,
 )
-def download_image(n_clicks, layout, blocks, parallel_blocks, parallel_fig, perp_fig, resolution):
+def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
     """Download the current figure as PNG with selected resolution"""
-    if n_clicks is None or n_clicks == 0:
+    if not n_clicks:
         return None
 
-    # Get current figure based on layout
-    if layout == 'perpendicular' and perp_fig:
-        fig = go.Figure(perp_fig)
-    elif parallel_fig:
-        fig = go.Figure(parallel_fig)
+    # Regenerate the figure based on current layout and blocks
+    if layout == 'perpendicular':
+        fig = create_perpendicular_figure(blocks or '132')
     else:
-        return None
+        fig = create_parallel_figure(parallel_blocks or '154')
 
     # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
@@ -372,11 +381,12 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, parallel_fig, perp
     # Generate PNG
     try:
         img_bytes = fig.to_image(format='png', width=width, height=height, scale=2)
-    except Exception as e:
+    except Exception:
         # Fallback: try without scale
         img_bytes = fig.to_image(format='png', width=width, height=height)
 
-    filename = f'layout_{layout}_{blocks}blocks_{width}x{height}.png' if layout == 'perpendicular' else f'layout_{layout}_{parallel_blocks}blocks_{width}x{height}.png'
+    current_blocks = blocks if layout == 'perpendicular' else parallel_blocks
+    filename = f'layout_{layout}_{current_blocks}blocks_{width}x{height}.png'
     return dcc.send_bytes(img_bytes, filename)
 
 
