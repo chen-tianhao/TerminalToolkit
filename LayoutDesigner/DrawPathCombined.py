@@ -48,6 +48,8 @@ def load_data(layout_type):
 
 # ============== Load Data ==============
 data_parallel = load_data('parallel')
+data_parallel_8 = load_data('parallel_8')
+data_parallel_9 = load_data('parallel_9')
 data_perpendicular_32 = load_data('perpendicular_32')
 data_perpendicular_34 = load_data('perpendicular_34')
 data_perpendicular_36 = load_data('perpendicular_36')
@@ -57,6 +59,12 @@ perp_data_map = {
     '132': data_perpendicular_32,
     '140': data_perpendicular_34,
     '148': data_perpendicular_36
+}
+
+parallel_data_map = {
+    '126': data_parallel_8,
+    '140': data_parallel_9,
+    '154': data_parallel
 }
 
 
@@ -142,6 +150,18 @@ def display_page(layout):
 
 def render_parallel():
     return html.Div([
+        html.Label("Number of Blocks:", style={'fontSize': '14px', 'marginRight': '10px'}),
+        dcc.RadioItems(
+            id='parallel-blocks-selector',
+            options=[
+                {'label': '126', 'value': '126'},
+                {'label': '140', 'value': '140'},
+                {'label': '154', 'value': '154'},
+            ],
+            value='154',
+            inline=True,
+            style={'marginBottom': '15px'}
+        ),
         dcc.Graph(id='parallel-paths-graph')
     ])
 
@@ -166,14 +186,17 @@ def render_perpendicular():
 
 @app.callback(
     Output('parallel-paths-graph', 'figure'),
-    Input('layout-selector', 'value')
+    Input('layout-selector', 'value'),
+    Input('parallel-blocks-selector', 'value')
 )
-def update_parallel_graph(_layout):
+def update_parallel_graph(_layout, blocks):
     fig = go.Figure()
+
+    parallel_data = parallel_data_map.get(blocks, data_parallel)
 
     # Draw all color types from parallel layout as-is
     for ct in ['orange', 'purple_horizontal', 'green', 'blue', 'vertical_purple']:
-        points_list = data_parallel.get(ct, [])
+        points_list = parallel_data.get(ct, [])
         if not points_list:
             continue
 
@@ -224,7 +247,7 @@ def update_parallel_graph(_layout):
         ))
 
     fig.update_layout(
-        title='Parallel Layout',
+        title=f'Parallel Layout ({blocks} Blocks)',
         xaxis_title='X (U)',
         yaxis_title='Y (U)',
         yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
@@ -323,12 +346,13 @@ def update_perpendicular_graph(layout, blocks):
     Input('download-btn', 'n_clicks'),
     Input('layout-selector', 'value'),
     Input('blocks-selector', 'value'),
+    Input('parallel-blocks-selector', 'value'),
     Input('parallel-paths-graph', 'figure'),
     Input('perpendicular-paths-graph', 'figure'),
     State('resolution-dropdown', 'value'),
     prevent_initial_call=True,
 )
-def download_image(n_clicks, layout, blocks, parallel_fig, perp_fig, resolution):
+def download_image(n_clicks, layout, blocks, parallel_blocks, parallel_fig, perp_fig, resolution):
     """Download the current figure as PNG with selected resolution"""
     if n_clicks is None or n_clicks == 0:
         return None
@@ -352,7 +376,7 @@ def download_image(n_clicks, layout, blocks, parallel_fig, perp_fig, resolution)
         # Fallback: try without scale
         img_bytes = fig.to_image(format='png', width=width, height=height)
 
-    filename = f'layout_{layout}_{blocks}blocks_{width}x{height}.png' if layout == 'perpendicular' else f'layout_{layout}_{width}x{height}.png'
+    filename = f'layout_{layout}_{blocks}blocks_{width}x{height}.png' if layout == 'perpendicular' else f'layout_{layout}_{parallel_blocks}blocks_{width}x{height}.png'
     return dcc.send_bytes(img_bytes, filename)
 
 
