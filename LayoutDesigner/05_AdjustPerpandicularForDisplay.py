@@ -1,1 +1,156 @@
-5
+import json
+import glob
+from collections import defaultdict
+
+# Horizontal line types in perpendicular layout: purple_horizontal, green
+horizontal_types = ['purple_horizontal', 'green']
+# Vertical line types in perpendicular layout: vertical_purple, blue
+vertical_types = ['vertical_purple', 'blue']
+
+def process_layout(input_file):
+    """Process a single perpendicular layout file and return the result."""
+    with open(input_file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    result = {}
+
+    # ========== Horizontal Lines Processing ==========
+    # Same logic as 03_AdjustParallelForDisplay.py for horizontal lines:
+    # purple_horizontal, green are horizontal in perpendicular layout
+    for color_type in horizontal_types:
+        if color_type not in data:
+            result[color_type] = []
+            continue
+
+        points = data[color_type]
+
+        # Step 1: Move all endpoints up by 0.5U (y = y - 0.5)
+        for p in points:
+            p['y'] = p['y'] - 0.5
+
+        # Step 2: Group points by same x value
+        by_x = defaultdict(list)
+        for p in points:
+            by_x[p['x']].append(p)
+
+        # Step 3: For each x group, sort by y and process groups of 4
+        new_points = []
+        for x, pts in by_x.items():
+            sorted_pts = sorted(pts, key=lambda p: p['y'])
+
+            for i in range(0, len(sorted_pts), 4):
+                group = sorted_pts[i:i+4]
+
+                for p in group:
+                    new_points.append(p)
+
+                if len(group) == 4:
+                    last_point = group[-1]
+                    new_point = {
+                        'id': last_point['id'] + '_NEW',
+                        'x': last_point['x'],
+                        'y': last_point['y'] + 1.0,
+                        'region': last_point['region'],
+                        'kind': last_point['kind'],
+                        'color_type': last_point['color_type']
+                    }
+                    new_points.append(new_point)
+
+        result[color_type] = new_points
+
+        # Step 4: For each horizontal line (same y), increase right endpoint x by 1
+        by_y = defaultdict(list)
+        for p in result[color_type]:
+            by_y[p['y']].append(p)
+
+        for y, pts in by_y.items():
+            if len(pts) >= 2:
+                rightmost = max(pts, key=lambda p: p['x'])
+                rightmost['x'] = rightmost['x'] + 1.0
+
+    # ========== Vertical Lines Processing ==========
+    # Same logic as 03_AdjustParallelForDisplay.py for vertical lines:
+    # vertical_purple, blue are vertical in perpendicular layout
+    for color_type in vertical_types:
+        if color_type not in data:
+            result[color_type] = []
+            continue
+
+        points = data[color_type]
+
+        # Step 1: Move all endpoints left by 0.5U (x = x - 0.5)
+        for p in points:
+            p['x'] = p['x'] - 0.5
+
+        # Step 2: Group points by same y value
+        by_y = defaultdict(list)
+        for p in points:
+            by_y[p['y']].append(p)
+
+        # Step 3: For each y group, sort by x and process groups of 4
+        new_points = []
+        for y, pts in by_y.items():
+            sorted_pts = sorted(pts, key=lambda p: p['x'])
+
+            for i in range(0, len(sorted_pts), 4):
+                group = sorted_pts[i:i+4]
+
+                for p in group:
+                    new_points.append(p)
+
+                if len(group) == 4:
+                    last_point = group[-1]
+                    new_point = {
+                        'id': last_point['id'] + '_NEW',
+                        'x': last_point['x'] + 1.0,
+                        'y': last_point['y'],
+                        'region': last_point['region'],
+                        'kind': last_point['kind'],
+                        'color_type': last_point['color_type']
+                    }
+                    new_points.append(new_point)
+
+        result[color_type] = new_points
+
+        # Step 4: For each vertical line (same x), increase bottom endpoint y by 1
+        by_x = defaultdict(list)
+        for p in result[color_type]:
+            by_x[p['x']].append(p)
+
+        for x, pts in by_x.items():
+            if len(pts) >= 2:
+                bottommost = max(pts, key=lambda p: p['y'])
+                bottommost['y'] = bottommost['y'] + 1.0
+
+    # Copy other color types unchanged (grey, vertical_grey)
+    for color_type in data:
+        if color_type not in horizontal_types and color_type not in vertical_types:
+            result[color_type] = data[color_type]
+
+    return result
+
+# Find all layout_perpendicular_*.json files
+input_files = glob.glob('layout_perpendicular_*.json')
+
+# Sort for consistent processing order
+input_files.sort()
+
+if not input_files:
+    print("No layout_perpendicular_*.json files found!")
+else:
+    print(f"Found {len(input_files)} files to process: {input_files}")
+
+    for input_file in input_files:
+        output_file = input_file.replace('.json', '_disp.json')
+        print(f"\nProcessing {input_file} -> {output_file}")
+
+        result = process_layout(input_file)
+
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
+
+        print("Point counts:")
+        for ct in result:
+            print(f"  {ct}: {len(result[ct])}")
+
+    print("\nAll processing complete!")
