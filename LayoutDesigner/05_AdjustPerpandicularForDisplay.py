@@ -137,6 +137,9 @@ def process_layout(input_file):
 # Find all layout_perpendicular_*.json files
 input_files = glob.glob('layout_perpendicular_*.json')
 
+# Exclude output files (_disp.json)
+input_files = [f for f in input_files if not f.endswith('_disp.json')]
+
 # Sort for consistent processing order
 input_files.sort()
 
