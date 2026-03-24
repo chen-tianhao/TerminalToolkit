@@ -12,11 +12,10 @@ def process_layout(input_file):
     with open(input_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
+    # Deep copy to avoid modifying original
     result = {}
 
     # ========== Horizontal Lines Processing ==========
-    # Same logic as 03_AdjustParallelForDisplay.py for horizontal lines:
-    # purple_horizontal, green are horizontal in perpendicular layout
     for color_type in horizontal_types:
         if color_type not in data:
             result[color_type] = []
@@ -36,20 +35,24 @@ def process_layout(input_file):
         # Step 3: For each x group, sort by y and process groups of 4
         new_points = []
         for x, pts in by_x.items():
+            # Sort by y (top to bottom)
             sorted_pts = sorted(pts, key=lambda p: p['y'])
 
+            # Process in groups of 4 consecutive points
             for i in range(0, len(sorted_pts), 4):
                 group = sorted_pts[i:i+4]
 
+                # Add original points
                 for p in group:
                     new_points.append(p)
 
+                # If we have a full group of 4, add a new point below
                 if len(group) == 4:
                     last_point = group[-1]
                     new_point = {
                         'id': last_point['id'] + '_NEW',
                         'x': last_point['x'],
-                        'y': last_point['y'] + 1.0,
+                        'y': last_point['y'] + 1.0,  # Below: y + 1U = 4m (since Y increases downward)
                         'region': last_point['region'],
                         'kind': last_point['kind'],
                         'color_type': last_point['color_type']
@@ -69,8 +72,6 @@ def process_layout(input_file):
                 rightmost['x'] = rightmost['x'] + 1.0
 
     # ========== Vertical Lines Processing ==========
-    # Same logic as 03_AdjustParallelForDisplay.py for vertical lines:
-    # vertical_purple, blue are vertical in perpendicular layout
     for color_type in vertical_types:
         if color_type not in data:
             result[color_type] = []
@@ -78,9 +79,9 @@ def process_layout(input_file):
 
         points = data[color_type]
 
-        # Step 1: Move all endpoints left by 0.5U (x = x - 0.5)
+        # Step 1: Move all endpoints up by 0.5U (y = y - 0.5)
         for p in points:
-            p['x'] = p['x'] - 0.5
+            p['y'] = p['y'] - 0.5
 
         # Step 2: Group points by same y value
         by_y = defaultdict(list)
@@ -90,19 +91,23 @@ def process_layout(input_file):
         # Step 3: For each y group, sort by x and process groups of 4
         new_points = []
         for y, pts in by_y.items():
+            # Sort by x (left to right)
             sorted_pts = sorted(pts, key=lambda p: p['x'])
 
+            # Process in groups of 4 consecutive points
             for i in range(0, len(sorted_pts), 4):
                 group = sorted_pts[i:i+4]
 
+                # Add original points
                 for p in group:
                     new_points.append(p)
 
+                # If we have a full group of 4, add a new point to the right
                 if len(group) == 4:
                     last_point = group[-1]
                     new_point = {
                         'id': last_point['id'] + '_NEW',
-                        'x': last_point['x'] + 1.0,
+                        'x': last_point['x'] + 1.0,  # Right: x + 1U = 4m (since X increases rightward)
                         'y': last_point['y'],
                         'region': last_point['region'],
                         'kind': last_point['kind'],

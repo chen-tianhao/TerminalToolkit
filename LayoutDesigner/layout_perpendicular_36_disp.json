@@ -566,160 +566,160 @@
   "vertical_purple": [
     {
       "id": "PUVUP_X0928_R028_001",
-      "x": 927.5,
-      "y": 33.0,
+      "x": 928.0,
+      "y": 32.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVUP_X0929_R028_001",
-      "x": 928.5,
-      "y": 33.0,
+      "x": 929.0,
+      "y": 32.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0930_R028_001",
-      "x": 929.5,
-      "y": 33.0,
+      "x": 930.0,
+      "y": 32.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0931_R028_001",
-      "x": 930.5,
-      "y": 33.0,
+      "x": 931.0,
+      "y": 32.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0931_R028_001_NEW",
-      "x": 931.5,
-      "y": 33.0,
+      "x": 932.0,
+      "y": 32.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVUP_X0928_R150_013",
-      "x": 927.5,
-      "y": 216.0,
+      "x": 928.0,
+      "y": 215.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVUP_X0929_R150_013",
-      "x": 928.5,
-      "y": 216.0,
+      "x": 929.0,
+      "y": 215.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0930_R150_013",
-      "x": 929.5,
-      "y": 216.0,
+      "x": 930.0,
+      "y": 215.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0931_R150_013",
-      "x": 930.5,
-      "y": 216.0,
+      "x": 931.0,
+      "y": 215.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0931_R150_013_NEW",
-      "x": 931.5,
-      "y": 216.0,
+      "x": 932.0,
+      "y": 215.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0937_R028_000",
-      "x": 936.5,
-      "y": 28.0,
+      "x": 937.0,
+      "y": 27.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0938_R028_000",
-      "x": 937.5,
-      "y": 28.0,
+      "x": 938.0,
+      "y": 27.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0939_R028_000",
-      "x": 938.5,
-      "y": 28.0,
+      "x": 939.0,
+      "y": 27.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0940_R028_000",
-      "x": 939.5,
-      "y": 28.0,
+      "x": 940.0,
+      "y": 27.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0940_R028_000_NEW",
-      "x": 940.5,
-      "y": 28.0,
+      "x": 941.0,
+      "y": 27.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0937_R150_015",
-      "x": 936.5,
-      "y": 224.0,
+      "x": 937.0,
+      "y": 223.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0938_R150_015",
-      "x": 937.5,
-      "y": 224.0,
+      "x": 938.0,
+      "y": 223.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0939_R150_015",
-      "x": 938.5,
-      "y": 224.0,
+      "x": 939.0,
+      "y": 223.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0940_R150_015",
-      "x": 939.5,
-      "y": 224.0,
+      "x": 940.0,
+      "y": 223.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
     },
     {
       "id": "PUVDN_X0940_R150_015_NEW",
-      "x": 940.5,
-      "y": 224.0,
+      "x": 941.0,
+      "y": 223.5,
       "region": "purple",
       "kind": "v",
       "color_type": "vertical_purple"
@@ -728,3120 +728,3120 @@
   "blue": [
     {
       "id": "BLU_R000_0022",
-      "x": -0.5,
-      "y": 22.0,
+      "x": 0.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R000_0022",
-      "x": 0.5,
-      "y": 22.0,
+      "x": 1.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R000_0022",
-      "x": 1.5,
-      "y": 22.0,
+      "x": 2.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R000_0022",
-      "x": 2.5,
-      "y": 22.0,
+      "x": 3.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R000_0022_NEW",
-      "x": 3.5,
-      "y": 22.0,
+      "x": 4.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R001_0022",
-      "x": 24.42,
-      "y": 22.0,
+      "x": 24.92,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R001_0022",
-      "x": 25.42,
-      "y": 22.0,
+      "x": 25.92,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R001_0022",
-      "x": 26.42,
-      "y": 22.0,
+      "x": 26.92,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R001_0022",
-      "x": 27.42,
-      "y": 22.0,
+      "x": 27.92,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R001_0022_NEW",
-      "x": 28.42,
-      "y": 22.0,
+      "x": 28.92,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R002_0022",
-      "x": 49.34,
-      "y": 22.0,
+      "x": 49.84,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R002_0022",
-      "x": 50.34,
-      "y": 22.0,
+      "x": 50.84,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R002_0022",
-      "x": 51.34,
-      "y": 22.0,
+      "x": 51.84,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R002_0022",
-      "x": 52.34,
-      "y": 22.0,
+      "x": 52.84,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R002_0022_NEW",
-      "x": 53.34,
-      "y": 22.0,
+      "x": 53.84,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R003_0022",
-      "x": 74.26,
-      "y": 22.0,
+      "x": 74.76,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R003_0022",
-      "x": 75.26,
-      "y": 22.0,
+      "x": 75.76,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R003_0022",
-      "x": 76.26,
-      "y": 22.0,
+      "x": 76.76,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R003_0022",
-      "x": 77.26,
-      "y": 22.0,
+      "x": 77.76,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R003_0022_NEW",
-      "x": 78.26,
-      "y": 22.0,
+      "x": 78.76,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R004_0022",
-      "x": 99.18,
-      "y": 22.0,
+      "x": 99.68,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R004_0022",
-      "x": 100.18,
-      "y": 22.0,
+      "x": 100.68,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R004_0022",
-      "x": 101.18,
-      "y": 22.0,
+      "x": 101.68,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R004_0022",
-      "x": 102.18,
-      "y": 22.0,
+      "x": 102.68,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R004_0022_NEW",
-      "x": 103.18,
-      "y": 22.0,
+      "x": 103.68,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R005_0022",
-      "x": 124.09,
-      "y": 22.0,
+      "x": 124.59,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R005_0022",
-      "x": 125.09,
-      "y": 22.0,
+      "x": 125.59,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R005_0022",
-      "x": 126.09,
-      "y": 22.0,
+      "x": 126.59,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R005_0022",
-      "x": 127.09,
-      "y": 22.0,
+      "x": 127.59,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R005_0022_NEW",
-      "x": 128.09,
-      "y": 22.0,
+      "x": 128.59,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R006_0022",
-      "x": 149.01,
-      "y": 22.0,
+      "x": 149.51,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R006_0022",
-      "x": 150.01,
-      "y": 22.0,
+      "x": 150.51,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R006_0022",
-      "x": 151.01,
-      "y": 22.0,
+      "x": 151.51,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R006_0022",
-      "x": 152.01,
-      "y": 22.0,
+      "x": 152.51,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R006_0022_NEW",
-      "x": 153.01,
-      "y": 22.0,
+      "x": 153.51,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R007_0022",
-      "x": 173.93,
-      "y": 22.0,
+      "x": 174.43,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R007_0022",
-      "x": 174.93,
-      "y": 22.0,
+      "x": 175.43,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R007_0022",
-      "x": 175.93,
-      "y": 22.0,
+      "x": 176.43,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R007_0022",
-      "x": 176.93,
-      "y": 22.0,
+      "x": 177.43,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R007_0022_NEW",
-      "x": 177.93,
-      "y": 22.0,
+      "x": 178.43,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R008_0022",
-      "x": 198.85,
-      "y": 22.0,
+      "x": 199.35,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R008_0022",
-      "x": 199.85,
-      "y": 22.0,
+      "x": 200.35,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R008_0022",
-      "x": 200.85,
-      "y": 22.0,
+      "x": 201.35,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R008_0022",
-      "x": 201.85,
-      "y": 22.0,
+      "x": 202.35,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R008_0022_NEW",
-      "x": 202.85,
-      "y": 22.0,
+      "x": 203.35,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R009_0022",
-      "x": 223.77,
-      "y": 22.0,
+      "x": 224.27,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R009_0022",
-      "x": 224.77,
-      "y": 22.0,
+      "x": 225.27,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R009_0022",
-      "x": 225.77,
-      "y": 22.0,
+      "x": 226.27,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R009_0022",
-      "x": 226.77,
-      "y": 22.0,
+      "x": 227.27,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R009_0022_NEW",
-      "x": 227.77,
-      "y": 22.0,
+      "x": 228.27,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R010_0022",
-      "x": 248.69,
-      "y": 22.0,
+      "x": 249.19,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R010_0022",
-      "x": 249.69,
-      "y": 22.0,
+      "x": 250.19,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R010_0022",
-      "x": 250.69,
-      "y": 22.0,
+      "x": 251.19,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R010_0022",
-      "x": 251.69,
-      "y": 22.0,
+      "x": 252.19,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R010_0022_NEW",
-      "x": 252.69,
-      "y": 22.0,
+      "x": 253.19,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R011_0022",
-      "x": 273.61,
-      "y": 22.0,
+      "x": 274.11,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R011_0022",
-      "x": 274.61,
-      "y": 22.0,
+      "x": 275.11,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R011_0022",
-      "x": 275.61,
-      "y": 22.0,
+      "x": 276.11,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R011_0022",
-      "x": 276.61,
-      "y": 22.0,
+      "x": 277.11,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R011_0022_NEW",
-      "x": 277.61,
-      "y": 22.0,
+      "x": 278.11,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R012_0022",
-      "x": 298.53,
-      "y": 22.0,
+      "x": 299.03,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R012_0022",
-      "x": 299.53,
-      "y": 22.0,
+      "x": 300.03,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R012_0022",
-      "x": 300.53,
-      "y": 22.0,
+      "x": 301.03,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R012_0022",
-      "x": 301.53,
-      "y": 22.0,
+      "x": 302.03,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R012_0022_NEW",
-      "x": 302.53,
-      "y": 22.0,
+      "x": 303.03,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R013_0022",
-      "x": 323.45,
-      "y": 22.0,
+      "x": 323.95,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R013_0022",
-      "x": 324.45,
-      "y": 22.0,
+      "x": 324.95,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R013_0022",
-      "x": 325.45,
-      "y": 22.0,
+      "x": 325.95,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R013_0022",
-      "x": 326.45,
-      "y": 22.0,
+      "x": 326.95,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R013_0022_NEW",
-      "x": 327.45,
-      "y": 22.0,
+      "x": 327.95,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R014_0022",
-      "x": 348.36,
-      "y": 22.0,
+      "x": 348.86,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R014_0022",
-      "x": 349.36,
-      "y": 22.0,
+      "x": 349.86,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R014_0022",
-      "x": 350.36,
-      "y": 22.0,
+      "x": 350.86,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R014_0022",
-      "x": 351.36,
-      "y": 22.0,
+      "x": 351.86,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R014_0022_NEW",
-      "x": 352.36,
-      "y": 22.0,
+      "x": 352.86,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R015_0022",
-      "x": 373.28,
-      "y": 22.0,
+      "x": 373.78,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R015_0022",
-      "x": 374.28,
-      "y": 22.0,
+      "x": 374.78,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R015_0022",
-      "x": 375.28,
-      "y": 22.0,
+      "x": 375.78,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R015_0022",
-      "x": 376.28,
-      "y": 22.0,
+      "x": 376.78,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R015_0022_NEW",
-      "x": 377.28,
-      "y": 22.0,
+      "x": 377.78,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R016_0022",
-      "x": 398.2,
-      "y": 22.0,
+      "x": 398.7,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R016_0022",
-      "x": 399.2,
-      "y": 22.0,
+      "x": 399.7,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R016_0022",
-      "x": 400.2,
-      "y": 22.0,
+      "x": 400.7,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R016_0022",
-      "x": 401.2,
-      "y": 22.0,
+      "x": 401.7,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R016_0022_NEW",
-      "x": 402.2,
-      "y": 22.0,
+      "x": 402.7,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R017_0022",
-      "x": 423.12,
-      "y": 22.0,
+      "x": 423.62,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R017_0022",
-      "x": 424.12,
-      "y": 22.0,
+      "x": 424.62,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R017_0022",
-      "x": 425.12,
-      "y": 22.0,
+      "x": 425.62,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R017_0022",
-      "x": 426.12,
-      "y": 22.0,
+      "x": 426.62,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R017_0022_NEW",
-      "x": 427.12,
-      "y": 22.0,
+      "x": 427.62,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R018_0022",
-      "x": 448.04,
-      "y": 22.0,
+      "x": 448.54,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R018_0022",
-      "x": 449.04,
-      "y": 22.0,
+      "x": 449.54,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R018_0022",
-      "x": 450.04,
-      "y": 22.0,
+      "x": 450.54,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R018_0022",
-      "x": 451.04,
-      "y": 22.0,
+      "x": 451.54,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R018_0022_NEW",
-      "x": 452.04,
-      "y": 22.0,
+      "x": 452.54,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R019_0022",
-      "x": 472.96,
-      "y": 22.0,
+      "x": 473.46,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R019_0022",
-      "x": 473.96,
-      "y": 22.0,
+      "x": 474.46,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R019_0022",
-      "x": 474.96,
-      "y": 22.0,
+      "x": 475.46,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R019_0022",
-      "x": 475.96,
-      "y": 22.0,
+      "x": 476.46,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R019_0022_NEW",
-      "x": 476.96,
-      "y": 22.0,
+      "x": 477.46,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R020_0022",
-      "x": 497.88,
-      "y": 22.0,
+      "x": 498.38,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R020_0022",
-      "x": 498.88,
-      "y": 22.0,
+      "x": 499.38,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R020_0022",
-      "x": 499.88,
-      "y": 22.0,
+      "x": 500.38,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R020_0022",
-      "x": 500.88,
-      "y": 22.0,
+      "x": 501.38,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R020_0022_NEW",
-      "x": 501.88,
-      "y": 22.0,
+      "x": 502.38,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R021_0022",
-      "x": 522.8,
-      "y": 22.0,
+      "x": 523.3,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R021_0022",
-      "x": 523.8,
-      "y": 22.0,
+      "x": 524.3,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R021_0022",
-      "x": 524.8,
-      "y": 22.0,
+      "x": 525.3,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R021_0022",
-      "x": 525.8,
-      "y": 22.0,
+      "x": 526.3,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R021_0022_NEW",
-      "x": 526.8,
-      "y": 22.0,
+      "x": 527.3,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R022_0022",
-      "x": 547.72,
-      "y": 22.0,
+      "x": 548.22,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R022_0022",
-      "x": 548.72,
-      "y": 22.0,
+      "x": 549.22,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R022_0022",
-      "x": 549.72,
-      "y": 22.0,
+      "x": 550.22,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R022_0022",
-      "x": 550.72,
-      "y": 22.0,
+      "x": 551.22,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R022_0022_NEW",
-      "x": 551.72,
-      "y": 22.0,
+      "x": 552.22,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R023_0022",
-      "x": 572.64,
-      "y": 22.0,
+      "x": 573.14,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R023_0022",
-      "x": 573.64,
-      "y": 22.0,
+      "x": 574.14,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R023_0022",
-      "x": 574.64,
-      "y": 22.0,
+      "x": 575.14,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R023_0022",
-      "x": 575.64,
-      "y": 22.0,
+      "x": 576.14,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R023_0022_NEW",
-      "x": 576.64,
-      "y": 22.0,
+      "x": 577.14,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R024_0022",
-      "x": 597.55,
-      "y": 22.0,
+      "x": 598.05,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R024_0022",
-      "x": 598.55,
-      "y": 22.0,
+      "x": 599.05,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R024_0022",
-      "x": 599.55,
-      "y": 22.0,
+      "x": 600.05,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R024_0022",
-      "x": 600.55,
-      "y": 22.0,
+      "x": 601.05,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R024_0022_NEW",
-      "x": 601.55,
-      "y": 22.0,
+      "x": 602.05,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R025_0022",
-      "x": 622.47,
-      "y": 22.0,
+      "x": 622.97,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R025_0022",
-      "x": 623.47,
-      "y": 22.0,
+      "x": 623.97,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R025_0022",
-      "x": 624.47,
-      "y": 22.0,
+      "x": 624.97,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R025_0022",
-      "x": 625.47,
-      "y": 22.0,
+      "x": 625.97,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R025_0022_NEW",
-      "x": 626.47,
-      "y": 22.0,
+      "x": 626.97,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R026_0022",
-      "x": 647.39,
-      "y": 22.0,
+      "x": 647.89,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R026_0022",
-      "x": 648.39,
-      "y": 22.0,
+      "x": 648.89,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R026_0022",
-      "x": 649.39,
-      "y": 22.0,
+      "x": 649.89,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R026_0022",
-      "x": 650.39,
-      "y": 22.0,
+      "x": 650.89,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R026_0022_NEW",
-      "x": 651.39,
-      "y": 22.0,
+      "x": 651.89,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R027_0022",
-      "x": 672.31,
-      "y": 22.0,
+      "x": 672.81,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R027_0022",
-      "x": 673.31,
-      "y": 22.0,
+      "x": 673.81,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R027_0022",
-      "x": 674.31,
-      "y": 22.0,
+      "x": 674.81,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R027_0022",
-      "x": 675.31,
-      "y": 22.0,
+      "x": 675.81,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R027_0022_NEW",
-      "x": 676.31,
-      "y": 22.0,
+      "x": 676.81,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R028_0022",
-      "x": 697.23,
-      "y": 22.0,
+      "x": 697.73,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R028_0022",
-      "x": 698.23,
-      "y": 22.0,
+      "x": 698.73,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R028_0022",
-      "x": 699.23,
-      "y": 22.0,
+      "x": 699.73,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R028_0022",
-      "x": 700.23,
-      "y": 22.0,
+      "x": 700.73,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R028_0022_NEW",
-      "x": 701.23,
-      "y": 22.0,
+      "x": 701.73,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R029_0022",
-      "x": 722.15,
-      "y": 22.0,
+      "x": 722.65,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R029_0022",
-      "x": 723.15,
-      "y": 22.0,
+      "x": 723.65,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R029_0022",
-      "x": 724.15,
-      "y": 22.0,
+      "x": 724.65,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R029_0022",
-      "x": 725.15,
-      "y": 22.0,
+      "x": 725.65,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R029_0022_NEW",
-      "x": 726.15,
-      "y": 22.0,
+      "x": 726.65,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R030_0022",
-      "x": 747.07,
-      "y": 22.0,
+      "x": 747.57,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R030_0022",
-      "x": 748.07,
-      "y": 22.0,
+      "x": 748.57,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R030_0022",
-      "x": 749.07,
-      "y": 22.0,
+      "x": 749.57,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R030_0022",
-      "x": 750.07,
-      "y": 22.0,
+      "x": 750.57,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R030_0022_NEW",
-      "x": 751.07,
-      "y": 22.0,
+      "x": 751.57,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R031_0022",
-      "x": 771.99,
-      "y": 22.0,
+      "x": 772.49,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R031_0022",
-      "x": 772.99,
-      "y": 22.0,
+      "x": 773.49,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R031_0022",
-      "x": 773.99,
-      "y": 22.0,
+      "x": 774.49,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R031_0022",
-      "x": 774.99,
-      "y": 22.0,
+      "x": 775.49,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R031_0022_NEW",
-      "x": 775.99,
-      "y": 22.0,
+      "x": 776.49,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R032_0022",
-      "x": 796.91,
-      "y": 22.0,
+      "x": 797.41,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R032_0022",
-      "x": 797.91,
-      "y": 22.0,
+      "x": 798.41,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R032_0022",
-      "x": 798.91,
-      "y": 22.0,
+      "x": 799.41,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R032_0022",
-      "x": 799.91,
-      "y": 22.0,
+      "x": 800.41,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R032_0022_NEW",
-      "x": 800.91,
-      "y": 22.0,
+      "x": 801.41,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R033_0022",
-      "x": 821.82,
-      "y": 22.0,
+      "x": 822.32,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R033_0022",
-      "x": 822.82,
-      "y": 22.0,
+      "x": 823.32,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R033_0022",
-      "x": 823.82,
-      "y": 22.0,
+      "x": 824.32,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R033_0022",
-      "x": 824.82,
-      "y": 22.0,
+      "x": 825.32,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R033_0022_NEW",
-      "x": 825.82,
-      "y": 22.0,
+      "x": 826.32,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R034_0022",
-      "x": 846.74,
-      "y": 22.0,
+      "x": 847.24,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R034_0022",
-      "x": 847.74,
-      "y": 22.0,
+      "x": 848.24,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R034_0022",
-      "x": 848.74,
-      "y": 22.0,
+      "x": 849.24,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R034_0022",
-      "x": 849.74,
-      "y": 22.0,
+      "x": 850.24,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R034_0022_NEW",
-      "x": 850.74,
-      "y": 22.0,
+      "x": 851.24,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R035_0022",
-      "x": 871.66,
-      "y": 22.0,
+      "x": 872.16,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R035_0022",
-      "x": 872.66,
-      "y": 22.0,
+      "x": 873.16,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R035_0022",
-      "x": 873.66,
-      "y": 22.0,
+      "x": 874.16,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R035_0022",
-      "x": 874.66,
-      "y": 22.0,
+      "x": 875.16,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R035_0022_NEW",
-      "x": 875.66,
-      "y": 22.0,
+      "x": 876.16,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R036_0022",
-      "x": 896.58,
-      "y": 22.0,
+      "x": 897.08,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R036_0022",
-      "x": 897.58,
-      "y": 22.0,
+      "x": 898.08,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R036_0022",
-      "x": 898.58,
-      "y": 22.0,
+      "x": 899.08,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R036_0022",
-      "x": 899.58,
-      "y": 22.0,
+      "x": 900.08,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R036_0022_NEW",
-      "x": 900.58,
-      "y": 22.0,
+      "x": 901.08,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R037_0022",
-      "x": 921.5,
-      "y": 22.0,
+      "x": 922.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R037_0022",
-      "x": 922.5,
-      "y": 22.0,
+      "x": 923.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R037_0022",
-      "x": 923.5,
-      "y": 22.0,
+      "x": 924.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R037_0022",
-      "x": 924.5,
-      "y": 22.0,
+      "x": 925.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R037_0022_NEW",
-      "x": 925.5,
-      "y": 22.0,
+      "x": 926.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R038_0022",
-      "x": 927.5,
-      "y": 22.0,
+      "x": 928.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R038_0022",
-      "x": 928.5,
-      "y": 22.0,
+      "x": 929.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R038_0022",
-      "x": 929.5,
-      "y": 22.0,
+      "x": 930.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R038_0022",
-      "x": 930.5,
-      "y": 22.0,
+      "x": 931.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R038_0022_NEW",
-      "x": 931.5,
-      "y": 22.0,
+      "x": 932.0,
+      "y": 21.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R039_0229",
-      "x": -0.5,
-      "y": 230.0,
+      "x": 0.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R039_0229",
-      "x": 0.5,
-      "y": 230.0,
+      "x": 1.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R039_0229",
-      "x": 1.5,
-      "y": 230.0,
+      "x": 2.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R039_0229",
-      "x": 2.5,
-      "y": 230.0,
+      "x": 3.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R039_0229_NEW",
-      "x": 3.5,
-      "y": 230.0,
+      "x": 4.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R040_0229",
-      "x": 24.42,
-      "y": 230.0,
+      "x": 24.92,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R040_0229",
-      "x": 25.42,
-      "y": 230.0,
+      "x": 25.92,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R040_0229",
-      "x": 26.42,
-      "y": 230.0,
+      "x": 26.92,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R040_0229",
-      "x": 27.42,
-      "y": 230.0,
+      "x": 27.92,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R040_0229_NEW",
-      "x": 28.42,
-      "y": 230.0,
+      "x": 28.92,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R041_0229",
-      "x": 49.34,
-      "y": 230.0,
+      "x": 49.84,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R041_0229",
-      "x": 50.34,
-      "y": 230.0,
+      "x": 50.84,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R041_0229",
-      "x": 51.34,
-      "y": 230.0,
+      "x": 51.84,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R041_0229",
-      "x": 52.34,
-      "y": 230.0,
+      "x": 52.84,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R041_0229_NEW",
-      "x": 53.34,
-      "y": 230.0,
+      "x": 53.84,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R042_0229",
-      "x": 74.26,
-      "y": 230.0,
+      "x": 74.76,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R042_0229",
-      "x": 75.26,
-      "y": 230.0,
+      "x": 75.76,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R042_0229",
-      "x": 76.26,
-      "y": 230.0,
+      "x": 76.76,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R042_0229",
-      "x": 77.26,
-      "y": 230.0,
+      "x": 77.76,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R042_0229_NEW",
-      "x": 78.26,
-      "y": 230.0,
+      "x": 78.76,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R043_0229",
-      "x": 99.18,
-      "y": 230.0,
+      "x": 99.68,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R043_0229",
-      "x": 100.18,
-      "y": 230.0,
+      "x": 100.68,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R043_0229",
-      "x": 101.18,
-      "y": 230.0,
+      "x": 101.68,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R043_0229",
-      "x": 102.18,
-      "y": 230.0,
+      "x": 102.68,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R043_0229_NEW",
-      "x": 103.18,
-      "y": 230.0,
+      "x": 103.68,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R044_0229",
-      "x": 124.09,
-      "y": 230.0,
+      "x": 124.59,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R044_0229",
-      "x": 125.09,
-      "y": 230.0,
+      "x": 125.59,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R044_0229",
-      "x": 126.09,
-      "y": 230.0,
+      "x": 126.59,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R044_0229",
-      "x": 127.09,
-      "y": 230.0,
+      "x": 127.59,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R044_0229_NEW",
-      "x": 128.09,
-      "y": 230.0,
+      "x": 128.59,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R045_0229",
-      "x": 149.01,
-      "y": 230.0,
+      "x": 149.51,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R045_0229",
-      "x": 150.01,
-      "y": 230.0,
+      "x": 150.51,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R045_0229",
-      "x": 151.01,
-      "y": 230.0,
+      "x": 151.51,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R045_0229",
-      "x": 152.01,
-      "y": 230.0,
+      "x": 152.51,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R045_0229_NEW",
-      "x": 153.01,
-      "y": 230.0,
+      "x": 153.51,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R046_0229",
-      "x": 173.93,
-      "y": 230.0,
+      "x": 174.43,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R046_0229",
-      "x": 174.93,
-      "y": 230.0,
+      "x": 175.43,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R046_0229",
-      "x": 175.93,
-      "y": 230.0,
+      "x": 176.43,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R046_0229",
-      "x": 176.93,
-      "y": 230.0,
+      "x": 177.43,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R046_0229_NEW",
-      "x": 177.93,
-      "y": 230.0,
+      "x": 178.43,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R047_0229",
-      "x": 198.85,
-      "y": 230.0,
+      "x": 199.35,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R047_0229",
-      "x": 199.85,
-      "y": 230.0,
+      "x": 200.35,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R047_0229",
-      "x": 200.85,
-      "y": 230.0,
+      "x": 201.35,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R047_0229",
-      "x": 201.85,
-      "y": 230.0,
+      "x": 202.35,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R047_0229_NEW",
-      "x": 202.85,
-      "y": 230.0,
+      "x": 203.35,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R048_0229",
-      "x": 223.77,
-      "y": 230.0,
+      "x": 224.27,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R048_0229",
-      "x": 224.77,
-      "y": 230.0,
+      "x": 225.27,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R048_0229",
-      "x": 225.77,
-      "y": 230.0,
+      "x": 226.27,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R048_0229",
-      "x": 226.77,
-      "y": 230.0,
+      "x": 227.27,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R048_0229_NEW",
-      "x": 227.77,
-      "y": 230.0,
+      "x": 228.27,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R049_0229",
-      "x": 248.69,
-      "y": 230.0,
+      "x": 249.19,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R049_0229",
-      "x": 249.69,
-      "y": 230.0,
+      "x": 250.19,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R049_0229",
-      "x": 250.69,
-      "y": 230.0,
+      "x": 251.19,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R049_0229",
-      "x": 251.69,
-      "y": 230.0,
+      "x": 252.19,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R049_0229_NEW",
-      "x": 252.69,
-      "y": 230.0,
+      "x": 253.19,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R050_0229",
-      "x": 273.61,
-      "y": 230.0,
+      "x": 274.11,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R050_0229",
-      "x": 274.61,
-      "y": 230.0,
+      "x": 275.11,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R050_0229",
-      "x": 275.61,
-      "y": 230.0,
+      "x": 276.11,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R050_0229",
-      "x": 276.61,
-      "y": 230.0,
+      "x": 277.11,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R050_0229_NEW",
-      "x": 277.61,
-      "y": 230.0,
+      "x": 278.11,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R051_0229",
-      "x": 298.53,
-      "y": 230.0,
+      "x": 299.03,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R051_0229",
-      "x": 299.53,
-      "y": 230.0,
+      "x": 300.03,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R051_0229",
-      "x": 300.53,
-      "y": 230.0,
+      "x": 301.03,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R051_0229",
-      "x": 301.53,
-      "y": 230.0,
+      "x": 302.03,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R051_0229_NEW",
-      "x": 302.53,
-      "y": 230.0,
+      "x": 303.03,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R052_0229",
-      "x": 323.45,
-      "y": 230.0,
+      "x": 323.95,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R052_0229",
-      "x": 324.45,
-      "y": 230.0,
+      "x": 324.95,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R052_0229",
-      "x": 325.45,
-      "y": 230.0,
+      "x": 325.95,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R052_0229",
-      "x": 326.45,
-      "y": 230.0,
+      "x": 326.95,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R052_0229_NEW",
-      "x": 327.45,
-      "y": 230.0,
+      "x": 327.95,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R053_0229",
-      "x": 348.36,
-      "y": 230.0,
+      "x": 348.86,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R053_0229",
-      "x": 349.36,
-      "y": 230.0,
+      "x": 349.86,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R053_0229",
-      "x": 350.36,
-      "y": 230.0,
+      "x": 350.86,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R053_0229",
-      "x": 351.36,
-      "y": 230.0,
+      "x": 351.86,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R053_0229_NEW",
-      "x": 352.36,
-      "y": 230.0,
+      "x": 352.86,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R054_0229",
-      "x": 373.28,
-      "y": 230.0,
+      "x": 373.78,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R054_0229",
-      "x": 374.28,
-      "y": 230.0,
+      "x": 374.78,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R054_0229",
-      "x": 375.28,
-      "y": 230.0,
+      "x": 375.78,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R054_0229",
-      "x": 376.28,
-      "y": 230.0,
+      "x": 376.78,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R054_0229_NEW",
-      "x": 377.28,
-      "y": 230.0,
+      "x": 377.78,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R055_0229",
-      "x": 398.2,
-      "y": 230.0,
+      "x": 398.7,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R055_0229",
-      "x": 399.2,
-      "y": 230.0,
+      "x": 399.7,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R055_0229",
-      "x": 400.2,
-      "y": 230.0,
+      "x": 400.7,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R055_0229",
-      "x": 401.2,
-      "y": 230.0,
+      "x": 401.7,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R055_0229_NEW",
-      "x": 402.2,
-      "y": 230.0,
+      "x": 402.7,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R056_0229",
-      "x": 423.12,
-      "y": 230.0,
+      "x": 423.62,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R056_0229",
-      "x": 424.12,
-      "y": 230.0,
+      "x": 424.62,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R056_0229",
-      "x": 425.12,
-      "y": 230.0,
+      "x": 425.62,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R056_0229",
-      "x": 426.12,
-      "y": 230.0,
+      "x": 426.62,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R056_0229_NEW",
-      "x": 427.12,
-      "y": 230.0,
+      "x": 427.62,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R057_0229",
-      "x": 448.04,
-      "y": 230.0,
+      "x": 448.54,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R057_0229",
-      "x": 449.04,
-      "y": 230.0,
+      "x": 449.54,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R057_0229",
-      "x": 450.04,
-      "y": 230.0,
+      "x": 450.54,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R057_0229",
-      "x": 451.04,
-      "y": 230.0,
+      "x": 451.54,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R057_0229_NEW",
-      "x": 452.04,
-      "y": 230.0,
+      "x": 452.54,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R058_0229",
-      "x": 472.96,
-      "y": 230.0,
+      "x": 473.46,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R058_0229",
-      "x": 473.96,
-      "y": 230.0,
+      "x": 474.46,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R058_0229",
-      "x": 474.96,
-      "y": 230.0,
+      "x": 475.46,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R058_0229",
-      "x": 475.96,
-      "y": 230.0,
+      "x": 476.46,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R058_0229_NEW",
-      "x": 476.96,
-      "y": 230.0,
+      "x": 477.46,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R059_0229",
-      "x": 497.88,
-      "y": 230.0,
+      "x": 498.38,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R059_0229",
-      "x": 498.88,
-      "y": 230.0,
+      "x": 499.38,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R059_0229",
-      "x": 499.88,
-      "y": 230.0,
+      "x": 500.38,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R059_0229",
-      "x": 500.88,
-      "y": 230.0,
+      "x": 501.38,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R059_0229_NEW",
-      "x": 501.88,
-      "y": 230.0,
+      "x": 502.38,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R060_0229",
-      "x": 522.8,
-      "y": 230.0,
+      "x": 523.3,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R060_0229",
-      "x": 523.8,
-      "y": 230.0,
+      "x": 524.3,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R060_0229",
-      "x": 524.8,
-      "y": 230.0,
+      "x": 525.3,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R060_0229",
-      "x": 525.8,
-      "y": 230.0,
+      "x": 526.3,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R060_0229_NEW",
-      "x": 526.8,
-      "y": 230.0,
+      "x": 527.3,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R061_0229",
-      "x": 547.72,
-      "y": 230.0,
+      "x": 548.22,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R061_0229",
-      "x": 548.72,
-      "y": 230.0,
+      "x": 549.22,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R061_0229",
-      "x": 549.72,
-      "y": 230.0,
+      "x": 550.22,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R061_0229",
-      "x": 550.72,
-      "y": 230.0,
+      "x": 551.22,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R061_0229_NEW",
-      "x": 551.72,
-      "y": 230.0,
+      "x": 552.22,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R062_0229",
-      "x": 572.64,
-      "y": 230.0,
+      "x": 573.14,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R062_0229",
-      "x": 573.64,
-      "y": 230.0,
+      "x": 574.14,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R062_0229",
-      "x": 574.64,
-      "y": 230.0,
+      "x": 575.14,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R062_0229",
-      "x": 575.64,
-      "y": 230.0,
+      "x": 576.14,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R062_0229_NEW",
-      "x": 576.64,
-      "y": 230.0,
+      "x": 577.14,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R063_0229",
-      "x": 597.55,
-      "y": 230.0,
+      "x": 598.05,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R063_0229",
-      "x": 598.55,
-      "y": 230.0,
+      "x": 599.05,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R063_0229",
-      "x": 599.55,
-      "y": 230.0,
+      "x": 600.05,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R063_0229",
-      "x": 600.55,
-      "y": 230.0,
+      "x": 601.05,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R063_0229_NEW",
-      "x": 601.55,
-      "y": 230.0,
+      "x": 602.05,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R064_0229",
-      "x": 622.47,
-      "y": 230.0,
+      "x": 622.97,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R064_0229",
-      "x": 623.47,
-      "y": 230.0,
+      "x": 623.97,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R064_0229",
-      "x": 624.47,
-      "y": 230.0,
+      "x": 624.97,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R064_0229",
-      "x": 625.47,
-      "y": 230.0,
+      "x": 625.97,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R064_0229_NEW",
-      "x": 626.47,
-      "y": 230.0,
+      "x": 626.97,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R065_0229",
-      "x": 647.39,
-      "y": 230.0,
+      "x": 647.89,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R065_0229",
-      "x": 648.39,
-      "y": 230.0,
+      "x": 648.89,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R065_0229",
-      "x": 649.39,
-      "y": 230.0,
+      "x": 649.89,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R065_0229",
-      "x": 650.39,
-      "y": 230.0,
+      "x": 650.89,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R065_0229_NEW",
-      "x": 651.39,
-      "y": 230.0,
+      "x": 651.89,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R066_0229",
-      "x": 672.31,
-      "y": 230.0,
+      "x": 672.81,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R066_0229",
-      "x": 673.31,
-      "y": 230.0,
+      "x": 673.81,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R066_0229",
-      "x": 674.31,
-      "y": 230.0,
+      "x": 674.81,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R066_0229",
-      "x": 675.31,
-      "y": 230.0,
+      "x": 675.81,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R066_0229_NEW",
-      "x": 676.31,
-      "y": 230.0,
+      "x": 676.81,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R067_0229",
-      "x": 697.23,
-      "y": 230.0,
+      "x": 697.73,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R067_0229",
-      "x": 698.23,
-      "y": 230.0,
+      "x": 698.73,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R067_0229",
-      "x": 699.23,
-      "y": 230.0,
+      "x": 699.73,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R067_0229",
-      "x": 700.23,
-      "y": 230.0,
+      "x": 700.73,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R067_0229_NEW",
-      "x": 701.23,
-      "y": 230.0,
+      "x": 701.73,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R068_0229",
-      "x": 722.15,
-      "y": 230.0,
+      "x": 722.65,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R068_0229",
-      "x": 723.15,
-      "y": 230.0,
+      "x": 723.65,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R068_0229",
-      "x": 724.15,
-      "y": 230.0,
+      "x": 724.65,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R068_0229",
-      "x": 725.15,
-      "y": 230.0,
+      "x": 725.65,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R068_0229_NEW",
-      "x": 726.15,
-      "y": 230.0,
+      "x": 726.65,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R069_0229",
-      "x": 747.07,
-      "y": 230.0,
+      "x": 747.57,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R069_0229",
-      "x": 748.07,
-      "y": 230.0,
+      "x": 748.57,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R069_0229",
-      "x": 749.07,
-      "y": 230.0,
+      "x": 749.57,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R069_0229",
-      "x": 750.07,
-      "y": 230.0,
+      "x": 750.57,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R069_0229_NEW",
-      "x": 751.07,
-      "y": 230.0,
+      "x": 751.57,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R070_0229",
-      "x": 771.99,
-      "y": 230.0,
+      "x": 772.49,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R070_0229",
-      "x": 772.99,
-      "y": 230.0,
+      "x": 773.49,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R070_0229",
-      "x": 773.99,
-      "y": 230.0,
+      "x": 774.49,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R070_0229",
-      "x": 774.99,
-      "y": 230.0,
+      "x": 775.49,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R070_0229_NEW",
-      "x": 775.99,
-      "y": 230.0,
+      "x": 776.49,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R071_0229",
-      "x": 796.91,
-      "y": 230.0,
+      "x": 797.41,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R071_0229",
-      "x": 797.91,
-      "y": 230.0,
+      "x": 798.41,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R071_0229",
-      "x": 798.91,
-      "y": 230.0,
+      "x": 799.41,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R071_0229",
-      "x": 799.91,
-      "y": 230.0,
+      "x": 800.41,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R071_0229_NEW",
-      "x": 800.91,
-      "y": 230.0,
+      "x": 801.41,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R072_0229",
-      "x": 821.82,
-      "y": 230.0,
+      "x": 822.32,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R072_0229",
-      "x": 822.82,
-      "y": 230.0,
+      "x": 823.32,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R072_0229",
-      "x": 823.82,
-      "y": 230.0,
+      "x": 824.32,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R072_0229",
-      "x": 824.82,
-      "y": 230.0,
+      "x": 825.32,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R072_0229_NEW",
-      "x": 825.82,
-      "y": 230.0,
+      "x": 826.32,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R073_0229",
-      "x": 846.74,
-      "y": 230.0,
+      "x": 847.24,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R073_0229",
-      "x": 847.74,
-      "y": 230.0,
+      "x": 848.24,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R073_0229",
-      "x": 848.74,
-      "y": 230.0,
+      "x": 849.24,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R073_0229",
-      "x": 849.74,
-      "y": 230.0,
+      "x": 850.24,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R073_0229_NEW",
-      "x": 850.74,
-      "y": 230.0,
+      "x": 851.24,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R074_0229",
-      "x": 871.66,
-      "y": 230.0,
+      "x": 872.16,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R074_0229",
-      "x": 872.66,
-      "y": 230.0,
+      "x": 873.16,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R074_0229",
-      "x": 873.66,
-      "y": 230.0,
+      "x": 874.16,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R074_0229",
-      "x": 874.66,
-      "y": 230.0,
+      "x": 875.16,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R074_0229_NEW",
-      "x": 875.66,
-      "y": 230.0,
+      "x": 876.16,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R075_0229",
-      "x": 896.58,
-      "y": 230.0,
+      "x": 897.08,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R075_0229",
-      "x": 897.58,
-      "y": 230.0,
+      "x": 898.08,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R075_0229",
-      "x": 898.58,
-      "y": 230.0,
+      "x": 899.08,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R075_0229",
-      "x": 899.58,
-      "y": 230.0,
+      "x": 900.08,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R075_0229_NEW",
-      "x": 900.58,
-      "y": 230.0,
+      "x": 901.08,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R076_0229",
-      "x": 921.5,
-      "y": 230.0,
+      "x": 922.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R076_0229",
-      "x": 922.5,
-      "y": 230.0,
+      "x": 923.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R076_0229",
-      "x": 923.5,
-      "y": 230.0,
+      "x": 924.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R076_0229",
-      "x": 924.5,
-      "y": 230.0,
+      "x": 925.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R076_0229_NEW",
-      "x": 925.5,
-      "y": 230.0,
+      "x": 926.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R077_0229",
-      "x": 927.5,
-      "y": 230.0,
+      "x": 928.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R077_0229",
-      "x": 928.5,
-      "y": 230.0,
+      "x": 929.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R077_0229",
-      "x": 929.5,
-      "y": 230.0,
+      "x": 930.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R077_0229",
-      "x": 930.5,
-      "y": 230.0,
+      "x": 931.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
     },
     {
       "id": "BLU_R077_0229_NEW",
-      "x": 931.5,
-      "y": 230.0,
+      "x": 932.0,
+      "y": 229.5,
       "region": "blue",
       "kind": "v",
       "color_type": "blue"
