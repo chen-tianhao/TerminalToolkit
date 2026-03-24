@@ -379,11 +379,19 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
     height = int(width * 600 / 1575)
 
     # Generate PNG
+    import traceback
     try:
         img_bytes = fig.to_image(format='png', width=width, height=height, scale=2)
-    except Exception:
+    except Exception as e:
+        print(f"to_image error: {e}")
+        traceback.print_exc()
         # Fallback: try without scale
-        img_bytes = fig.to_image(format='png', width=width, height=height)
+        try:
+            img_bytes = fig.to_image(format='png', width=width, height=height)
+        except Exception as e2:
+            print(f"to_image fallback error: {e2}")
+            traceback.print_exc()
+            raise Exception(f"Image export failed: {e2}")
 
     current_blocks = blocks if layout == 'perpendicular' else parallel_blocks
     filename = f'layout_{layout}_{current_blocks}blocks_{width}x{height}.png'
