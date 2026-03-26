@@ -45,8 +45,7 @@ endpoints = {
     'grey': [],
     'orange': [],
     'green': [],
-    'blue': [],
-    'vertical_grey': []
+    'blue': []
 }
 
 # Grey: keep all
@@ -59,18 +58,6 @@ for p in color_points['grey']:
         'kind': p.get('meta', {}).get('kind', ''),
         'color_type': 'grey'
     })
-
-# vertical_grey: region=grey, kind=v
-for p in color_points['grey']:
-    if p.get('meta', {}).get('kind') == 'v':
-        endpoints['vertical_grey'].append({
-            'id': p['id'],
-            'x': p['x'],
-            'y': p['y'],
-            'region': p['region'],
-            'kind': 'v',
-            'color_type': 'vertical_grey'
-        })
 
 # For horizontal types (purple_horizontal, orange, green):
 # Group by y (row), keep leftmost and rightmost
