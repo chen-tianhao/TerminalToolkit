@@ -188,7 +188,7 @@ app.layout = html.Div([
                     {'label': '144', 'value': '144'},
                     {'label': '148', 'value': '148'},
                 ],
-                value='132',
+                value='144',
                 inline=True,
             ),
         ], id='perp-blocks-container', style={'display': 'none'}),
@@ -236,6 +236,8 @@ app.layout = html.Div([
     Output('page-content', 'children'),
     Output('parallel-blocks-container', 'style'),
     Output('perp-blocks-container', 'style'),
+    Output('parallel-blocks-selector', 'value'),
+    Output('blocks-selector', 'value'),
     Input('layout-selector', 'value')
 )
 def display_page(layout):
@@ -243,18 +245,30 @@ def display_page(layout):
     show_parallel_blocks = 'parallel' in layout
     show_perp_blocks = 'perpendicular' in layout
 
+    # Set default block values based on layout type
+    if 'perpendicular' in layout:
+        parallel_blocks_value = '154'
+        perp_blocks_value = '144'  # Middle option for perpendicular
+    else:
+        parallel_blocks_value = '154'
+        perp_blocks_value = '144'
+
     # Determine which graph to show
     if 'perpendicular' in layout:
         return (
             html.Div([dcc.Graph(id='perpendicular-paths-graph')]),
             {'display': 'none'} if not show_parallel_blocks else {'display': 'inline-block'},
             {'display': 'inline-block'} if show_perp_blocks else {'display': 'none'},
+            parallel_blocks_value,
+            perp_blocks_value,
         )
     else:
         return (
             html.Div([dcc.Graph(id='parallel-paths-graph')]),
             {'display': 'inline-block'} if show_parallel_blocks else {'display': 'none'},
             {'display': 'none'} if not show_perp_blocks else {'display': 'inline-block'},
+            parallel_blocks_value,
+            perp_blocks_value,
         )
 
 
