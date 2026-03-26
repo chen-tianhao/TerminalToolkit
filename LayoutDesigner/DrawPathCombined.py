@@ -50,14 +50,14 @@ def load_data(layout_type):
 data_parallel = load_data('parallel')
 data_parallel_8 = load_data('parallel_8')
 data_parallel_9 = load_data('parallel_9')
-data_perpendicular_32 = load_data('perpendicular_32')
 data_perpendicular_34 = load_data('perpendicular_34')
+data_perpendicular_35 = load_data('perpendicular_35')
 data_perpendicular_36 = load_data('perpendicular_36')
 
 # Map block count to data
 perp_data_map = {
-    '132': data_perpendicular_32,
     '140': data_perpendicular_34,
+    '144': data_perpendicular_35,
     '148': data_perpendicular_36
 }
 
@@ -118,8 +118,8 @@ app.layout = html.Div([
             dcc.RadioItems(
                 id='blocks-selector',
                 options=[
-                    {'label': '132', 'value': '132'},
                     {'label': '140', 'value': '140'},
+                    {'label': '144', 'value': '144'},
                     {'label': '148', 'value': '148'},
                 ],
                 value='132',

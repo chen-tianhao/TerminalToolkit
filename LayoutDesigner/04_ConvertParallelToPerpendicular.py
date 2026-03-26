@@ -3,7 +3,7 @@ import sys
 
 # NoC (Number of Columns) 选项，表示中间非固定组的数量
 # 总组数 = 1 (左侧固定组) + NoC (中间组) + 2 (右侧固定组)
-NOC_OPTIONS = [32, 34, 36]
+NOC_OPTIONS = [34, 35, 36]
 
 # 固定组配置
 LEFT_FIXED_GROUPS = 1   # 左侧：1个组 (4条线)
@@ -134,7 +134,7 @@ def main():
             print(f"Invalid NoC argument: {sys.argv[1]}. Must be an integer.")
             sys.exit(1)
     else:
-        noc = NOC_OPTIONS[1]  # 默认为34
+        noc = NOC_OPTIONS[1]  # 默认为中间值
         print(f"No NoC specified, using default: {noc}")
 
     # 读取数据
