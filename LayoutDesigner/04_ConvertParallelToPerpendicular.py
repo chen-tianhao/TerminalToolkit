@@ -104,20 +104,18 @@ def convert_blue_vertical_spacing(points, noc, left_fixed=1, right_fixed=2):
 
     # 重新生成所有点
     converted = []
-    group_idx = 0
 
     for y in y_values:
         for group_x in group_x_starts:
             for col in range(4):
                 converted.append({
-                    'id': f'BLU_R{group_idx:03d}_{int(y):04d}',
+                    'id': f'BLU_R{int(y):03d}_{int(group_x + col):04d}',
                     'x': group_x + col,
                     'y': y,
                     'region': 'blue',
                     'kind': 'v',
                     'color_type': 'blue'
                 })
-            group_idx += 1
 
     return converted
 
