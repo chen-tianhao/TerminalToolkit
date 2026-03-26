@@ -155,6 +155,7 @@ layout_dropdown = html.Div([
         ],
         value='parallel_disp',
         clearable=False,
+        maxHeight=800,
         style={'width': '400px'}
     ),
 ], style={'marginBottom': '20px', 'display': 'flex', 'alignItems': 'center'})
