@@ -2,7 +2,7 @@ import json
 from collections import defaultdict
 
 # Read data
-with open('control_points_v16.json', 'r', encoding='utf-8') as f:
+with open('data/control_points_v16.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 points = data['points']
@@ -144,7 +144,7 @@ for ct, pts in endpoints.items():
     print(f"  {ct}: {len(pts)}")
 
 # Save to layout_parallel.json
-with open('layout_parallel.json', 'w', encoding='utf-8') as f:
+with open('data/path/layout_parallel.json', 'w', encoding='utf-8') as f:
     json.dump(endpoints, f, indent=2, ensure_ascii=False)
 
 print("\nSaved to layout_parallel.json")

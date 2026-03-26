@@ -135,7 +135,7 @@ def process_layout(input_file):
     return result
 
 # Find all layout_parallel_*.json files
-input_files = glob.glob('layout_parallel_*.json')
+input_files = glob.glob('data/path/layout_parallel_*.json')
 
 # Exclude output files (_disp.json) and base layout_parallel.json
 input_files = [f for f in input_files if not f.endswith('_disp.json') and f != 'layout_parallel_disp.json']
