@@ -88,11 +88,12 @@ def generate_point_id(x, y):
     ID format: INTER_Rxxx_Cyyyy
     xxx = row (from y coordinate)
     yyyy = col (from x coordinate)
+
+    Uses traditional round-half-up (四舍五入) instead of Python's banker's rounding.
     """
-    # Extract row and col numbers from coordinates
-    # y -> row number, x -> column number
-    row = int(round(y))
-    col = int(round(x))
+    # Traditional round-half-up: add 0.5 for positive, subtract 0.5 for negative, then truncate
+    row = int(y + 0.5) if y >= 0 else int(y - 0.5)
+    col = int(x + 0.5) if x >= 0 else int(x - 0.5)
     return f"INTER_R{row:03d}_C{col:04d}"
 
 
