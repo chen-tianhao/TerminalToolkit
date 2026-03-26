@@ -102,6 +102,32 @@ parallel_data_map_path = {
 }
 
 
+# ============== Load Routing Data ==============
+def load_routing_data(layout_type):
+    """Load routing intersection points from data/routing directory."""
+    filename = os.path.join(BASE_DIR, f'data\\routing\\layout_{layout_type}_point.json')
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data.get('points', [])
+    except FileNotFoundError:
+        return []
+
+
+# Routing data maps
+perp_routing_map = {
+    '140': load_routing_data('perpendicular_34'),
+    '144': load_routing_data('perpendicular_35'),
+    '148': load_routing_data('perpendicular_36')
+}
+
+parallel_routing_map = {
+    '126': load_routing_data('parallel_8'),
+    '140': load_routing_data('parallel_9'),
+    '154': load_routing_data('parallel')
+}
+
+
 # ============== Create Dash app ==============
 requests_pathname_prefix = os.environ.get('DASH_PATH_PREFIX', '/')
 app = Dash(__name__, suppress_callback_exceptions=True, requests_pathname_prefix=requests_pathname_prefix)
@@ -232,8 +258,14 @@ def display_page(layout):
         )
 
 
-def create_parallel_figure(blocks, data_map=None):
-    """Create a parallel layout figure for the given block count."""
+def create_parallel_figure(blocks, data_map=None, routing_data=None):
+    """Create a parallel layout figure for the given block count.
+
+    Args:
+        blocks: Block count key (126, 140, 154)
+        data_map: Data map to use (defaults to parallel_data_map)
+        routing_data: Optional list of routing intersection points to overlay
+    """
     fig = go.Figure()
 
     if data_map is None:
@@ -292,6 +324,18 @@ def create_parallel_figure(blocks, data_map=None):
             customdata=[[p['id']] for p in points_list]
         ))
 
+    # Add routing intersection points (for CP layout)
+    if routing_data:
+        fig.add_trace(go.Scatter(
+            x=[p['x'] for p in routing_data],
+            y=[p['y'] for p in routing_data],
+            mode='markers',
+            name=f"Routing Points ({len(routing_data)})",
+            marker=dict(size=4, color='red', symbol='circle'),
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<br>Row: %{customdata[1]}<br>Col: %{customdata[2]}<extra></extra>',
+            customdata=[[p['id'], p['meta']['row'], p['meta']['col']] for p in routing_data]
+        ))
+
     fig.update_layout(
         title=f'Parallel Layout ({blocks} Blocks)',
         xaxis_title='X (U)',
@@ -315,22 +359,30 @@ def create_parallel_figure(blocks, data_map=None):
 )
 def update_parallel_graph(layout, blocks):
     # Select data map based on layout variant
+    routing_data = None
     if layout == 'parallel_path':
         data_map = parallel_data_map_path
     elif layout == 'parallel_cp':
-        # CP not implemented yet, use path as placeholder
+        # CP layout: show path data with routing intersection points
         data_map = parallel_data_map_path
+        routing_data = parallel_routing_map.get(blocks, [])
     elif layout == 'parallel_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = parallel_data_map_path
     else:  # parallel_disp
         data_map = parallel_data_map
 
-    return create_parallel_figure(blocks, data_map)
+    return create_parallel_figure(blocks, data_map, routing_data)
 
 
-def create_perpendicular_figure(blocks, data_map=None):
-    """Create a perpendicular layout figure for the given block count."""
+def create_perpendicular_figure(blocks, data_map=None, routing_data=None):
+    """Create a perpendicular layout figure for the given block count.
+
+    Args:
+        blocks: Block count key (140, 144, 148)
+        data_map: Data map to use (defaults to perp_data_map)
+        routing_data: Optional list of routing intersection points to overlay
+    """
     fig = go.Figure()
 
     if data_map is None:
@@ -389,6 +441,18 @@ def create_perpendicular_figure(blocks, data_map=None):
             customdata=[[p['id']] for p in points_list]
         ))
 
+    # Add routing intersection points (for CP layout)
+    if routing_data:
+        fig.add_trace(go.Scatter(
+            x=[p['x'] for p in routing_data],
+            y=[p['y'] for p in routing_data],
+            mode='markers',
+            name=f"Routing Points ({len(routing_data)})",
+            marker=dict(size=4, color='red', symbol='circle'),
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<br>Row: %{customdata[1]}<br>Col: %{customdata[2]}<extra></extra>',
+            customdata=[[p['id'], p['meta']['row'], p['meta']['col']] for p in routing_data]
+        ))
+
     fig.update_layout(
         title=f'Perpendicular Layout ({blocks} Blocks)',
         xaxis_title='X (U)',
@@ -412,18 +476,20 @@ def create_perpendicular_figure(blocks, data_map=None):
 )
 def update_perpendicular_graph(layout, blocks):
     # Select data map based on layout variant
+    routing_data = None
     if layout == 'perpendicular_path':
         data_map = perp_data_map_path
     elif layout == 'perpendicular_cp':
-        # CP not implemented yet, use path as placeholder
+        # CP layout: show path data with routing intersection points
         data_map = perp_data_map_path
+        routing_data = perp_routing_map.get(blocks, [])
     elif layout == 'perpendicular_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = perp_data_map_path
     else:  # perpendicular_disp
         data_map = perp_data_map
 
-    return create_perpendicular_figure(blocks, data_map)
+    return create_perpendicular_figure(blocks, data_map, routing_data)
 
 
 # Download callback
@@ -444,26 +510,30 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
     # Regenerate the figure based on current layout and blocks
     if 'perpendicular' in layout:
         # Select data map
+        routing_data = None
         if layout == 'perpendicular_path':
             data_map = perp_data_map_path
         elif layout == 'perpendicular_cp':
             data_map = perp_data_map_path
+            routing_data = perp_routing_map.get(blocks or '140', [])
         elif layout == 'perpendicular_routing':
             data_map = perp_data_map_path
         else:  # perpendicular_disp
             data_map = perp_data_map
-        fig = create_perpendicular_figure(blocks or '140', data_map)
+        fig = create_perpendicular_figure(blocks or '140', data_map, routing_data)
     else:
         # Select data map
+        routing_data = None
         if layout == 'parallel_path':
             data_map = parallel_data_map_path
         elif layout == 'parallel_cp':
             data_map = parallel_data_map_path
+            routing_data = parallel_routing_map.get(parallel_blocks or '154', [])
         elif layout == 'parallel_routing':
             data_map = parallel_data_map_path
         else:  # parallel_disp
             data_map = parallel_data_map
-        fig = create_parallel_figure(parallel_blocks or '154', data_map)
+        fig = create_parallel_figure(parallel_blocks or '154', data_map, routing_data)
 
     # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
