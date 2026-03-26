@@ -24,9 +24,19 @@ display_names = {
 }
 
 
-def load_data(layout_type):
-    """Load layout data from JSON file"""
-    filename = os.path.join(BASE_DIR, f'data\\path_disp\\layout_{layout_type}_disp.json')
+def load_data(layout_type, source='disp'):
+    """Load layout data from JSON file.
+
+    Args:
+        layout_type: 'parallel', 'parallel_8', 'parallel_9', 'parallel_10',
+                     'perpendicular_34', 'perpendicular_35', 'perpendicular_36'
+        source: 'path' for data\path\*.json, 'disp' for data\path_disp\*_disp.json
+    """
+    if source == 'path':
+        filename = os.path.join(BASE_DIR, f'data\\path\\layout_{layout_type}.json')
+    else:
+        filename = os.path.join(BASE_DIR, f'data\\path_disp\\layout_{layout_type}_disp.json')
+
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
@@ -47,24 +57,48 @@ def load_data(layout_type):
 
 
 # ============== Load Data ==============
-data_parallel = load_data('parallel')
-data_parallel_8 = load_data('parallel_8')
-data_parallel_9 = load_data('parallel_9')
-data_perpendicular_34 = load_data('perpendicular_34')
-data_perpendicular_35 = load_data('perpendicular_35')
-data_perpendicular_36 = load_data('perpendicular_36')
+# Display layout data (from path_disp)
+data_parallel_disp = load_data('parallel', 'disp')
+data_parallel_8_disp = load_data('parallel_8', 'disp')
+data_parallel_9_disp = load_data('parallel_9', 'disp')
+data_parallel_10_disp = load_data('parallel_10', 'disp')
+data_perpendicular_34_disp = load_data('perpendicular_34', 'disp')
+data_perpendicular_35_disp = load_data('perpendicular_35', 'disp')
+data_perpendicular_36_disp = load_data('perpendicular_36', 'disp')
 
-# Map block count to data
+# Path layout data (from path)
+data_parallel_path = load_data('parallel', 'path')
+data_parallel_8_path = load_data('parallel_8', 'path')
+data_parallel_9_path = load_data('parallel_9', 'path')
+data_parallel_10_path = load_data('parallel_10', 'path')
+data_perpendicular_34_path = load_data('perpendicular_34', 'path')
+data_perpendicular_35_path = load_data('perpendicular_35', 'path')
+data_perpendicular_36_path = load_data('perpendicular_36', 'path')
+
+# Map block count to data (disp - current default)
 perp_data_map = {
-    '140': data_perpendicular_34,
-    '144': data_perpendicular_35,
-    '148': data_perpendicular_36
+    '140': data_perpendicular_34_disp,
+    '144': data_perpendicular_35_disp,
+    '148': data_perpendicular_36_disp
 }
 
 parallel_data_map = {
-    '126': data_parallel_8,
-    '140': data_parallel_9,
-    '154': data_parallel
+    '126': data_parallel_8_disp,
+    '140': data_parallel_9_disp,
+    '154': data_parallel_disp
+}
+
+# Path version maps
+perp_data_map_path = {
+    '140': data_perpendicular_34_path,
+    '144': data_perpendicular_35_path,
+    '148': data_perpendicular_36_path
+}
+
+parallel_data_map_path = {
+    '126': data_parallel_8_path,
+    '140': data_parallel_9_path,
+    '154': data_parallel_path
 }
 
 
@@ -84,10 +118,16 @@ layout_dropdown = html.Div([
     dcc.Dropdown(
         id='layout-selector',
         options=[
-            {'label': 'Parallel Layout', 'value': 'parallel'},
-            {'label': 'Perpendicular Layout', 'value': 'perpendicular'},
+            {'label': '1. Parallel Layout (Path)', 'value': 'parallel_path'},
+            {'label': '2. Perpendicular Layout (Path)', 'value': 'perpendicular_path'},
+            {'label': '3. Parallel Layout (Display)', 'value': 'parallel_disp'},
+            {'label': '4. Perpendicular Layout (Display)', 'value': 'perpendicular_disp'},
+            {'label': '5. Parallel Layout (CP)', 'value': 'parallel_cp'},
+            {'label': '6. Perpendicular Layout (CP)', 'value': 'perpendicular_cp'},
+            {'label': '7. Parallel Layout (Routing)', 'value': 'parallel_routing'},
+            {'label': '8. Perpendicular Layout (Routing)', 'value': 'perpendicular_routing'},
         ],
-        value='parallel',
+        value='parallel_disp',
         clearable=False,
         style={'width': '400px'}
     ),
@@ -173,25 +213,32 @@ app.layout = html.Div([
     Input('layout-selector', 'value')
 )
 def display_page(layout):
-    if layout == 'perpendicular':
+    # Show/hide block selectors based on layout type
+    show_parallel_blocks = 'parallel' in layout
+    show_perp_blocks = 'perpendicular' in layout
+
+    # Determine which graph to show
+    if 'perpendicular' in layout:
         return (
             html.Div([dcc.Graph(id='perpendicular-paths-graph')]),
-            {'display': 'none'},
-            {'display': 'inline-block'},
+            {'display': 'none'} if not show_parallel_blocks else {'display': 'inline-block'},
+            {'display': 'inline-block'} if show_perp_blocks else {'display': 'none'},
         )
     else:
         return (
             html.Div([dcc.Graph(id='parallel-paths-graph')]),
-            {'display': 'inline-block'},
-            {'display': 'none'},
+            {'display': 'inline-block'} if show_parallel_blocks else {'display': 'none'},
+            {'display': 'none'} if not show_perp_blocks else {'display': 'inline-block'},
         )
 
 
-def create_parallel_figure(blocks):
+def create_parallel_figure(blocks, data_map=None):
     """Create a parallel layout figure for the given block count."""
     fig = go.Figure()
 
-    parallel_data = parallel_data_map.get(blocks, data_parallel)
+    if data_map is None:
+        data_map = parallel_data_map
+    parallel_data = data_map.get(blocks, data_map.get('154'))
 
     # Draw all color types from parallel layout as-is
     for ct in ['orange', 'purple_horizontal', 'green', 'blue', 'vertical_purple']:
@@ -266,15 +313,29 @@ def create_parallel_figure(blocks):
     Input('layout-selector', 'value'),
     Input('parallel-blocks-selector', 'value')
 )
-def update_parallel_graph(_layout, blocks):
-    return create_parallel_figure(blocks)
+def update_parallel_graph(layout, blocks):
+    # Select data map based on layout variant
+    if layout == 'parallel_path':
+        data_map = parallel_data_map_path
+    elif layout == 'parallel_cp':
+        # CP not implemented yet, use path as placeholder
+        data_map = parallel_data_map_path
+    elif layout == 'parallel_routing':
+        # Routing not implemented yet, use path as placeholder
+        data_map = parallel_data_map_path
+    else:  # parallel_disp
+        data_map = parallel_data_map
+
+    return create_parallel_figure(blocks, data_map)
 
 
-def create_perpendicular_figure(blocks):
+def create_perpendicular_figure(blocks, data_map=None):
     """Create a perpendicular layout figure for the given block count."""
     fig = go.Figure()
 
-    perp_data = perp_data_map.get(blocks, data_perpendicular_34)
+    if data_map is None:
+        data_map = perp_data_map
+    perp_data = data_map.get(blocks, data_map.get('140'))
 
     # Draw all color types from perpendicular layout as-is
     for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
@@ -349,8 +410,20 @@ def create_perpendicular_figure(blocks):
     Input('layout-selector', 'value'),
     Input('blocks-selector', 'value')
 )
-def update_perpendicular_graph(_layout, blocks):
-    return create_perpendicular_figure(blocks)
+def update_perpendicular_graph(layout, blocks):
+    # Select data map based on layout variant
+    if layout == 'perpendicular_path':
+        data_map = perp_data_map_path
+    elif layout == 'perpendicular_cp':
+        # CP not implemented yet, use path as placeholder
+        data_map = perp_data_map_path
+    elif layout == 'perpendicular_routing':
+        # Routing not implemented yet, use path as placeholder
+        data_map = perp_data_map_path
+    else:  # perpendicular_disp
+        data_map = perp_data_map
+
+    return create_perpendicular_figure(blocks, data_map)
 
 
 # Download callback
@@ -369,10 +442,28 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
         return None
 
     # Regenerate the figure based on current layout and blocks
-    if layout == 'perpendicular':
-        fig = create_perpendicular_figure(blocks or '132')
+    if 'perpendicular' in layout:
+        # Select data map
+        if layout == 'perpendicular_path':
+            data_map = perp_data_map_path
+        elif layout == 'perpendicular_cp':
+            data_map = perp_data_map_path
+        elif layout == 'perpendicular_routing':
+            data_map = perp_data_map_path
+        else:  # perpendicular_disp
+            data_map = perp_data_map
+        fig = create_perpendicular_figure(blocks or '140', data_map)
     else:
-        fig = create_parallel_figure(parallel_blocks or '154')
+        # Select data map
+        if layout == 'parallel_path':
+            data_map = parallel_data_map_path
+        elif layout == 'parallel_cp':
+            data_map = parallel_data_map_path
+        elif layout == 'parallel_routing':
+            data_map = parallel_data_map_path
+        else:  # parallel_disp
+            data_map = parallel_data_map
+        fig = create_parallel_figure(parallel_blocks or '154', data_map)
 
     # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
