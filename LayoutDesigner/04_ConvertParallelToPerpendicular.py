@@ -138,7 +138,7 @@ def main():
         print(f"No NoC specified, using default: {noc}")
 
     # 读取数据
-    with open('data/path/layout_parallel.json', 'r', encoding='utf-8') as f:
+    with open('data\\path\\layout_parallel.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     # 处理每种颜色类型
@@ -166,7 +166,7 @@ def main():
     # 橙色线被移除（不在垂直布局中渲染）
 
     # 保存到文件，U值保留2位小数
-    output_file = f'data/path/layout_perpendicular_{noc}.json'
+    output_file = f'data\\path\\layout_perpendicular_{noc}.json'
 
     def format_point(p):
         return {

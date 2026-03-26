@@ -135,7 +135,7 @@ def process_layout(input_file):
     return result
 
 # Find all layout_perpendicular_*.json files
-input_files = glob.glob('data/path_disp/layout_perpendicular_*.json')
+input_files = glob.glob('data\\path\\layout_perpendicular_*.json')
 
 # Exclude output files (_disp.json)
 input_files = [f for f in input_files if not f.endswith('_disp.json')]
@@ -149,7 +149,7 @@ else:
     print(f"Found {len(input_files)} files to process: {input_files}")
 
     for input_file in input_files:
-        output_file = input_file.replace('.json', '_disp.json')
+        output_file = input_file.replace('data\\path\\', 'data\\path_disp\\').replace('.json', '_disp.json')
         print(f"\nProcessing {input_file} -> {output_file}")
 
         result = process_layout(input_file)

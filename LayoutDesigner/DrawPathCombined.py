@@ -26,7 +26,7 @@ display_names = {
 
 def load_data(layout_type):
     """Load layout data from JSON file"""
-    filename = os.path.join(BASE_DIR, f'data/path_disp/layout_{layout_type}_disp.json')
+    filename = os.path.join(BASE_DIR, f'data\\path_disp\\layout_{layout_type}_disp.json')
     with open(filename, 'r', encoding='utf-8') as f:
         raw_data = json.load(f)
 
