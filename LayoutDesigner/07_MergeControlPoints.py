@@ -127,8 +127,8 @@ def main():
             print(f"  [SKIP] {routing_basename}: corresponding layout file not found ({layout_basename})")
             continue
 
-        # Output file: data/merged/{layout_name_without_ext}_full.json
-        output_basename = layout_basename.replace(".json", "_full.json")
+        # Output file: data/merged/{layout_name_without_ext}_merged.json
+        output_basename = layout_basename.replace(".json", "_merged.json")
         output_file = os.path.join(OUTPUT_DIR, output_basename)
 
         merge_files(layout_file, routing_file, output_file)

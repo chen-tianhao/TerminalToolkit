@@ -109,7 +109,7 @@ parallel_data_map_path = {
 # ============== Load Merged Data ==============
 def load_merged_data(layout_type):
     """Load merged routing data from data/routing/merged directory."""
-    filename = os.path.join(BASE_DIR, f'data\\routing\\merged\\layout_{layout_type}_full.json')
+    filename = os.path.join(BASE_DIR, f'data\\routing\\merged\\layout_{layout_type}_merged.json')
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)
