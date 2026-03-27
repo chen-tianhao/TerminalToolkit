@@ -131,6 +131,46 @@ parallel_merged_map = {
 }
 
 
+def create_cp_figure(merged_data, title):
+    """Create a CP layout figure showing all points as markers only (no lines).
+
+    Args:
+        merged_data: Dict with color_type keys and point lists as values
+        title: Figure title
+    """
+    fig = go.Figure()
+
+    for ct in ['orange', 'purple_horizontal', 'vertical_purple', 'green', 'blue', 'grey', 'junction']:
+        points_list = merged_data.get(ct, [])
+        if not points_list:
+            continue
+
+        fig.add_trace(go.Scatter(
+            x=[p['x'] for p in points_list],
+            y=[p['y'] for p in points_list],
+            mode='markers',
+            name=f"{display_names.get(ct, ct)} ({len(points_list)})",
+            marker=dict(size=1, color=colors.get(ct, 'black')),
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
+            customdata=[[p['id']] for p in points_list]
+        ))
+
+    fig.update_layout(
+        title=title,
+        xaxis_title='X (U)',
+        yaxis_title='Y (U)',
+        yaxis=dict(autorange='reversed', range=[0, 250]),
+        xaxis=dict(range=[-50, 1000]),
+        hovermode='closest',
+        showlegend=True,
+        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
+        width=1575,
+        height=600
+    )
+
+    return fig
+
+
 # ============== Create Dash app ==============
 requests_pathname_prefix = os.environ.get('DASH_PATH_PREFIX', '/')
 app = Dash(__name__, suppress_callback_exceptions=True, requests_pathname_prefix=requests_pathname_prefix)
@@ -364,12 +404,14 @@ def create_parallel_figure(blocks, data_map=None):
     Input('parallel-blocks-selector', 'value')
 )
 def update_parallel_graph(layout, blocks):
+    # CP layout: markers only from merged data
+    if layout == 'parallel_cp':
+        merged_data = parallel_merged_map.get(blocks, {})
+        return create_cp_figure(merged_data, f'Parallel Layout CP ({blocks} Blocks)')
+
     # Select data map based on layout variant
     if layout == 'parallel_path':
         data_map = parallel_data_map_path
-    elif layout == 'parallel_cp':
-        # CP layout: show merged routing data
-        data_map = parallel_merged_map.get(blocks, {})
     elif layout == 'parallel_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = parallel_data_map_path
@@ -467,12 +509,14 @@ def create_perpendicular_figure(blocks, data_map=None):
     Input('blocks-selector', 'value')
 )
 def update_perpendicular_graph(layout, blocks):
+    # CP layout: markers only from merged data
+    if layout == 'perpendicular_cp':
+        merged_data = perp_merged_map.get(blocks, {})
+        return create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks} Blocks)')
+
     # Select data map based on layout variant
     if layout == 'perpendicular_path':
         data_map = perp_data_map_path
-    elif layout == 'perpendicular_cp':
-        # CP layout: show merged routing data
-        data_map = perp_merged_map.get(blocks, {})
     elif layout == 'perpendicular_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = perp_data_map_path
@@ -498,23 +542,25 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
         return None
 
     # Regenerate the figure based on current layout and blocks
-    if 'perpendicular' in layout:
+    if layout == 'perpendicular_cp':
+        merged_data = perp_merged_map.get(blocks or '144', {})
+        fig = create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
+    elif layout == 'parallel_cp':
+        merged_data = parallel_merged_map.get(parallel_blocks or '154', {})
+        fig = create_cp_figure(merged_data, f'Parallel Layout CP ({parallel_blocks or "154"} Blocks)')
+    elif 'perpendicular' in layout:
         # Select data map
         if layout == 'perpendicular_path':
             data_map = perp_data_map_path
-        elif layout == 'perpendicular_cp':
-            data_map = perp_merged_map.get(blocks or '140', {})
         elif layout == 'perpendicular_routing':
             data_map = perp_data_map_path
         else:  # perpendicular_disp
             data_map = perp_data_map
-        fig = create_perpendicular_figure(blocks or '140', data_map)
+        fig = create_perpendicular_figure(blocks or '144', data_map)
     else:
         # Select data map
         if layout == 'parallel_path':
             data_map = parallel_data_map_path
-        elif layout == 'parallel_cp':
-            data_map = parallel_merged_map.get(parallel_blocks or '154', {})
         elif layout == 'parallel_routing':
             data_map = parallel_data_map_path
         else:  # parallel_disp
