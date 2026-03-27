@@ -12,7 +12,9 @@ colors = {
     'vertical_purple': 'darkviolet',
     'orange': 'orange',
     'green': 'green',
-    'blue': 'blue'
+    'blue': 'blue',
+    'grey': 'grey',
+    'junction': 'cyan'
 }
 
 display_names = {
@@ -20,7 +22,9 @@ display_names = {
     'vertical_purple': 'Vertical Purple',
     'orange': 'Orange',
     'green': 'Green',
-    'blue': 'Blue'
+    'blue': 'Blue',
+    'grey': 'Grey',
+    'junction': 'Junction'
 }
 
 
@@ -102,59 +106,28 @@ parallel_data_map_path = {
 }
 
 
-# ============== Load Routing Data ==============
-def load_routing_data(layout_type):
-    """Load routing intersection points from data/routing directory."""
-    filename = os.path.join(BASE_DIR, f'data\\routing\\layout_{layout_type}_point.json')
+# ============== Load Merged Data ==============
+def load_merged_data(layout_type):
+    """Load merged routing data from data/routing/merged directory."""
+    filename = os.path.join(BASE_DIR, f'data\\routing\\merged\\layout_{layout_type}_full.json')
     try:
         with open(filename, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return data.get('points', [])
+            return json.load(f)
     except FileNotFoundError:
-        return []
+        return {}
 
 
-# Routing data maps
-perp_routing_map = {
-    '140': load_routing_data('perpendicular_34'),
-    '144': load_routing_data('perpendicular_35'),
-    '148': load_routing_data('perpendicular_36')
+# Merged data maps
+perp_merged_map = {
+    '140': load_merged_data('perpendicular_34'),
+    '144': load_merged_data('perpendicular_35'),
+    '148': load_merged_data('perpendicular_36')
 }
 
-parallel_routing_map = {
-    '126': load_routing_data('parallel_8'),
-    '140': load_routing_data('parallel_9'),
-    '154': load_routing_data('parallel')
-}
-
-
-# ============== Load Duplicate Data ==============
-def load_duplicate_data(layout_type):
-    """Load duplicate point data from data/routing/duplication directory."""
-    filename = os.path.join(BASE_DIR, f'data\\routing\\duplication\\layout_{layout_type}_dup.json')
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        # Extract duplicate coordinates as list of (x, y) tuples
-        dup_list = []
-        for group in data.get('duplicate_groups', {}).values():
-            dup_list.append((group['x'], group['y']))
-        return dup_list
-    except FileNotFoundError:
-        return []
-
-
-# Duplicate data maps: parallel uses block counts 126/140/154, perp uses 140/144/148
-parallel_dup_map = {
-    '126': load_duplicate_data('parallel_8'),
-    '140': load_duplicate_data('parallel_9'),
-    '154': load_duplicate_data('parallel')
-}
-
-perp_dup_map = {
-    '140': load_duplicate_data('perpendicular_34'),
-    '144': load_duplicate_data('perpendicular_35'),
-    '148': load_duplicate_data('perpendicular_36')
+parallel_merged_map = {
+    '126': load_merged_data('parallel_8'),
+    '140': load_merged_data('parallel_9'),
+    '154': load_merged_data('parallel')
 }
 
 
@@ -303,23 +276,21 @@ def display_page(layout):
         )
 
 
-def create_parallel_figure(blocks, data_map=None, routing_data=None, dup_data=None):
+def create_parallel_figure(blocks, data_map=None):
     """Create a parallel layout figure for the given block count.
 
     Args:
         blocks: Block count key (126, 140, 154)
         data_map: Data map to use (defaults to parallel_data_map)
-        routing_data: Optional list of routing intersection points to overlay
-        dup_data: Optional list of duplicate (x, y) coordinates to highlight in blue
     """
     fig = go.Figure()
 
     if data_map is None:
         data_map = parallel_data_map
-    parallel_data = data_map.get(blocks, data_map.get('154'))
+    parallel_data = data_map.get(blocks) or data_map.get('154') or {}
 
     # Draw all color types from parallel layout as-is
-    for ct in ['orange', 'purple_horizontal', 'green', 'blue', 'vertical_purple']:
+    for ct in ['orange', 'purple_horizontal', 'green', 'blue', 'vertical_purple', 'grey', 'junction']:
         points_list = parallel_data.get(ct, [])
         if not points_list:
             continue
@@ -341,7 +312,7 @@ def create_parallel_figure(blocks, data_map=None, routing_data=None, dup_data=No
                         hoverinfo='skip',
                         showlegend=False
                     ))
-        else:
+        elif ct in ['blue', 'vertical_purple']:
             # Vertical lines - group by x
             by_coord = defaultdict(list)
             for p in points_list:
@@ -358,6 +329,7 @@ def create_parallel_figure(blocks, data_map=None, routing_data=None, dup_data=No
                         hoverinfo='skip',
                         showlegend=False
                     ))
+        # grey and junction: markers only, no lines
 
         # Add markers
         fig.add_trace(go.Scatter(
@@ -370,35 +342,12 @@ def create_parallel_figure(blocks, data_map=None, routing_data=None, dup_data=No
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Add routing intersection points (for CP layout)
-    if routing_data:
-        fig.add_trace(go.Scatter(
-            x=[p['x'] for p in routing_data],
-            y=[p['y'] for p in routing_data],
-            mode='markers',
-            name=f"Routing Points ({len(routing_data)})",
-            marker=dict(size=4, color='red', symbol='circle'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<br>Row: %{customdata[1]}<br>Col: %{customdata[2]}<extra></extra>',
-            customdata=[[p['id'], p['meta']['row'], p['meta']['col']] for p in routing_data]
-        ))
-
-    # Add duplicate points in blue (for CP layout)
-    if dup_data:
-        fig.add_trace(go.Scatter(
-            x=[coord[0] for coord in dup_data],
-            y=[coord[1] for coord in dup_data],
-            mode='markers',
-            name=f"Duplicate Points ({len(dup_data)})",
-            marker=dict(size=8, color='blue', symbol='x'),
-            hovertemplate='X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-        ))
-
     fig.update_layout(
         title=f'Parallel Layout ({blocks} Blocks)',
         xaxis_title='X (U)',
         yaxis_title='Y (U)',
-        yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
+        yaxis=dict(autorange='reversed', range=[0, 250]),
+        xaxis=dict(range=[-50, 1000]),
         hovermode='closest',
         showlegend=True,
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
@@ -416,41 +365,35 @@ def create_parallel_figure(blocks, data_map=None, routing_data=None, dup_data=No
 )
 def update_parallel_graph(layout, blocks):
     # Select data map based on layout variant
-    routing_data = None
-    dup_data = None
     if layout == 'parallel_path':
         data_map = parallel_data_map_path
     elif layout == 'parallel_cp':
-        # CP layout: show path data with routing intersection points and duplicates
-        data_map = parallel_data_map_path
-        routing_data = parallel_routing_map.get(blocks, [])
-        dup_data = parallel_dup_map.get(blocks, [])
+        # CP layout: show merged routing data
+        data_map = parallel_merged_map.get(blocks, {})
     elif layout == 'parallel_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = parallel_data_map_path
     else:  # parallel_disp
         data_map = parallel_data_map
 
-    return create_parallel_figure(blocks, data_map, routing_data, dup_data)
+    return create_parallel_figure(blocks, data_map)
 
 
-def create_perpendicular_figure(blocks, data_map=None, routing_data=None, dup_data=None):
+def create_perpendicular_figure(blocks, data_map=None):
     """Create a perpendicular layout figure for the given block count.
 
     Args:
         blocks: Block count key (140, 144, 148)
         data_map: Data map to use (defaults to perp_data_map)
-        routing_data: Optional list of routing intersection points to overlay
-        dup_data: Optional list of duplicate (x, y) coordinates to highlight in blue
     """
     fig = go.Figure()
 
     if data_map is None:
         data_map = perp_data_map
-    perp_data = data_map.get(blocks, data_map.get('140'))
+    perp_data = data_map.get(blocks) or data_map.get('140') or {}
 
     # Draw all color types from perpendicular layout as-is
-    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple']:
+    for ct in ['purple_horizontal', 'green', 'blue', 'vertical_purple', 'grey', 'junction']:
         points_list = perp_data.get(ct, [])
         if not points_list:
             continue
@@ -472,7 +415,7 @@ def create_perpendicular_figure(blocks, data_map=None, routing_data=None, dup_da
                         hoverinfo='skip',
                         showlegend=False
                     ))
-        else:
+        elif ct in ['blue', 'vertical_purple']:
             # Vertical lines - group by x
             by_coord = defaultdict(list)
             for p in points_list:
@@ -489,6 +432,7 @@ def create_perpendicular_figure(blocks, data_map=None, routing_data=None, dup_da
                         hoverinfo='skip',
                         showlegend=False
                     ))
+        # grey and junction: markers only, no lines
 
         # Add markers
         fig.add_trace(go.Scatter(
@@ -501,35 +445,12 @@ def create_perpendicular_figure(blocks, data_map=None, routing_data=None, dup_da
             customdata=[[p['id']] for p in points_list]
         ))
 
-    # Add routing intersection points (for CP layout)
-    if routing_data:
-        fig.add_trace(go.Scatter(
-            x=[p['x'] for p in routing_data],
-            y=[p['y'] for p in routing_data],
-            mode='markers',
-            name=f"Routing Points ({len(routing_data)})",
-            marker=dict(size=4, color='red', symbol='circle'),
-            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<br>Row: %{customdata[1]}<br>Col: %{customdata[2]}<extra></extra>',
-            customdata=[[p['id'], p['meta']['row'], p['meta']['col']] for p in routing_data]
-        ))
-
-    # Add duplicate points in blue (for CP layout)
-    if dup_data:
-        fig.add_trace(go.Scatter(
-            x=[coord[0] for coord in dup_data],
-            y=[coord[1] for coord in dup_data],
-            mode='markers',
-            name=f"Duplicate Points ({len(dup_data)})",
-            marker=dict(size=8, color='blue', symbol='x'),
-            hovertemplate='X: %{x:.2f}U<br>Y: %{y:.2f}U<extra></extra>',
-        ))
-
     fig.update_layout(
         title=f'Perpendicular Layout ({blocks} Blocks)',
         xaxis_title='X (U)',
         yaxis_title='Y (U)',
-        yaxis=dict(autorange='reversed', range=[0, 250], scaleanchor='x', scaleratio=1),
-        xaxis=dict(range=[-50, 1000], scaleanchor='y', scaleratio=1),
+        yaxis=dict(autorange='reversed', range=[0, 250]),
+        xaxis=dict(range=[-50, 1000]),
         hovermode='closest',
         showlegend=True,
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
@@ -547,22 +468,18 @@ def create_perpendicular_figure(blocks, data_map=None, routing_data=None, dup_da
 )
 def update_perpendicular_graph(layout, blocks):
     # Select data map based on layout variant
-    routing_data = None
-    dup_data = None
     if layout == 'perpendicular_path':
         data_map = perp_data_map_path
     elif layout == 'perpendicular_cp':
-        # CP layout: show path data with routing intersection points and duplicates
-        data_map = perp_data_map_path
-        routing_data = perp_routing_map.get(blocks, [])
-        dup_data = perp_dup_map.get(blocks, [])
+        # CP layout: show merged routing data
+        data_map = perp_merged_map.get(blocks, {})
     elif layout == 'perpendicular_routing':
         # Routing not implemented yet, use path as placeholder
         data_map = perp_data_map_path
     else:  # perpendicular_disp
         data_map = perp_data_map
 
-    return create_perpendicular_figure(blocks, data_map, routing_data, dup_data)
+    return create_perpendicular_figure(blocks, data_map)
 
 
 # Download callback
@@ -583,34 +500,26 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
     # Regenerate the figure based on current layout and blocks
     if 'perpendicular' in layout:
         # Select data map
-        routing_data = None
-        dup_data = None
         if layout == 'perpendicular_path':
             data_map = perp_data_map_path
         elif layout == 'perpendicular_cp':
-            data_map = perp_data_map_path
-            routing_data = perp_routing_map.get(blocks or '140', [])
-            dup_data = perp_dup_map.get(blocks or '140', [])
+            data_map = perp_merged_map.get(blocks or '140', {})
         elif layout == 'perpendicular_routing':
             data_map = perp_data_map_path
         else:  # perpendicular_disp
             data_map = perp_data_map
-        fig = create_perpendicular_figure(blocks or '140', data_map, routing_data, dup_data)
+        fig = create_perpendicular_figure(blocks or '140', data_map)
     else:
         # Select data map
-        routing_data = None
-        dup_data = None
         if layout == 'parallel_path':
             data_map = parallel_data_map_path
         elif layout == 'parallel_cp':
-            data_map = parallel_data_map_path
-            routing_data = parallel_routing_map.get(parallel_blocks or '154', [])
-            dup_data = parallel_dup_map.get(parallel_blocks or '154', [])
+            data_map = parallel_merged_map.get(parallel_blocks or '154', {})
         elif layout == 'parallel_routing':
             data_map = parallel_data_map_path
         else:  # parallel_disp
             data_map = parallel_data_map
-        fig = create_parallel_figure(parallel_blocks or '154', data_map, routing_data, dup_data)
+        fig = create_parallel_figure(parallel_blocks or '154', data_map)
 
     # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
