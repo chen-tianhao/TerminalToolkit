@@ -54,9 +54,15 @@ def is_addxi_point(point):
     return point.get('id', '').startswith('ADDXI')
 
 
+def is_grey_point(point):
+    """检查是否为灰色点 (grey)"""
+    return point.get('color_type', '') == 'grey' or point.get('region', '') == 'grey'
+
+
 def interpolate_horizontal(points):
     """
     处理水平线差值: 同一 y 值的相邻点，按 x 排序后对间距 >30 的进行差值。
+    灰色点不参与差值计算，直接保留。
     返回新的点列表 (原始点 + 插入的点)
     """
     if not points:
@@ -76,6 +82,10 @@ def interpolate_horizontal(points):
         for i in range(len(sorted_pts)):
             p = sorted_pts[i]
             result.append(p)
+
+            # 灰色点不参与差值计算
+            if is_grey_point(p):
+                continue
 
             # 检查与下一个点的 x 间距
             if i < len(sorted_pts) - 1:
@@ -105,8 +115,8 @@ def interpolate_horizontal(points):
 
 def interpolate_vertical(points):
     """
-    处理垂直线差值: 同一 x 值的相邻非 ADDXI 点，按 y 排序后对间距 >30 的进行差值。
-    ADDXI 点会被保留但不参与垂直差值计算。
+    处理垂直线差值: 同一 x 值的相邻非 ADDXI 非灰色点，按 y 排序后对间距 >30 的进行差值。
+    ADDXI 点和灰色点会被保留但不参与垂直差值计算。
     返回新的点列表 (原始点 + 插入的点)
     """
     if not points:
@@ -120,12 +130,13 @@ def interpolate_vertical(points):
     result = []
 
     for x, pts in by_x.items():
-        # 分离 ADDXI 点和非 ADDXI 点
+        # 分离 ADDXI 点、灰色点和其他点
         addxi_pts = [p for p in pts if is_addxi_point(p)]
-        non_addxi_pts = [p for p in pts if not is_addxi_point(p)]
+        grey_pts = [p for p in pts if is_grey_point(p) and not is_addxi_point(p)]
+        other_pts = [p for p in pts if not is_addxi_point(p) and not is_grey_point(p)]
 
-        # 每组内按 y 排序 (只对非 ADDXI 点)
-        sorted_pts = sorted(non_addxi_pts, key=lambda p: p['y'])
+        # 每组内按 y 排序 (只对非 ADDXI 非灰色的点)
+        sorted_pts = sorted(other_pts, key=lambda p: p['y'])
 
         for i in range(len(sorted_pts)):
             p = sorted_pts[i]
@@ -154,8 +165,10 @@ def interpolate_vertical(points):
                         }
                         result.append(new_point)
 
-        # 将 ADDXI 点也添加到结果中
+        # 将 ADDXI 点和灰色点添加到结果中
         for p in addxi_pts:
+            result.append(p)
+        for p in grey_pts:
             result.append(p)
 
     return result

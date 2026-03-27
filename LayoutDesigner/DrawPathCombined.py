@@ -117,6 +117,19 @@ def load_merged_data(layout_type):
         return {}
 
 
+def load_interpolated_data(layout_type):
+    """Load interpolated routing data from data/routing/interpolation directory.
+
+    The interpolated file contains merged data + ADDXI/ADDYI interpolation points.
+    """
+    filename = os.path.join(BASE_DIR, f'data\\routing\\interpolation\\layout_{layout_type}_interpolated.json')
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
 # Merged data maps
 perp_merged_map = {
     '140': load_merged_data('perpendicular_34'),
@@ -404,8 +417,14 @@ def create_parallel_figure(blocks, data_map=None):
     Input('parallel-blocks-selector', 'value')
 )
 def update_parallel_graph(layout, blocks):
-    # CP layout: markers only from merged data
+    # CP layout: markers only from interpolated data (contains merged + ADDXI/ADDYI points)
     if layout == 'parallel_cp':
+        # Map blocks to layout_type
+        layout_type = 'parallel' if blocks == '154' else f'parallel_{blocks}'
+        interpolated_data = load_interpolated_data(layout_type)
+        if interpolated_data:
+            return create_cp_figure(interpolated_data, f'Parallel Layout CP ({blocks} Blocks)')
+        # Fallback to merged data if interpolated file not found
         merged_data = parallel_merged_map.get(blocks, {})
         return create_cp_figure(merged_data, f'Parallel Layout CP ({blocks} Blocks)')
 
@@ -509,8 +528,14 @@ def create_perpendicular_figure(blocks, data_map=None):
     Input('blocks-selector', 'value')
 )
 def update_perpendicular_graph(layout, blocks):
-    # CP layout: markers only from merged data
+    # CP layout: markers only from interpolated data (contains merged + ADDXI/ADDYI points)
     if layout == 'perpendicular_cp':
+        # Map blocks to layout_type
+        layout_type = f'perpendicular_{blocks}'
+        interpolated_data = load_interpolated_data(layout_type)
+        if interpolated_data:
+            return create_cp_figure(interpolated_data, f'Perpendicular Layout CP ({blocks} Blocks)')
+        # Fallback to merged data if interpolated file not found
         merged_data = perp_merged_map.get(blocks, {})
         return create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks} Blocks)')
 
@@ -543,11 +568,23 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
 
     # Regenerate the figure based on current layout and blocks
     if layout == 'perpendicular_cp':
-        merged_data = perp_merged_map.get(blocks or '144', {})
-        fig = create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
+        # Use interpolated data (contains merged + ADDXI/ADDYI points)
+        layout_type = f'perpendicular_{blocks or "144"}'
+        interpolated_data = load_interpolated_data(layout_type)
+        if interpolated_data:
+            fig = create_cp_figure(interpolated_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
+        else:
+            merged_data = perp_merged_map.get(blocks or '144', {})
+            fig = create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
     elif layout == 'parallel_cp':
-        merged_data = parallel_merged_map.get(parallel_blocks or '154', {})
-        fig = create_cp_figure(merged_data, f'Parallel Layout CP ({parallel_blocks or "154"} Blocks)')
+        # Use interpolated data (contains merged + ADDXI/ADDYI points)
+        layout_type = 'parallel' if parallel_blocks == '154' else f'parallel_{parallel_blocks}'
+        interpolated_data = load_interpolated_data(layout_type)
+        if interpolated_data:
+            fig = create_cp_figure(interpolated_data, f'Parallel Layout CP ({parallel_blocks or "154"} Blocks)')
+        else:
+            merged_data = parallel_merged_map.get(parallel_blocks or '154', {})
+            fig = create_cp_figure(merged_data, f'Parallel Layout CP ({parallel_blocks or "154"} Blocks)')
     elif 'perpendicular' in layout:
         # Select data map
         if layout == 'perpendicular_path':
