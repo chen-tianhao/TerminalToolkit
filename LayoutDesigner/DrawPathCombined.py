@@ -419,8 +419,13 @@ def create_parallel_figure(blocks, data_map=None):
 def update_parallel_graph(layout, blocks):
     # CP layout: markers only from interpolated data (contains merged + ADDXI/ADDYI points)
     if layout == 'parallel_cp':
-        # Map blocks to layout_type
-        layout_type = 'parallel' if blocks == '154' else f'parallel_{blocks}'
+        # Map blocks to layout_type (blocks value != layout_type suffix!)
+        parallel_blocks_to_layout = {
+            '126': 'parallel_8',
+            '140': 'parallel_9',
+            '154': 'parallel'
+        }
+        layout_type = parallel_blocks_to_layout.get(blocks, 'parallel')
         interpolated_data = load_interpolated_data(layout_type)
         if interpolated_data:
             return create_cp_figure(interpolated_data, f'Parallel Layout CP ({blocks} Blocks)')
@@ -530,8 +535,13 @@ def create_perpendicular_figure(blocks, data_map=None):
 def update_perpendicular_graph(layout, blocks):
     # CP layout: markers only from interpolated data (contains merged + ADDXI/ADDYI points)
     if layout == 'perpendicular_cp':
-        # Map blocks to layout_type
-        layout_type = f'perpendicular_{blocks}'
+        # Map blocks to layout_type (blocks value != layout_type suffix!)
+        perp_blocks_to_layout = {
+            '140': 'perpendicular_34',
+            '144': 'perpendicular_35',
+            '148': 'perpendicular_36'
+        }
+        layout_type = perp_blocks_to_layout.get(blocks, 'perpendicular_34')
         interpolated_data = load_interpolated_data(layout_type)
         if interpolated_data:
             return create_cp_figure(interpolated_data, f'Perpendicular Layout CP ({blocks} Blocks)')
@@ -569,7 +579,12 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
     # Regenerate the figure based on current layout and blocks
     if layout == 'perpendicular_cp':
         # Use interpolated data (contains merged + ADDXI/ADDYI points)
-        layout_type = f'perpendicular_{blocks or "144"}'
+        perp_blocks_to_layout = {
+            '140': 'perpendicular_34',
+            '144': 'perpendicular_35',
+            '148': 'perpendicular_36'
+        }
+        layout_type = perp_blocks_to_layout.get(blocks or '144', 'perpendicular_34')
         interpolated_data = load_interpolated_data(layout_type)
         if interpolated_data:
             fig = create_cp_figure(interpolated_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
@@ -578,7 +593,12 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
             fig = create_cp_figure(merged_data, f'Perpendicular Layout CP ({blocks or "144"} Blocks)')
     elif layout == 'parallel_cp':
         # Use interpolated data (contains merged + ADDXI/ADDYI points)
-        layout_type = 'parallel' if parallel_blocks == '154' else f'parallel_{parallel_blocks}'
+        parallel_blocks_to_layout = {
+            '126': 'parallel_8',
+            '140': 'parallel_9',
+            '154': 'parallel'
+        }
+        layout_type = parallel_blocks_to_layout.get(parallel_blocks or '154', 'parallel')
         interpolated_data = load_interpolated_data(layout_type)
         if interpolated_data:
             fig = create_cp_figure(interpolated_data, f'Parallel Layout CP ({parallel_blocks or "154"} Blocks)')
