@@ -69,10 +69,15 @@ def is_bl_point(point):
     return point.get('color_type', '') == 'blue'
 
 
+def is_inter_point(point):
+    """检查是否为 INTER_ 点 (junction/interection)"""
+    return point.get('id', '').startswith('INTER_')
+
+
 def interpolate_horizontal(points):
     """
-    处理水平线差值: 同一 y 值的相邻非灰色非 BL 点，按 x 排序后对间距 >30 的进行差值。
-    灰色点和 BL 点不参与差值计算，直接保留。
+    处理水平线差值: 同一 y 值的相邻非灰色非 BL 非 INTER_ 点，按 x 排序后对间距 >30 的进行差值。
+    灰色点、BL 点和 INTER_ 点不参与差值计算，直接保留。
     返回新的点列表 (原始点 + 插入的点)
     """
     if not points:
@@ -86,12 +91,13 @@ def interpolate_horizontal(points):
     result = []
 
     for y, pts in by_y.items():
-        # 分离 BL 点、灰色点和其他点
+        # 分离 BL 点、灰色点、INTER_ 点和其他点
         bl_pts = [p for p in pts if is_bl_point(p)]
         grey_pts = [p for p in pts if is_grey_point(p)]
-        other_pts = [p for p in pts if not is_bl_point(p) and not is_grey_point(p)]
+        inter_pts = [p for p in pts if is_inter_point(p)]
+        other_pts = [p for p in pts if not is_bl_point(p) and not is_grey_point(p) and not is_inter_point(p)]
 
-        # 每组内按 x 排序 (只对非 BL 非灰色的点)
+        # 每组内按 x 排序 (只对非 BL 非灰色非 INTER_ 的点)
         sorted_pts = sorted(other_pts, key=lambda p: p['x'])
 
         for i in range(len(sorted_pts)):
@@ -121,10 +127,12 @@ def interpolate_horizontal(points):
                         }
                         result.append(new_point)
 
-        # 将 BL 点和灰色点添加到结果中
+        # 将 BL 点、灰色点和 INTER_ 点添加到结果中
         for p in bl_pts:
             result.append(p)
         for p in grey_pts:
+            result.append(p)
+        for p in inter_pts:
             result.append(p)
 
     return result
@@ -132,8 +140,8 @@ def interpolate_horizontal(points):
 
 def interpolate_vertical(points):
     """
-    处理垂直线差值: 同一 x 值的相邻非 ADDXI 非灰色非 PUH 点，按 y 排序后对间距 >30 的进行差值。
-    ADDXI 点、灰色点和 PUH 点会被保留但不参与垂直差值计算。
+    处理垂直线差值: 同一 x 值的相邻非 ADDXI 非灰色非 PUH 非 INTER_ 点，按 y 排序后对间距 >30 的进行差值。
+    ADDXI 点、灰色点、PUH 点和 INTER_ 点会被保留但不参与垂直差值计算。
     返回新的点列表 (原始点 + 插入的点)
     """
     if not points:
@@ -147,13 +155,14 @@ def interpolate_vertical(points):
     result = []
 
     for x, pts in by_x.items():
-        # 分离 ADDXI 点、灰色点、PUH 点和其他点
+        # 分离 ADDXI 点、灰色点、PUH 点、INTER_ 点和其他点
         addxi_pts = [p for p in pts if is_addxi_point(p)]
         grey_pts = [p for p in pts if is_grey_point(p) and not is_addxi_point(p)]
         puh_pts = [p for p in pts if is_puh_point(p) and not is_addxi_point(p)]
-        other_pts = [p for p in pts if not is_addxi_point(p) and not is_grey_point(p) and not is_puh_point(p)]
+        inter_pts = [p for p in pts if is_inter_point(p) and not is_addxi_point(p)]
+        other_pts = [p for p in pts if not is_addxi_point(p) and not is_grey_point(p) and not is_puh_point(p) and not is_inter_point(p)]
 
-        # 每组内按 y 排序 (只对非 ADDXI 非灰色非 PUH 的点)
+        # 每组内按 y 排序 (只对非 ADDXI 非灰色非 PUH 非 INTER_ 的点)
         sorted_pts = sorted(other_pts, key=lambda p: p['y'])
 
         for i in range(len(sorted_pts)):
@@ -183,12 +192,14 @@ def interpolate_vertical(points):
                         }
                         result.append(new_point)
 
-        # 将 ADDXI 点、灰色点和 PUH 点添加到结果中
+        # 将 ADDXI 点、灰色点、PUH 点和 INTER_ 点添加到结果中
         for p in addxi_pts:
             result.append(p)
         for p in grey_pts:
             result.append(p)
         for p in puh_pts:
+            result.append(p)
+        for p in inter_pts:
             result.append(p)
 
     return result
