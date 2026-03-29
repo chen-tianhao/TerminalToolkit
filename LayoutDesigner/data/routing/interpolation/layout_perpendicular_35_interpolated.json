@@ -65,54 +65,6 @@
       "color_type": "purple_horizontal"
     },
     {
-      "id": "ADDYI_R054_C0004",
-      "x": 4.0,
-      "y": 53.714285714285715,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R082_C0004",
-      "x": 4.0,
-      "y": 82.42857142857143,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R111_C0004",
-      "x": 4.0,
-      "y": 111.14285714285714,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R140_C0004",
-      "x": 4.0,
-      "y": 139.85714285714286,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R169_C0004",
-      "x": 4.0,
-      "y": 168.57142857142858,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R197_C0004",
-      "x": 4.0,
-      "y": 197.28571428571428,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
       "id": "PUH_R226_0000",
       "x": 4.0,
       "y": 226.0,
@@ -4076,54 +4028,6 @@
       "id": "PUH_R025_0184",
       "x": 921.0,
       "y": 25.0,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R054_C0921",
-      "x": 921.0,
-      "y": 53.714285714285715,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R082_C0921",
-      "x": 921.0,
-      "y": 82.42857142857143,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R111_C0921",
-      "x": 921.0,
-      "y": 111.14285714285714,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R140_C0921",
-      "x": 921.0,
-      "y": 139.85714285714286,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R169_C0921",
-      "x": 921.0,
-      "y": 168.57142857142858,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R197_C0921",
-      "x": 921.0,
-      "y": 197.28571428571428,
       "region": "purple",
       "kind": "h",
       "color_type": "purple_horizontal"

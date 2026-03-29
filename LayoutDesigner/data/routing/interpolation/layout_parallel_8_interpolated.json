@@ -65,54 +65,6 @@
       "color_type": "purple_horizontal"
     },
     {
-      "id": "ADDYI_R054_C0004",
-      "x": 4.0,
-      "y": 53.714285714285715,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R082_C0004",
-      "x": 4.0,
-      "y": 82.42857142857143,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R111_C0004",
-      "x": 4.0,
-      "y": 111.14285714285714,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R140_C0004",
-      "x": 4.0,
-      "y": 139.85714285714286,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R169_C0004",
-      "x": 4.0,
-      "y": 168.57142857142858,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R197_C0004",
-      "x": 4.0,
-      "y": 197.28571428571428,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
       "id": "PUH_R226_0000",
       "x": 4.0,
       "y": 226.0,
@@ -4076,54 +4028,6 @@
       "id": "PUH_R025_0184",
       "x": 921.0,
       "y": 25.0,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R054_C0921",
-      "x": 921.0,
-      "y": 53.714285714285715,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R082_C0921",
-      "x": 921.0,
-      "y": 82.42857142857143,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R111_C0921",
-      "x": 921.0,
-      "y": 111.14285714285714,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R140_C0921",
-      "x": 921.0,
-      "y": 139.85714285714286,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R169_C0921",
-      "x": 921.0,
-      "y": 168.57142857142858,
-      "region": "purple",
-      "kind": "h",
-      "color_type": "purple_horizontal"
-    },
-    {
-      "id": "ADDYI_R197_C0921",
-      "x": 921.0,
-      "y": 197.28571428571428,
       "region": "purple",
       "kind": "h",
       "color_type": "purple_horizontal"
@@ -24219,54 +24123,6 @@
       "color_type": "blue"
     },
     {
-      "id": "ADDXI_R022_C0028",
-      "x": 27.86,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0028",
-      "x": 27.86,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0053",
-      "x": 52.72,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0053",
-      "x": 52.72,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0078",
-      "x": 77.58,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0078",
-      "x": 77.58,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
       "id": "BLU_R022_0102",
       "x": 102.44,
       "y": 22.0,
@@ -24517,54 +24373,6 @@
     {
       "id": "BLU_R229_0105",
       "x": 105.44,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0130",
-      "x": 130.3025,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0130",
-      "x": 130.3025,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0155",
-      "x": 155.165,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0155",
-      "x": 155.165,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0180",
-      "x": 180.02749999999997,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0180",
-      "x": 180.02749999999997,
       "y": 229.0,
       "region": "blue",
       "kind": "v",
@@ -24827,54 +24635,6 @@
       "color_type": "blue"
     },
     {
-      "id": "ADDXI_R022_C0233",
-      "x": 232.75,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0233",
-      "x": 232.75,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0258",
-      "x": 257.61,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0258",
-      "x": 257.61,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0282",
-      "x": 282.46999999999997,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0282",
-      "x": 282.46999999999997,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
       "id": "BLU_R022_0307",
       "x": 307.33,
       "y": 22.0,
@@ -25125,54 +24885,6 @@
     {
       "id": "BLU_R229_0310",
       "x": 310.33,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0335",
-      "x": 335.1925,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0335",
-      "x": 335.1925,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0360",
-      "x": 360.05499999999995,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0360",
-      "x": 360.05499999999995,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0385",
-      "x": 384.91749999999996,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0385",
-      "x": 384.91749999999996,
       "y": 229.0,
       "region": "blue",
       "kind": "v",
@@ -25435,54 +25147,6 @@
       "color_type": "blue"
     },
     {
-      "id": "ADDXI_R022_C0438",
-      "x": 437.64,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0438",
-      "x": 437.64,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0463",
-      "x": 462.5,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0463",
-      "x": 462.5,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0487",
-      "x": 487.36,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0487",
-      "x": 487.36,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
       "id": "BLU_R022_0512",
       "x": 512.22,
       "y": 22.0,
@@ -25733,54 +25397,6 @@
     {
       "id": "BLU_R229_0515",
       "x": 515.22,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0540",
-      "x": 540.0825,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0540",
-      "x": 540.0825,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0565",
-      "x": 564.9449999999999,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0565",
-      "x": 564.9449999999999,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0590",
-      "x": 589.8075,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0590",
-      "x": 589.8075,
       "y": 229.0,
       "region": "blue",
       "kind": "v",
@@ -26043,54 +25659,6 @@
       "color_type": "blue"
     },
     {
-      "id": "ADDXI_R022_C0643",
-      "x": 642.53,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0643",
-      "x": 642.53,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0667",
-      "x": 667.39,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0667",
-      "x": 667.39,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0692",
-      "x": 692.25,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0692",
-      "x": 692.25,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
       "id": "BLU_R022_0717",
       "x": 717.11,
       "y": 22.0,
@@ -26347,54 +25915,6 @@
       "color_type": "blue"
     },
     {
-      "id": "ADDXI_R022_C0745",
-      "x": 744.9725,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0745",
-      "x": 744.9725,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0770",
-      "x": 769.835,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0770",
-      "x": 769.835,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0795",
-      "x": 794.6975,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0795",
-      "x": 794.6975,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
       "id": "BLU_R022_0819",
       "x": 819.56,
       "y": 22.0,
@@ -26645,54 +26165,6 @@
     {
       "id": "BLU_R229_0822",
       "x": 822.56,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0847",
-      "x": 847.42,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0847",
-      "x": 847.42,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0872",
-      "x": 872.28,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0872",
-      "x": 872.28,
-      "y": 229.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R022_C0897",
-      "x": 897.14,
-      "y": 22.0,
-      "region": "blue",
-      "kind": "v",
-      "color_type": "blue"
-    },
-    {
-      "id": "ADDXI_R229_C0897",
-      "x": 897.14,
       "y": 229.0,
       "region": "blue",
       "kind": "v",
