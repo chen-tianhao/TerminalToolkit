@@ -130,6 +130,102 @@ def load_interpolated_data(layout_type):
         return {}
 
 
+def load_routing_table(layout_type):
+    """Load routing table data from data/routing_table directory.
+
+    Returns dict with 'meta' and 'points' keys.
+    """
+    filename = os.path.join(BASE_DIR, f'data\\routing_table\\layout_{layout_type}_rt.json')
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+def create_routing_figure(routing_data, title):
+    """Create a routing table figure showing points and connections.
+
+    Args:
+        routing_data: Dict with 'meta' and 'points' keys from routing table
+        title: Figure title
+    """
+    fig = go.Figure()
+
+    points = routing_data.get('points', [])
+    if not points:
+        return fig
+
+    # Build point lookup by id
+    point_by_id = {p['id']: p for p in points}
+
+    # Group points by region for legend
+    points_by_region = defaultdict(list)
+    for p in points:
+        points_by_region[p['region']].append(p)
+
+    # Draw connection lines first (so they appear below markers)
+    # Use a set to avoid drawing duplicate lines
+    lines_drawn = set()
+    for p in points:
+        p_x, p_y = p['x'], p['y']
+        for nid in p.get('next', []):
+            if nid not in point_by_id:
+                continue
+            np = point_by_id[nid]
+            n_x, n_y = np['x'], np['y']
+            # Create unique key for this line (to avoid duplicates in bidirectional case)
+            line_key = tuple(sorted([(p_x, p_y), (n_x, n_y)]))
+            if line_key in lines_drawn:
+                continue
+            lines_drawn.add(line_key)
+
+            # Color based on source point's region
+            region = p.get('region', 'unknown')
+            line_color = colors.get(region, 'gray')
+            # Use lighter color for routing lines
+            if region == 'purple':
+                line_color = 'mediumpurple'
+            elif region == 'grey':
+                line_color = 'lightgray'
+
+            fig.add_trace(go.Scatter(
+                x=[p_x, n_x],
+                y=[p_y, n_y],
+                mode='lines',
+                line=dict(color=line_color, width=0.3),
+                hoverinfo='skip',
+                showlegend=False
+            ))
+
+    # Add markers for each region
+    for region, pts_list in points_by_region.items():
+        fig.add_trace(go.Scatter(
+            x=[p['x'] for p in pts_list],
+            y=[p['y'] for p in pts_list],
+            mode='markers',
+            name=f"{display_names.get(region, region)} ({len(pts_list)})",
+            marker=dict(size=2, color=colors.get(region, 'gray')),
+            hovertemplate='<b>%{customdata[0]}</b><br>X: %{x:.2f}U<br>Y: %{y:.2f}U<br>Region: ' + region + '<extra></extra>',
+            customdata=[[p['id']] for p in pts_list]
+        ))
+
+    fig.update_layout(
+        title=title,
+        xaxis_title='X (U)',
+        yaxis_title='Y (U)',
+        yaxis=dict(autorange='reversed', range=[0, 250]),
+        xaxis=dict(range=[-50, 1000]),
+        hovermode='closest',
+        showlegend=True,
+        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5),
+        width=1575,
+        height=600
+    )
+
+    return fig
+
+
 # Merged data maps
 perp_merged_map = {
     '140': load_merged_data('perpendicular_34'),
@@ -437,7 +533,17 @@ def update_parallel_graph(layout, blocks):
     if layout == 'parallel_path':
         data_map = parallel_data_map_path
     elif layout == 'parallel_routing':
-        # Routing not implemented yet, use path as placeholder
+        # Routing: load routing table and display with connections
+        parallel_blocks_to_layout = {
+            '126': 'parallel_8',
+            '140': 'parallel_9',
+            '154': 'parallel'
+        }
+        layout_type = parallel_blocks_to_layout.get(blocks, 'parallel')
+        routing_data = load_routing_table(layout_type)
+        if routing_data.get('points'):
+            return create_routing_figure(routing_data, f'Parallel Layout Routing ({blocks} Blocks)')
+        # Fallback to path if routing table not found
         data_map = parallel_data_map_path
     else:  # parallel_disp
         data_map = parallel_data_map
@@ -553,7 +659,17 @@ def update_perpendicular_graph(layout, blocks):
     if layout == 'perpendicular_path':
         data_map = perp_data_map_path
     elif layout == 'perpendicular_routing':
-        # Routing not implemented yet, use path as placeholder
+        # Routing: load routing table and display with connections
+        perp_blocks_to_layout = {
+            '140': 'perpendicular_34',
+            '144': 'perpendicular_35',
+            '148': 'perpendicular_36'
+        }
+        layout_type = perp_blocks_to_layout.get(blocks, 'perpendicular_34')
+        routing_data = load_routing_table(layout_type)
+        if routing_data.get('points'):
+            return create_routing_figure(routing_data, f'Perpendicular Layout Routing ({blocks} Blocks)')
+        # Fallback to path if routing table not found
         data_map = perp_data_map_path
     else:  # perpendicular_disp
         data_map = perp_data_map
@@ -610,19 +726,41 @@ def download_image(n_clicks, layout, blocks, parallel_blocks, resolution):
         if layout == 'perpendicular_path':
             data_map = perp_data_map_path
         elif layout == 'perpendicular_routing':
-            data_map = perp_data_map_path
+            perp_blocks_to_layout = {
+                '140': 'perpendicular_34',
+                '144': 'perpendicular_35',
+                '148': 'perpendicular_36'
+            }
+            layout_type = perp_blocks_to_layout.get(blocks or '144', 'perpendicular_34')
+            routing_data = load_routing_table(layout_type)
+            if routing_data.get('points'):
+                fig = create_routing_figure(routing_data, f'Perpendicular Layout Routing ({blocks or "144"} Blocks)')
+            else:
+                data_map = perp_data_map_path
+                fig = create_perpendicular_figure(blocks or '144', data_map)
         else:  # perpendicular_disp
             data_map = perp_data_map
-        fig = create_perpendicular_figure(blocks or '144', data_map)
+            fig = create_perpendicular_figure(blocks or '144', data_map)
     else:
         # Select data map
         if layout == 'parallel_path':
             data_map = parallel_data_map_path
         elif layout == 'parallel_routing':
-            data_map = parallel_data_map_path
+            parallel_blocks_to_layout = {
+                '126': 'parallel_8',
+                '140': 'parallel_9',
+                '154': 'parallel'
+            }
+            layout_type = parallel_blocks_to_layout.get(parallel_blocks or '154', 'parallel')
+            routing_data = load_routing_table(layout_type)
+            if routing_data.get('points'):
+                fig = create_routing_figure(routing_data, f'Parallel Layout Routing ({parallel_blocks or "154"} Blocks)')
+            else:
+                data_map = parallel_data_map_path
+                fig = create_parallel_figure(parallel_blocks or '154', data_map)
         else:  # parallel_disp
             data_map = parallel_data_map
-        fig = create_parallel_figure(parallel_blocks or '154', data_map)
+            fig = create_parallel_figure(parallel_blocks or '154', data_map)
 
     # Calculate dimensions (aspect ratio: 1575:600 = 2.625:1)
     width = int(resolution)
