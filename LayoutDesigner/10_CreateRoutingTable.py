@@ -105,31 +105,37 @@ def find_nearest_in_direction(pt: dict, candidates: list, direction: str) -> str
     return best
 
 
-def find_nearest_y_points(pt: dict, by_y: dict, target_y_values: list, exclude_addxi_addyi: bool = True) -> list:
-    """找到指定 Y 值列表中最近的点"""
-    results = []
+def find_nearest_y_points(pt: dict, by_y: dict, target_y_values: list) -> dict:
+    """找到指定 Y 值列表中每个 Y 最近的点（使用 Euclidean 距离）"""
+    results = {}  # {y_value: (dist, id)}
     for y_key, group in by_y.items():
         if any(abs(y_key - ty) <= EPSILON for ty in target_y_values):
             for cand in group:
-                if cand['id'] != pt['id'] and is_same_col(pt['x'], cand['x']):
-                    # 排除 ADDXI/ADDYI 点（除非是起点本身）
-                    if exclude_addxi_addyi and (is_addxi(cand) or is_addyi(cand)):
-                        continue
-                    results.append((abs(cand['y'] - pt['y']), cand['id']))
+                if cand['id'] != pt['id']:
+                    dist = ((cand['x'] - pt['x'])**2 + (cand['y'] - pt['y'])**2) ** 0.5
+                    # 确定这个点属于哪个 target y 值
+                    for ty in target_y_values:
+                        if abs(cand['y'] - ty) <= EPSILON:
+                            if ty not in results or dist < results[ty][0]:
+                                results[ty] = (dist, cand['id'])
+                            break
     return results
 
 
-def find_nearest_x_points(pt: dict, by_x: dict, target_x_values: list, exclude_addxi_addyi: bool = True) -> list:
-    """找到指定 X 值列表中最近的点"""
-    results = []
+def find_nearest_x_points(pt: dict, by_x: dict, target_x_values: list) -> dict:
+    """找到指定 X 值列表中每个 X 最近的点（使用 Euclidean 距离）"""
+    results = {}  # {x_value: (dist, id)}
     for x_key, group in by_x.items():
         if any(abs(x_key - tx) <= EPSILON for tx in target_x_values):
             for cand in group:
-                if cand['id'] != pt['id'] and is_same_row(pt['y'], cand['y']):
-                    # 排除 ADDXI/ADDYI 点（除非是起点本身）
-                    if exclude_addxi_addyi and (is_addxi(cand) or is_addyi(cand)):
-                        continue
-                    results.append((abs(cand['x'] - pt['x']), cand['id']))
+                if cand['id'] != pt['id']:
+                    dist = ((cand['x'] - pt['x'])**2 + (cand['y'] - pt['y'])**2) ** 0.5
+                    # 确定这个点属于哪个 target x 值
+                    for tx in target_x_values:
+                        if abs(cand['x'] - tx) <= EPSILON:
+                            if tx not in results or dist < results[tx][0]:
+                                results[tx] = (dist, cand['id'])
+                            break
     return results
 
 
@@ -230,8 +236,7 @@ def process_file(input_path: Path) -> None:
         # Y=19 连接 Y=16 和 Y=22
         if abs(y - 19) <= EPSILON:
             nearest = find_nearest_y_points(pt, by_y, [16, 22])
-            nearest.sort(key=lambda x: x[0])
-            for dist, nid in nearest[:2]:
+            for ty, (dist, nid) in nearest.items():
                 if nid not in pt['next']:
                     add_bidirectional_connection(points_by_id, pt['id'], nid)
                     connection_count += 1
@@ -239,8 +244,7 @@ def process_file(input_path: Path) -> None:
         # Y=232 连接 Y=229 和 Y=235
         if abs(y - 232) <= EPSILON:
             nearest = find_nearest_y_points(pt, by_y, [229, 235])
-            nearest.sort(key=lambda x: x[0])
-            for dist, nid in nearest[:2]:
+            for ty, (dist, nid) in nearest.items():
                 if nid not in pt['next']:
                     add_bidirectional_connection(points_by_id, pt['id'], nid)
                     connection_count += 1
@@ -248,8 +252,7 @@ def process_file(input_path: Path) -> None:
         # X=934 连接 X=931 和 X=937
         if abs(x - 934) <= EPSILON:
             nearest = find_nearest_x_points(pt, by_x, [931, 937])
-            nearest.sort(key=lambda x: x[0])
-            for dist, nid in nearest[:2]:
+            for tx, (dist, nid) in nearest.items():
                 if nid not in pt['next']:
                     add_bidirectional_connection(points_by_id, pt['id'], nid)
                     connection_count += 1
