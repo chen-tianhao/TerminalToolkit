@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Assets.SingaPort;
 
-namespace TestNet
+namespace Net.Test
 {
     // ============================================================
     // Slot 单元测试
