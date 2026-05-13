@@ -15,9 +15,9 @@ namespace Net.Test
         public void Slot_Constructor_SetsProperties()
         {
             var slot = new Slot(bay: 3, row: 5, tier: 2);
-            Assert.AreEqual(3, slot.Bay);
-            Assert.AreEqual(5, slot.Row);
-            Assert.AreEqual(2, slot.Tier);
+            Assert.That(slot.Bay, Is.EqualTo(3));
+            Assert.That(slot.Row, Is.EqualTo(5));
+            Assert.That(slot.Tier, Is.EqualTo(2));
         }
 
         [Test]
@@ -25,8 +25,8 @@ namespace Net.Test
         {
             var s1 = new Slot(1, 2, 3);
             var s2 = new Slot(1, 2, 3);
-            Assert.AreEqual(s1, s2);
-            Assert.AreEqual(s1.GetHashCode(), s2.GetHashCode());
+            Assert.That(s1, Is.EqualTo(s2));
+            Assert.That(s1.GetHashCode(), Is.EqualTo(s2.GetHashCode()));
         }
 
         [Test]
@@ -34,16 +34,16 @@ namespace Net.Test
         {
             var s1 = new Slot(1, 2, 3);
             var s2 = new Slot(1, 2, 4);
-            Assert.AreNotEqual(s1, s2);
+            Assert.That(s1, Is.Not.EqualTo(s2));
         }
 
         [Test]
         public void Slot_ToString()
         {
             var slot = new Slot(3, 5, 2);
-            StringAssert.Contains("3", slot.ToString());
-            StringAssert.Contains("5", slot.ToString());
-            StringAssert.Contains("2", slot.ToString());
+            Assert.That(slot.ToString(), Does.Contain("3"));
+            Assert.That(slot.ToString(), Does.Contain("5"));
+            Assert.That(slot.ToString(), Does.Contain("2"));
         }
     }
 
@@ -67,9 +67,9 @@ namespace Net.Test
         {
             var group = new Group { Index = 1, TEUs = 1 };
             var container = new Container(group);
-            Assert.AreEqual(ContainerSize.TwentyFeet, container.Size);
-            Assert.AreEqual(1, container.Index);
-            Assert.AreSame(group, container.Group);
+            Assert.That(ContainerSize.TwentyFeet, Is.EqualTo(container.Size));
+            Assert.That(1, Is.EqualTo(container.Index));
+            Assert.That(group, Is.SameAs(container.Group));
         }
 
         [Test]
@@ -77,8 +77,8 @@ namespace Net.Test
         {
             var group = new Group { Index = 2, TEUs = 2 };
             var container = new Container(group);
-            Assert.AreEqual(ContainerSize.FortyFeet, container.Size);
-            Assert.AreEqual(1, container.Index);
+            Assert.That(ContainerSize.FortyFeet, Is.EqualTo(container.Size));
+            Assert.That(1, Is.EqualTo(container.Index));
         }
 
         [Test]
@@ -88,15 +88,15 @@ namespace Net.Test
             var group2 = new Group { Index = 2, TEUs = 1 };
             var c1 = new Container(group1);
             var c2 = new Container(group2);
-            Assert.AreEqual(1, c1.Index);
-            Assert.AreEqual(2, c2.Index);
+            Assert.That(1, Is.EqualTo(c1.Index));
+            Assert.That(2, Is.EqualTo(c2.Index));
         }
 
         [Test]
         public void Container_Group_TimestampUnstack()
         {
             var group = new Group { Index = 1, TEUs = 1, Timestamp_Unstack = new DateTime(2025, 1, 1) };
-            Assert.AreEqual(new DateTime(2025, 1, 1), group.Timestamp_Unstack);
+            Assert.That(new DateTime(2025, 1, 1), Is.EqualTo(group.Timestamp_Unstack));
         }
 
         [Test]
@@ -105,21 +105,21 @@ namespace Net.Test
             var group = new Group { Index = 1, TEUs = 1 };
             var container = new Container(group);
             group.Containers.Add(container);
-            Assert.AreEqual(1, group.Containers.Count);
-            Assert.Contains(container, group.Containers);
+            Assert.That(1, Is.EqualTo(group.Containers.Count));
+            Assert.That(group.Containers, Has.Member(container));
         }
 
         [Test]
         public void Container_Group_ToString()
         {
             var group = new Group { Index = 42, TEUs = 2 };
-            Assert.AreEqual("Group#42", group.ToString());
+            Assert.That("Group#42", Is.EqualTo(group.ToString()));
         }
 
         [Test]
         public void Container_Height_Constant()
         {
-            Assert.AreEqual(2.59f, Container.Height);
+            Assert.That(2.59f, Is.EqualTo(Container.Height));
         }
     }
 
@@ -136,7 +136,7 @@ namespace Net.Test
         public void Setup()
         {
             _block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
-            _rs = new Random(seed: 42);
+            _rs = new Random(42);
         }
 
         // ---- 基本属性测试 ----
@@ -145,44 +145,44 @@ namespace Net.Test
         public void Bay_Constructor_InitializesStacks()
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
-            Assert.AreEqual(6, bay.Stacks.Count); // 6 rows
+            Assert.That(6, Is.EqualTo(bay.Stacks.Count)); // 6 rows
             foreach (var stack in bay.Stacks.Values)
-                Assert.IsEmpty(stack);
+                Assert.That(stack, Is.Empty);
         }
 
         [Test]
         public void Bay_ContainerSize_IsFixed()
         {
             var bay = new Bay(_block, ContainerSize.FortyFeet);
-            Assert.AreEqual(ContainerSize.FortyFeet, bay.ContainerSize);
+            Assert.That(bay.ContainerSize, Is.EqualTo(ContainerSize.FortyFeet));
         }
 
         [Test]
         public void Bay_NumContainers_EmptyBay()
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
-            Assert.AreEqual(0, bay.NumContainers);
+            Assert.That(0, Is.EqualTo(bay.NumContainers));
         }
 
         [Test]
         public void Bay_NumTEUs_EmptyBay()
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
-            Assert.AreEqual(0, bay.NumTEUs);
+            Assert.That(0, Is.EqualTo(bay.NumTEUs));
         }
 
         [Test]
         public void Bay_NumTEUs_FortyFeet()
         {
             var bay = new Bay(_block, ContainerSize.FortyFeet);
-            Assert.AreEqual(ContainerSize.FortyFeet, bay.ContainerSize);
+            Assert.That(bay.ContainerSize, Is.EqualTo(ContainerSize.FortyFeet));
         }
 
         [Test]
         public void Bay_IsFull_Empty()
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
-            Assert.IsFalse(bay.IsFull);
+            Assert.That(bay.IsFull, Is.False);
         }
 
         [Test]
@@ -190,7 +190,7 @@ namespace Net.Test
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
             bay.Stacks[1].Add(new Container(new Group { Index = 1, TEUs = 1 }));
-            Assert.IsFalse(bay.IsFull);
+            Assert.That(bay.IsFull, Is.False);
         }
 
         [Test]
@@ -201,7 +201,7 @@ namespace Net.Test
             for (int row = 1; row <= _block.NumRows; row++)
                 for (int t = 0; t < _block.MaxNumTiers; t++)
                     bay.Stacks[row].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
-            Assert.IsTrue(bay.IsFull);
+            Assert.That(bay.IsFull, Is.True);
         }
 
         [Test]
@@ -211,7 +211,7 @@ namespace Net.Test
             bay.Stacks[1].Add(new Container(new Group { Index = 1, TEUs = 1 }));
             bay.Stacks[2].Add(new Container(new Group { Index = 2, TEUs = 1 }));
             bay.Stacks[2].Add(new Container(new Group { Index = 3, TEUs = 1 }));
-            Assert.AreEqual(3, bay.NumContainers);
+            Assert.That(3, Is.EqualTo(bay.NumContainers));
         }
 
         [Test]
@@ -220,7 +220,7 @@ namespace Net.Test
             var bay = new Bay(_block, ContainerSize.FortyFeet);
             bay.Stacks[1].Add(new Container(new Group { Index = 1, TEUs = 2 }));
             bay.Stacks[1].Add(new Container(new Group { Index = 2, TEUs = 2 }));
-            Assert.AreEqual(4, bay.NumTEUs);
+            Assert.That(4, Is.EqualTo(bay.NumTEUs));
         }
 
         // ---- GetRowIndexToStack 约束测试 ----
@@ -230,9 +230,9 @@ namespace Net.Test
         {
             var bay = new Bay(_block, ContainerSize.TwentyFeet);
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.GreaterOrEqual(result.Value, 1);
-            Assert.LessOrEqual(result.Value, _block.NumRows);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(result.Value, Is.LessThanOrEqualTo(_block.NumRows));
         }
 
         [Test]
@@ -244,8 +244,8 @@ namespace Net.Test
                 bay.Stacks[1].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
             // Row 1 已满，其他 row 为空
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(1, result.Value); // Row 1 不应被返回
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.Not.EqualTo(result.Value)); // Row 1 不应被返回
         }
 
         [Test]
@@ -256,7 +256,7 @@ namespace Net.Test
             for (int t = 0; t < 4; t++)
                 bay.Stacks[1].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result); // 差=4，约束2允许
+            Assert.That(result, Is.Not.Null); // 差=4，约束2允许
         }
 
         [Test]
@@ -267,8 +267,8 @@ namespace Net.Test
             bay.Stacks[1].Add(new Container(new Group { Index = 1, TEUs = 1 })); // Row1 高
             bay.Stacks[2].Add(new Container(new Group { Index = 2, TEUs = 1 })); // Row2 低
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(1, result.Value); // Row 1 不应被返回（有上陡坡）
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.Not.EqualTo(result.Value)); // Row 1 不应被返回（有上陡坡）
         }
 
         [Test]
@@ -279,8 +279,8 @@ namespace Net.Test
             bay.Stacks[1].Add(new Container(new Group { Index = 1, TEUs = 1 })); // Row1 低
             bay.Stacks[2].Add(new Container(new Group { Index = 2, TEUs = 1 })); // Row2 高
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(2, result.Value); // Row 2 不应被返回（有下陡坡）
+            Assert.That(result, Is.Not.Null);
+            Assert.That(2, Is.Not.EqualTo(result.Value)); // Row 2 不应被返回（有下陡坡）
         }
 
         [Test]
@@ -293,9 +293,9 @@ namespace Net.Test
             bay.Stacks[3].Add(new Container(new Group { Index = 3, TEUs = 1 }));
             bay.Stacks[3].Add(new Container(new Group { Index = 4, TEUs = 1 })); // Row3 更高 → 形成上洞
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(1, result.Value);
-            Assert.AreNotEqual(2, result.Value);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.Not.EqualTo(result.Value));
+            Assert.That(2, Is.Not.EqualTo(result.Value));
         }
 
         [Test]
@@ -308,9 +308,9 @@ namespace Net.Test
             bay.Stacks[2].Add(new Container(new Group { Index = 3, TEUs = 1 }));
             bay.Stacks[3].Add(new Container(new Group { Index = 4, TEUs = 1 })); // 与 Row2 等高
             var result = bay.GetRowIndexToStack(_rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(2, result.Value);
-            Assert.AreNotEqual(3, result.Value);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(2, Is.Not.EqualTo(result.Value));
+            Assert.That(3, Is.Not.EqualTo(result.Value));
         }
 
         [Test]
@@ -320,7 +320,7 @@ namespace Net.Test
             for (int row = 1; row <= _block.NumRows; row++)
                 for (int t = 0; t < _block.MaxNumTiers; t++)
                     bay.Stacks[row].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
-            Assert.IsNull(bay.GetRowIndexToStack(_rs));
+            Assert.That(bay.GetRowIndexToStack(_rs), Is.Null);
         }
 
         // ---- StackContainer 测试 ----
@@ -334,8 +334,8 @@ namespace Net.Test
             int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
             bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
-            Assert.IsTrue(result);
-            Assert.AreEqual(1, bay.Stacks[3].Count);
+            Assert.That(result, Is.True);
+            Assert.That(1, Is.EqualTo(bay.Stacks[3].Count));
         }
 
         [Test]
@@ -347,7 +347,7 @@ namespace Net.Test
             int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
             bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
-            Assert.IsFalse(result);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -361,7 +361,7 @@ namespace Net.Test
             int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
             bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
-            Assert.IsFalse(result);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -375,9 +375,9 @@ namespace Net.Test
             var rowWrapper = new int?[] { 0 };
             var tierWrapper = new int?[] { 0 };
             bool result = bay.StackContainer(container, _rs, ref rowWrapper[0], ref tierWrapper[0]);
-            Assert.IsTrue(result);
-            Assert.GreaterOrEqual(rowWrapper[0].Value, 1);
-            Assert.LessOrEqual(rowWrapper[0].Value, _block.NumRows);
+            Assert.That(result, Is.True);
+            Assert.That(rowWrapper[0].Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(rowWrapper[0].Value, Is.LessThanOrEqualTo(_block.NumRows));
         }
 
         [Test]
@@ -394,8 +394,8 @@ namespace Net.Test
             var t2 = new int?[] { 0 };
             bay.StackContainer(c1, _rs, rowIndex: 2, tierIndex: ref t1[0]);
             bay.StackContainer(c2, _rs, rowIndex: 2, tierIndex: ref t2[0]);
-            Assert.AreEqual(1, t1[0].Value);
-            Assert.AreEqual(2, t2[0].Value);
+            Assert.That(1, Is.EqualTo(t1[0].Value));
+            Assert.That(2, Is.EqualTo(t2[0].Value));
         }
     }
 
@@ -410,7 +410,7 @@ namespace Net.Test
         [SetUp]
         public void Setup()
         {
-            _rs = new Random(seed: 42);
+            _rs = new Random(42);
             // 重置静态计数器
             var field = typeof(Block).GetField("Count",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
@@ -424,25 +424,25 @@ namespace Net.Test
         {
             var block1 = new Block(5, 3, 4);
             var block2 = new Block(5, 3, 4);
-            Assert.AreEqual(1, block1.Index);
-            Assert.AreEqual(2, block2.Index);
+            Assert.That(1, Is.EqualTo(block1.Index));
+            Assert.That(2, Is.EqualTo(block2.Index));
         }
 
         [Test]
         public void Block_NumBays_NumRows_MaxNumTiers()
         {
             var block = new Block(numBays: 8, numRows: 5, maxNumTiers: 6);
-            Assert.AreEqual(8, block.NumBays);
-            Assert.AreEqual(5, block.NumRows);
-            Assert.AreEqual(6, block.MaxNumTiers);
+            Assert.That(8, Is.EqualTo(block.NumBays));
+            Assert.That(5, Is.EqualTo(block.NumRows));
+            Assert.That(6, Is.EqualTo(block.MaxNumTiers));
         }
 
         [Test]
         public void Block_StaticSlotDimensions()
         {
-            Assert.AreEqual(6.5f, Block.SlotLength);
-            Assert.AreEqual(2.5f, Block.SlotWidth);
-            Assert.AreEqual(2.6f, Block.SlotHeight);
+            Assert.That(6.5f, Is.EqualTo(Block.SlotLength));
+            Assert.That(2.5f, Is.EqualTo(Block.SlotWidth));
+            Assert.That(2.6f, Is.EqualTo(Block.SlotHeight));
         }
 
         [Test]
@@ -451,21 +451,21 @@ namespace Net.Test
             // (NumBays+1)/2 * NumRows * MaxNumTiers
             // (10+1)/2 * 6 * 5 = 5 * 6 * 5 = 150
             var block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
-            Assert.AreEqual(165, block.CapacityTEUs);
+            Assert.That(165, Is.EqualTo(block.CapacityTEUs));
         }
 
         [Test]
         public void Block_NumContainers_Empty()
         {
             var block = new Block(5, 3, 4);
-            Assert.AreEqual(0, block.NumContainers);
+            Assert.That(0, Is.EqualTo(block.NumContainers));
         }
 
         [Test]
         public void Block_NumTEUs_Empty()
         {
             var block = new Block(5, 3, 4);
-            Assert.AreEqual(0, block.NumTEUs);
+            Assert.That(0, Is.EqualTo(block.NumTEUs));
         }
 
         // ---- CreateBayIfNotExist 测试 ----
@@ -475,9 +475,9 @@ namespace Net.Test
         {
             var block = new Block(10, 6, 5);
             var bay = block.CreateBayIfNotExist(1, ContainerSize.TwentyFeet);
-            Assert.IsNotNull(bay);
-            Assert.AreEqual(ContainerSize.TwentyFeet, bay.ContainerSize);
-            Assert.IsTrue(block.Bays.ContainsKey(1));
+            Assert.That(bay, Is.Not.Null);
+            Assert.That(ContainerSize.TwentyFeet, Is.EqualTo(bay.ContainerSize));
+            Assert.That(block.Bays.ContainsKey(1), Is.True);
         }
 
         [Test]
@@ -486,7 +486,7 @@ namespace Net.Test
             var block = new Block(10, 6, 5);
             var bay1 = block.CreateBayIfNotExist(1, ContainerSize.TwentyFeet);
             var bay2 = block.CreateBayIfNotExist(1, ContainerSize.TwentyFeet);
-            Assert.AreSame(bay1, bay2);
+            Assert.That(bay1, Is.SameAs(bay2));
         }
 
         [Test]
@@ -528,8 +528,8 @@ namespace Net.Test
         {
             var block = new Block(10, 6, 5);
             var result = block.GetBayIndexToStack(ContainerSize.TwentyFeet, _rs);
-            Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Value); // 第一个空 bay
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.EqualTo(result.Value)); // 第一个空 bay
         }
 
         [Test]
@@ -539,8 +539,8 @@ namespace Net.Test
             block.CreateBayIfNotExist(1, ContainerSize.TwentyFeet);
             block.CreateBayIfNotExist(3, ContainerSize.TwentyFeet);
             var result = block.GetBayIndexToStack(ContainerSize.TwentyFeet, _rs);
-            Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Value % 2); // 必须是奇数
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.EqualTo(result.Value % 2)); // 必须是奇数
         }
 
         [Test]
@@ -548,8 +548,8 @@ namespace Net.Test
         {
             var block = new Block(10, 6, 5);
             var result = block.GetBayIndexToStack(ContainerSize.FortyFeet, _rs);
-            Assert.IsNotNull(result);
-            Assert.AreEqual(0, result.Value % 2); // 必须是偶数
+            Assert.That(result, Is.Not.Null);
+            Assert.That(0, Is.EqualTo(result.Value % 2)); // 必须是偶数
         }
 
         [Test]
@@ -562,8 +562,8 @@ namespace Net.Test
                 for (int t = 0; t < block.MaxNumTiers; t++)
                     bay.Stacks[row].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
             var result = block.GetBayIndexToStack(ContainerSize.TwentyFeet, _rs);
-            Assert.IsNotNull(result);
-            Assert.AreNotEqual(1, result.Value); // 不返回已满 bay
+            Assert.That(result, Is.Not.Null);
+            Assert.That(1, Is.Not.EqualTo(result.Value)); // 不返回已满 bay
         }
 
         [Test]
@@ -576,7 +576,7 @@ namespace Net.Test
             var result = block.GetBayIndexToStack(ContainerSize.FortyFeet, _rs);
             // 不应返回 bay 2（因为 bay 1 已占用）
             if (result != null)
-                Assert.AreNotEqual(2, result.Value);
+                Assert.That(2, Is.Not.EqualTo(result.Value));
         }
 
         [Test]
@@ -589,7 +589,7 @@ namespace Net.Test
             var result = block.GetBayIndexToStack(ContainerSize.TwentyFeet, _rs);
             // bay 3 不应被返回（两侧 bay-1=2 和 bay+1=4 都不存在，形成气泡）
             if (result != null)
-                Assert.AreNotEqual(3, result.Value);
+                Assert.That(3, Is.Not.EqualTo(result.Value));
         }
 
         // ---- StackContainer 测试 ----
@@ -607,13 +607,13 @@ namespace Net.Test
             var riW = new int?[] { 0 };
             var tiW = new int?[] { 0 };
             bool result = block.StackContainer(container, _rs, ref biW[0], ref riW[0], ref tiW[0]);
-            Assert.IsTrue(result);
-            Assert.GreaterOrEqual(biW[0].Value, 1);
-            Assert.IsTrue(block.Bays.ContainsKey(biW[0].Value));
+            Assert.That(result, Is.True);
+            Assert.That(biW[0].Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(block.Bays.ContainsKey(biW[0].Value), Is.True);
         }
 
         [Test]
-        public void StackContainer_ 指定Bay()
+        public void StackContainer_SpecifiedBay()
         {
             var block = new Block(10, 6, 5);
             var group = new Group { Index = 1, TEUs = 1 };
@@ -623,9 +623,9 @@ namespace Net.Test
             var riW = new int?[] { 0 };
             var tiW = new int?[] { 0 };
             bool result = block.StackContainer(container, _rs, bayIndex: 1, ref riW[0], ref tiW[0]);
-            Assert.IsTrue(result);
-            Assert.GreaterOrEqual(riW[0].Value, 1);
-            Assert.AreEqual(1, block.Bays.Count);
+            Assert.That(result, Is.True);
+            Assert.That(riW[0].Value, Is.GreaterThanOrEqualTo(1));
+            Assert.That(1, Is.EqualTo(block.Bays.Count));
         }
     }
 
@@ -644,7 +644,7 @@ namespace Net.Test
         {
             _inventory = new Inventory();
             _block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
-            _rs = new Random(seed: 123);
+            _rs = new Random(123);
         }
 
         // ---- Peek / GetHeight 基本操作 ----
@@ -653,14 +653,14 @@ namespace Net.Test
         public void Peek_EmptySlot_ReturnsNull()
         {
             var result = _inventory.Peek(_block, new Slot(1, 1, 1));
-            Assert.IsNull(result);
+            Assert.That(result, Is.Null);
         }
 
         [Test]
         public void GetHeight_EmptySlot_ReturnsZero()
         {
             var result = _inventory.GetHeight(_block, new Slot(1, 1, 1));
-            Assert.AreEqual(0, result);
+            Assert.That(0, Is.EqualTo(result));
         }
 
         // ---- Update / Stacking / Unstacking ----
@@ -671,7 +671,7 @@ namespace Net.Test
             var group = new Group { Index = 1, TEUs = 1 };
             var container = new Container(group) { Block = _block, Slot = new Slot(1, 1, 1) };
             _inventory.Update(container, Inventory.JobType.Stacking);
-            Assert.AreEqual(1, _inventory.GetHeight(_block, new Slot(1, 1, 1)));
+            Assert.That(1, Is.EqualTo(_inventory.GetHeight(_block, new Slot(1, 1, 1))));
         }
 
         [Test]
@@ -681,7 +681,7 @@ namespace Net.Test
             var container = new Container(group) { Block = _block, Slot = new Slot(1, 1, 1) };
             _inventory.Update(container, Inventory.JobType.Stacking);
             _inventory.Update(container, Inventory.JobType.Unstacking);
-            Assert.AreEqual(0, _inventory.GetHeight(_block, new Slot(1, 1, 1)));
+            Assert.That(0, Is.EqualTo(_inventory.GetHeight(_block, new Slot(1, 1, 1))));
         }
 
         [Test]
@@ -694,7 +694,7 @@ namespace Net.Test
             _inventory.Update(c1, Inventory.JobType.Stacking);
             _inventory.Update(c2, Inventory.JobType.Stacking);
             var top = _inventory.Unstack(_block, new Slot(1, 1, 2));
-            Assert.AreSame(c2, top);
+            Assert.That(c2, Is.SameAs(top));
         }
 
         [Test]
@@ -703,7 +703,7 @@ namespace Net.Test
             var group = new Group { Index = 1, TEUs = 1 };
             var container = new Container(group) { Block = _block, Slot = new Slot(0, 1, 1) };
             _inventory.Update(container, Inventory.JobType.Stacking);
-            Assert.AreEqual(0, _inventory.GetHeight(_block, new Slot(0, 1, 1)));
+            Assert.That(0, Is.EqualTo(_inventory.GetHeight(_block, new Slot(0, 1, 1))));
         }
 
         // ---- Allocate 20尺 测试 ----
@@ -717,10 +717,10 @@ namespace Net.Test
             c1.Slot = _inventory.Allocate(c1, _rs);
             _inventory.Update(c1, Inventory.JobType.Stacking);
             c2.Slot = _inventory.Allocate(c2, _rs);
-            Assert.IsNotNull(c2.Slot);
-            Assert.AreEqual(c1.Slot.Bay, c2.Slot.Bay);
-            Assert.AreEqual(c1.Slot.Row, c2.Slot.Row);
-            Assert.AreEqual(2, c2.Slot.Tier); // 堆在 c1 上面
+            Assert.That(c2.Slot, Is.Not.Null);
+            Assert.That(c1.Slot.Bay, Is.EqualTo(c2.Slot.Bay));
+            Assert.That(c1.Slot.Row, Is.EqualTo(c2.Slot.Row));
+            Assert.That(2, Is.EqualTo(c2.Slot.Tier)); // 堆在 c1 上面
         }
 
         [Test]
@@ -729,8 +729,8 @@ namespace Net.Test
             var group = new Group { Index = 1, TEUs = 1 };
             var container = new Container(group) { Block = _block };
             container.Slot = _inventory.Allocate(container, _rs);
-            Assert.IsNotNull(container.Slot);
-            Assert.AreEqual(1, container.Slot.Tier); // 空槽 tier=1
+            Assert.That(container.Slot, Is.Not.Null);
+            Assert.That(1, Is.EqualTo(container.Slot.Tier)); // 空槽 tier=1
         }
 
         [Test]
@@ -745,7 +745,7 @@ namespace Net.Test
             var g2 = new Group { Index = 2, TEUs = 1 };
             var c2 = new Container(g2) { Block = block };
             c2.Slot = inv.Allocate(c2, _rs);
-            Assert.IsNotNull(c2.Slot);
+            Assert.That(c2.Slot, Is.Not.Null);
         }
 
         [Test]
@@ -756,7 +756,7 @@ namespace Net.Test
             var g40 = new Group { Index = 1, TEUs = 2 };
             var c40 = new Container(g40) { Block = block };
             c40.Slot = inv.Allocate(c40, _rs);
-            Assert.IsNotNull(c40.Slot);
+            Assert.That(c40.Slot, Is.Not.Null);
             inv.Update(c40, Inventory.JobType.Stacking);
             // bay-1 和 bay+1 现在都被 40 尺箱占用了
             // 尝试分配 20 尺到被阻塞的 bay
@@ -782,13 +782,13 @@ namespace Net.Test
             var c1 = new Container(g1) { Block = _block };
             var c2 = new Container(g1) { Block = _block };
             c1.Slot = _inventory.Allocate(c1, _rs);
-            Assert.IsNotNull(c1.Slot);
-            Assert.AreEqual(0, c1.Slot.Bay % 2); // 偶数
+            Assert.That(c1.Slot, Is.Not.Null);
+            Assert.That(c1.Slot.Bay % 2, Is.EqualTo(0)); // 偶数
             _inventory.Update(c1, Inventory.JobType.Stacking);
             c2.Slot = _inventory.Allocate(c2, _rs);
-            Assert.IsNotNull(c2.Slot);
-            Assert.AreEqual(c1.Slot.Bay, c2.Slot.Bay);
-            Assert.AreEqual(c1.Slot.Row, c2.Slot.Row);
+            Assert.That(c2.Slot, Is.Not.Null);
+            Assert.That(c2.Slot.Bay, Is.EqualTo(c1.Slot.Bay));
+            Assert.That(c2.Slot.Row, Is.EqualTo(c1.Slot.Row));
         }
 
         [Test]
@@ -797,8 +797,8 @@ namespace Net.Test
             var g1 = new Group { Index = 1, TEUs = 2 };
             var c = new Container(g1) { Block = _block };
             c.Slot = _inventory.Allocate(c, _rs);
-            Assert.IsNotNull(c.Slot);
-            Assert.AreEqual(0, c.Slot.Bay % 2); // 偶数 bay
+            Assert.That(c.Slot, Is.Not.Null);
+            Assert.That(0, Is.EqualTo(c.Slot.Bay % 2)); // 偶数 bay
         }
 
         [Test]
@@ -817,7 +817,7 @@ namespace Net.Test
             c40.Slot = inv.Allocate(c40, _rs);
             // 分配不应在 bay 2（两侧不一致）
             if (c40.Slot != null)
-                Assert.AreNotEqual(2, c40.Slot.Bay);
+                Assert.That(c40.Slot.Bay, Is.Not.EqualTo(2));
         }
 
         // ---- UnstackWithoutReshuffle ----
@@ -828,7 +828,7 @@ namespace Net.Test
             var g1 = new Group { Index = 1, TEUs = 1 };
             var c1 = new Container(g1) { Block = _block, Slot = new Slot(1, 1, 1) };
             _inventory.Update(c1, Inventory.JobType.Stacking);
-            Assert.IsTrue(_inventory.UnstackWithoutReshuffle(c1));
+            Assert.That(_inventory.UnstackWithoutReshuffle(c1), Is.True);
         }
 
         [Test]
@@ -839,7 +839,7 @@ namespace Net.Test
             var c2 = new Container(g1) { Block = _block, Slot = new Slot(1, 1, 2) };
             _inventory.Update(c1, Inventory.JobType.Stacking);
             _inventory.Update(c2, Inventory.JobType.Stacking);
-            Assert.IsTrue(_inventory.UnstackWithoutReshuffle(c1)); // c2 在上面但同组
+            Assert.That(_inventory.UnstackWithoutReshuffle(c1), Is.True); // c2 在上面但同组
         }
 
         [Test]
@@ -851,7 +851,7 @@ namespace Net.Test
             var c2 = new Container(g2) { Block = _block, Slot = new Slot(1, 1, 2) };
             _inventory.Update(c1, Inventory.JobType.Stacking);
             _inventory.Update(c2, Inventory.JobType.Stacking);
-            Assert.IsFalse(_inventory.UnstackWithoutReshuffle(c1));
+            Assert.That(_inventory.UnstackWithoutReshuffle(c1), Is.False);
         }
 
         // ---- GetBestJobByPswc ----
@@ -865,8 +865,8 @@ namespace Net.Test
             _inventory.Update(c1, Inventory.JobType.Stacking);
             _inventory.Update(c2, Inventory.JobType.Stacking);
             var best = _inventory.GetBestJobByPswc(_block, g1);
-            Assert.IsNotNull(best);
-            Assert.AreSame(c1, best); // c1 在栈顶，优先取出
+            Assert.That(best, Is.Not.Null);
+            Assert.That(c1, Is.SameAs(best)); // c1 在栈顶，优先取出
         }
 
         [Test]
@@ -880,8 +880,8 @@ namespace Net.Test
             _inventory.Update(c2, Inventory.JobType.Stacking);
             var best1 = _inventory.GetBestJobByPswc(_block, g1);
             var best2 = _inventory.GetBestJobByPswc(_block, g2);
-            Assert.AreSame(c1, best1);
-            Assert.AreSame(c2, best2);
+            Assert.That(c1, Is.SameAs(best1));
+            Assert.That(c2, Is.SameAs(best2));
         }
 
         // ---- DecideReshuffleTarget ----
@@ -899,7 +899,7 @@ namespace Net.Test
             inv.Update(c2, Inventory.JobType.Stacking);
             // c2 在 c1 上面，取 c1 需要 reshuffle
             var target = inv.DecideReshuffleTarget(c1, c2);
-            Assert.IsNotNull(target);
+            Assert.That(target, Is.Not.Null);
         }
 
         [Test]
@@ -924,7 +924,7 @@ namespace Net.Test
             inv.Update(c5, Inventory.JobType.Stacking);
             // bay 1 现在完全堆满，取任何箱都需要跨 bay
             var target = inv.DecideReshuffleTarget(c1, c2);
-            Assert.IsNotNull(target);
+            Assert.That(target, Is.Not.Null);
         }
 
         // ---- IsRowValidByBayRules ----
@@ -947,7 +947,7 @@ namespace Net.Test
             // 尝试在 bay 1 row 3 堆放（row 3 有空间）
             // 约束检查
             var isValid = inv.IsRowValidByBayRules(block, bay: 1, row: 3, size: ContainerSize.TwentyFeet);
-            Assert.IsNotNull(isValid);
+            Assert.That(isValid, Is.True);
         }
 
         // ---- 40尺 Unstack 成对移除 ----
@@ -961,11 +961,11 @@ namespace Net.Test
             var c = new Container(g1) { Block = block, Slot = new Slot(2, 1, 1) };
             inv.Update(c, Inventory.JobType.Stacking);
             // 40尺箱放于 bay 2（中心），实际占 bay 1 和 bay 3
-            Assert.AreEqual(1, inv.GetHeight(block, new Slot(1, 1, 1)));
-            Assert.AreEqual(1, inv.GetHeight(block, new Slot(3, 1, 1)));
+            Assert.That(1, Is.EqualTo(inv.GetHeight(block, new Slot(1, 1, 1))));
+            Assert.That(1, Is.EqualTo(inv.GetHeight(block, new Slot(3, 1, 1))));
             inv.Update(c, Inventory.JobType.Unstacking);
-            Assert.AreEqual(0, inv.GetHeight(block, new Slot(1, 1, 1)));
-            Assert.AreEqual(0, inv.GetHeight(block, new Slot(3, 1, 1)));
+            Assert.That(0, Is.EqualTo(inv.GetHeight(block, new Slot(1, 1, 1))));
+            Assert.That(0, Is.EqualTo(inv.GetHeight(block, new Slot(3, 1, 1))));
         }
 
         // ---- ToDim1 ----
@@ -973,17 +973,17 @@ namespace Net.Test
         [Test]
         public void ToDim1_OddBay()
         {
-            Assert.AreEqual(1, ToDim1(1));
-            Assert.AreEqual(2, ToDim1(3));
-            Assert.AreEqual(3, ToDim1(5));
+            Assert.That(1, Is.EqualTo(ToDim1(1)));
+            Assert.That(2, Is.EqualTo(ToDim1(3)));
+            Assert.That(3, Is.EqualTo(ToDim1(5)));
         }
 
         [Test]
         public void ToDim1_EvenBay()
         {
-            Assert.AreEqual(1, ToDim1(2));
-            Assert.AreEqual(2, ToDim1(4));
-            Assert.AreEqual(3, ToDim1(6));
+            Assert.That(1, Is.EqualTo(ToDim1(2)));
+            Assert.That(2, Is.EqualTo(ToDim1(4)));
+            Assert.That(3, Is.EqualTo(ToDim1(6)));
         }
 
         private static int ToDim1(int bay) => bay % 2 == 0 ? bay / 2 : (bay + 1) / 2;
