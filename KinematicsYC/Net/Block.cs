@@ -146,6 +146,8 @@ namespace Assets.SingaPort
                 if (bayIndex < 1 || bayIndex > NumBays * 2 - 1 ||
                     Bays.ContainsKey(bayIndex - 1) || Bays.ContainsKey(bayIndex + 1))
                     throw new Exception("Bay Index Infeasible.");
+                if (size == ContainerSize.FortyFeet && bayIndex % 2 != 0)
+                    throw new Exception("Bay Index Infeasible.");
                 if (bayIndex % 2 == 0 && (Bays.ContainsKey(bayIndex - 2) || Bays.ContainsKey(bayIndex + 2)))
                     throw new Exception("Bay Index Infeasible.");
                 Bays.Add(bayIndex, new Bay(this, size));
