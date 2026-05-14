@@ -578,7 +578,7 @@ namespace Assets.SingaPort
 
         // 检查指定 bay/row 是否满足 Bay 风格的堆叠限制（6项限制）
         // 对40尺柜，同时检查 bay-1 和 bay+1 两侧
-        private bool IsRowValidByBayRules(Block block, int bay, int row, ContainerSize size)
+        internal bool IsRowValidByBayRules(Block block, int bay, int row, ContainerSize size)
         {
             int maxTier = block.MaxNumTiers;
 

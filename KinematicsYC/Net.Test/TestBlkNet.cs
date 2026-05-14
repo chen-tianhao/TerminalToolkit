@@ -333,7 +333,7 @@ namespace Net.Test
             var container = new Container(group);
             int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
-            bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
+            bool result = bay.StackContainer(container, 3, ref tierWrapper[0]);
             Assert.That(result, Is.True);
             Assert.That(1, Is.EqualTo(bay.Stacks[3].Count));
         }
@@ -346,7 +346,7 @@ namespace Net.Test
             var container = new Container(group);
             int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
-            bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
+            bool result = bay.StackContainer(container, 3, ref tierWrapper[0]);
             Assert.That(result, Is.False);
         }
 
@@ -358,9 +358,8 @@ namespace Net.Test
                 bay.Stacks[3].Add(new Container(new Group { Index = t + 1, TEUs = 1 }));
             var group = new Group { Index = 99, TEUs = 1 };
             var container = new Container(group);
-            int? tierIndex = null;
             var tierWrapper = new int?[] { 0 };
-            bool result = bay.StackContainer(container, _rs, rowIndex: 3, tierIndex: ref tierWrapper[0]);
+            bool result = bay.StackContainer(container, 3, ref tierWrapper[0]);
             Assert.That(result, Is.False);
         }
 
@@ -392,8 +391,8 @@ namespace Net.Test
             int? tier2 = null;
             var t1 = new int?[] { 0 };
             var t2 = new int?[] { 0 };
-            bay.StackContainer(c1, _rs, rowIndex: 2, tierIndex: ref t1[0]);
-            bay.StackContainer(c2, _rs, rowIndex: 2, tierIndex: ref t2[0]);
+            bay.StackContainer(c1, 2, ref t1[0]);
+            bay.StackContainer(c2, 2, ref t2[0]);
             Assert.That(1, Is.EqualTo(t1[0].Value));
             Assert.That(2, Is.EqualTo(t2[0].Value));
         }
@@ -693,8 +692,8 @@ namespace Net.Test
             var c2 = new Container(g2) { Block = _block, Slot = new Slot(1, 1, 2) };
             _inventory.Update(c1, Inventory.JobType.Stacking);
             _inventory.Update(c2, Inventory.JobType.Stacking);
-            var top = _inventory.Unstack(_block, new Slot(1, 1, 2));
-            Assert.That(c2, Is.SameAs(top));
+            _inventory.Update(c2, Inventory.JobType.Unstacking);
+            Assert.That(1, Is.EqualTo(_inventory.GetHeight(_block, new Slot(1, 1, 1))));
         }
 
         [Test]

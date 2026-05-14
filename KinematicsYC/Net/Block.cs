@@ -139,7 +139,7 @@ namespace Assets.SingaPort
         //     return bay.StackContainer(container, rowIndex, ref tierIndex);
         // }
 
-        private Bay CreateBayIfNotExist(int bayIndex, ContainerSize size)
+        internal Bay CreateBayIfNotExist(int bayIndex, ContainerSize size)
         {
             if (!Bays.ContainsKey(bayIndex))
             {
