@@ -53,10 +53,19 @@ namespace Net.Test
     [TestFixture]
     public class ContainerTests
     {
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            // 重置静态计数器
+            var field = typeof(Container).GetField("Count",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            field?.SetValue(null, 0);
+        }
+
         [SetUp]
         public void Setup()
         {
-            // 重置静态计数器
+            // 每个测试方法执行前再次重置，确保干净状态
             var field = typeof(Container).GetField("Count",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             field?.SetValue(null, 0);
