@@ -35,6 +35,8 @@ namespace Assets.SingaPort
             Group = group;
             Size = group.TEUs == 2 ? ContainerSize.FortyFeet : ContainerSize.TwentyFeet;
         }
+
+        public static void ResetCount() { Count = 0; }
     }
 
     

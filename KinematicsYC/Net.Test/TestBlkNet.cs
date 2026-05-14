@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Assets.SingaPort;
 
 namespace Net.Test
@@ -11,6 +12,13 @@ namespace Net.Test
     [TestFixture]
     public class SlotTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            Container.ResetCount();
+            Block.ResetCount();
+        }
+
         [Test]
         public void Slot_Constructor_SetsProperties()
         {
@@ -53,22 +61,11 @@ namespace Net.Test
     [TestFixture]
     public class ContainerTests
     {
-        [OneTimeSetUp]
-        public void OneTimeSetup()
-        {
-            // 重置静态计数器
-            var field = typeof(Container).GetField("Count",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            field?.SetValue(null, 0);
-        }
-
         [SetUp]
         public void Setup()
         {
-            // 每个测试方法执行前再次重置，确保干净状态
-            var field = typeof(Container).GetField("Count",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            field?.SetValue(null, 0);
+            Container.ResetCount();
+            Block.ResetCount();
         }
 
         [Test]
@@ -146,6 +143,8 @@ namespace Net.Test
         {
             _block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
             _rs = new Random(42);
+            Container.ResetCount();
+            Block.ResetCount();
         }
 
         // ---- 基本属性测试 ----
@@ -419,10 +418,8 @@ namespace Net.Test
         public void Setup()
         {
             _rs = new Random(42);
-            // 重置静态计数器
-            var field = typeof(Block).GetField("Count",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            field?.SetValue(null, 0);
+            Container.ResetCount();
+            Block.ResetCount();
         }
 
         // ---- 基本属性测试 ----
@@ -459,7 +456,7 @@ namespace Net.Test
             // (NumBays+1)/2 * NumRows * MaxNumTiers
             // (10+1)/2 * 6 * 5 = 5 * 6 * 5 = 150
             var block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
-            Assert.That(165, Is.EqualTo(block.CapacityTEUs));
+            Assert.That(150, Is.EqualTo(block.CapacityTEUs));
         }
 
         [Test]
@@ -653,6 +650,8 @@ namespace Net.Test
             _inventory = new Inventory();
             _block = new Block(numBays: 10, numRows: 6, maxNumTiers: 5);
             _rs = new Random(123);
+            Container.ResetCount();
+            Block.ResetCount();
         }
 
         // ---- Peek / GetHeight 基本操作 ----

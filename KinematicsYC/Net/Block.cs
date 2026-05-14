@@ -152,5 +152,7 @@ namespace Assets.SingaPort
             }
             return Bays[bayIndex];
         }
+
+        public static void ResetCount() { Count = 0; }
     }
 }
