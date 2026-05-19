@@ -1,0 +1,143 @@
+{
+	"description": "自动化轨道龙门起重机（ARMG）运动学参数",
+	"speed_and_duty": {
+		"description": "速度与工作周期 — 3.2.2.1 节",
+		"hoisting_speed": {
+			"description": "起升速度（吊具带载时最低）",
+			"with_swl_load": "45 m/min",
+			"with_empty_spreader": "90 m/min"
+		},
+		"trolley_travel_speed": {
+			"description": "小车运行速度",
+			"with_swl_load": "120 m/min",
+			"with_empty_spreader": "120 m/min"
+		},
+		"gantry_travel_speed": {
+			"description": "龙门运行速度",
+			"with_swl_load": "150 m/min",
+			"with_empty_spreader": "150 m/min"
+		},
+		"micro_motion": {
+			"description": "微动模式参数 — 用于精确定位",
+			"gantry_direction_range": "± 250 mm",
+			"trolley_direction_range": "± 200 mm",
+			"skew_angle_range": "± 5 degrees",
+			"min_speed": "≥ 24 mm/s"
+		},
+		"rated_capacity": {
+			"description": "额定负载（SWL — Safe Working Load）",
+			"swl": "40 tonnes",
+			"min_overload_capacity": "1.25 × SWL = 50 tonnes"
+		}
+	},
+	"accelerations_decelerations": {
+		"description": "加速度/减速度（从静止加速至全速，或从全速减速至静止）",
+		"hoist_with_empty_spreader": "3.0 s",
+		"hoist_with_swl_load": "1.5 s",
+		"lower_with_empty_spreader": "3.0 s",
+		"lower_with_swl_load": "1.5 s",
+		"trolley_travel": "3.0 s",
+		"gantry_travel": "6.0 s"
+	},
+	"anti_sway": {
+		"description": "防摇要求 — 龙门和小车方向",
+		"requirement": "50 mm within two swings（两个摆动周期内，负载摆幅 ≤ 50 mm）"
+	},
+	"positioning_accuracy": {
+		"description": "定位精度要求 — 3.2.2.2 节（自动化性能）",
+		"fine_position_feedback": {
+			"description": "精细位置反馈系统（读取代扣参照物）",
+			"accuracy": "± 10 mm"
+		},
+		"stacking_accuracy_ground_container": {
+			"description": "地面集装箱堆叠精度",
+			"trolley_direction": "± 50 mm",
+			"gantry_direction": "± 50 mm",
+			"skew_40ft_container": "± 0.1 degrees"
+		},
+		"stacking_accuracy_tier_2_to_6": {
+			"description": "第2至第6层集装箱堆叠精度",
+			"relative_to_container_below": "± 50 mm",
+			"relative_to_ideal_position": "± 80 mm"
+		},
+		"fls_set_points_accuracy": {
+			"description": "FLS（First Last Shot，精确对准系统）设定点精度（用于卡车和AGV）",
+			"accuracy": "± 30 mm"
+		},
+		"gantry_skew_control": {
+			"description": "龙门偏斜控制 — 两侧位置偏差",
+			"deviation": "± 50 mm"
+		},
+		"chassis_lift_prevention": {
+			"description": "底盘防起升系统 — 底盘离地最大允许高度",
+			"max_lift_height": "0.6 m"
+		},
+		"spreader_position_feedback": {
+			"description": "吊具位置反馈系统（所有起升高度）",
+			"skew_feedback_accuracy": "± 0.1 degrees",
+			"trim_and_list_accuracy_40ft": "± 0.3 degrees"
+		},
+		"spss_tier_1": {
+			"description": "SPSS（Spreader Position Sensing System）第1层精度（离地2.6m）",
+			"gantry_direction": "± 30 mm",
+			"trolley_direction": "± 30 mm",
+			"skew_direction_40ft": "± 0.2 degrees",
+			"height": "± 30 mm"
+		},
+		"voss_vehicle_detection": {
+			"description": "VOSS（Vehicle Occupancy Sensing System）车辆检测精度（离地1.2m）",
+			"gantry_direction": "± 100 mm",
+			"trolley_direction": "± 100 mm",
+			"skew_direction_40ft": "± 0.3 degrees",
+			"height": "± 100 mm"
+		}
+	},
+	"overall_dimensions": {
+		"description": "整体尺寸参数 — 3.2.3 节（部分参数与运动学相关）",
+		"effective_safe_operation_lift": "21.8 m（轨面以上安全有效起升高度）",
+		"gantry_rails_span": {
+			"description": "龙门轨距（轨道中心距）",
+			"type1_11row_single_cantilever": "34.89 m",
+			"type2_12row_single_cantilever": "37.78 m",
+			"type3_14row_double_cantilever": "43.56 m"
+		},
+		"overall_crane_width": "24.5 m（缓冲器至缓冲器，未压缩宽度）",
+		"operating_effective_trolley_travel": "5.0 m（从龙门轨道中心向外）",
+		"min_clearance_max_hoist_to_lift_height": "1.0 m",
+		"max_overhang_agv_haulier_lane": "9.5 m",
+		"max_overhang_service_lane_single_cantilever": "2.75 m",
+		"min_clearance_between_legs": "15.8 m",
+		"min_effective_gantry_yard_bumper_to_bumper": {
+			"49_slot_yard": "339 m",
+			"36_slot_yard": "248 m"
+		},
+		"max_gantry_wheel_load": {
+			"description": "最大龙门轮压（含20%冲击载荷，轮中心距1.2m）",
+			"type1_11row": "30 tonnes",
+			"type2_12row": "33.5 tonnes",
+			"type3_14row": "38 tonnes"
+		},
+		"max_protrusion_agv_lane_outboard": {
+			"description": "AGV车道外伸最大突出量（龙门轨道中心以下9m处）",
+			"all_types": "0.8 m"
+		},
+		"max_protrusion_non_agv_lane_outboard": {
+			"description": "非AGV车道外伸最大突出量（龙门轨道中心以下9m处）",
+			"all_types": "1.35 m"
+		},
+		"min_height_clearance_first_stairway": "9.0 m",
+		"max_protrusion_agv_lane_inboard": {
+			"description": "AGV车道内伸最大突出量",
+			"all_types": "1.25 m"
+		},
+		"max_protrusion_non_agv_lane_inboard": {
+			"description": "非AGV车道内伸最大突出量",
+			"all_types": "1.10 m"
+		}
+	},
+	"manual_intervention_rate": {
+		"description": "人工介入率（1个月内）",
+		"agv_operations": "< 5%",
+		"truck_operations": "< 15%"
+	}
+}
