@@ -19,6 +19,7 @@ from block import Block
 # 颜色配置
 COLOR_20FT = "#AED6F1"   # 浅蓝 - 20尺集装箱
 COLOR_40FT = "#F9E79F"   # 浅橙 - 40尺集装箱（跨bay）
+COLOR_YC = "#E74C3C"     # 红色 - YC (Yard Crane)
 COLOR_GRID = "gray"
 COLOR_TEXT = "black"
 COLOR_BAY_LABEL = "#2C3E50"  # 深色用于bay编号
@@ -30,14 +31,18 @@ SLOT_WIDTH = Block.slot_width + SLOT_ROW_SPACING  # bay方向（X）- 集装箱�
 SLOT_LENGTH = Block.slot_length + SLOT_BAY_SPACING  # row方向（Y）- 集装箱长度
 CELL_ASPECT = SLOT_LENGTH / SLOT_WIDTH
 
+# YC 尺寸（米），相对于集装箱slot
+YC_WIDTH = 1   # YC 宽度（沿 bay 方向）
 
-def draw_block_top_view(block: Block, save_path: str = None):
+
+def draw_block_top_view(block: Block, save_path: str = None, yc_pos: int = None):
     """
     绘制 Block 的 2D 俯视图（top-down view）
 
     参数:
         block: Block 实例
         save_path: 可选，保存图片路径
+        yc_pos: 可选，YC 所在的 max_bay_index 位置
     """
     num_bays = block.num_bays
     num_rows = block.num_rows
@@ -59,12 +64,6 @@ def draw_block_top_view(block: Block, save_path: str = None):
     # 物理 bay 布局:
     # - 奇数 bay (1,3,5...): 20' 箱的独立槽位
     # - 偶数 bay (2,4,6...): 40' 箱跨 bay-1 和 bay+1 两个奇数位
-    #
-    # bay索引与x坐标对应关系:
-    # bay:  01  02  03  04  05  06  07  08  09 ...
-    # x:     0   1   2   3   4   5   6   7   8 ...
-    #
-    # 40' 箱 bay 02 占用 bay 01(x=0~1) 和 bay 03(x=2~3)，跨度=3
 
     # 只绘制奇数 bay 的槽位（20ft 独立槽位）
     for bay in range(1, num_bays + 1, 1):  # 1, 3, 5, 7, ...
@@ -82,30 +81,6 @@ def draw_block_top_view(block: Block, save_path: str = None):
             ax.text(x + 0.5, row - 0.5, "20'",
                    ha='center', va='center',
                    fontsize=6, color="#1A5276", alpha=0.7)
-
-    # # 绘制 40ft bay（偶数bay）的覆盖矩形
-    # # 偶数 bay i 跨越 bay-1 和 bay+1 两个奇数位
-    # # 例如 bay 02 -> 占用 bay 01 和 bay 03，跨度从 x=0 到 x=3
-    # for bay in range(2, max_bay_index, 2):  # 偶数 bay: 2, 4, 6, ...
-    #     left_odd = bay - 1   # 左侧被占用的奇数bay (e.g., bay 02 -> left_odd=1)
-    #     right_odd = bay + 1  # 右侧被占用的奇数bay (e.g., bay 02 -> right_odd=3)
-    #     left_x = left_odd - 1  # x坐标起点 (bay 01 -> x=0)
-    #     right_x = right_odd     # x坐标终点 (bay 03 -> x=3)
-    #     span = right_x - left_x  # 跨度=3 (bay 01~03)
-
-    #     for row in range(1, num_rows + 1):
-    #         rect = patches.Rectangle(
-    #             (left_x, row - 1), span, 1,
-    #             linewidth=1.5,
-    #             edgecolor="#D68910",
-    #             facecolor=COLOR_40FT,
-    #             alpha=0.5
-    #         )
-    #         ax.add_patch(rect)
-    #         # 标注"40'"表示40ft
-    #         ax.text((left_x + right_x) / 2, row - 0.5, "40'",
-    #                ha='center', va='center',
-    #                fontsize=6, color="#9C640C", alpha=0.8)
 
     # ---- 标注 Bay 编号 ----
     # 奇数 bay: 标注在格子中心
@@ -130,6 +105,29 @@ def draw_block_top_view(block: Block, save_path: str = None):
         ax.text(-0.1, row - 0.5, f"{row}",
                ha='right', va='center',
                fontsize=9, color=COLOR_TEXT, fontweight='bold')
+
+    # ---- 绘制 YC (Yard Crane) 俯视图 ----
+    if yc_pos is not None:
+        # YC 沿 bay 方向居中于 yc_pos 位置
+        # YC 宽度（沿 row 方向）覆盖所有 row
+        yc_x = yc_pos - YC_WIDTH / 2
+        yc_y = 0  # 从 row 1 开始
+        yc_rect = patches.Rectangle(
+            (yc_x, yc_y),
+            YC_WIDTH,
+            num_rows,
+            linewidth=2,
+            edgecolor=COLOR_YC,
+            facecolor=COLOR_YC,
+            alpha=0.5,
+            label="YC1"
+        )
+        ax.add_patch(yc_rect)
+        # 在 YC 中心位置标注 "YC1"
+        ax.text(yc_pos, num_rows / 2, "YC1",
+               ha='center', va='center',
+               fontsize=10, color="white", fontweight='bold',
+               bbox=dict(boxstyle='round', facecolor=COLOR_YC, alpha=0.8))
 
     # ---- 设置坐标轴 ----
     ax.set_xlim(-0.5, num_bays + 0.5)
@@ -157,6 +155,8 @@ def draw_block_top_view(block: Block, save_path: str = None):
                       alpha=0.6, label='20ft Bay (Odd)'),
         patches.Patch(facecolor=COLOR_40FT, edgecolor="#D68910",
                       alpha=0.5, label='40ft Bay (Even, Cross-Bay)'),
+        patches.Patch(facecolor=COLOR_YC, edgecolor=COLOR_YC,
+                      alpha=0.5, label='YC (Yard Crane)'),
     ]
     ax.legend(handles=legend_elements, loc='upper right', fontsize=9)
 
@@ -180,6 +180,8 @@ def main():
                         help="Row 数量 (默认: 11)")
     parser.add_argument("--max-tiers", type=int, default=5,
                         help="最大堆叠层数 (默认: 5)")
+    parser.add_argument("--YC1-pos", type=int, default=5,
+                        help="YC1 位置 (默认: 5)")
     parser.add_argument("--save", type=str, default=None,
                         help="保存图片路径 (可选)")
     args = parser.parse_args()
@@ -194,9 +196,10 @@ def main():
     print(f"Block params: bays={block.num_bays}, rows={block.num_rows}, max_tiers={block.max_num_tiers}")
     print(f"Bay index range: 1 ~ {args.num_bays * 2 - 1}")
     print(f"Row index range: 1 ~ {args.num_rows}")
+    print(f"YC1 position: {args.YC1_pos}")
 
     # 绘制俯视图
-    draw_block_top_view(block, save_path=args.save)
+    draw_block_top_view(block, save_path=args.save, yc_pos=args.YC1_pos)
 
 
 if __name__ == "__main__":
