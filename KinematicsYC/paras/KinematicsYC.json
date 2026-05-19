@@ -3,21 +3,31 @@
 	"speed_and_duty": {
 		"description": "速度与工作周期 — 3.2.2.1 节",
 		"hoisting_speed": {
+			"Note": "KEY PARAMETER - 关键指标",
 			"description": "起升速度（吊具带载时最低）",
 			"with_swl_load": "45 m/min",
-			"with_empty_spreader": "90 m/min"
+			"with_empty_spreader": "90 m/min",
+			"with_swl_load_mps": "0.75",
+			"with_empty_spreader_mps": "1.5"
 		},
 		"trolley_travel_speed": {
+			"Note": "KEY PARAMETER - 关键指标",
 			"description": "小车运行速度",
 			"with_swl_load": "120 m/min",
-			"with_empty_spreader": "120 m/min"
+			"with_empty_spreader": "120 m/min",
+			"with_swl_load_mps": "2.0",
+			"with_empty_spreader_mps": "2.0"
 		},
 		"gantry_travel_speed": {
+			"Note": "KEY PARAMETER - 关键指标",
 			"description": "龙门运行速度",
 			"with_swl_load": "150 m/min",
-			"with_empty_spreader": "150 m/min"
+			"with_empty_spreader": "150 m/min",
+			"with_swl_load_mps": "2.5",
+			"with_empty_spreader_mps": "2.5"
 		},
 		"micro_motion": {
+			"Note": "可跳过",
 			"description": "微动模式参数 — 用于精确定位",
 			"gantry_direction_range": "± 250 mm",
 			"trolley_direction_range": "± 200 mm",
@@ -25,25 +35,35 @@
 			"min_speed": "≥ 24 mm/s"
 		},
 		"rated_capacity": {
+			"Note": "可跳过",
 			"description": "额定负载（SWL — Safe Working Load）",
 			"swl": "40 tonnes",
 			"min_overload_capacity": "1.25 × SWL = 50 tonnes"
 		}
 	},
 	"accelerations_decelerations": {
+		"Note": "KEY PARAMETER - 关键指标",
 		"description": "加速度/减速度（从静止加速至全速，或从全速减速至静止）",
 		"hoist_with_empty_spreader": "3.0 s",
 		"hoist_with_swl_load": "1.5 s",
 		"lower_with_empty_spreader": "3.0 s",
 		"lower_with_swl_load": "1.5 s",
 		"trolley_travel": "3.0 s",
-		"gantry_travel": "6.0 s"
+		"gantry_travel": "6.0 s",
+		"hoist_with_empty_spreader_mpss": "1.0000",
+		"hoist_with_swl_load_mpss": "0.2500",
+		"lower_with_empty_spreader_mpss": "1.0000",
+		"lower_with_swl_load_mpss": "0.2500",
+		"trolley_travel_mpss": "0.6667",
+		"gantry_travel_mpss": "0.4167"
 	},
 	"anti_sway": {
+		"Note": "可跳过",
 		"description": "防摇要求 — 龙门和小车方向",
 		"requirement": "50 mm within two swings（两个摆动周期内，负载摆幅 ≤ 50 mm）"
 	},
 	"positioning_accuracy": {
+		"Note": "本章可跳过",
 		"description": "定位精度要求 — 3.2.2.2 节（自动化性能）",
 		"fine_position_feedback": {
 			"description": "精细位置反馈系统（读取代扣参照物）",
@@ -93,6 +113,7 @@
 		}
 	},
 	"overall_dimensions": {
+		"Note": "本章可用于3D建模和仿真，但非运动学参数，非必读",
 		"description": "整体尺寸参数 — 3.2.3 节（部分参数与运动学相关）",
 		"effective_safe_operation_lift": "21.8 m（轨面以上安全有效起升高度）",
 		"gantry_rails_span": {
@@ -136,6 +157,7 @@
 		}
 	},
 	"manual_intervention_rate": {
+		"Note": "本章可跳过",
 		"description": "人工介入率（1个月内）",
 		"agv_operations": "< 5%",
 		"truck_operations": "< 15%"
