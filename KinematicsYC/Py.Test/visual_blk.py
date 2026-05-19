@@ -197,8 +197,8 @@ def draw_block_top_view(block: Block, save_path: str = None, yc1_bay_idx: int = 
 
 def main():
     parser = argparse.ArgumentParser(description="Block 2D 俯视图可视化")
-    parser.add_argument("--num-bays", type=int, default=43,
-                        help="Bay 数量 (默认: 43)")
+    parser.add_argument("--num-bays", type=int, default=21,
+                        help="Bay 数量 (默认: 21)")
     parser.add_argument("--num-rows", type=int, default=11,
                         help="Row 数量 (默认: 11)")
     parser.add_argument("--max-tiers", type=int, default=5,
