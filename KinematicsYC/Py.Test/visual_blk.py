@@ -35,15 +35,15 @@ CELL_ASPECT = SLOT_LENGTH / SLOT_WIDTH
 YC_WIDTH = 1   # YC 宽度（沿 bay 方向）
 
 
-def draw_block_top_view(block: Block, save_path: str = None, yc1_pos: int = None, yc2_pos: int = None):
+def draw_block_top_view(block: Block, save_path: str = None, yc1_bay_idx: int = None, yc2_bay_idx: int = None):
     """
     绘制 Block 的 2D 俯视图（top-down view）
 
     参数:
         block: Block 实例
         save_path: 可选，保存图片路径
-        yc1_pos: 可选，YC1 所在的 max_bay_index 位置
-        yc2_pos: 可选，YC2 所在的 max_bay_index 位置
+        yc1_bay_idx: 可选，YC1 所在的 bay_index 位置
+        yc2_bay_idx: 可选，YC2 所在的 bay_index 位置
     """
     num_bays = block.num_bays
     num_rows = block.num_rows
@@ -108,10 +108,10 @@ def draw_block_top_view(block: Block, save_path: str = None, yc1_pos: int = None
                fontsize=9, color=COLOR_TEXT, fontweight='bold')
 
     # ---- 绘制 YC (Yard Crane) 俯视图 ----
-    if yc1_pos is not None:
+    if yc1_bay_idx is not None:
         # YC 沿 bay 方向居中于 yc_pos 位置
         # YC 宽度（沿 row 方向）覆盖所有 row
-        yc_x = yc1_pos - YC_WIDTH / 2
+        yc_x = yc1_bay_idx / 2 - YC_WIDTH / 2
         yc_y = 0  # 从 row 1 开始
         yc_rect = patches.Rectangle(
             (yc_x, yc_y),
@@ -125,15 +125,15 @@ def draw_block_top_view(block: Block, save_path: str = None, yc1_pos: int = None
         )
         ax.add_patch(yc_rect)
         # 在 YC 中心位置标注 "YC1"
-        ax.text(yc1_pos, num_rows / 2, "YC1",
+        ax.text(yc1_bay_idx / 2, num_rows / 2, "YC1",
                ha='center', va='center',
                fontsize=10, color="white", fontweight='bold',
                bbox=dict(boxstyle='round', facecolor=COLOR_YC, alpha=0.8))
     
-    if yc2_pos is not None:
+    if yc2_bay_idx is not None:
         # YC 沿 bay 方向居中于 yc_pos 位置
         # YC 宽度（沿 row 方向）覆盖所有 row
-        yc_x = yc2_pos - YC_WIDTH / 2
+        yc_x = yc2_bay_idx / 2 - YC_WIDTH / 2
         yc_y = 0  # 从 row 1 开始
         yc_rect = patches.Rectangle(
             (yc_x, yc_y),
@@ -147,7 +147,7 @@ def draw_block_top_view(block: Block, save_path: str = None, yc1_pos: int = None
         )
         ax.add_patch(yc_rect)
         # 在 YC 中心位置标注 "YC2"
-        ax.text(yc2_pos, num_rows / 2, "YC2",
+        ax.text(yc2_bay_idx / 2, num_rows / 2, "YC2",
                ha='center', va='center',
                fontsize=10, color="white", fontweight='bold',
                bbox=dict(boxstyle='round', facecolor=COLOR_YC, alpha=0.8))
@@ -203,9 +203,9 @@ def main():
                         help="Row 数量 (默认: 11)")
     parser.add_argument("--max-tiers", type=int, default=5,
                         help="最大堆叠层数 (默认: 5)")
-    parser.add_argument("--YC1-pos", type=int, default=5,
+    parser.add_argument("--YC1-bay-idx", type=int, default=5,
                         help="YC1 位置 (默认: 5)")
-    parser.add_argument("--YC2-pos", type=int, default=None,
+    parser.add_argument("--YC2-bay-idx", type=int, default=None,
                         help="YC2 位置 (默认: None, 不显示 YC2)")
     parser.add_argument("--save", type=str, default=None,
                         help="保存图片路径 (可选)")
@@ -221,11 +221,11 @@ def main():
     print(f"Block params: bays={block.num_bays}, rows={block.num_rows}, max_tiers={block.max_num_tiers}")
     print(f"Bay index range: 1 ~ {args.num_bays * 2 - 1}")
     print(f"Row index range: 1 ~ {args.num_rows}")
-    print(f"YC1 position: {args.YC1_pos}")
-    print(f"YC2 position: {args.YC2_pos}")
+    print(f"YC1 position: {args.YC1_bay_idx}")
+    print(f"YC2 position: {args.YC2_bay_idx}")
 
     # 绘制俯视图
-    draw_block_top_view(block, save_path=args.save, yc1_pos=args.YC1_pos, yc2_pos=args.YC2_pos)
+    draw_block_top_view(block, save_path=args.save, yc1_bay_idx=args.YC1_bay_idx, yc2_bay_idx=args.YC2_bay_idx)
 
 
 if __name__ == "__main__":
