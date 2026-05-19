@@ -139,7 +139,7 @@ def draw_block_top_view(block: Block, save_path: str = None):
     ax.set_xlabel("Bay Index (Odd=20' Bay, Even=40' Bay occupying Odd-1 & Odd+1)", fontsize=10)
     ax.set_ylabel("Row Index", fontsize=10)
     ax.set_title(f"Block Top-Down View (Bays={num_bays}, Rows={num_rows}, MaxTiers={block.max_num_tiers})\n"
-                 f"Physical: {SLOT_WIDTH}m (bay) x {SLOT_LENGTH}m (row), Aspect={CELL_ASPECT}:1",
+                 f"Physical: {SLOT_WIDTH}m ({SLOT_ROW_SPACING}m row spacing) x {SLOT_LENGTH}m ({SLOT_BAY_SPACING}m bay spacing), Aspect={round(CELL_ASPECT, 3)}:1",
                  fontsize=11, fontweight='bold')
 
     # 保持长宽比（用 data 坐标单位，这样 1 unit in Y = 1 unit in X）
@@ -174,10 +174,10 @@ def draw_block_top_view(block: Block, save_path: str = None):
 
 def main():
     parser = argparse.ArgumentParser(description="Block 2D 俯视图可视化")
-    parser.add_argument("--num-bays", type=int, default=20,
-                        help="Bay 数量 (默认: 20)")
-    parser.add_argument("--num-rows", type=int, default=6,
-                        help="Row 数量 (默认: 6)")
+    parser.add_argument("--num-bays", type=int, default=43,
+                        help="Bay 数量 (默认: 43)")
+    parser.add_argument("--num-rows", type=int, default=11,
+                        help="Row 数量 (默认: 11)")
     parser.add_argument("--max-tiers", type=int, default=5,
                         help="最大堆叠层数 (默认: 5)")
     parser.add_argument("--save", type=str, default=None,
