@@ -25,10 +25,10 @@ COLOR_TEXT = "black"
 COLOR_BAY_LABEL = "#2C3E50"  # 深色用于bay编号
 
 # Bay 物理尺寸（米），用于计算格子比例
-SLOT_ROW_SPACING = 0.25  # row方向（Y）- 集装箱之间的间隔
 SLOT_BAY_SPACING = 0.25  # bay方向（X）- 集装箱之间的间隔
-SLOT_WIDTH = Block.slot_width + SLOT_ROW_SPACING  # bay方向（X）- 集装箱宽度
+SLOT_ROW_SPACING = 0.25  # row方向（Y）- 集装箱之间的间隔
 SLOT_LENGTH = Block.slot_length + SLOT_BAY_SPACING  # row方向（Y）- 集装箱长度
+SLOT_WIDTH = Block.slot_width + SLOT_ROW_SPACING  # bay方向（X）- 集装箱宽度
 CELL_ASPECT = SLOT_LENGTH / SLOT_WIDTH
 
 # YC 尺寸（米），相对于集装箱slot

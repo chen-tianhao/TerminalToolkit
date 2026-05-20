@@ -133,51 +133,39 @@ def _motion_time(distance: float, v_max: float, a: float) -> float:
         return 2.0 * math.sqrt(d / a)
 
 
-def parse_agv_loc(agv_loc) -> Tuple[float, float]:
+def parse_agv_loc(bay_index: int) -> float:
     """
-    解析 AGV 位置为 gantry 和 trolley 目标位置
+    根据 bay_index 解析 gantry 目标位置
 
     Args:
-        agv_loc: AGV 位置对象，需包含 bay_index 和 row 属性
+        bay_index: AGV 所在的 bay 索引
 
     Returns:
-        (gantry_pos, trolley_pos) — 单位：米
+        gantry_pos — 单位：米
     """
-    # 物理尺寸常量
     slot_length = 6.5  # bay 方向
-    slot_width = 2.5  # row 方向
-
-    gantry_pos = (agv_loc.bay_index - 1) * slot_length
-    trolley_pos = (agv_loc.row - 1) * slot_width
-
-    return gantry_pos, trolley_pos
+    return (bay_index - 1) * slot_length
 
 
-def parse_slot_loc(slot: Slot) -> Tuple[YCMovePos, YCMovePos]:
+def parse_slot_loc(slot: Slot) -> Tuple[float, float, float]:
     """
-    解析 Slot 位置为起点和终点位置
+    解析 Slot 位置为 gantry、trolley、hoist 目标位置
 
     Args:
         slot: Slot 对象，包含 bay, row, tier 属性
 
     Returns:
-        (start_pos, end_pos) — YCMovePos 类型
-        起升从地面（tier=1, hoist=0）开始
+        (gantry_pos, trolley_pos, hoist_pos) — 单位：米
     """
-    # 物理尺寸常量
     slot_length = 6.5  # bay 方向
     slot_width = 2.5  # row 方向
     slot_height = 2.6  # tier 方向
 
-    gantry = (slot.bay - 1) * slot_length
-    trolley = (slot.row - 1) * slot_width
-    hoist_end = (slot.tier - 1) * slot_height
+    gantry_pos = (slot.bay - 1) * slot_length
+    trolley_pos = (slot.row - 1) * slot_width
+    hoist_pos = (slot.tier - 1) * slot_height
 
-    # 起升起点为地面
-    start_pos = YCMovePos(gantry=gantry, trolley=trolley, hoist=0.0)
-    end_pos = YCMovePos(gantry=gantry, trolley=trolley, hoist=hoist_end)
-
-    return start_pos, end_pos
+    return gantry_pos, trolley_pos, hoist_pos
 
 """
 根据起止点在gantry方向上的分量，通过gantry相关的速度和加速度参数，计算YC gantry需要的时间，注意空载和满载swl应使用不同的参数。
