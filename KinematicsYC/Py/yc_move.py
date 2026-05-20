@@ -1,0 +1,257 @@
+"""
+yc_move.py - YC 运动耗时计算模块
+
+计算 YC（场桥）各组件（龙门架 Gantry、小车 Trolley、起升 Hoist）的运动耗时。
+"""
+
+import json
+import math
+import os
+from dataclasses import dataclass
+from typing import Tuple, Optional
+
+from slot import Slot
+
+# 单例参数缓存
+_params: Optional['YCParameters'] = None
+
+
+@dataclass
+class YCParameters:
+    """YC 运动学参数"""
+    # 速度 (m/s)
+    hoist_with_swl_load: float
+    hoist_with_empty_spreader: float
+    trolley_with_load: float
+    gantry_with_load: float
+    # 起升加速度 (m/s²)
+    hoist_accel_with_empty: float
+    hoist_accel_with_swl: float
+    # 下降加速度 (m/s²)
+    lower_accel_with_empty: float
+    lower_accel_with_swl: float
+    # 运行加速度 (m/s²)
+    trolley_accel: float
+    gantry_accel: float
+
+
+@dataclass
+class YCMovePos:
+    """YC 位置坐标（米）"""
+    gantry: float  # bay 方向
+    trolley: float  # row 方向
+    hoist: float  # 高度方向
+
+"""
+读取KinematicsYC/paras/KinematicsYC.json中的
+速度参数：
+with_swl_load_mps / with_empty_spreader_mps / with_swl_load_mps / 
+with_empty_spreader_mps / with_swl_load_mps和with_empty_spreader_mps，
+以及加速度参数：
+hoist_with_empty_spreader_mpss / hoist_with_swl_load_mpss / 
+lower_with_empty_spreader_mpss / lower_with_swl_load_mpss / 
+trolley_travel_mpss / gantry_travel_mpss。
+"""
+def read_para(json_path: str = None) -> YCParameters:
+    """
+    读取 KinematicsYC.json 配置文件
+
+    Args:
+        json_path: JSON 文件路径，默认使用相对于本文件的路径
+
+    Returns:
+        YCParameters 对象
+    """
+    global _params
+
+    if _params is not None:
+        return _params
+
+    if json_path is None:
+        json_path = os.path.join(os.path.dirname(__file__), '..', 'paras', 'KinematicsYC.json')
+
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    speed = data['speed_and_duty']
+    accel = data['accelerations_decelerations']
+
+    _params = YCParameters(
+        hoist_with_swl_load=float(speed['hoisting_speed']['with_swl_load_mps']),
+        hoist_with_empty_spreader=float(speed['hoisting_speed']['with_empty_spreader_mps']),
+        trolley_with_load=float(speed['trolley_travel_speed']['with_swl_load_mps']),
+        gantry_with_load=float(speed['gantry_travel_speed']['with_swl_load_mps']),
+        hoist_accel_with_empty=float(accel['hoist_with_empty_spreader_mpss']),
+        hoist_accel_with_swl=float(accel['hoist_with_swl_load_mpss']),
+        lower_accel_with_empty=float(accel['lower_with_empty_spreader_mpss']),
+        lower_accel_with_swl=float(accel['lower_with_swl_load_mpss']),
+        trolley_accel=float(accel['trolley_travel_mpss']),
+        gantry_accel=float(accel['gantry_travel_mpss']),
+    )
+
+    return _params
+
+
+def get_params() -> YCParameters:
+    """获取缓存的参数，若未读取则先读取"""
+    global _params
+    if _params is None:
+        return read_para()
+    return _params
+
+# 基于梯形速度曲线的运动耗时计算，在Gentry_time / Trolley_time / Hoist_time中被调用
+def _motion_time(distance: float, v_max: float, a: float) -> float:
+    """
+    计算运动耗时（梯形速度曲线）
+
+    Args:
+        distance: 运动距离（米）
+        v_max: 最大速度 (m/s)
+        a: 加速度 (m/s²)
+
+    Returns:
+        运动耗时（秒）
+    """
+    if distance <= 0:
+        return 0.0
+    if v_max <= 0 or a <= 0:
+        return float('inf')
+
+    d = abs(distance)
+    d_crit = v_max * v_max / a  # 达到最大速度所需的临界距离
+
+    if d >= d_crit:
+        # 可以达到最大速度：加速 + 匀速 + 减速
+        t_accel = v_max / a
+        t_decel = v_max / a
+        t_cruise = (d - d_crit) / v_max
+        return t_accel + t_cruise + t_decel
+    else:
+        # 无法达到最大速度，使用三角速度曲线
+        # 峰值速度 v = sqrt(a*d)
+        # 时间 t = 2*v/a = 2*sqrt(d/a)
+        return 2.0 * math.sqrt(d / a)
+
+
+def parse_agv_loc(agv_loc) -> Tuple[float, float]:
+    """
+    解析 AGV 位置为 gantry 和 trolley 目标位置
+
+    Args:
+        agv_loc: AGV 位置对象，需包含 bay_index 和 row 属性
+
+    Returns:
+        (gantry_pos, trolley_pos) — 单位：米
+    """
+    # 物理尺寸常量
+    slot_length = 6.5  # bay 方向
+    slot_width = 2.5  # row 方向
+
+    gantry_pos = (agv_loc.bay_index - 1) * slot_length
+    trolley_pos = (agv_loc.row - 1) * slot_width
+
+    return gantry_pos, trolley_pos
+
+
+def parse_slot_loc(slot: Slot) -> Tuple[YCMovePos, YCMovePos]:
+    """
+    解析 Slot 位置为起点和终点位置
+
+    Args:
+        slot: Slot 对象，包含 bay, row, tier 属性
+
+    Returns:
+        (start_pos, end_pos) — YCMovePos 类型
+        起升从地面（tier=1, hoist=0）开始
+    """
+    # 物理尺寸常量
+    slot_length = 6.5  # bay 方向
+    slot_width = 2.5  # row 方向
+    slot_height = 2.6  # tier 方向
+
+    gantry = (slot.bay - 1) * slot_length
+    trolley = (slot.row - 1) * slot_width
+    hoist_end = (slot.tier - 1) * slot_height
+
+    # 起升起点为地面
+    start_pos = YCMovePos(gantry=gantry, trolley=trolley, hoist=0.0)
+    end_pos = YCMovePos(gantry=gantry, trolley=trolley, hoist=hoist_end)
+
+    return start_pos, end_pos
+
+"""
+根据起止点在gantry方向上的分量，通过gantry相关的速度和加速度参数，计算YC gantry需要的时间，注意空载和满载swl应使用不同的参数。
+"""
+def gantry_time(start: float, end: float, with_load: bool) -> float:
+    """
+    计算龙门架（gantry）运动时间
+
+    Args:
+        start: 起点位置（米）
+        end: 终点位置（米）
+        with_load: 是否负载（True=满载SWL, False=空载吊具）
+
+    Returns:
+        运动耗时（秒）
+    """
+    params = get_params()
+    distance = abs(end - start)
+    # gantry 速度和加速度在空载/满载时相同
+    return _motion_time(distance, params.gantry_with_load, params.gantry_accel)
+
+"""
+根据起止点在trolley方向上的分量，通过trolley相关的速度和加速度参数，计算YC trolley需要的时间，注意空载和满载swl应使用不同的参数。
+"""
+def trolley_time(start: float, end: float, with_load: bool) -> float:
+    """
+    计算小车（trolley）运动时间
+
+    Args:
+        start: 起点位置（米）
+        end: 终点位置（米）
+        with_load: 是否负载（True=满载SWL, False=空载吊具）
+
+    返回:
+        运动耗时（秒）
+    """
+    params = get_params()
+    distance = abs(end - start)
+    # trolley 速度和加速度在空载/满载时相同
+    return _motion_time(distance, params.trolley_with_load, params.trolley_accel)
+
+
+"""
+根据起止点在hoist方向上的分量，通过hoist相关的速度和加速度参数，计算YC hoist需要的时间，注意空载和满载swl应使用不同的参数。
+"""
+def hoist_time(start: float, end: float, with_load: bool, is_hoisting: bool) -> float:
+    """
+    计算起升机构（hoist）运动时间
+
+    Args:
+        start: 起点高度（米）
+        end: 终点高度（米）
+        with_load: 是否负载（True=满载SWL, False=空载吊具）
+        is_hoisting: True=起升动作，False=下降动作
+
+    返回:
+        运动耗时（秒）
+    """
+    params = get_params()
+    distance = abs(end - start)
+
+    if with_load:
+        # 满载 SWL
+        v = params.hoist_with_swl_load
+        if is_hoisting:
+            a = params.hoist_accel_with_swl
+        else:
+            a = params.lower_accel_with_swl
+    else:
+        # 空载吊具
+        v = params.hoist_with_empty_spreader
+        if is_hoisting:
+            a = params.hoist_accel_with_empty
+        else:
+            a = params.lower_accel_with_empty
+
+    return _motion_time(distance, v, a)
