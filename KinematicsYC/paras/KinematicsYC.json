@@ -113,9 +113,10 @@
 		}
 	},
 	"overall_dimensions": {
-		"Note": "本章可用于3D建模和仿真，但非运动学参数，非必读",
+		"Note": "本章可用于3D建模和仿真，设备部件尺寸与运动学相关",
 		"description": "整体尺寸参数 — 3.2.3 节（部分参数与运动学相关）",
 		"effective_safe_operation_lift": "21.8 m（轨面以上安全有效起升高度）",
+		"effective_safe_operation_lift_m": "21.8",
 		"gantry_rails_span": {
 			"description": "龙门轨距（轨道中心距）",
 			"type1_11row_single_cantilever": "34.89 m",
@@ -124,6 +125,7 @@
 		},
 		"overall_crane_width": "24.5 m（缓冲器至缓冲器，未压缩宽度）",
 		"operating_effective_trolley_travel": "5.0 m（从龙门轨道中心向外）",
+		"operating_effective_trolley_travel_m": "5.0",
 		"min_clearance_max_hoist_to_lift_height": "1.0 m",
 		"max_overhang_agv_haulier_lane": "9.5 m",
 		"max_overhang_service_lane_single_cantilever": "2.75 m",

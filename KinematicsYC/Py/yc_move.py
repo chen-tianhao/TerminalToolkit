@@ -34,6 +34,9 @@ class YCParameters:
     # 运行加速度 (m/s²)
     trolley_accel: float
     gantry_accel: float
+    # 有效安全作业提升高度
+    effective_safe_operation_lift: float
+    operating_effective_trolley_travel: float
 
 
 @dataclass
@@ -76,6 +79,7 @@ def read_para(json_path: str = None) -> YCParameters:
 
     speed = data['speed_and_duty']
     accel = data['accelerations_decelerations']
+    dimensions = data['overall_dimensions']
 
     _params = YCParameters(
         hoist_with_swl_load=float(speed['hoisting_speed']['with_swl_load_mps']),
@@ -88,6 +92,8 @@ def read_para(json_path: str = None) -> YCParameters:
         lower_accel_with_swl=float(accel['lower_with_swl_load_mpss']),
         trolley_accel=float(accel['trolley_travel_mpss']),
         gantry_accel=float(accel['gantry_travel_mpss']),
+        effective_safe_operation_lift=float(dimensions['effective_safe_operation_lift_m']),
+        operating_effective_trolley_travel=float(dimensions['operating_effective_trolley_travel_m'])
     )
 
     return _params
@@ -243,3 +249,41 @@ def hoist_time(start: float, end: float, with_load: bool, is_hoisting: bool) -> 
             a = params.lower_accel_with_empty
 
     return _motion_time(distance, v, a)
+
+"""
+侧存箱。
+时间包含：空载gantry移动时间(A) + 空载trolley移动时间(B) + 空载下降时间(C) + 固定操作时间(D) + 满载提升时间(E) + 满载trolley移动时间(F) + 满载下降时间(G)
+其中A和B同时发生，取较大值
+计算hoist时应安全高度(effective_safe_operation_lift)作为参考基准
+计算trolley移动时应考虑operating_effective_trolley_travel的限制，超过该范围则需要增加gantry移动时间
+其中A发生在origin和agv之间，B可忽略，
+返回A~D总时间(working_cycle)，以及E~G总时间(restore_cycle)
+"""
+def side_feed_stacking_time(origin_slot_idx: int, agv_bay_index: int, target_slot: Slot, fixed_op_time = 0.0) -> float:
+    return 0.0
+
+"""
+侧取箱。
+时间包含：空载gantry移动时间(A) + 空载trolley移动时间(B) + 空载下降时间(C) + 固定操作时间(D) + 满载提升时间(E) + 满载trolley移动时间(F) + 满载下降时间(G)
+       + 固定操作时间(H) + 空载提升时间(I) +空载trolley移动时间(J)
+其中A和B同时发生，取较大值
+计算hoist时应安全高度(effective_safe_operation_lift)作为参考基准
+计算trolley移动时应考虑operating_effective_trolley_travel的限制，超过该范围则需要增加gantry移动时间
+其中A发生在origin和agv之间，B可忽略，
+返回A~H总时间(working_cycle)，以及I~J总时间(restore_cycle)
+"""
+def side_feed_unstacking_time(origin_slot_idx: int, agv_bay_index: int, target_slot: Slot, fixed_op_time = 0.0) -> float:
+    return 0.0
+
+"""
+端存箱。
+"""
+def end_feed_stacking_time(origin_slot_idx: int, max_bay_index: int, slot: Slot, fixed_op_time = 0.0) -> float:
+    return 0.0
+
+"""
+端取箱。
+"""
+def end_feed_unstacking_time(origin_slot_idx: int, max_bay_index: int, slot: Slot, fixed_op_time = 0.0) -> float:
+    return 0.0
+
