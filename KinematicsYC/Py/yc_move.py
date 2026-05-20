@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from typing import Tuple, Optional
 
 from slot import Slot
+from block import Block
 
 # 单例参数缓存
 _params: Optional['YCParameters'] = None
@@ -133,21 +134,21 @@ def _motion_time(distance: float, v_max: float, a: float) -> float:
         return 2.0 * math.sqrt(d / a)
 
 
-def parse_agv_loc(bay_index: int) -> float:
+def parse_agv_pos(bay_index: int) -> float:
     """
     根据 bay_index 解析 gantry 目标位置
 
     Args:
-        bay_index: AGV 所在的 bay 索引
+        bay_index: AGV 所在的 bay 索引（1 ~ num_bays*2-1）
 
     Returns:
         gantry_pos — 单位：米
+        遵循 visual_blk.py 中的坐标系：gantry_pos = bay_index / 2 * slot_length
     """
-    slot_length = 6.5  # bay 方向
-    return (bay_index - 1) * slot_length
+    return bay_index / 2 * Block.slot_length
 
 
-def parse_slot_loc(slot: Slot) -> Tuple[float, float, float]:
+def parse_slot_pos(slot: Slot) -> Tuple[float, float, float]:
     """
     解析 Slot 位置为 gantry、trolley、hoist 目标位置
 
@@ -156,14 +157,13 @@ def parse_slot_loc(slot: Slot) -> Tuple[float, float, float]:
 
     Returns:
         (gantry_pos, trolley_pos, hoist_pos) — 单位：米
+        gantry: 遵循 visual_blk.py 坐标系 gantry_pos = bay / 2 * slot_length
+        trolley: trolley_pos = (row - 1) * slot_width
+        hoist: hoist_pos = (tier - 1) * slot_height
     """
-    slot_length = 6.5  # bay 方向
-    slot_width = 2.5  # row 方向
-    slot_height = 2.6  # tier 方向
-
-    gantry_pos = (slot.bay - 1) * slot_length
-    trolley_pos = (slot.row - 1) * slot_width
-    hoist_pos = (slot.tier - 1) * slot_height
+    gantry_pos = slot.bay / 2 * Block.slot_length
+    trolley_pos = (slot.row - 1) * Block.slot_width
+    hoist_pos = (slot.tier - 1) * Block.slot_height
 
     return gantry_pos, trolley_pos, hoist_pos
 
